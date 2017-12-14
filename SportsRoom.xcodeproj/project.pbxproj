@@ -12,6 +12,8 @@
 		2D1F4B501FE1F36400371D9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4E1FE1F36400371D9B /* Main.storyboard */; };
 		2D1F4B521FE1F36400371D9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B511FE1F36400371D9B /* Assets.xcassets */; };
 		2D1F4B551FE1F36400371D9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B531FE1F36400371D9B /* LaunchScreen.storyboard */; };
+		2D1F4B5D1FE1F5EC00371D9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B5C1FE1F5EC00371D9B /* GoogleService-Info.plist */; };
+		73738A0197A6DF179687D916 /* Pods_SportsRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,10 @@
 		2D1F4B511FE1F36400371D9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D1F4B541FE1F36400371D9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D1F4B561FE1F36400371D9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D1F4B5C1FE1F5EC00371D9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		5D6F5EC96DFB1C7034020205 /* Pods-SportsRoom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsRoom.release.xcconfig"; path = "Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom.release.xcconfig"; sourceTree = "<group>"; };
+		78F2554F652C596510C8CEB8 /* Pods-SportsRoom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsRoom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom.debug.xcconfig"; sourceTree = "<group>"; };
+		F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsRoom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73738A0197A6DF179687D916 /* Pods_SportsRoom.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06E0B265ABD6777B04C0AE2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2D1F4B3E1FE1F36400371D9B = {
 			isa = PBXGroup;
 			children = (
 				2D1F4B491FE1F36400371D9B /* SportsRoom */,
 				2D1F4B481FE1F36400371D9B /* Products */,
+				FAE14F0A132822A22784553A /* Pods */,
+				06E0B265ABD6777B04C0AE2D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +71,7 @@
 		2D1F4B491FE1F36400371D9B /* SportsRoom */ = {
 			isa = PBXGroup;
 			children = (
+				2D1F4B5C1FE1F5EC00371D9B /* GoogleService-Info.plist */,
 				2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */,
 				2D1F4B4C1FE1F36400371D9B /* ViewController.swift */,
 				2D1F4B4E1FE1F36400371D9B /* Main.storyboard */,
@@ -64,6 +82,15 @@
 			path = SportsRoom;
 			sourceTree = "<group>";
 		};
+		FAE14F0A132822A22784553A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				78F2554F652C596510C8CEB8 /* Pods-SportsRoom.debug.xcconfig */,
+				5D6F5EC96DFB1C7034020205 /* Pods-SportsRoom.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D1F4B591FE1F36400371D9B /* Build configuration list for PBXNativeTarget "SportsRoom" */;
 			buildPhases = (
+				5F0C73076C4719ECA11985F4 /* [CP] Check Pods Manifest.lock */,
 				2D1F4B431FE1F36400371D9B /* Sources */,
 				2D1F4B441FE1F36400371D9B /* Frameworks */,
 				2D1F4B451FE1F36400371D9B /* Resources */,
+				C25C3AF7F0F6989CA8794592 /* [CP] Embed Pods Frameworks */,
+				120F21C33807E127576D8312 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,12 +154,71 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D1F4B551FE1F36400371D9B /* LaunchScreen.storyboard in Resources */,
+				2D1F4B5D1FE1F5EC00371D9B /* GoogleService-Info.plist in Resources */,
 				2D1F4B521FE1F36400371D9B /* Assets.xcassets in Resources */,
 				2D1F4B501FE1F36400371D9B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		120F21C33807E127576D8312 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5F0C73076C4719ECA11985F4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SportsRoom-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C25C3AF7F0F6989CA8794592 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2D1F4B431FE1F36400371D9B /* Sources */ = {
@@ -272,12 +361,13 @@
 		};
 		2D1F4B5A1FE1F36400371D9B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78F2554F652C596510C8CEB8 /* Pods-SportsRoom.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SportsRoom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HellowWorld.SportsRoom;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jdl.sportsroom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -286,12 +376,13 @@
 		};
 		2D1F4B5B1FE1F36400371D9B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D6F5EC96DFB1C7034020205 /* Pods-SportsRoom.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SportsRoom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HellowWorld.SportsRoom;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jdl.sportsroom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
