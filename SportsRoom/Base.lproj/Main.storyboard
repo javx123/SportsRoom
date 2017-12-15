@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Host Game View Controller-->
         <scene sceneID="WoM-o4-zeP">
             <objects>
-                <viewController id="oNd-PB-sCQ" sceneMemberID="viewController">
+                <viewController id="oNd-PB-sCQ" customClass="HostGameViewController" customModule="SportsRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8ND-bp-Iwu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,10 +47,10 @@
             </objects>
             <point key="canvasLocation" x="1009" y="-1102"/>
         </scene>
-        <!--View Controller-->
+        <!--Set Location View Controller-->
         <scene sceneID="reX-oS-vNx">
             <objects>
-                <viewController id="5rM-VA-g9y" sceneMemberID="viewController">
+                <viewController id="5rM-VA-g9y" customClass="SetLocationViewController" customModule="SportsRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eVd-3D-wba">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,7 +121,7 @@
         <!--Search Results-->
         <scene sceneID="eWk-eD-cgY">
             <objects>
-                <viewController id="wdb-co-fuZ" sceneMemberID="viewController">
+                <viewController id="wdb-co-fuZ" customClass="SearchResultsViewController" customModule="SportsRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fuk-j8-qyQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -159,10 +159,10 @@
             </objects>
             <point key="canvasLocation" x="1756" y="1133"/>
         </scene>
-        <!--View Controller-->
+        <!--Details View Controller-->
         <scene sceneID="UrP-LW-AjV">
             <objects>
-                <viewController id="jrv-0v-fw9" sceneMemberID="viewController">
+                <viewController id="jrv-0v-fw9" customClass="DetailsViewController" customModule="SportsRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SPU-D5-xof">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,6 +178,14 @@
                                 <rect key="frame" x="0.0" y="637" width="375" height="30"/>
                                 <state key="normal" title="Join Game"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="szE-kR-xDn">
+                                <rect key="frame" x="158" y="318" width="59" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Location"/>
+                                <connections>
+                                    <segue destination="jGr-yG-RbJ" kind="presentation" id="FXP-ha-PmT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -190,12 +198,40 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bLU-34-3wT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2567" y="1126"/>
+            <point key="canvasLocation" x="2565.5999999999999" y="1125.7871064467768"/>
         </scene>
-        <!--View Controller-->
+        <!--Location View Controller-->
+        <scene sceneID="jdU-Yp-Ki5">
+            <objects>
+                <viewController id="jGr-yG-RbJ" customClass="LocationViewController" customModule="SportsRoom" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ota-VR-6VH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="pjq-kQ-Zfk">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cm8-aF-Yw1" firstAttribute="bottom" secondItem="pjq-kQ-Zfk" secondAttribute="bottom" id="1HI-Bv-q54"/>
+                            <constraint firstItem="cm8-aF-Yw1" firstAttribute="bottom" secondItem="pjq-kQ-Zfk" secondAttribute="bottom" id="Moq-QH-H5s"/>
+                            <constraint firstItem="pjq-kQ-Zfk" firstAttribute="leading" secondItem="cm8-aF-Yw1" secondAttribute="leading" id="esO-gR-DVh"/>
+                            <constraint firstItem="pjq-kQ-Zfk" firstAttribute="top" secondItem="cm8-aF-Yw1" secondAttribute="top" id="gKq-Kg-BX4"/>
+                            <constraint firstItem="pjq-kQ-Zfk" firstAttribute="top" secondItem="cm8-aF-Yw1" secondAttribute="top" id="oqK-ac-GU5"/>
+                            <constraint firstItem="cm8-aF-Yw1" firstAttribute="trailing" secondItem="pjq-kQ-Zfk" secondAttribute="trailing" id="uOP-6V-mrj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cm8-aF-Yw1"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eip-wg-I2B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3458" y="1122"/>
+        </scene>
+        <!--Owned Game View Controller-->
         <scene sceneID="4BT-ol-UJA">
             <objects>
-                <viewController id="e7h-IY-gf3" sceneMemberID="viewController">
+                <viewController id="e7h-IY-gf3" customClass="OwnedGameViewController" customModule="SportsRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dHy-ar-SYz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -241,10 +277,10 @@
             </objects>
             <point key="canvasLocation" x="990" y="347"/>
         </scene>
-        <!--View Controller-->
+        <!--Details View Controller-->
         <scene sceneID="uqJ-qv-Y15">
             <objects>
-                <viewController id="qc8-7s-WZy" sceneMemberID="viewController">
+                <viewController id="qc8-7s-WZy" customClass="DetailsViewController" customModule="SportsRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HBj-gw-5et">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -271,10 +307,10 @@
             </objects>
             <point key="canvasLocation" x="1878" y="347"/>
         </scene>
-        <!--View Controller-->
+        <!--Location View Controller-->
         <scene sceneID="mrM-7B-AKy">
             <objects>
-                <viewController id="KkL-0h-Yv3" sceneMemberID="viewController">
+                <viewController id="KkL-0h-Yv3" customClass="LocationViewController" customModule="SportsRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ykm-g6-Y1a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -299,10 +335,10 @@
             </objects>
             <point key="canvasLocation" x="2782" y="347"/>
         </scene>
-        <!--View Controller-->
+        <!--Details View Controller-->
         <scene sceneID="Odl-be-797">
             <objects>
-                <viewController id="NPR-B3-Hvz" sceneMemberID="viewController">
+                <viewController id="NPR-B3-Hvz" customClass="DetailsViewController" customModule="SportsRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="feI-EE-pKn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -329,10 +365,10 @@
             </objects>
             <point key="canvasLocation" x="1878" y="-375"/>
         </scene>
-        <!--View Controller-->
+        <!--Joined Game View Controller-->
         <scene sceneID="0VE-Yp-ZKt">
             <objects>
-                <viewController id="u9G-sC-JaY" sceneMemberID="viewController">
+                <viewController id="u9G-sC-JaY" customClass="JoinedGameViewController" customModule="SportsRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w2W-mt-sq6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -378,10 +414,10 @@
             </objects>
             <point key="canvasLocation" x="1009" y="-374"/>
         </scene>
-        <!--View Controller-->
+        <!--Location View Controller-->
         <scene sceneID="Ipa-T3-CuO">
             <objects>
-                <viewController id="lDo-Zj-Afr" sceneMemberID="viewController">
+                <viewController id="lDo-Zj-Afr" customClass="LocationViewController" customModule="SportsRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4ie-3K-teF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -406,10 +442,10 @@
             </objects>
             <point key="canvasLocation" x="2783" y="-375"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="tuN-99-6yS">
             <objects>
-                <viewController id="KbM-Lc-0Fu" sceneMemberID="viewController">
+                <viewController id="KbM-Lc-0Fu" customClass="ProfileViewController" customModule="SportsRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4We-Lw-ujC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
