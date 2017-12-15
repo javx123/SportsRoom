@@ -13,6 +13,14 @@
 		2D1F4B521FE1F36400371D9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B511FE1F36400371D9B /* Assets.xcassets */; };
 		2D1F4B551FE1F36400371D9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B531FE1F36400371D9B /* LaunchScreen.storyboard */; };
 		2D1F4B5D1FE1F5EC00371D9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B5C1FE1F5EC00371D9B /* GoogleService-Info.plist */; };
+		2D71A9B21FE40B19008C60F7 /* JoinedGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9B11FE40B19008C60F7 /* JoinedGameViewController.swift */; };
+		2D71A9B41FE40B22008C60F7 /* OwnedGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9B31FE40B22008C60F7 /* OwnedGameViewController.swift */; };
+		2D71A9B61FE40B6A008C60F7 /* HostGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9B51FE40B6A008C60F7 /* HostGameViewController.swift */; };
+		2D71A9B81FE40B87008C60F7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9B71FE40B87008C60F7 /* ProfileViewController.swift */; };
+		2D71A9BA1FE40BF4008C60F7 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9B91FE40BF4008C60F7 /* SearchResultsViewController.swift */; };
+		2D71A9BC1FE40C1E008C60F7 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9BB1FE40C1E008C60F7 /* DetailsViewController.swift */; };
+		2D71A9BE1FE40C7F008C60F7 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */; };
+		2D71A9C01FE40D1A008C60F7 /* SetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9BF1FE40D1A008C60F7 /* SetLocationViewController.swift */; };
 		73738A0197A6DF179687D916 /* Pods_SportsRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +33,14 @@
 		2D1F4B541FE1F36400371D9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D1F4B561FE1F36400371D9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D1F4B5C1FE1F5EC00371D9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		2D71A9B11FE40B19008C60F7 /* JoinedGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedGameViewController.swift; sourceTree = "<group>"; };
+		2D71A9B31FE40B22008C60F7 /* OwnedGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedGameViewController.swift; sourceTree = "<group>"; };
+		2D71A9B51FE40B6A008C60F7 /* HostGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostGameViewController.swift; sourceTree = "<group>"; };
+		2D71A9B71FE40B87008C60F7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2D71A9B91FE40BF4008C60F7 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		2D71A9BB1FE40C1E008C60F7 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		2D71A9BF1FE40D1A008C60F7 /* SetLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLocationViewController.swift; sourceTree = "<group>"; };
 		5D6F5EC96DFB1C7034020205 /* Pods-SportsRoom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsRoom.release.xcconfig"; path = "Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom.release.xcconfig"; sourceTree = "<group>"; };
 		78F2554F652C596510C8CEB8 /* Pods-SportsRoom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsRoom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom.debug.xcconfig"; sourceTree = "<group>"; };
 		F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsRoom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +91,14 @@
 				2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */,
 				2D1F4B4C1FE1F36400371D9B /* ViewController.swift */,
 				2D1F4B4E1FE1F36400371D9B /* Main.storyboard */,
+				2D71A9B11FE40B19008C60F7 /* JoinedGameViewController.swift */,
+				2D71A9B31FE40B22008C60F7 /* OwnedGameViewController.swift */,
+				2D71A9B91FE40BF4008C60F7 /* SearchResultsViewController.swift */,
+				2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */,
+				2D71A9BB1FE40C1E008C60F7 /* DetailsViewController.swift */,
+				2D71A9B51FE40B6A008C60F7 /* HostGameViewController.swift */,
+				2D71A9BF1FE40D1A008C60F7 /* SetLocationViewController.swift */,
+				2D71A9B71FE40B87008C60F7 /* ProfileViewController.swift */,
 				2D1F4B511FE1F36400371D9B /* Assets.xcassets */,
 				2D1F4B531FE1F36400371D9B /* LaunchScreen.storyboard */,
 				2D1F4B561FE1F36400371D9B /* Info.plist */,
@@ -225,8 +249,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D71A9B81FE40B87008C60F7 /* ProfileViewController.swift in Sources */,
+				2D71A9BC1FE40C1E008C60F7 /* DetailsViewController.swift in Sources */,
+				2D71A9B21FE40B19008C60F7 /* JoinedGameViewController.swift in Sources */,
+				2D71A9C01FE40D1A008C60F7 /* SetLocationViewController.swift in Sources */,
+				2D71A9B41FE40B22008C60F7 /* OwnedGameViewController.swift in Sources */,
 				2D1F4B4D1FE1F36400371D9B /* ViewController.swift in Sources */,
 				2D1F4B4B1FE1F36400371D9B /* AppDelegate.swift in Sources */,
+				2D71A9BE1FE40C7F008C60F7 /* LocationViewController.swift in Sources */,
+				2D71A9BA1FE40BF4008C60F7 /* SearchResultsViewController.swift in Sources */,
+				2D71A9B61FE40B6A008C60F7 /* HostGameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
