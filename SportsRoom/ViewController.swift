@@ -10,20 +10,38 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class ViewController: UIViewController {
-    
+class ViewController: UIViewController, UISearchBarDelegate {
+    let searchBar: UISearchBar = UISearchBar()
+//    let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-//        self.navigationItem.titleView = UISearchBar(frame: CGRect(x: 20, y: 8, width: self.view.frame.size.width - 20, height: 20))
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
-        self.navigationItem.titleView = UISearchBar()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(showProfile))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createGame))
+        
+        self.navigationItem.titleView = searchBar
+        self.searchBar.delegate = self
         observeFireBase()
     }
+    
+    
+    //Mark: - SearchBar Methods
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.endEditing(true)
+    }
+    
 
+    //Mark: - FireBase Methods
     
     func observeFireBase() {
         let childRef = Database.database().reference(withPath: "users/Jason")
@@ -32,6 +50,15 @@ class ViewController: UIViewController {
             print("\(value)")
         }
         childRef.removeAllObservers()
+        
+    }
+    
+    //Mark: - NavBar Button Methods
+    @objc func showProfile() {
+        
+    }
+    
+    @objc func createGame() {
         
     }
     
