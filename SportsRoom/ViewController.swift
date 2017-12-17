@@ -12,14 +12,16 @@ import FirebaseDatabase
 
 class ViewController: UIViewController, UISearchBarDelegate {
     let searchBar: UISearchBar = UISearchBar()
+    let profileButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(showProfile))
+    let createButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createGame))
 //    let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(showProfile))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createGame))
+        self.navigationItem.leftBarButtonItem = profileButton
+        self.navigationItem.rightBarButtonItem = createButton
         
         self.navigationItem.titleView = searchBar
         self.searchBar.delegate = self
@@ -31,6 +33,8 @@ class ViewController: UIViewController, UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
+        self.navigationItem.setLeftBarButton(nil, animated: true)
+        self.navigationItem.setRightBarButton(nil, animated: true)
     }
     
     
@@ -38,6 +42,8 @@ class ViewController: UIViewController, UISearchBarDelegate {
         searchBar.text = ""
         searchBar.setShowsCancelButton(false, animated: true)
         searchBar.endEditing(true)
+        self.navigationItem.setLeftBarButton(profileButton, animated: true)
+        self.navigationItem.setRightBarButton(createButton, animated: true)
     }
     
 
