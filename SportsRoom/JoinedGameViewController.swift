@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
-class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider  {
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -32,6 +33,9 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: "Joined Games")
+    }
 
     /*
     // MARK: - Navigation
