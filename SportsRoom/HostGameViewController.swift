@@ -10,26 +10,28 @@ import UIKit
 
 class HostGameViewController: UIViewController {
 
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var gameTitleTextField: UITextField!
+    @IBOutlet weak var sportTextField: UITextField!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var skillLevelControl: UISegmentedControl!
+    @IBOutlet weak var costTextField: UITextField!
+    @IBOutlet weak var numberOfPlayersSlider: UISlider!
+    @IBOutlet weak var numberOfPlayersLabel: UILabel!
+    @IBOutlet weak var notesTextField: UITextField!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func sliderChanged(_ sender: Any) {
+        (sender as AnyObject).setValue(Float(lroundf(numberOfPlayersSlider.value)), animated: true)
+        let sliderValue: Float = numberOfPlayersSlider.value
+        let sliderNSNumber = sliderValue as NSNumber
+        var playerString:String = sliderNSNumber.stringValue
+        numberOfPlayersLabel.text = playerString
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
