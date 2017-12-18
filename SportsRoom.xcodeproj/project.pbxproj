@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05E0A0D51FE83D16006BE816 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E0A0D41FE83D16006BE816 /* LoginViewController.swift */; };
 		2D1F4B4B1FE1F36400371D9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */; };
 		2D1F4B4D1FE1F36400371D9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4C1FE1F36400371D9B /* ViewController.swift */; };
 		2D1F4B501FE1F36400371D9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4E1FE1F36400371D9B /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05E0A0D41FE83D16006BE816 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2D1F4B471FE1F36400371D9B /* SportsRoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsRoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D1F4B4C1FE1F36400371D9B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */,
 				2D1F4B4C1FE1F36400371D9B /* ViewController.swift */,
 				2D1F4B4E1FE1F36400371D9B /* Main.storyboard */,
+				05E0A0D41FE83D16006BE816 /* LoginViewController.swift */,
 				2D71A9B11FE40B19008C60F7 /* JoinedGameViewController.swift */,
 				2D71A9B31FE40B22008C60F7 /* OwnedGameViewController.swift */,
 				2D71A9B91FE40BF4008C60F7 /* SearchResultsViewController.swift */,
@@ -227,12 +230,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -259,6 +264,7 @@
 				2D71A9BE1FE40C7F008C60F7 /* LocationViewController.swift in Sources */,
 				2D71A9BA1FE40BF4008C60F7 /* SearchResultsViewController.swift in Sources */,
 				2D71A9B61FE40B6A008C60F7 /* HostGameViewController.swift in Sources */,
+				05E0A0D51FE83D16006BE816 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
