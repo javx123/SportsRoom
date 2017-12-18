@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class LoginViewController: UIViewController {
     
@@ -44,6 +45,10 @@ class LoginViewController: UIViewController {
                 if error != nil {
                     self.displayAlert(title: "Error", message: error!.localizedDescription)
                 } else {
+                    let ref = Database.database().reference().child("users").child(user!.uid)
+                    let key = "email"
+                    let text = self.emailTxtField.text
+                    ref.updateChildValues([key:text!])
                     print("Register Success!")
                     self.performSegue(withIdentifier: "toMain", sender: self)
                 }
