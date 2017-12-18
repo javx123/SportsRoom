@@ -18,29 +18,140 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7Q-ny-KOa">
-                                <rect key="frame" x="136" y="573" width="102" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Select location"/>
-                                <connections>
-                                    <segue destination="5rM-VA-g9y" kind="show" id="PWQ-ye-339"/>
-                                </connections>
-                            </button>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yIn-aX-XIz">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yIn-aX-XIz">
+                                <rect key="frame" x="0.0" y="21" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="9DK-MC-26Y"/>
+                                    <navigationItem title="Title" id="9DK-MC-26Y">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="32o-5C-OJy">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4yD-6M-CwL">
+                                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Cancel"/>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hockey_defualt" translatesAutoresizingMaskIntoConstraints="NO" id="KFg-wA-buA">
+                                <rect key="frame" x="0.0" y="74" width="375" height="167"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="167" id="fd1-GS-Ug9"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYD-Nl-JdD">
+                                <rect key="frame" x="0.0" y="634" width="375" height="33"/>
+                                <color key="backgroundColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Post Game">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="iXN-TV-qJW">
+                                <rect key="frame" x="8" y="249" width="359" height="376"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Game Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YOz-6f-6FY">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sport" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JM6-GD-U1e">
+                                        <rect key="frame" x="0.0" y="33" width="359" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rO0-Mh-ZV8">
+                                        <rect key="frame" x="0.0" y="66" width="359" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="QEJ-eT-xGv"/>
+                                        </constraints>
+                                        <date key="date" timeIntervalSinceReferenceDate="535316228.38522398">
+                                            <!--2017-12-18 18:57:08 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7Q-ny-KOa">
+                                        <rect key="frame" x="0.0" y="159" width="359" height="30"/>
+                                        <state key="normal" title="Select location"/>
+                                        <connections>
+                                            <segue destination="5rM-VA-g9y" kind="show" id="PWQ-ye-339"/>
+                                        </connections>
+                                    </button>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M7l-Lm-ncF">
+                                        <rect key="frame" x="0.0" y="192" width="359" height="29"/>
+                                        <segments>
+                                            <segment title="Any"/>
+                                            <segment title="Beginner"/>
+                                            <segment title="Intermediate"/>
+                                            <segment title="Advanced"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cost" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WdU-1P-pUh">
+                                        <rect key="frame" x="0.0" y="223" width="359" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Players Needed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARu-OS-Iuh">
+                                        <rect key="frame" x="0.0" y="256" width="359" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="00p-QQ-Gdl">
+                                        <rect key="frame" x="-2" y="279.5" width="363" height="31"/>
+                                        <connections>
+                                            <action selector="sliderChanged:" destination="oNd-PB-sCQ" eventType="valueChanged" id="4Iz-R3-gYL"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdU-w1-B8L">
+                                        <rect key="frame" x="0.0" y="312.5" width="359" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Notes" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6NN-Vj-qvY">
+                                        <rect key="frame" x="0.0" y="336" width="359" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="n66-8r-32v"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="iXN-TV-qJW" secondAttribute="trailing" constant="8" id="3m5-gP-4LO"/>
+                            <constraint firstItem="KFg-wA-buA" firstAttribute="top" secondItem="yIn-aX-XIz" secondAttribute="bottom" constant="9" id="5Kf-Xd-Kg9"/>
+                            <constraint firstItem="KFg-wA-buA" firstAttribute="trailing" secondItem="GTH-nF-ZFU" secondAttribute="trailing" id="LfQ-P7-uME"/>
+                            <constraint firstItem="RYD-Nl-JdD" firstAttribute="bottom" secondItem="GTH-nF-ZFU" secondAttribute="bottom" id="XJ2-Bh-oFv"/>
+                            <constraint firstItem="iXN-TV-qJW" firstAttribute="top" secondItem="KFg-wA-buA" secondAttribute="bottom" constant="8" id="dDM-Zj-3K0"/>
+                            <constraint firstItem="RYD-Nl-JdD" firstAttribute="leading" secondItem="GTH-nF-ZFU" secondAttribute="leading" id="dLG-3P-VnP"/>
+                            <constraint firstItem="iXN-TV-qJW" firstAttribute="leading" secondItem="8ND-bp-Iwu" secondAttribute="leading" constant="8" id="fbS-j9-Wnz"/>
+                            <constraint firstItem="KFg-wA-buA" firstAttribute="leading" secondItem="GTH-nF-ZFU" secondAttribute="leading" id="gNR-S5-AVr"/>
+                            <constraint firstItem="RYD-Nl-JdD" firstAttribute="trailing" secondItem="GTH-nF-ZFU" secondAttribute="trailing" id="i3Z-wW-Wu2"/>
+                            <constraint firstItem="RYD-Nl-JdD" firstAttribute="top" secondItem="iXN-TV-qJW" secondAttribute="bottom" constant="9" id="smL-2B-tJp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="GTH-nF-ZFU"/>
                     </view>
+                    <connections>
+                        <outlet property="costTextField" destination="WdU-1P-pUh" id="tmB-Ia-wq1"/>
+                        <outlet property="datePicker" destination="rO0-Mh-ZV8" id="PZB-ZS-vhS"/>
+                        <outlet property="gameTitleTextField" destination="YOz-6f-6FY" id="FpG-DH-e63"/>
+                        <outlet property="imageView" destination="KFg-wA-buA" id="Z0f-Bn-SBn"/>
+                        <outlet property="notesTextField" destination="6NN-Vj-qvY" id="evP-w4-rZm"/>
+                        <outlet property="numberOfPlayersLabel" destination="rdU-w1-B8L" id="wyZ-W3-nZF"/>
+                        <outlet property="numberOfPlayersSlider" destination="00p-QQ-Gdl" id="1UP-at-6lc"/>
+                        <outlet property="skillLevelControl" destination="M7l-Lm-ncF" id="Bav-Kr-0Id"/>
+                        <outlet property="sportTextField" destination="JM6-GD-U1e" id="OY3-AL-o9k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0FY-mv-JGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1009" y="-1102"/>
+            <point key="canvasLocation" x="1008.8" y="-1102.3988005997003"/>
         </scene>
         <!--Set Location View Controller-->
         <scene sceneID="reX-oS-vNx">
