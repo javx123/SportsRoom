@@ -53,7 +53,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         let childRef = Database.database().reference(withPath: "users/Jason")
         childRef.observe(DataEventType.value) { (snapshot) in
             let value = snapshot.value
-            print("\(value)")
+            print("\(String(describing: value))")
         }
         childRef.removeAllObservers()
         
