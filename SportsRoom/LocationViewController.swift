@@ -8,28 +8,46 @@
 
 import UIKit
 
-class LocationViewController: UIViewController {
+class LocationViewController: UIViewController, UINavigationBarDelegate{
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let navBar: UINavigationBar = UINavigationBar()
+        self.view.addSubview(navBar)
+        navBar.delegate = self
+        navBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        navBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        navBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        navBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        
+        let backButton = UIBarButtonItem(barButtonSystemItem: .done, target: self
+            , action: #selector(backTapped))
+        let leftNavItem = UINavigationItem()
+        leftNavItem.leftBarButtonItem = backButton
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        navBar.setItems([leftNavItem], animated: false)
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @objc func backTapped() {
+        self.dismiss(animated: true, completion: nil)
     }
-    */
-
+    
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
+    }
+    
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
