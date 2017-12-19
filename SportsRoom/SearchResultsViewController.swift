@@ -11,6 +11,8 @@ import UIKit
 class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    var searchedSport: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
