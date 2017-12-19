@@ -19,6 +19,14 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "joined") {
+            let VC2 : DetailsViewController = segue.destination as! DetailsViewController
+            VC2.btnText = "Leave Game"
+        }
+    }
 
     
 //    Mark: - DataSource Methods
