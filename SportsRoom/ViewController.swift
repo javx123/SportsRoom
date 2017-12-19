@@ -10,16 +10,21 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import XLPagerTabStrip
+import MapKit
 
-class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate {
+class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate, CLLocationManagerDelegate {
+    
+    let locationManager: CLLocationManager = CLLocationManager()
     let searchBar: UISearchBar = UISearchBar()
     let profileButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(showProfile))
     let createButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createGame))
-//    let searchController = UISearchController(searchResultsController: nil)
+    var pulledData: Dictionary<String,Any> = [:]
+    var currentLocation:CLLocationCoordinate2D?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loadibng the view, typically from a nib.
         
         self.navigationItem.leftBarButtonItem = profileButton
         self.navigationItem.rightBarButtonItem = createButton
@@ -28,6 +33,11 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate 
         self.searchBar.delegate = self
         observeFireBase()
         configureView()
+//        enableLocationServices()
+//        locationManager.requestLocation()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
+        
     }
     
     
@@ -46,6 +56,15 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate 
         searchBar.endEditing(true)
         self.navigationItem.setLeftBarButton(profileButton, animated: true)
         self.navigationItem.setRightBarButton(createButton, animated: true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let ref = Database.database().reference(withPath: "Games/")
+        ref.queryOrdered(byChild: "type").queryEqual(toValue: "soccor").observe(.childAdded) { (snapshot) in
+            self.pulledData = snapshot.value as! Dictionary
+            print(self.pulledData)
+        }
+        locationManager.requestLocation()
     }
     
 
@@ -100,6 +119,55 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate 
         }
     }
     
+    func enableLocationServices() {
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
+
+        switch CLLocationManager.authorizationStatus() {
+            case CLAuthorizationStatus.notDetermined:
+                locationManager.requestWhenInUseAuthorization()
+            default:
+                break
+        }
+    }
+//
+//    func disableLocationFeatures(){
+//        locationManager.stopUpdatingLocation()
+//
+//    }
+//    func enableLocationFeatures(){
+//        locationManager.startUpdatingLocation()
+//    }
+//
+//    //Mark: CLLocationManagerDelegate
+//
+//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+//        switch status {
+//        case CLAuthorizationStatus.authorizedWhenInUse:
+//            enableLocationFeatures()
+//        case CLAuthorizationStatus.restricted:
+//            disableLocationFeatures()
+//        case CLAuthorizationStatus.denied:
+//            disableLocationFeatures()
+//        case CLAuthorizationStatus.authorizedAlways:
+//            break
+//        case CLAuthorizationStatus.notDetermined:
+//            break
+//        }
+//    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("Got location updates")
+        var localValue: CLLocationCoordinate2D = manager.location!.coordinate
+//        print("Found location: (\(localValue.latitude), \(localValue.longitude))")
+        currentLocation = localValue
+        
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Failed to find user's location \(error.localizedDescription)")
+    }
     
 }
 
