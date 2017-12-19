@@ -92,8 +92,8 @@ extension SetLocationViewController: HandleMapSearch {
         mapView.setRegion(region, animated: true)
         
         let parsedAddress = placemark.title?.components(separatedBy:",")
-        let finalAddress = "\(parsedAddress![0]),\(parsedAddress![1])"
-        addressString = finalAddress
+        let parsedAddressString = "\(parsedAddress![0]),\(parsedAddress![1])"
+        addressString = parsedAddressString
         longitudeDouble = (selectedPin?.coordinate.longitude)!
         latitudeDouble = (selectedPin?.coordinate.latitude)!
     }
