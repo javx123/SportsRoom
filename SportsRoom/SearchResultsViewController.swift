@@ -22,7 +22,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "search") {
             let VC2 : DetailsViewController = segue.destination as! DetailsViewController
-            VC2.btnText = "Join Game"
+            VC2.btnText =  DetailsViewController.ButtonState.search
         }
     }
     

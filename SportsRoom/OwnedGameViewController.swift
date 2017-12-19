@@ -22,8 +22,7 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "hosted") {
             let VC2 : DetailsViewController = segue.destination as! DetailsViewController
-            
-            VC2.btnText = "Cancel Game"
+            VC2.btnText =  DetailsViewController.ButtonState.hosted
         }
     }
 

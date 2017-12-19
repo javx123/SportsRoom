@@ -18,11 +18,11 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var gameActionBtn: UIButton!
     
-    var btnText = ""
+    var btnText : ButtonState? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setButtonState(buttonState: ButtonState(rawValue: btnText)!)
+        setButtonState(buttonState: btnText!)
 
     }
     
@@ -30,10 +30,13 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         switch buttonState {
         case .joined:
             gameActionBtn.setTitle(ButtonState.joined.rawValue, for: UIControlState.normal)
+            gameActionBtn.backgroundColor = UIColor.red
         case .hosted:
             gameActionBtn.setTitle(ButtonState.hosted.rawValue, for: UIControlState.normal)
+            gameActionBtn.backgroundColor = UIColor.red
         case .search:
             gameActionBtn.setTitle(ButtonState.search.rawValue, for: UIControlState.normal)
+            gameActionBtn.backgroundColor = UIColor.green
         }
     }
     
