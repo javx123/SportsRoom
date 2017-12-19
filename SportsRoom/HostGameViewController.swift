@@ -45,6 +45,13 @@ class HostGameViewController: UIViewController {
         }
     }
     
+    @IBAction func screenTapped(_ sender: Any) {
+        gameTitleTextField.resignFirstResponder()
+        sportTextField.resignFirstResponder()
+        costTextField.resignFirstResponder()
+        notesTextField.resignFirstResponder()
+    }
+    
     @IBAction func gamePosted(_ sender: Any) {
         // userID is equal to the current user's ID
         let userID = Auth.auth().currentUser?.uid
@@ -88,6 +95,7 @@ class HostGameViewController: UIViewController {
         let noteKey = "notes"
         ref.updateChildValues([hostIDKey:userID,titleKey:title,sportKey:sport,dateKey:date,locationKey:address, longitudeKey:longitude,latitudeKey:latitude,costKey:cost, skillKey:skillLevel,playerNumberKey:numberOfPlayers,noteKey:note])
         
+        // assign the game id to the current user's 'hosted games' list
         let userID = Auth.auth().currentUser?.uid
         let gameKey = ref.key
         let refUser = Database.database().reference().child("users").child(userID!).child("hostedGames")
