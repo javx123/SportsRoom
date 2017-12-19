@@ -22,6 +22,11 @@ class HostGameViewController: UIViewController {
     @IBOutlet weak var numberOfPlayersSlider: UISlider!
     @IBOutlet weak var numberOfPlayersLabel: UILabel!
     @IBOutlet weak var notesTextField: UITextField!
+    @IBOutlet weak var selectLocationLabel: UILabel!
+    
+    var address = String()
+    var longitude = Double()
+    var latitude = Double()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,10 +44,9 @@ class HostGameViewController: UIViewController {
         
         // convert the segmented control value to a string
         let skillLevelString = skillLevelControl.titleForSegment(at: skillLevelControl.selectedSegmentIndex)
-
         
         // call the postGame method
-        postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: sportTextField.text!, date:dateString, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!)
+        postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: sportTextField.text!, date:dateString, address:selectLocationLabel.text!, longitude:longitude, latitude:latitude, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!)
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -55,17 +59,20 @@ class HostGameViewController: UIViewController {
         numberOfPlayersLabel.text = playerString
     }
     
-    func postGame(withUserID userID: String, title: String, sport: String, date: String, cost: String, skillLevel: String, numberOfPlayers: Float, note: String) {
+    func postGame(withUserID userID: String, title: String, sport: String, date: String, address: String, longitude: Double, latitude: Double, cost: String, skillLevel: String, numberOfPlayers: Float, note: String) {
         let ref = Database.database().reference().child("games").childByAutoId()
         let hostIDKey = "hostID"
-        let titleKey = "Title"
-        let sportKey = "Sport"
-        let dateKey = "Date"
-        let costKey = "Cost"
+        let titleKey = "title"
+        let sportKey = "sport"
+        let dateKey = "date"
+        let locationKey = "address"
+        let longitudeKey = "longitude"
+        let latitudeKey = "latitude"
+        let costKey = "cost"
         let skillKey = "skillLevel"
         let playerNumberKey = "numberOfPlayers"
-        let noteKey = "Notes"
-        ref.updateChildValues([hostIDKey:userID,titleKey:title,sportKey:sport,dateKey:date, costKey:cost, skillKey:skillLevel,playerNumberKey:numberOfPlayers, noteKey: note])
+        let noteKey = "notes"
+        ref.updateChildValues([hostIDKey:userID,titleKey:title,sportKey:sport,dateKey:date,locationKey:address, longitudeKey:longitude, latitudeKey:latitude, costKey:cost, skillKey:skillLevel,playerNumberKey:numberOfPlayers, noteKey: note])
     }
     
 }

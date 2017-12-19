@@ -72,13 +72,27 @@
                                             <!--2017-12-18 18:57:08 +0000-->
                                         </date>
                                     </datePicker>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7Q-ny-KOa">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUN-Sy-0qu">
                                         <rect key="frame" x="0.0" y="159" width="359" height="30"/>
-                                        <state key="normal" title="Select location"/>
-                                        <connections>
-                                            <segue destination="XlM-SU-B33" kind="show" id="PWQ-ye-339"/>
-                                        </connections>
-                                    </button>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7Q-ny-KOa">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="X1x-O9-sAK"/>
+                                                </constraints>
+                                                <state key="normal" title="Select location"/>
+                                                <connections>
+                                                    <segue destination="XlM-SU-B33" kind="show" id="PWQ-ye-339"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iH1-qV-EKW">
+                                                <rect key="frame" x="150" y="0.0" width="209" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M7l-Lm-ncF">
                                         <rect key="frame" x="0.0" y="192" width="359" height="29"/>
                                         <segments>
@@ -147,6 +161,7 @@
                         <outlet property="notesTextField" destination="6NN-Vj-qvY" id="evP-w4-rZm"/>
                         <outlet property="numberOfPlayersLabel" destination="rdU-w1-B8L" id="wyZ-W3-nZF"/>
                         <outlet property="numberOfPlayersSlider" destination="00p-QQ-Gdl" id="1UP-at-6lc"/>
+                        <outlet property="selectLocationLabel" destination="iH1-qV-EKW" id="mcO-09-41C"/>
                         <outlet property="skillLevelControl" destination="M7l-Lm-ncF" id="Bav-Kr-0Id"/>
                         <outlet property="sportTextField" destination="JM6-GD-U1e" id="OY3-AL-o9k"/>
                     </connections>
