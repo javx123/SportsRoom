@@ -66,9 +66,9 @@ class SetLocationViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error: \(error)")
     }
-    
-    @IBAction func locationSelected(_ sender: Any) {
-    self.dismiss(animated: true, completion: nil)
+
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

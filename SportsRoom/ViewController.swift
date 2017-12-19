@@ -16,16 +16,16 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     
     let locationManager: CLLocationManager = CLLocationManager()
     let searchBar: UISearchBar = UISearchBar()
-    let profileButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(showProfile))
-    let createButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createGame))
     var pulledData: Dictionary<String,Any> = [:]
     var currentLocation:CLLocation?
     var searchResultsArray: [Dictionary <String,Any>] = []
     
-
+    @IBOutlet weak var addGameButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loadibng the view, typically from a nib.
+        let createButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action:#selector(createGame))
+        let profileButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(showProfile))
         
         self.navigationItem.leftBarButtonItem = profileButton
         self.navigationItem.rightBarButtonItem = createButton
@@ -35,7 +35,6 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
         observeFireBase()
         configureView()
         enableLocationServices()
-        
     }
     
     
@@ -52,15 +51,15 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
         searchBar.text = ""
         searchBar.setShowsCancelButton(false, animated: true)
         searchBar.endEditing(true)
-        self.navigationItem.setLeftBarButton(profileButton, animated: true)
-        self.navigationItem.setRightBarButton(createButton, animated: true)
+//        self.navigationItem.setLeftBarButton(profileButton, animated: true)
+//        self.navigationItem.setRightBarButton(createButton, animated: true)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.locationManager.requestLocation()
     }
     
-
+    
     //Mark: - FireBase Methods
     
     func observeFireBase() {
@@ -78,10 +77,9 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
         
     }
     
-    @objc func createGame() {
-
+    @objc func createGame () {
+        performSegue(withIdentifier: "createGame", sender: self)
     }
-    
     
     deinit {
         //remove removeobservers
@@ -115,12 +113,12 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     func enableLocationServices() {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
-
+        
         switch CLLocationManager.authorizationStatus() {
-            case CLAuthorizationStatus.notDetermined:
-                locationManager.requestWhenInUseAuthorization()
-            default:
-                break
+        case CLAuthorizationStatus.notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        default:
+            break
         }
     }
 
