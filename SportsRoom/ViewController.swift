@@ -86,11 +86,8 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     }
     
     @objc func createGame () {
-//        let controller = HostGameViewController()
-//        self.present(controller, animated: true, completion: nil)
+        performSegue(withIdentifier: "createGame", sender: self)
     }
-    
-    
     
     deinit {
         //remove removeobservers
