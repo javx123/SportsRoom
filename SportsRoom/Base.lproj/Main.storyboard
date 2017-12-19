@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Ol-ih-QYH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Ol-ih-QYH">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +12,7 @@
         <!--Host Game View Controller-->
         <scene sceneID="WoM-o4-zeP">
             <objects>
-                <viewController id="oNd-PB-sCQ" customClass="HostGameViewController" customModule="SportsRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HostGameViewController" id="oNd-PB-sCQ" customClass="HostGameViewController" customModule="SportsRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8ND-bp-Iwu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -185,10 +185,9 @@
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBL-Ab-ic4">
-                                <rect key="frame" x="0.0" y="622" width="375" height="45"/>
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <state key="normal" title="Select this Location"/>
                                 <connections>
-                                    <action selector="locationSelected:" destination="5rM-VA-g9y" eventType="touchUpInside" id="Vy5-Nc-KOp"/>
                                     <segue destination="Mhd-d1-fy0" kind="unwind" unwindAction="unwindFromMapWithSender:" id="uvg-PM-Gue"/>
                                 </connections>
                             </button>
@@ -200,13 +199,19 @@
                             <constraint firstItem="2cj-no-EWN" firstAttribute="bottom" secondItem="cRe-mA-0MQ" secondAttribute="bottom" constant="44" id="Leg-F8-Hj0"/>
                             <constraint firstAttribute="trailing" secondItem="cRe-mA-0MQ" secondAttribute="trailing" id="MAD-HS-5aj"/>
                             <constraint firstItem="cRe-mA-0MQ" firstAttribute="top" secondItem="2cj-no-EWN" secondAttribute="top" id="Mw6-Nu-izU"/>
-                            <constraint firstItem="pBL-Ab-ic4" firstAttribute="top" secondItem="2cj-no-EWN" secondAttribute="top" constant="558" id="Y2s-8H-8ty"/>
+                            <constraint firstItem="pBL-Ab-ic4" firstAttribute="top" secondItem="cRe-mA-0MQ" secondAttribute="bottom" id="Y2s-8H-8ty"/>
                             <constraint firstItem="cRe-mA-0MQ" firstAttribute="leading" secondItem="eVd-3D-wba" secondAttribute="leading" id="eDp-f4-diE"/>
                             <constraint firstItem="cRe-mA-0MQ" firstAttribute="leading" secondItem="pBL-Ab-ic4" secondAttribute="leading" id="eJM-l9-ITe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2cj-no-EWN"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Vw0-55-796"/>
+                    <navigationItem key="navigationItem" id="Vw0-55-796">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="qyl-IX-jmj">
+                            <connections>
+                                <action selector="backButtonTapped:" destination="5rM-VA-g9y" id="mNS-xK-A0w"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="cRe-mA-0MQ" id="UNb-O8-fjN"/>
                     </connections>

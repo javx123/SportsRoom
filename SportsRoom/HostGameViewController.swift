@@ -30,6 +30,7 @@ class HostGameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        numberOfPlayersLabel.text = "1"
     }
     
     @IBAction func unwindFromMap (sender: UIStoryboardSegue) {
@@ -72,6 +73,7 @@ class HostGameViewController: UIViewController {
     }
     
     func postGame(withUserID userID: String, title: String, sport: String, date: String, address: String, longitude: Double, latitude: Double, cost: String, skillLevel: String, numberOfPlayers: Float, note: String) {
+        // create a game object
         let ref = Database.database().reference().child("games").childByAutoId()
         let hostIDKey = "hostID"
         let titleKey = "title"
@@ -84,7 +86,12 @@ class HostGameViewController: UIViewController {
         let skillKey = "skillLevel"
         let playerNumberKey = "numberOfPlayers"
         let noteKey = "notes"
-        ref.updateChildValues([hostIDKey:userID,titleKey:title,sportKey:sport,dateKey:date,locationKey:address, longitudeKey:longitude, latitudeKey:latitude, costKey:cost, skillKey:skillLevel,playerNumberKey:numberOfPlayers, noteKey: note])
+        ref.updateChildValues([hostIDKey:userID,titleKey:title,sportKey:sport,dateKey:date,locationKey:address, longitudeKey:longitude,latitudeKey:latitude,costKey:cost, skillKey:skillLevel,playerNumberKey:numberOfPlayers,noteKey:note])
+        
+        let userID = Auth.auth().currentUser?.uid
+        let gameKey = ref.key
+        let refUser = Database.database().reference().child("users").child(userID!).child("hostedGames")
+        let hostedgamesKey = gameKey
+        refUser.updateChildValues([hostedgamesKey:"true"])
     }
-    
 }
