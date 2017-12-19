@@ -28,6 +28,7 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "joinCell", for: indexPath)
+        cell.textLabel?.text = "TEST"
         return cell
     }
     
