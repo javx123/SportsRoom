@@ -17,15 +17,15 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getUserInfo()
+        getHostedGameForUser()
     }
     
-    func getUserInfo () {
+    func getHostedGameForUser() {
         let userID = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("users").child(userID!)
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
-            let hostedGames = value?["hostedGames"]
+            let hostedGames = value!["hostedGames"]
             print (hostedGames!)
         }) { (error) in
             print(error.localizedDescription)

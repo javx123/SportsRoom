@@ -93,7 +93,11 @@ class HostGameViewController: UIViewController {
         let skillKey = "skillLevel"
         let playerNumberKey = "numberOfPlayers"
         let noteKey = "notes"
-        ref.updateChildValues([hostIDKey:userID,titleKey:title,sportKey:sport,dateKey:date,locationKey:address, longitudeKey:longitude,latitudeKey:latitude,costKey:cost, skillKey:skillLevel,playerNumberKey:numberOfPlayers,noteKey:note])
+        ref.updateChildValues([hostIDKey:userID,titleKey:title,sportKey:sport,dateKey:date,locationKey:address,costKey:cost, skillKey:skillLevel,playerNumberKey:numberOfPlayers,noteKey:note])
+        
+        let gameCoordinatesKey = ref.key
+        let refCoordinates = Database.database().reference().child("games").child(gameCoordinatesKey).child("coordinates")
+        refCoordinates.updateChildValues([longitudeKey: longitude, latitudeKey:latitude])
         
         // assign the game id to the current user's 'hosted games' list
         let userID = Auth.auth().currentUser?.uid
