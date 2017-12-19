@@ -10,12 +10,39 @@ import UIKit
 
 class DetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    enum ButtonState: String {
+        case joined = "Leave Game"
+        case hosted = "Cancel Game"
+        case search = "Join Game"
     }
     
+    @IBOutlet weak var gameActionBtn: UIButton!
+    
+    var btnText : ButtonState? = nil
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setButtonState(buttonState: btnText!)
+
+    }
+    
+    func setButtonState(buttonState : ButtonState) {
+        switch buttonState {
+        case .joined:
+            gameActionBtn.setTitle(ButtonState.joined.rawValue, for: UIControlState.normal)
+            gameActionBtn.backgroundColor = UIColor.red
+        case .hosted:
+            gameActionBtn.setTitle(ButtonState.hosted.rawValue, for: UIControlState.normal)
+            gameActionBtn.backgroundColor = UIColor.red
+        case .search:
+            gameActionBtn.setTitle(ButtonState.search.rawValue, for: UIControlState.normal)
+            gameActionBtn.backgroundColor = UIColor.green
+        }
+    }
+    
+    
+    //    Mark: - DataSource Properties
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -31,4 +58,10 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
 
+
+    @IBAction func gameActionPressed(_ sender: UIButton) {
+        
+    }
+    
+    
 }
