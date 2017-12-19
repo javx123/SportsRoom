@@ -16,15 +16,16 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     
     let locationManager: CLLocationManager = CLLocationManager()
     let searchBar: UISearchBar = UISearchBar()
-    let profileButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(showProfile))
-    let createButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createGame))
     var pulledData: Dictionary<String,Any> = [:]
-    var currentLocation:CLLocationCoordinate2D?
+    var currentLocation:CLLocation?
+    var searchResultsArray: [Dictionary <String,Any>] = []
     
-
+    @IBOutlet weak var addGameButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loadibng the view, typically from a nib.
+        let createButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action:#selector(createGame))
+        let profileButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(showProfile))
         
         self.navigationItem.leftBarButtonItem = profileButton
         self.navigationItem.rightBarButtonItem = createButton
@@ -33,11 +34,7 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
         self.searchBar.delegate = self
         observeFireBase()
         configureView()
-//        enableLocationServices()
-//        locationManager.requestLocation()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.delegate = self
-        
+        enableLocationServices()
     }
     
     
@@ -54,20 +51,15 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
         searchBar.text = ""
         searchBar.setShowsCancelButton(false, animated: true)
         searchBar.endEditing(true)
-        self.navigationItem.setLeftBarButton(profileButton, animated: true)
-        self.navigationItem.setRightBarButton(createButton, animated: true)
+//        self.navigationItem.setLeftBarButton(profileButton, animated: true)
+//        self.navigationItem.setRightBarButton(createButton, animated: true)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let ref = Database.database().reference(withPath: "Games/")
-        ref.queryOrdered(byChild: "type").queryEqual(toValue: "soccor").observe(.childAdded) { (snapshot) in
-            self.pulledData = snapshot.value as! Dictionary
-            print(self.pulledData)
-        }
-        locationManager.requestLocation()
+        self.locationManager.requestLocation()
     }
     
-
+    
     //Mark: - FireBase Methods
     
     func observeFireBase() {
@@ -85,10 +77,9 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
         
     }
     
-    @objc func createGame() {
-
+    @objc func createGame () {
+        performSegue(withIdentifier: "createGame", sender: self)
     }
-    
     
     deinit {
         //remove removeobservers
@@ -122,45 +113,34 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     func enableLocationServices() {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
-
+        
         switch CLLocationManager.authorizationStatus() {
-            case CLAuthorizationStatus.notDetermined:
-                locationManager.requestWhenInUseAuthorization()
-            default:
-                break
+        case CLAuthorizationStatus.notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        default:
+            break
         }
     }
-//
-//    func disableLocationFeatures(){
-//        locationManager.stopUpdatingLocation()
-//
-//    }
-//    func enableLocationFeatures(){
-//        locationManager.startUpdatingLocation()
-//    }
-//
-//    //Mark: CLLocationManagerDelegate
-//
-//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-//        switch status {
-//        case CLAuthorizationStatus.authorizedWhenInUse:
-//            enableLocationFeatures()
-//        case CLAuthorizationStatus.restricted:
-//            disableLocationFeatures()
-//        case CLAuthorizationStatus.denied:
-//            disableLocationFeatures()
-//        case CLAuthorizationStatus.authorizedAlways:
-//            break
-//        case CLAuthorizationStatus.notDetermined:
-//            break
-//        }
-//    }
+
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("Got location updates")
-        var localValue: CLLocationCoordinate2D = manager.location!.coordinate
-//        print("Found location: (\(localValue.latitude), \(localValue.longitude))")
-        currentLocation = localValue
+        let localValue: CLLocationCoordinate2D = manager.location!.coordinate
+        currentLocation = CLLocation(latitude: localValue.latitude, longitude: localValue.longitude)
+//        print(currentLocation)
+//        pullFireBaseData { (gameCoordinates) in
+//            let distance = self.currentLocation?.distance(from: gameCoordinates)
+//            print(distance!)
+//            print("asdklfjakl;sejlk;ttasDF")
+//        }
+        pullFireBaseData { (gameCoordinates, searchedGame) in
+            let distance = self.currentLocation?.distance(from: gameCoordinates)
+            print(distance!)
+//            print(searchedGame)
+            if ( Int(distance!) < 30000 ){
+                self.searchResultsArray.append(searchedGame)
+            }
+        }
         
         
     }
@@ -168,6 +148,33 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to find user's location \(error.localizedDescription)")
     }
+    
+    
+    
+    
+    
+    func pullFireBaseData(completion: @escaping (_ coordinate: CLLocation, _ gameDetails : Dictionary<String, Any>) -> Void) {
+        let ref = Database.database().reference(withPath: "Games/")
+        ref.queryOrdered(byChild: "type").queryEqual(toValue: "soccor").observe(.childAdded) { (snapshot) in
+            self.pulledData = snapshot.value as! Dictionary
+            for entry in self.pulledData {
+                let key = entry.0 as String
+                if (key == "coordinates"){
+                    let dicCoordinates = entry.1 as! Dictionary<String, Any>
+                    let gameCoordinates = CLLocation(latitude: dicCoordinates["latitude"] as! CLLocationDegrees , longitude: dicCoordinates["longitude"] as! CLLocationDegrees)
+                    print(gameCoordinates)
+                    completion(gameCoordinates, self.pulledData)
+                }
+                print("test")
+            }
+            
+            print(self.pulledData)
+            
+        }
+    }
+    
+    
+    
     
 }
 

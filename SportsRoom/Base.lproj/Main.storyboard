@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Ol-ih-QYH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Ol-ih-QYH">
+
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,13 +13,13 @@
         <!--Host Game View Controller-->
         <scene sceneID="WoM-o4-zeP">
             <objects>
-                <viewController id="oNd-PB-sCQ" customClass="HostGameViewController" customModule="SportsRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HostGameViewController" id="oNd-PB-sCQ" customClass="HostGameViewController" customModule="SportsRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8ND-bp-Iwu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yIn-aX-XIz">
-                                <rect key="frame" x="0.0" y="21" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="30" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="9DK-MC-26Y">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="32o-5C-OJy">
@@ -32,22 +33,11 @@
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hockey_defualt" translatesAutoresizingMaskIntoConstraints="NO" id="KFg-wA-buA">
-                                <rect key="frame" x="0.0" y="74" width="375" height="167"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="177"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="167" id="fd1-GS-Ug9"/>
+                                    <constraint firstAttribute="height" constant="177" id="fd1-GS-Ug9"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYD-Nl-JdD">
-                                <rect key="frame" x="0.0" y="634" width="375" height="33"/>
-                                <color key="backgroundColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Post Game">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="gamePosted:" destination="oNd-PB-sCQ" eventType="touchUpInside" id="Z4G-Ki-t40"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="iXN-TV-qJW">
                                 <rect key="frame" x="8" y="249" width="359" height="376"/>
                                 <subviews>
@@ -137,11 +127,23 @@
                                     </textField>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYD-Nl-JdD">
+                                <rect key="frame" x="0.0" y="634" width="375" height="33"/>
+                                <color key="backgroundColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Post Game">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="gamePosted:" destination="oNd-PB-sCQ" eventType="touchUpInside" id="Z4G-Ki-t40"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="iXN-TV-qJW" secondAttribute="trailing" constant="8" id="3m5-gP-4LO"/>
-                            <constraint firstItem="KFg-wA-buA" firstAttribute="top" secondItem="yIn-aX-XIz" secondAttribute="bottom" constant="9" id="5Kf-Xd-Kg9"/>
+                            <constraint firstItem="KFg-wA-buA" firstAttribute="top" secondItem="yIn-aX-XIz" secondAttribute="bottom" constant="-10" id="5Kf-Xd-Kg9"/>
                             <constraint firstItem="KFg-wA-buA" firstAttribute="trailing" secondItem="GTH-nF-ZFU" secondAttribute="trailing" id="LfQ-P7-uME"/>
                             <constraint firstItem="RYD-Nl-JdD" firstAttribute="bottom" secondItem="GTH-nF-ZFU" secondAttribute="bottom" id="XJ2-Bh-oFv"/>
                             <constraint firstItem="iXN-TV-qJW" firstAttribute="top" secondItem="KFg-wA-buA" secondAttribute="bottom" constant="8" id="dDM-Zj-3K0"/>
@@ -152,6 +154,9 @@
                             <constraint firstItem="RYD-Nl-JdD" firstAttribute="top" secondItem="iXN-TV-qJW" secondAttribute="bottom" constant="9" id="smL-2B-tJp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GTH-nF-ZFU"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="CEv-Qi-T1w" appends="YES" id="kD6-cp-cXK"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="costTextField" destination="WdU-1P-pUh" id="tmB-Ia-wq1"/>
@@ -167,6 +172,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0FY-mv-JGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="CEv-Qi-T1w">
+                    <connections>
+                        <action selector="screenTapped:" destination="oNd-PB-sCQ" id="WEZ-gN-rQh"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="801" y="-1088"/>
         </scene>
@@ -185,10 +195,12 @@
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBL-Ab-ic4">
-                                <rect key="frame" x="0.0" y="622" width="375" height="45"/>
-                                <state key="normal" title="Select this Location"/>
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <color key="backgroundColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Select this Location">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <action selector="locationSelected:" destination="5rM-VA-g9y" eventType="touchUpInside" id="Vy5-Nc-KOp"/>
                                     <segue destination="Mhd-d1-fy0" kind="unwind" unwindAction="unwindFromMapWithSender:" id="uvg-PM-Gue"/>
                                 </connections>
                             </button>
@@ -200,13 +212,19 @@
                             <constraint firstItem="2cj-no-EWN" firstAttribute="bottom" secondItem="cRe-mA-0MQ" secondAttribute="bottom" constant="44" id="Leg-F8-Hj0"/>
                             <constraint firstAttribute="trailing" secondItem="cRe-mA-0MQ" secondAttribute="trailing" id="MAD-HS-5aj"/>
                             <constraint firstItem="cRe-mA-0MQ" firstAttribute="top" secondItem="2cj-no-EWN" secondAttribute="top" id="Mw6-Nu-izU"/>
-                            <constraint firstItem="pBL-Ab-ic4" firstAttribute="top" secondItem="2cj-no-EWN" secondAttribute="top" constant="558" id="Y2s-8H-8ty"/>
+                            <constraint firstItem="pBL-Ab-ic4" firstAttribute="top" secondItem="cRe-mA-0MQ" secondAttribute="bottom" id="Y2s-8H-8ty"/>
                             <constraint firstItem="cRe-mA-0MQ" firstAttribute="leading" secondItem="eVd-3D-wba" secondAttribute="leading" id="eDp-f4-diE"/>
                             <constraint firstItem="cRe-mA-0MQ" firstAttribute="leading" secondItem="pBL-Ab-ic4" secondAttribute="leading" id="eJM-l9-ITe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2cj-no-EWN"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Vw0-55-796"/>
+                    <navigationItem key="navigationItem" id="Vw0-55-796">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="qyl-IX-jmj">
+                            <connections>
+                                <action selector="backButtonTapped:" destination="5rM-VA-g9y" id="mNS-xK-A0w"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="cRe-mA-0MQ" id="UNb-O8-fjN"/>
                     </connections>
@@ -302,6 +320,7 @@
                     <connections>
                         <outlet property="buttonBarView" destination="89r-fe-d6S" id="LrH-tv-gYp"/>
                         <outlet property="containerView" destination="S50-FH-Kd6" id="dA8-Gh-XFK"/>
+                        <segue destination="oNd-PB-sCQ" kind="show" identifier="createGame" id="BkY-he-WDK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -328,7 +347,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="qc8-7s-WZy" kind="show" id="W1f-EQ-S7k"/>
+                                            <segue destination="qc8-7s-WZy" kind="show" identifier="search" id="W1f-EQ-S7k"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -385,7 +404,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="qc8-7s-WZy" kind="show" id="EFT-wk-qlp"/>
+                                            <segue destination="qc8-7s-WZy" kind="show" identifier="hosted" id="EFT-wk-qlp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -546,6 +565,9 @@
                                 <state key="normal" title="Cancel Game">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="gameActionPressed:" destination="qc8-7s-WZy" eventType="touchUpInside" id="zYZ-6I-Fok"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -563,6 +585,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JXW-5Y-gtW"/>
                     </view>
+                    <connections>
+                        <outlet property="gameActionBtn" destination="JHf-Kl-W4q" id="L8B-ZB-fBW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SPf-1Y-iAR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -612,7 +637,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="qc8-7s-WZy" kind="show" id="4lo-Ae-0es"/>
+                                            <segue destination="qc8-7s-WZy" kind="show" identifier="joined" id="4lo-Ae-0es"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -647,7 +672,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZ7-63-cO9">
-                                <rect key="frame" x="166" y="197" width="49" height="21"/>
+                                <rect key="frame" x="163" y="20" width="49" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -688,7 +713,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="testuser5@gmail.com" borderStyle="roundedRect" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r0B-nI-2RC">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="testuser4@gmail.com" borderStyle="roundedRect" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r0B-nI-2RC">
                                 <rect key="frame" x="90" y="174" width="235" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
