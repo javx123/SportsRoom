@@ -68,7 +68,7 @@ class HostGameViewController: UIViewController {
         // call the postGame method
         postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: sportTextField.text!, date:dateString, address:selectLocationLabel.text!, longitude:longitude, latitude:latitude, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!)
         
-        self.dismiss(animated: true, completion: nil)
+       _ = navigationController?.popViewController(animated: true)
     }
     
     @IBAction func sliderChanged(_ sender: Any) {

@@ -8,27 +8,38 @@
 
 import UIKit
 import XLPagerTabStrip
+import Firebase
 
 class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider {
-
+    
     @IBOutlet weak var tableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        getUserInfo()
     }
-
+    
+    func getUserInfo () {
+        let userID = Auth.auth().currentUser?.uid
+        let ref = Database.database().reference().child("users").child(userID!)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let hostedGames = value?["hostedGames"]
+            print (hostedGames!)
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "hosted") {
             let VC2 : DetailsViewController = segue.destination as! DetailsViewController
             VC2.btnText =  DetailsViewController.ButtonState.hosted
         }
     }
-
     
-    
-//    Mark: - DataSource Properties
+    //    Mark: - DataSource Properties
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return 1
@@ -36,6 +47,8 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "hostCell", for: indexPath)
+        cell.textLabel?.text = "Sample Info"
+        cell.detailTextLabel?.text = "Sample Detail Info"
         return cell
     }
     
@@ -47,15 +60,4 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
         return IndicatorInfo(title: "Hosted Games")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
