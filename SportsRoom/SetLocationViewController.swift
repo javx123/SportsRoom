@@ -22,6 +22,10 @@ class SetLocationViewController: UIViewController, CLLocationManagerDelegate {
     var resultSearchController:UISearchController? = nil
     var selectedPin:MKPlacemark? = nil
     
+    var addressString = String ()
+    var longitudeDouble = Double ()
+    var latitudeDouble = Double ()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
@@ -44,7 +48,6 @@ class SetLocationViewController: UIViewController, CLLocationManagerDelegate {
         locationSearchTable.mapView = mapView
         locationSearchTable.handleMapSearchDelegate = self
     }
-
 
     private func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
@@ -71,7 +74,7 @@ class SetLocationViewController: UIViewController, CLLocationManagerDelegate {
 
 extension SetLocationViewController: HandleMapSearch {
 
-    func dropPinZoomIn(placemark:MKPlacemark){
+    func dropPinZoomIn(placemark:MKPlacemark) {
         // cache the pin
         selectedPin = placemark
         // clear existing pins
@@ -79,7 +82,6 @@ extension SetLocationViewController: HandleMapSearch {
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
         annotation.title = placemark.name
-        print (annotation)
         if let city = placemark.locality,
             let state = placemark.administrativeArea {
             annotation.subtitle = "\(city) \(state)"
@@ -88,5 +90,11 @@ extension SetLocationViewController: HandleMapSearch {
         let span = MKCoordinateSpanMake(0.05, 0.05)
         let region = MKCoordinateRegionMake(placemark.coordinate, span)
         mapView.setRegion(region, animated: true)
+        
+        let parsedAddress = placemark.title?.components(separatedBy:",")
+        let finalAddress = "\(parsedAddress![0]),\(parsedAddress![1])"
+        addressString = finalAddress
+        longitudeDouble = (selectedPin?.coordinate.longitude)!
+        latitudeDouble = (selectedPin?.coordinate.latitude)!
     }
 }

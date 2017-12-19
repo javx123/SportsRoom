@@ -189,6 +189,7 @@
                                 <state key="normal" title="Select this Location"/>
                                 <connections>
                                     <action selector="locationSelected:" destination="5rM-VA-g9y" eventType="touchUpInside" id="Vy5-Nc-KOp"/>
+                                    <segue destination="Mhd-d1-fy0" kind="unwind" unwindAction="unwindFromMapWithSender:" id="uvg-PM-Gue"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -211,6 +212,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Lh-cb-ggX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Mhd-d1-fy0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2637.5999999999999" y="-1102.3988005997003"/>
         </scene>
@@ -1115,6 +1117,7 @@
         <!--Navigation Controller-->
         <scene sceneID="IhP-Jp-jd3">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y0O-yJ-krE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XlM-SU-B33" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p5i-Pn-tdD">
@@ -1126,7 +1129,6 @@
                         <segue destination="5rM-VA-g9y" kind="relationship" relationship="rootViewController" id="nK3-rD-H8D"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="y0O-yJ-krE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1806" y="-1102"/>
         </scene>

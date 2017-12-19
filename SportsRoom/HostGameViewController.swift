@@ -32,6 +32,18 @@ class HostGameViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    @IBAction func unwindFromMap (sender: UIStoryboardSegue) {
+        if sender.source is SetLocationViewController {
+            if let senderVC = sender.source as? SetLocationViewController {
+                address = senderVC.addressString
+                longitude = senderVC.longitudeDouble
+                latitude = senderVC.latitudeDouble
+                selectLocationLabel.text = address
+            }
+            self.reloadInputViews()
+        }
+    }
+    
     @IBAction func gamePosted(_ sender: Any) {
         // userID is equal to the current user's ID
         let userID = Auth.auth().currentUser?.uid
