@@ -17,7 +17,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     var searchedSport: String!
     var currentLocation: CLLocation?
     var pulledData: Dictionary<String,Any> = [:]
-    var searchResults: [Dictionary<String, Any>] = []
+    var searchResults: [Games] = []
     {
         didSet{
             self.tableView.reloadData()
@@ -73,14 +73,13 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         //        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath)
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as? SearchTableViewCell else{fatalError("The dequeued cell is not an instance of SearchTableViewCell.")}
-        let entry: [String: Any]? = searchResults[indexPath.row]
+        let entry: Games? = searchResults[indexPath.row]
         
         if let entry = entry {
-            cell.titleLabel.text = entry["title"] as? String
-            cell.sportLabel.text = entry["sport"] as? String
-            cell.locationLabel.text = entry["address"] as? String
-            cell.timeLabel.text = entry["date"] as? String
-            
+            cell.titleLabel.text = entry.title
+            cell.sportLabel.text = entry.sport
+            cell.locationLabel.text = entry.address
+            cell.timeLabel.text = entry.date
             return cell
         }
         
@@ -95,25 +94,30 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     
     
-    func pullFireBaseData(completion: @escaping (_ coordinate: CLLocation, _ gameDetails : Dictionary<String, Any>) -> Void) {
+    func pullFireBaseData(completion: @escaping (_ coordinate: CLLocation, _ gameDetails : Games) -> Void) {
         
         ref.queryOrdered(byChild: "sport").queryEqual(toValue: searchedSport.lowercased()).observe(.childAdded) { [weak self] (snapshot) in
             
             guard let welf = self else { return }
-            welf.pulledData = snapshot.value as! Dictionary
-            for entry in welf.pulledData {
-                let key = entry.0 as String
-                if (key == "coordinates"){
-                    let dicCoordinates = entry.1 as! Dictionary<String, Any>
-                    let gameCoordinates = CLLocation(latitude: dicCoordinates["latitude"] as! CLLocationDegrees , longitude: dicCoordinates["longitude"] as! CLLocationDegrees)
-                    print(gameCoordinates)
-                    completion(gameCoordinates, welf.pulledData)
-                    //                    print(self.pulledData)
-                }
+//            entry = snapshot.value as! Dictionary
+//            for entry in welf.pulledData {
+//                let key = entry.0 as String
+//                if (key == "coordinates"){
+//                    let dicCoordinates = entry.1 as! Dictionary<String, Any>
+//                    let gameCoordinates = CLLocation(latitude: dicCoordinates["latitude"] as! CLLocationDegrees , longitude: dicCoordinates["longitude"] as! CLLocationDegrees)
+//                    print(gameCoordinates)
+//                    completion(gameCoordinates, welf.pulledData)
+//                    //                    print(self.pulledData)
+//                }
+                let game = Games(snapshot: snapshot)
+            let gameCoordinates = CLLocation(latitude: game.latitude as! CLLocationDegrees, longitude: game.longitude as! CLLocationDegrees)
+                completion(gameCoordinates, game)
+            
+            
             }
         }
         
-    }
+    
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
