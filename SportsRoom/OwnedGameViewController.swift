@@ -62,12 +62,13 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     //    Mark: - DataSource Properties
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return gamesArray.count
+//        return gamesArray.count
+        return 1
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "hostCell", for: indexPath)
-        let currentGame = gamesArray[indexPath.row]
+//        let currentGame = gamesArray[indexPath.row]
 //        cell.textLabel?.text =
 //        cell.detailTextLabel?.text 
         return cell

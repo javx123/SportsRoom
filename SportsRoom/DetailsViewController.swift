@@ -7,9 +7,20 @@
 //
 
 import UIKit
+import Firebase
 
 class DetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
+    @IBOutlet weak var gameTitleLabel: UILabel!
+    @IBOutlet weak var sportLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var skillLabel: UILabel!
+    @IBOutlet weak var costLabel: UILabel!
+    @IBOutlet weak var notesLabel: UILabel!
+    
+//    let currentGame: Game!
+    
     enum ButtonState: String {
         case joined = "Leave Game"
         case hosted = "Cancel Game"
@@ -23,7 +34,17 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         setButtonState(buttonState: btnText!)
-
+        setLabels()
+    }
+    
+    func setLabels(){
+//        gameTitleLabel.text = currentGame.title
+//        sportLabel.text = currentGame.sport
+//        dateLabel.text = currentGame.date
+//        locationLabel.text = currentGame.address
+//        skillLabel.text = currentGame.skillLevel
+//        costLabel.text = currentGame.cost
+//        notesLabel.text = currentGame.notes
     }
     
     func setButtonState(buttonState : ButtonState) {
@@ -40,9 +61,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    
     //    Mark: - DataSource Properties
-
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -57,11 +76,42 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.textLabel?.text = "Player One"
         return cell
     }
-
-
+    
+    
     @IBAction func gameActionPressed(_ sender: UIButton) {
-        
+        if btnText == DetailsViewController.ButtonState(rawValue: "Leave Game") {
+            leaveGame()
+        }
+        if btnText == DetailsViewController.ButtonState(rawValue: "Cancel Game") {
+            cancelGame()
+        }
+        if btnText == DetailsViewController.ButtonState(rawValue: "Join Game") {
+            joinGame()
+        }
     }
     
+    func joinGame () {
+//      let userID = Auth.auth().currentUser?.uid
+//      let gameKey = currentGame.gameID
+//        let refUser = Database.database().reference().child("users").child(userID!).child("joinedGames")
+//        let joinedGamesKey = gameKey
+//        refUser.updateChildValues([joinedGamesKey:"true"])
+    }
     
+    func leaveGame () {
+//    let userID = Auth.auth().currentUser?.uid
+//    let gameKey = currentGame.gameID
+//    let refUser = Database.database().reference().child("users").child(userID!).child("joinedGames").child(gameKey)
+//        refUser.removeValue()
+    }
+    
+    func cancelGame () {
+//    let userID = Auth.auth().currentUser?.uid
+//    let gameKey = currentGame.gameID
+//    let refGame = Database.database().reference().child("games").child(gameKey)
+//    refGame.removeValue()
+//
+//    let refUser = Database.database().reference().child("users").child("hostedGames").child(gameKey)
+//    refUser.removeValue()
+    }
 }
