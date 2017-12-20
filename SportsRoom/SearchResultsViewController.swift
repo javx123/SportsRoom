@@ -17,29 +17,32 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     var searchedSport: String!
     var currentLocation: CLLocation?
     var pulledData: Dictionary<String,Any> = [:]
-    
     var searchResults: [Dictionary<String, Any>] = []
     {
         didSet{
             self.tableView.reloadData()
         }
     }
-    var locationManager = LocationManager()
+    var locationManager: LocationManager
     let ref = Database.database().reference(withPath: "games/")
     
-    
-    
+    required init?(coder aDecoder: NSCoder) {
+        self.locationManager = LocationManager(manager: CLLocationManager())
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
-        
+        callLocationManager()
+    }
+    
+    func callLocationManager(){
         locationManager.getCurrentLocation { [weak self] (location: CLLocation) in
             guard let welf = self else { return }
-            welf.pullFireBaseData { [weak location] (gameCoordinates, searchedGame) in
-                guard let wLocation = location else { return }
-                let distance = wLocation.distance(from: gameCoordinates)
+            welf.pullFireBaseData {(gameCoordinates, searchedGame) in
+                
+                let distance = location.distance(from: gameCoordinates)
                 print(distance)
                 //            print(searchedGame)
                 if ( Int(distance) < 30000 ){
@@ -50,7 +53,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 
             }
         }
-        
+
     }
     
     
@@ -95,6 +98,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     func pullFireBaseData(completion: @escaping (_ coordinate: CLLocation, _ gameDetails : Dictionary<String, Any>) -> Void) {
         
         ref.queryOrdered(byChild: "sport").queryEqual(toValue: searchedSport.lowercased()).observe(.childAdded) { [weak self] (snapshot) in
+            
             guard let welf = self else { return }
             welf.pulledData = snapshot.value as! Dictionary
             for entry in welf.pulledData {
@@ -114,6 +118,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         ref.removeAllObservers()
+        self.pulledData.removeAll()
     }
     
     deinit {
