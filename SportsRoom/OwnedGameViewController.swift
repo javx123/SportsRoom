@@ -49,6 +49,29 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
 
         }
         
+//        
+//        func retrieveMessages() {
+//            let messageDB = FIRDatabase.database().reference().child("Messages")
+//            
+//            messageDB.observe(.childAdded, with: { (snapshot) in
+//                
+//                let snapshotValue = snapshot.value as! Dictionary <String, String>
+//                
+//                let text = snapshotValue["MessageBody"]!
+//                let sender = snapshotValue["Sender"]!
+//                
+//                let message = Message()
+//                message.messageBody = text
+//                message.sender = sender
+//                
+//                self.messageArray.append(message)
+//                
+//                self.configureTableViewa()
+//                self.messageTableView.reloadData()
+//                
+//            })
+//            
+//        }
     }
     
     
@@ -62,12 +85,12 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     //    Mark: - DataSource Properties
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return gamesArray.count
+        return gamesArrayID.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "hostCell", for: indexPath)
-        let currentGame = gamesArray[indexPath.row]
+        let currentGame = gamesArrayID[indexPath.row]
 //        cell.textLabel?.text =
 //        cell.detailTextLabel?.text 
         return cell
