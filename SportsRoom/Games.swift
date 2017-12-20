@@ -12,33 +12,32 @@ import FirebaseDatabase
 class Games : NSObject {
     
     var address = ""
-    var latitude = 0.0
-    var longitude = 0.0
+    var latitude : Double = 0
+    var longitude : Double = 0
     var cost = ""
     var date = ""
     var hostID = ""
     var notes = ""
-    var numberOfPlayers = ""
+    var numberOfPlayers = 0
     var skillLevel = ""
     var sport = ""
     var title = ""
     var gameID = ""
     
     init(snapshot: DataSnapshot) {
-        
         let gameDict = snapshot.value as! [String:Any]
-        self.address = gameDict["address"] as! String
-        self.latitude = gameDict["latitude"] as! Double
-        self.longitude = gameDict["longitude"] as! Double
-        self.cost = gameDict["cost"] as! String
-        self.date = gameDict["date"] as! String
-        self.hostID = gameDict["hostID"] as! String
-        self.notes = gameDict["notes"] as! String
-        self.numberOfPlayers = gameDict["numberOfPlayers"] as! String
-        self.skillLevel = gameDict["skillLevel"] as! String
-        self.sport = gameDict["sport"] as! String
-        self.title = gameDict["title"] as! String
-        self.gameID = gameDict["gameID"] as! String
+        self.address = gameDict["address"] as? String ?? ""
+        let coordinatesDict = gameDict["coordinates"] as! [String:Any]
+        self.latitude = coordinatesDict["latitude"] as? Double ?? 0
+        self.longitude = coordinatesDict["longitude"] as? Double ?? 0
+        self.cost = gameDict["cost"] as? String ?? ""
+        self.date = gameDict["date"] as? String ?? ""
+        self.hostID = gameDict["hostID"] as? String ?? ""
+        self.notes = gameDict["notes"] as? String ?? ""
+        self.numberOfPlayers = gameDict["numberOfPlayers"] as? Int ?? 0
+        self.skillLevel = gameDict["skillLevel"] as? String ?? ""
+        self.sport = gameDict["sport"] as? String ?? ""
+        self.title = gameDict["title"] as? String ?? ""
+        self.gameID = gameDict["gameID"] as? String ?? ""
     }
-
 }
