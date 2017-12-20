@@ -13,22 +13,44 @@ import Firebase
 class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider {
     
     @IBOutlet weak var tableView: UITableView!
-    var gamesArray = Array<Any>()
+    var gamesArrayID = [String]()
+    var gamesArrayDetails = [String]()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getHostedGameForUser()
+//        getHostedGameForUser()
+        getHostedGames()
     }
     
-    func getHostedGameForUser() {
-        let currentUser = Auth.auth().currentUser?.uid
-        let g = Database.database().reference().child("games")
-        g.queryOrdered(byChild:"hostID").queryEqual(toValue: currentUser).observe(.value)
-                    { (snapshot) in
-                        self.gamesArray.append(snapshot.value!)
-                        print(snapshot)
+//    func getHostedGameForUser() {
+//        let currentUser = Auth.auth().currentUser?.uid
+//        let g = Database.database().reference().child("games")
+//        g.queryOrdered(byChild:"hostID").queryEqual(toValue: currentUser).observe(.value)
+//                    { (snapshot) in
+//                        self.gamesArray.append(snapshot.value!)
+//                        print(snapshot)
+//            }
+//    }
+    
+    func getHostedGames () {
+        let userID = Auth.auth().currentUser?.uid
+        let ref = Database.database().reference().child("users").child(userID!).child("hostedGames")
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            let value = snapshot.value as? [String:String]
+            self.gamesArrayID = Array(value!.keys)
+        }
+        for games in gamesArrayID {
+            let ref = Database.database().reference().child("games").child(games)
+            ref.observeSingleEvent(of: .value) { (snapshot) in
+                
             }
+
+        }
+        
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "hosted") {
