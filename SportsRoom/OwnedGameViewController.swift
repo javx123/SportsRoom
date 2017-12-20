@@ -63,6 +63,7 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return gamesArrayID.count
+
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{

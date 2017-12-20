@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UZv-9Q-qNe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UZv-9Q-qNe">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -652,7 +649,14 @@
                         <viewLayoutGuide key="safeArea" id="JXW-5Y-gtW"/>
                     </view>
                     <connections>
+                        <outlet property="costLabel" destination="Xsx-7z-cjJ" id="uCH-Tf-Ev3"/>
+                        <outlet property="dateLabel" destination="Jg7-mm-hee" id="Su0-Aq-f7c"/>
                         <outlet property="gameActionBtn" destination="JHf-Kl-W4q" id="L8B-ZB-fBW"/>
+                        <outlet property="gameTitleLabel" destination="2fW-LT-ewR" id="06f-4Q-Xj9"/>
+                        <outlet property="locationLabel" destination="bLc-HJ-zuf" id="ans-Zp-yJY"/>
+                        <outlet property="notesLabel" destination="h1f-gi-MNB" id="Y6s-dW-48U"/>
+                        <outlet property="skillLabel" destination="NtK-GZ-jpI" id="ydY-Xz-xRO"/>
+                        <outlet property="sportLabel" destination="wWh-Xm-2qt" id="2bG-4o-3LP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SPf-1Y-iAR" userLabel="First Responder" sceneMemberID="firstResponder"/>
