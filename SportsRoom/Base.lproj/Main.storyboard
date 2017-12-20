@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -339,14 +340,61 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" id="Qk6-Ep-YrX">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" rowHeight="113" id="Qk6-Ep-YrX" customClass="SearchTableViewCell" customModule="SportsRoom" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qk6-Ep-YrX" id="YYH-6i-Uo8">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="112.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YM9-0V-hnJ">
+                                                    <rect key="frame" x="15" y="11" width="273" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="273" id="gFE-62-be0"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4n-vX-jaq">
+                                                    <rect key="frame" x="35" y="43" width="325" height="33"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ri0-Fr-dyg">
+                                                    <rect key="frame" x="35" y="84" width="325" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sport" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJ4-ua-nvk">
+                                                    <rect key="frame" x="308" y="11" width="52" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="s4n-vX-jaq" firstAttribute="top" secondItem="YM9-0V-hnJ" secondAttribute="bottom" constant="8" id="5eS-8D-uWB"/>
+                                                <constraint firstItem="YM9-0V-hnJ" firstAttribute="top" secondItem="YYH-6i-Uo8" secondAttribute="topMargin" id="6Jx-Er-KSP"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ri0-Fr-dyg" secondAttribute="bottom" id="aKl-jD-PEC"/>
+                                                <constraint firstItem="ri0-Fr-dyg" firstAttribute="trailing" secondItem="YYH-6i-Uo8" secondAttribute="trailingMargin" id="fYJ-LA-EPF"/>
+                                                <constraint firstItem="s4n-vX-jaq" firstAttribute="leading" secondItem="YYH-6i-Uo8" secondAttribute="leadingMargin" constant="20" id="gQv-c4-ZCH"/>
+                                                <constraint firstItem="eJ4-ua-nvk" firstAttribute="top" secondItem="YYH-6i-Uo8" secondAttribute="topMargin" id="iNQ-ZI-8qO"/>
+                                                <constraint firstItem="YM9-0V-hnJ" firstAttribute="leading" secondItem="YYH-6i-Uo8" secondAttribute="leadingMargin" id="nVr-zS-6r6"/>
+                                                <constraint firstItem="s4n-vX-jaq" firstAttribute="trailing" secondItem="YYH-6i-Uo8" secondAttribute="trailingMargin" id="o1V-up-Ga4"/>
+                                                <constraint firstItem="ri0-Fr-dyg" firstAttribute="leading" secondItem="YYH-6i-Uo8" secondAttribute="leadingMargin" constant="20" id="pId-pR-aNd"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="eJ4-ua-nvk" secondAttribute="trailing" id="pia-ap-vyv"/>
+                                                <constraint firstItem="eJ4-ua-nvk" firstAttribute="leading" secondItem="YM9-0V-hnJ" secondAttribute="trailing" constant="20" id="qfb-dI-lWE"/>
+                                                <constraint firstItem="ri0-Fr-dyg" firstAttribute="top" secondItem="s4n-vX-jaq" secondAttribute="bottom" constant="8" id="sLR-sJ-8vN"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="locationLabel" destination="s4n-vX-jaq" id="cG6-f5-2dv"/>
+                                            <outlet property="sportLabel" destination="eJ4-ua-nvk" id="shV-wr-kny"/>
+                                            <outlet property="timeLabel" destination="ri0-Fr-dyg" id="v6p-5w-P5X"/>
+                                            <outlet property="titleLabel" destination="YM9-0V-hnJ" id="Qe0-xr-N3Q"/>
                                             <segue destination="qc8-7s-WZy" kind="show" identifier="search" id="W1f-EQ-S7k"/>
                                         </connections>
                                     </tableViewCell>
@@ -379,7 +427,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVv-kl-xX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="801" y="1137"/>
+            <point key="canvasLocation" x="800.79999999999995" y="1136.5817091454273"/>
         </scene>
         <!--Owned Game View Controller-->
         <scene sceneID="4BT-ol-UJA">

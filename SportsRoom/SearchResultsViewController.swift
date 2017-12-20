@@ -17,14 +17,16 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     var searchedSport: String!
     var currentLocation: CLLocation?
     var pulledData: Dictionary<String,Any> = [:]
-    
-    var searchResults: [Dictionary<String, Any>]?
-    var searchResultsArray: [Dictionary <String,Any>] = []
-    {
-        didSet{
-            self.tableView.reloadData()
+
+    //    WHY CAN'T I USE THIS WITHOUT THERE BEING DUPLICATES CREATED?
+    var searchResults: [Dictionary<String, Any>] = []
+        {
+            didSet{
+                self.tableView.reloadData()
+            }
         }
-    }
+//    var searchResultsArray: [Dictionary <String,Any>] = []
+
     var locationManager = LocationManager()
     
     
@@ -35,20 +37,16 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
 
         // Do any additional setup after loading the view.
         
-//        let locationManager = LocationManager()
-//        locationManager.locationManager.delegate = self
-        
         locationManager.getCurrentLocation { [weak self](location: CLLocation) in
-            
-//            guard let welf = self else {return}
             
             self?.pullFireBaseData { (gameCoordinates, searchedGame) in
                             let distance = location.distance(from: gameCoordinates)
                             print(distance)
                             //            print(searchedGame)
                             if ( Int(distance) < 30000 ){
-                                self?.searchResultsArray.append(searchedGame)
-                                print(self?.searchResultsArray, "\n\n\n\n\n")
+                                self?.searchResults.append(searchedGame)
+                                print(self?.searchResults, "\n\n\n\n\n")
+//                                self?.tableView.reloadData()
                             }
                 
                         }
@@ -67,12 +65,32 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
 //    Mark: - Datasource methods
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return searchResults?.count ?? 1
+        return searchResults.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath)
+//        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as? SearchTableViewCell else{fatalError("The dequeued cell is not an instance of SearchTableViewCell.")}
+        let entry: [String: Any]? = searchResults[indexPath.row]
+        
+        if let entry = entry {
+            cell.titleLabel.text = entry["title"] as? String
+            cell.sportLabel.text = entry["sport"] as? String
+            cell.locationLabel.text = entry["address"] as? String
+            cell.timeLabel.text = entry["date"] as? String
+            
+            return cell
+        }
+            
+//        let entry = searchResultsArray[indexPath.row]
+        
+//        cell.titleLabel.text = entry["title"] as? String
+//        cell.sportLabel.text = entry["sport"] as? String
+//        cell.locationLabel.text = entry["address"] as? String
+//        cell.timeLabel.text = entry["date"] as? String
+        
         return cell
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -96,11 +114,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                     completion(gameCoordinates, self.pulledData)
 //                    print(self.pulledData)
                 }
-//                print("test")
             }
-            
-//            print(self.pulledData)
-            
         }
         
     }
