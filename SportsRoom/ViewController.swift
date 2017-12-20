@@ -74,7 +74,7 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     
     //Mark: - NavBar Button Methods
     @objc func showProfile() {
-        
+        performSegue(withIdentifier: "showProfile", sender: self)
     }
     
     @objc func createGame () {
