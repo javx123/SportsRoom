@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UZv-9Q-qNe">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -320,6 +324,7 @@
                         <outlet property="buttonBarView" destination="89r-fe-d6S" id="LrH-tv-gYp"/>
                         <outlet property="containerView" destination="S50-FH-Kd6" id="dA8-Gh-XFK"/>
                         <segue destination="oNd-PB-sCQ" kind="show" identifier="createGame" id="BkY-he-WDK"/>
+                        <segue destination="2br-XL-dXT" kind="presentation" identifier="searchGame" id="GIu-JD-8aE"/>
                         <segue destination="KbM-Lc-0Fu" kind="presentation" identifier="showProfile" id="hl1-VW-O6y"/>
                     </connections>
                 </viewController>
@@ -339,14 +344,61 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" id="Qk6-Ep-YrX">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" rowHeight="113" id="Qk6-Ep-YrX" customClass="SearchTableViewCell" customModule="SportsRoom" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qk6-Ep-YrX" id="YYH-6i-Uo8">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="112.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YM9-0V-hnJ">
+                                                    <rect key="frame" x="15" y="11" width="273" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="273" id="gFE-62-be0"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4n-vX-jaq">
+                                                    <rect key="frame" x="35" y="43" width="325" height="33"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ri0-Fr-dyg">
+                                                    <rect key="frame" x="35" y="84" width="325" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sport" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJ4-ua-nvk">
+                                                    <rect key="frame" x="308" y="11" width="52" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="s4n-vX-jaq" firstAttribute="top" secondItem="YM9-0V-hnJ" secondAttribute="bottom" constant="8" id="5eS-8D-uWB"/>
+                                                <constraint firstItem="YM9-0V-hnJ" firstAttribute="top" secondItem="YYH-6i-Uo8" secondAttribute="topMargin" id="6Jx-Er-KSP"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ri0-Fr-dyg" secondAttribute="bottom" id="aKl-jD-PEC"/>
+                                                <constraint firstItem="ri0-Fr-dyg" firstAttribute="trailing" secondItem="YYH-6i-Uo8" secondAttribute="trailingMargin" id="fYJ-LA-EPF"/>
+                                                <constraint firstItem="s4n-vX-jaq" firstAttribute="leading" secondItem="YYH-6i-Uo8" secondAttribute="leadingMargin" constant="20" id="gQv-c4-ZCH"/>
+                                                <constraint firstItem="eJ4-ua-nvk" firstAttribute="top" secondItem="YYH-6i-Uo8" secondAttribute="topMargin" id="iNQ-ZI-8qO"/>
+                                                <constraint firstItem="YM9-0V-hnJ" firstAttribute="leading" secondItem="YYH-6i-Uo8" secondAttribute="leadingMargin" id="nVr-zS-6r6"/>
+                                                <constraint firstItem="s4n-vX-jaq" firstAttribute="trailing" secondItem="YYH-6i-Uo8" secondAttribute="trailingMargin" id="o1V-up-Ga4"/>
+                                                <constraint firstItem="ri0-Fr-dyg" firstAttribute="leading" secondItem="YYH-6i-Uo8" secondAttribute="leadingMargin" constant="20" id="pId-pR-aNd"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="eJ4-ua-nvk" secondAttribute="trailing" id="pia-ap-vyv"/>
+                                                <constraint firstItem="eJ4-ua-nvk" firstAttribute="leading" secondItem="YM9-0V-hnJ" secondAttribute="trailing" constant="20" id="qfb-dI-lWE"/>
+                                                <constraint firstItem="ri0-Fr-dyg" firstAttribute="top" secondItem="s4n-vX-jaq" secondAttribute="bottom" constant="8" id="sLR-sJ-8vN"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="locationLabel" destination="s4n-vX-jaq" id="cG6-f5-2dv"/>
+                                            <outlet property="sportLabel" destination="eJ4-ua-nvk" id="shV-wr-kny"/>
+                                            <outlet property="timeLabel" destination="ri0-Fr-dyg" id="v6p-5w-P5X"/>
+                                            <outlet property="titleLabel" destination="YM9-0V-hnJ" id="Qe0-xr-N3Q"/>
                                             <segue destination="qc8-7s-WZy" kind="show" identifier="search" id="W1f-EQ-S7k"/>
                                         </connections>
                                     </tableViewCell>
@@ -366,14 +418,21 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="v0Y-Zi-x69"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Search Results" id="X6n-OD-2ir"/>
+                    <navigationItem key="navigationItem" title="Search Results" id="X6n-OD-2ir">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="15V-qm-R0g">
+                            <connections>
+                                <segue destination="rQo-LA-HC2" kind="unwind" unwindAction="unwind:" id="x8q-Mx-MEd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="eDt-Lg-TeC" id="Dze-Ov-eQs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVv-kl-xX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rQo-LA-HC2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="801" y="1137"/>
+            <point key="canvasLocation" x="800.79999999999995" y="1136.5817091454273"/>
         </scene>
         <!--Owned Game View Controller-->
         <scene sceneID="4BT-ol-UJA">
