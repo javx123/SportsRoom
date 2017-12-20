@@ -18,7 +18,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     var currentLocation: CLLocation?
     var pulledData: Dictionary<String,Any> = [:]
     
-    //    WHY CAN'T I USE THIS WITHOUT THERE BEING DUPLICATES CREATED?
     var searchResults: [Dictionary<String, Any>] = []
     {
         didSet{
@@ -26,6 +25,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     var locationManager = LocationManager()
+    let ref = Database.database().reference(withPath: "games/")
     
     
     
@@ -35,10 +35,11 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         
         // Do any additional setup after loading the view.
         
-        locationManager.getCurrentLocation { [weak self](location: CLLocation) in
+        locationManager.getCurrentLocation { [weak self] (location: CLLocation) in
             guard let welf = self else { return }
-            welf.pullFireBaseData { (gameCoordinates, searchedGame) in
-                let distance = location.distance(from: gameCoordinates)
+            welf.pullFireBaseData { [weak location] (gameCoordinates, searchedGame) in
+                guard let wLocation = location else { return }
+                let distance = wLocation.distance(from: gameCoordinates)
                 print(distance)
                 //            print(searchedGame)
                 if ( Int(distance) < 30000 ){
@@ -80,13 +81,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             return cell
         }
         
-        //        let entry = searchResultsArray[indexPath.row]
-        
-        //        cell.titleLabel.text = entry["title"] as? String
-        //        cell.sportLabel.text = entry["sport"] as? String
-        //        cell.locationLabel.text = entry["address"] as? String
-        //        cell.timeLabel.text = entry["date"] as? String
-        
         return cell
         
     }
@@ -99,7 +93,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     
     func pullFireBaseData(completion: @escaping (_ coordinate: CLLocation, _ gameDetails : Dictionary<String, Any>) -> Void) {
-        let ref = Database.database().reference(withPath: "games/")
         
         ref.queryOrdered(byChild: "sport").queryEqual(toValue: searchedSport.lowercased()).observe(.childAdded) { [weak self] (snapshot) in
             guard let welf = self else { return }
@@ -118,15 +111,14 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         
     }
     
-    deinit {
-        
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        ref.removeAllObservers()
     }
     
-    
-//    @IBAction func cancel(_ sender: UIBarButtonItem) {
-////        self.dismiss(animated: true, completion: nil)
-//        self.navigationController?.popViewController(animated: true)
-//    }
+    deinit {
+        print("Deallocated")
+    }
     
     
 }
