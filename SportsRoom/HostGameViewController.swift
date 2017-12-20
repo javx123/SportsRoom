@@ -68,7 +68,7 @@ class HostGameViewController: UIViewController {
         // call the postGame method
         postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: sportTextField.text!, date:dateString, address:selectLocationLabel.text!, longitude:longitude, latitude:latitude, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!)
         
-        self.dismiss(animated: true, completion: nil)
+       _ = navigationController?.popViewController(animated: true)
     }
     
     @IBAction func sliderChanged(_ sender: Any) {
@@ -93,7 +93,12 @@ class HostGameViewController: UIViewController {
         let skillKey = "skillLevel"
         let playerNumberKey = "numberOfPlayers"
         let noteKey = "notes"
-        ref.updateChildValues([hostIDKey:userID,titleKey:title,sportKey:sport,dateKey:date,locationKey:address, longitudeKey:longitude,latitudeKey:latitude,costKey:cost, skillKey:skillLevel,playerNumberKey:numberOfPlayers,noteKey:note])
+        ref.updateChildValues([hostIDKey:userID,titleKey:title,sportKey:sport,dateKey:date,locationKey:address,costKey:cost, skillKey:skillLevel,playerNumberKey:numberOfPlayers,noteKey:note])
+        
+        // add the latitude and longitude to a 'coordinates' dictionary within the Game object
+        let gameCoordinatesKey = ref.key
+        let refCoordinates = Database.database().reference().child("games").child(gameCoordinatesKey).child("coordinates")
+        refCoordinates.updateChildValues([longitudeKey: longitude, latitudeKey:latitude])
         
         // assign the game id to the current user's 'hosted games' list
         let userID = Auth.auth().currentUser?.uid

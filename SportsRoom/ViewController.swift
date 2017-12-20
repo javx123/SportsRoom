@@ -12,6 +12,7 @@ import FirebaseDatabase
 import XLPagerTabStrip
 import MapKit
 
+
 class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate, CLLocationManagerDelegate {
     
     let locationManager: CLLocationManager = CLLocationManager()
@@ -56,7 +57,8 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.locationManager.requestLocation()
+//        self.locationManager.requestLocation()
+        performSegue(withIdentifier: "searchGame", sender: self)
     }
     
     
@@ -113,7 +115,7 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     func enableLocationServices() {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
-        
+
         switch CLLocationManager.authorizationStatus() {
         case CLAuthorizationStatus.notDetermined:
             locationManager.requestWhenInUseAuthorization()
@@ -123,57 +125,63 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     }
 
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("Got location updates")
-        let localValue: CLLocationCoordinate2D = manager.location!.coordinate
-        currentLocation = CLLocation(latitude: localValue.latitude, longitude: localValue.longitude)
-//        print(currentLocation)
-//        pullFireBaseData { (gameCoordinates) in
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        print("Got location updates")
+//        let localValue: CLLocationCoordinate2D = manager.location!.coordinate
+//        currentLocation = CLLocation(latitude: localValue.latitude, longitude: localValue.longitude)
+////        print(currentLocation)
+//        pullFireBaseData { (gameCoordinates, searchedGame) in
 //            let distance = self.currentLocation?.distance(from: gameCoordinates)
 //            print(distance!)
-//            print("asdklfjakl;sejlk;ttasDF")
+////            print(searchedGame)
+//            if ( Int(distance!) < 30000 ){
+//                self.searchResultsArray.append(searchedGame)
+//            }
 //        }
-        pullFireBaseData { (gameCoordinates, searchedGame) in
-            let distance = self.currentLocation?.distance(from: gameCoordinates)
-            print(distance!)
-//            print(searchedGame)
-            if ( Int(distance!) < 30000 ){
-                self.searchResultsArray.append(searchedGame)
-            }
-        }
+//
+//    }
+//
+//    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+//        print("Failed to find user's location \(error.localizedDescription)")
+//    }
+    
+    
+    
+    
+//
+//    func pullFireBaseData(completion: @escaping (_ coordinate: CLLocation, _ gameDetails : Dictionary<String, Any>) -> Void) {
+//        let ref = Database.database().reference(withPath: "games/")
+//        ref.queryOrdered(byChild: "sport").queryEqual(toValue: searchBar.text?.lowercased()).observe(.childAdded) { (snapshot) in
+//            self.pulledData = snapshot.value as! Dictionary
+//            for entry in self.pulledData {
+//                let key = entry.0 as String
+//                if (key == "coordinates"){
+//                    let dicCoordinates = entry.1 as! Dictionary<String, Any>
+//                    let gameCoordinates = CLLocation(latitude: dicCoordinates["latitude"] as! CLLocationDegrees , longitude: dicCoordinates["longitude"] as! CLLocationDegrees)
+//                    print(gameCoordinates)
+//                    completion(gameCoordinates, self.pulledData)
+//                }
+////                print("test")
+//            }
+//
+//            print(self.pulledData)
+//
+//        }
+//
+//    }
+    
+    @IBAction func unwind(_ sender: UIStoryboardSegue) {
         
-        
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Failed to find user's location \(error.localizedDescription)")
-    }
-    
-    
-    
-    
-    
-    func pullFireBaseData(completion: @escaping (_ coordinate: CLLocation, _ gameDetails : Dictionary<String, Any>) -> Void) {
-        let ref = Database.database().reference(withPath: "Games/")
-        ref.queryOrdered(byChild: "type").queryEqual(toValue: "soccor").observe(.childAdded) { (snapshot) in
-            self.pulledData = snapshot.value as! Dictionary
-            for entry in self.pulledData {
-                let key = entry.0 as String
-                if (key == "coordinates"){
-                    let dicCoordinates = entry.1 as! Dictionary<String, Any>
-                    let gameCoordinates = CLLocation(latitude: dicCoordinates["latitude"] as! CLLocationDegrees , longitude: dicCoordinates["longitude"] as! CLLocationDegrees)
-                    print(gameCoordinates)
-                    completion(gameCoordinates, self.pulledData)
-                }
-                print("test")
-            }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "searchGame" {
+            let navController = segue.destination as! UINavigationController
+            let searchController = navController.topViewController as! SearchResultsViewController
             
-            print(self.pulledData)
-            
+            searchController.searchedSport = searchBar.text
         }
     }
-    
-    
     
     
 }
