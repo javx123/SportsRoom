@@ -31,6 +31,8 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidDisappear(animated)
         gamesArrayDetails = [Games]()
     }
+     
+     
     
     
     func getJoinedGames () {
@@ -54,8 +56,12 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "joined") {
-            let VC2 : DetailsViewController = segue.destination as! DetailsViewController
-            VC2.btnText =  DetailsViewController.ButtonState.joined
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let game = gamesArrayDetails[indexPath.row]
+                let VC2 : DetailsViewController = segue.destination as! DetailsViewController
+                VC2.btnText =  DetailsViewController.ButtonState.hosted
+                VC2.currentGame = game
+            }
         }
     }
 

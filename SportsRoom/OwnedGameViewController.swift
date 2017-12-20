@@ -28,8 +28,7 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         gamesArrayDetails = [Games]()
-    }
-    
+}
 
     func getHostedGames () {
         let userID = Auth.auth().currentUser?.uid
@@ -49,11 +48,14 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "hosted") {
+            if let indexPath = tableView.indexPathForSelectedRow {
+            let game = gamesArrayDetails[indexPath.row]
             let VC2 : DetailsViewController = segue.destination as! DetailsViewController
             VC2.btnText =  DetailsViewController.ButtonState.hosted
+            VC2.currentGame = game
+            }
         }
     }
     
