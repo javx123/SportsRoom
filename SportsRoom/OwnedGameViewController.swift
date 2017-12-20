@@ -14,7 +14,7 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var tableView: UITableView!
     
-    var gamesArrayDetails = [Games]()
+    var gamesArrayDetails = [Game]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        gamesArrayDetails = [Games]()
+        gamesArrayDetails = [Game]()
 }
 
     func getHostedGames () {
@@ -40,7 +40,7 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
             for id in gamesArrayID {
                 let ref = Database.database().reference().child("games").child(id)
                 ref.observeSingleEvent(of: .value) { (snapshot) in
-                    let game = Games(snapshot: snapshot)
+                    let game = Game(snapshot: snapshot)
                     self.gamesArrayDetails.append(game)
                     self.tableView.reloadData()
                 }

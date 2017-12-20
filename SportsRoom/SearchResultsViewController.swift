@@ -17,7 +17,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     var searchedSport: String!
     var currentLocation: CLLocation?
     var pulledData: Dictionary<String,Any> = [:]
-    var searchResults: [Games] = []
+    var searchResults: [Game] = []
     {
         didSet{
             self.tableView.reloadData()
@@ -77,7 +77,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         //        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath)
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as? SearchTableViewCell else{fatalError("The dequeued cell is not an instance of SearchTableViewCell.")}
-        let entry: Games? = searchResults[indexPath.row]
+        let entry: Game? = searchResults[indexPath.row]
         
         if let entry = entry {
             cell.titleLabel.text = entry.title
@@ -98,7 +98,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     
     
-    func pullFireBaseData(completion: @escaping (_ coordinate: CLLocation, _ gameDetails : Games) -> Void) {
+    func pullFireBaseData(completion: @escaping (_ coordinate: CLLocation, _ gameDetails : Game) -> Void) {
         
         ref.queryOrdered(byChild: "sport").queryEqual(toValue: searchedSport.lowercased()).observe(.childAdded) { [weak self] (snapshot) in
             
@@ -113,7 +113,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
 //                    completion(gameCoordinates, welf.pulledData)
 //                    //                    print(self.pulledData)
 //                }
-                let game = Games(snapshot: snapshot)
+                let game = Game(snapshot: snapshot)
             let gameCoordinates = CLLocation(latitude: game.latitude as! CLLocationDegrees, longitude: game.longitude as! CLLocationDegrees)
                 completion(gameCoordinates, game)
             

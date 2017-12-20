@@ -1,5 +1,5 @@
 //
-//  Games.swift
+//  Game.swift
 //  SportsRoom
 //
 //  Created by Larry Luk on 2017-12-20.
@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class Games : NSObject {
+class Game : NSObject {
     
     var address = ""
     var latitude : Double = 0

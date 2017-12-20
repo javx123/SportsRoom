@@ -19,7 +19,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
     
-    var currentGame: Games!
+    var currentGame: Game!
     
     enum ButtonState: String {
         case joined = "Leave Game"
