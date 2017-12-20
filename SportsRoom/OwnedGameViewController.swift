@@ -35,8 +35,8 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
         let ref = Database.database().reference().child("users").child(userID!).child("hostedGames")
         
         ref.observeSingleEvent(of: .value) {(snapshot) in
-            let value = snapshot.value as? [String:String]
-            let gamesArrayID = Array(value!.keys)
+            let value = snapshot.value as? [String:String] ?? [:]
+            let gamesArrayID = Array(value.keys)
             for id in gamesArrayID {
                 let ref = Database.database().reference().child("games").child(id)
                 ref.observeSingleEvent(of: .value) { (snapshot) in
