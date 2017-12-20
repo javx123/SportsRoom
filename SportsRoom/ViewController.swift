@@ -12,6 +12,7 @@ import FirebaseDatabase
 import XLPagerTabStrip
 import MapKit
 
+
 class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate, CLLocationManagerDelegate {
     
     let locationManager: CLLocationManager = CLLocationManager()
@@ -168,6 +169,10 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
 //        }
 //
 //    }
+    
+    @IBAction func unwind(_ sender: UIStoryboardSegue) {
+        
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "searchGame" {

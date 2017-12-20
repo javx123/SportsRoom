@@ -103,12 +103,12 @@
 				05E0A0D41FE83D16006BE816 /* LoginViewController.swift */,
 				2D71A9B11FE40B19008C60F7 /* JoinedGameViewController.swift */,
 				2D71A9B31FE40B22008C60F7 /* OwnedGameViewController.swift */,
-				2D71A9B91FE40BF4008C60F7 /* SearchResultsViewController.swift */,
 				2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */,
 				2D71A9BB1FE40C1E008C60F7 /* DetailsViewController.swift */,
 				2D71A9B51FE40B6A008C60F7 /* HostGameViewController.swift */,
 				2D71A9BF1FE40D1A008C60F7 /* SetLocationViewController.swift */,
 				2D71A9B71FE40B87008C60F7 /* ProfileViewController.swift */,
+				2D71A9B91FE40BF4008C60F7 /* SearchResultsViewController.swift */,
 				2D47D2451FE9D9A50067250B /* LocationManager.swift */,
 				2D47D2471FEA1FEA0067250B /* SearchTableViewCell.swift */,
 				2D1F4B511FE1F36400371D9B /* Assets.xcassets */,
@@ -417,7 +417,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 55BW5T8VB9;
+				DEVELOPMENT_TEAM = B8R3K9GN26;
 				INFOPLIST_FILE = SportsRoom/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -434,7 +434,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 55BW5T8VB9;
+				DEVELOPMENT_TEAM = B8R3K9GN26;
 				INFOPLIST_FILE = SportsRoom/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
