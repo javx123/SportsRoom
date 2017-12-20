@@ -95,6 +95,7 @@ class HostGameViewController: UIViewController {
         let noteKey = "notes"
         ref.updateChildValues([hostIDKey:userID,titleKey:title,sportKey:sport,dateKey:date,locationKey:address,costKey:cost, skillKey:skillLevel,playerNumberKey:numberOfPlayers,noteKey:note])
         
+        // add the latitude and longitude to a 'coordinates' dictionary within the Game object
         let gameCoordinatesKey = ref.key
         let refCoordinates = Database.database().reference().child("games").child(gameCoordinatesKey).child("coordinates")
         refCoordinates.updateChildValues([longitudeKey: longitude, latitudeKey:latitude])
