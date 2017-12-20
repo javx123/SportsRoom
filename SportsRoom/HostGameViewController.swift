@@ -66,7 +66,7 @@ class HostGameViewController: UIViewController {
         let skillLevelString = skillLevelControl.titleForSegment(at: skillLevelControl.selectedSegmentIndex)
         
         // call the postGame method
-        postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: sportTextField.text!, date:dateString, address:selectLocationLabel.text!, longitude:longitude, latitude:latitude, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!)
+        postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: sportTextField.text!.lowercased(), date:dateString, address:selectLocationLabel.text!, longitude:longitude, latitude:latitude, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!)
         
        _ = navigationController?.popViewController(animated: true)
     }
@@ -82,6 +82,7 @@ class HostGameViewController: UIViewController {
     func postGame(withUserID userID: String, title: String, sport: String, date: String, address: String, longitude: Double, latitude: Double, cost: String, skillLevel: String, numberOfPlayers: Float, note: String) {
         // create a game object
         let ref = Database.database().reference().child("games").childByAutoId()
+        let gameIDkey = "gameID"
         let hostIDKey = "hostID"
         let titleKey = "title"
         let sportKey = "sport"
@@ -93,7 +94,7 @@ class HostGameViewController: UIViewController {
         let skillKey = "skillLevel"
         let playerNumberKey = "numberOfPlayers"
         let noteKey = "notes"
-        ref.updateChildValues([hostIDKey:userID,titleKey:title,sportKey:sport,dateKey:date,locationKey:address,costKey:cost, skillKey:skillLevel,playerNumberKey:numberOfPlayers,noteKey:note])
+        ref.updateChildValues([hostIDKey:userID,gameIDkey:ref.key, titleKey:title,sportKey:sport,dateKey:date,locationKey:address,costKey:cost, skillKey:skillLevel,playerNumberKey:numberOfPlayers,noteKey:note])
         
         // add the latitude and longitude to a 'coordinates' dictionary within the Game object
         let gameCoordinatesKey = ref.key
