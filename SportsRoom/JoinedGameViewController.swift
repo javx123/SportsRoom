@@ -15,7 +15,7 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     
-    var gamesArrayDetails = [Games]()
+    var gamesArrayDetails: [Games] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +41,8 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
         let ref = Database.database().reference().child("users").child(userID!).child("joinedGames")
         
         ref.observeSingleEvent(of: .value) {(snapshot) in
-            let value = snapshot.value as? [String:String]
-            let gamesArrayID = Array(value!.keys)
+            let value = snapshot.value as? [String:String] ?? [:]
+            let gamesArrayID = Array(value.keys)
             for id in gamesArrayID {
                 let ref = Database.database().reference().child("games").child(id)
                 ref.observeSingleEvent(of: .value) { (snapshot) in
@@ -54,13 +54,12 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "joined") {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let game = gamesArrayDetails[indexPath.row]
                 let VC2 : DetailsViewController = segue.destination as! DetailsViewController
-                VC2.btnText =  DetailsViewController.ButtonState.hosted
+                VC2.btnText =  DetailsViewController.ButtonState.joined
                 VC2.currentGame = game
             }
         }

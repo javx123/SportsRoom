@@ -59,8 +59,12 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "search") {
-            let VC2 : DetailsViewController = segue.destination as! DetailsViewController
-            VC2.btnText =  DetailsViewController.ButtonState.search
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let game = searchResults[indexPath.row]
+                let VC2 : DetailsViewController = segue.destination as! DetailsViewController
+                VC2.btnText =  DetailsViewController.ButtonState.search
+                VC2.currentGame = game
+            }
         }
     }
     
