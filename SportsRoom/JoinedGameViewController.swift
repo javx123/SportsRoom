@@ -13,12 +13,43 @@ import XLPagerTabStrip
 class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider  {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var gamesArrayDetails = [Games]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    /* override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getJoinedGames()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        gamesArrayDetails = [Games]()
+    }
+    
+    
+    func getJoinedGames () {
+        let userID = Auth.auth().currentUser?.uid
+        let ref = Database.database().reference().child("users").child(userID!).child("joinedGames")
+        
+        ref.observeSingleEvent(of: .value) {(snapshot) in
+            let value = snapshot.value as? [String:String]
+            let gamesArrayID = Array(value!.keys)
+            for id in gamesArrayID {
+                let ref = Database.database().reference().child("games").child(id)
+                ref.observeSingleEvent(of: .value) { (snapshot) in
+                    let game = Games(snapshot: snapshot)
+                    self.gamesArrayDetails.append(game)
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    } */
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

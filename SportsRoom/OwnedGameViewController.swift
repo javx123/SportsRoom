@@ -13,42 +13,40 @@ import Firebase
 class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider {
     
     @IBOutlet weak var tableView: UITableView!
-    var gamesArrayID = [String]()
-    var gamesArrayDetails = [String]()
     
-    
-    
+    var gamesArrayDetails = [Games]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-//        getHostedGameForUser()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getHostedGames()
     }
     
-//    func getHostedGameForUser() {
-//        let currentUser = Auth.auth().currentUser?.uid
-//        let g = Database.database().reference().child("games")
-//        g.queryOrdered(byChild:"hostID").queryEqual(toValue: currentUser).observe(.value)
-//                    { (snapshot) in
-//                        self.gamesArray.append(snapshot.value!)
-//                        print(snapshot)
-//            }
-//    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        gamesArrayDetails = [Games]()
+    }
     
+
     func getHostedGames () {
         let userID = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("users").child(userID!).child("hostedGames")
-        ref.observeSingleEvent(of: .value) { (snapshot) in
-            let value = snapshot.value as? [String:String]
-            self.gamesArrayID = Array(value!.keys)
-        }
-        for games in gamesArrayID {
-            let ref = Database.database().reference().child("games").child(games)
-            ref.observeSingleEvent(of: .value) { (snapshot) in
-                
-            }
-
-        }
         
+        ref.observeSingleEvent(of: .value) {(snapshot) in
+            let value = snapshot.value as? [String:String]
+            let gamesArrayID = Array(value!.keys)
+            for id in gamesArrayID {
+                let ref = Database.database().reference().child("games").child(id)
+                ref.observeSingleEvent(of: .value) { (snapshot) in
+                    let game = Games(snapshot: snapshot)
+                    self.gamesArrayDetails.append(game)
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
     
     
@@ -62,15 +60,14 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     //    Mark: - DataSource Properties
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return gamesArrayID.count
-
+        return gamesArrayDetails.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "hostCell", for: indexPath)
-        let currentGame = gamesArrayID[indexPath.row]
-//        cell.textLabel?.text =
-//        cell.detailTextLabel?.text 
+        let currentGame = gamesArrayDetails[indexPath.row]
+        cell.textLabel?.text = currentGame.title
+        cell.detailTextLabel?.text = currentGame.sport
         return cell
     }
     
