@@ -8,21 +8,22 @@
 
 import UIKit
 import XLPagerTabStrip
+import Firebase
 
 
 class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider  {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var gamesArrayDetails = [Games]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
-    /* override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getJoinedGames()
     }
@@ -31,6 +32,8 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidDisappear(animated)
         gamesArrayDetails = [Games]()
     }
+     
+     
     
     
     func getJoinedGames () {
@@ -49,25 +52,31 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
             }
         }
-    } */
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "joined") {
-            let VC2 : DetailsViewController = segue.destination as! DetailsViewController
-            VC2.btnText =  DetailsViewController.ButtonState.joined
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let game = gamesArrayDetails[indexPath.row]
+                let VC2 : DetailsViewController = segue.destination as! DetailsViewController
+                VC2.btnText =  DetailsViewController.ButtonState.hosted
+                VC2.currentGame = game
+            }
         }
     }
-
     
-//    Mark: - DataSource Methods
+    
+    //    Mark: - DataSource Methods
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 1
+        return gamesArrayDetails.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "joinCell", for: indexPath)
-        cell.textLabel?.text = "TEST"
+        let game = gamesArrayDetails[indexPath.row]
+        cell.textLabel?.text = game.title
+        cell.detailTextLabel?.text = game.sport
         return cell
     }
     
