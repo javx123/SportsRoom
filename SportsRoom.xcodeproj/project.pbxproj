@@ -14,7 +14,6 @@
 		2D1F4B501FE1F36400371D9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4E1FE1F36400371D9B /* Main.storyboard */; };
 		2D1F4B521FE1F36400371D9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B511FE1F36400371D9B /* Assets.xcassets */; };
 		2D1F4B551FE1F36400371D9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B531FE1F36400371D9B /* LaunchScreen.storyboard */; };
-		2D1F4B5D1FE1F5EC00371D9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B5C1FE1F5EC00371D9B /* GoogleService-Info.plist */; };
 		2D40E3FC1FEB2D1300C24D72 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D40E3FB1FEB2D1300C24D72 /* User.swift */; };
 		2D47D2461FE9D9A50067250B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D47D2451FE9D9A50067250B /* LocationManager.swift */; };
 		2D47D2481FEA1FEA0067250B /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D47D2471FEA1FEA0067250B /* SearchTableViewCell.swift */; };
@@ -27,6 +26,7 @@
 		2D71A9BE1FE40C7F008C60F7 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */; };
 		2D71A9C01FE40D1A008C60F7 /* SetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9BF1FE40D1A008C60F7 /* SetLocationViewController.swift */; };
 		73738A0197A6DF179687D916 /* Pods_SportsRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */; };
+		C05EC3151FEC3B7200122C5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C05EC3141FEC3B7200122C5C /* GoogleService-Info.plist */; };
 		C0F929AC1FE883F4007B1847 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +40,6 @@
 		2D1F4B511FE1F36400371D9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D1F4B541FE1F36400371D9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D1F4B561FE1F36400371D9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2D1F4B5C1FE1F5EC00371D9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		2D40E3FB1FEB2D1300C24D72 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2D47D2451FE9D9A50067250B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2D47D2471FEA1FEA0067250B /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		5D6F5EC96DFB1C7034020205 /* Pods-SportsRoom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsRoom.release.xcconfig"; path = "Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom.release.xcconfig"; sourceTree = "<group>"; };
 		78F2554F652C596510C8CEB8 /* Pods-SportsRoom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsRoom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom.debug.xcconfig"; sourceTree = "<group>"; };
 		C05EC3131FEC286E00122C5C /* SportsRoom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SportsRoom.entitlements; sourceTree = "<group>"; };
+		C05EC3141FEC3B7200122C5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsRoom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -101,7 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				C05EC3131FEC286E00122C5C /* SportsRoom.entitlements */,
-				2D1F4B5C1FE1F5EC00371D9B /* GoogleService-Info.plist */,
+				C05EC3141FEC3B7200122C5C /* GoogleService-Info.plist */,
 				2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */,
 				2D1F4B4C1FE1F36400371D9B /* ViewController.swift */,
 				05E624901FEAD703001AF76F /* Game.swift */,
@@ -203,7 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D1F4B551FE1F36400371D9B /* LaunchScreen.storyboard in Resources */,
-				2D1F4B5D1FE1F5EC00371D9B /* GoogleService-Info.plist in Resources */,
+				C05EC3151FEC3B7200122C5C /* GoogleService-Info.plist in Resources */,
 				2D1F4B521FE1F36400371D9B /* Assets.xcassets in Resources */,
 				2D1F4B501FE1F36400371D9B /* Main.storyboard in Resources */,
 			);
@@ -435,11 +435,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SportsRoom/SportsRoom.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H36FGN369H;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SportsRoom/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jdl.sportsroom;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jxdgll.sportsroom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -453,11 +453,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SportsRoom/SportsRoom.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H36FGN369H;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SportsRoom/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jdl.sportsroom;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jxdgll.sportsroom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
