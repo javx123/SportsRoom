@@ -21,12 +21,15 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     var currentLocation:CLLocation?
     var searchResultsArray: [Dictionary <String,Any>] = []
     
+    var createButton = UIBarButtonItem()
+    var profileButton = UIBarButtonItem()
+    
     @IBOutlet weak var addGameButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let createButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action:#selector(createGame))
-        let profileButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(showProfile))
+        createButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action:#selector(createGame))
+        profileButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(showProfile))
         
         self.navigationItem.leftBarButtonItem = profileButton
         self.navigationItem.rightBarButtonItem = createButton
@@ -43,6 +46,7 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
+        
         self.navigationItem.setLeftBarButton(nil, animated: true)
         self.navigationItem.setRightBarButton(nil, animated: true)
     }
@@ -52,8 +56,9 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
         searchBar.text = ""
         searchBar.setShowsCancelButton(false, animated: true)
         searchBar.endEditing(true)
-//        self.navigationItem.setLeftBarButton(profileButton, animated: true)
-//        self.navigationItem.setRightBarButton(createButton, animated: true)
+        
+        self.navigationItem.setLeftBarButton(profileButton, animated: true)
+        self.navigationItem.setRightBarButton(createButton, animated: true)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
