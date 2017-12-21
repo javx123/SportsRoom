@@ -7,36 +7,39 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
-class LocationViewController: UIViewController, UINavigationBarDelegate{
+class LocationViewController: UIViewController, UINavigationBarDelegate, MKMapViewDelegate{
 
+    @IBOutlet weak var mapView: MKMapView!
+    
+    var latitude: Double?
+    var longitude: Double?
+    var address: String?
+    var currentLocationPin : MKPlacemark?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let navBar: UINavigationBar = UINavigationBar()
-        self.view.addSubview(navBar)
-        navBar.delegate = self
-        navBar.translatesAutoresizingMaskIntoConstraints = false
-        
-        navBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        navBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        navBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        
-        let backButton = UIBarButtonItem(barButtonSystemItem: .done, target: self
-            , action: #selector(backTapped))
-        let leftNavItem = UINavigationItem()
-        leftNavItem.leftBarButtonItem = backButton
-
-        navBar.setItems([leftNavItem], animated: false)
+        setupMapView()
         
     }
     
-    @objc func backTapped() {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func position(for bar: UIBarPositioning) -> UIBarPosition {
-        return .topAttached
+    func setupMapView() {
+        let camera = MKMapCamera()
+        camera.centerCoordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+        camera.altitude = 1000
+        mapView.camera = camera
+        
+        let currentLocationAnnotation = MapPin(latitude: latitude!, longitude: longitude!, title: address!)
+        mapView.addAnnotation(currentLocationAnnotation)
     }
     
 }
+
+
+
+
+
+
+
