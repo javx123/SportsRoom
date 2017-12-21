@@ -11,6 +11,7 @@
 		05E624911FEAD703001AF76F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E624901FEAD703001AF76F /* Game.swift */; };
 		05FF4A0C1FEC3F7F00E9A65C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05FF4A0B1FEC3F7F00E9A65C /* GoogleService-Info.plist */; };
 		05FF4A0E1FEC4FCD00E9A65C /* FilePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF4A0D1FEC4FCD00E9A65C /* FilePaths.swift */; };
+		05FF4A101FEC670C00E9A65C /* StaticFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF4A0F1FEC670C00E9A65C /* StaticFunctions.swift */; };
 		2D1F4B4B1FE1F36400371D9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */; };
 		2D1F4B4D1FE1F36400371D9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4C1FE1F36400371D9B /* ViewController.swift */; };
 		2D1F4B501FE1F36400371D9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4E1FE1F36400371D9B /* Main.storyboard */; };
@@ -27,7 +28,6 @@
 		2D71A9BC1FE40C1E008C60F7 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9BB1FE40C1E008C60F7 /* DetailsViewController.swift */; };
 		2D71A9BE1FE40C7F008C60F7 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */; };
 		2D71A9C01FE40D1A008C60F7 /* SetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9BF1FE40D1A008C60F7 /* SetLocationViewController.swift */; };
-		2DE26FA81FEC3F6B00F20EC8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE26FA71FEC3F6B00F20EC8 /* GoogleService-Info.plist */; };
 		2DE26FAA1FEC5B2200F20EC8 /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE26FA91FEC5B2200F20EC8 /* MapPin.swift */; };
 		73738A0197A6DF179687D916 /* Pods_SportsRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */; };
 		C0F929AC1FE883F4007B1847 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */; };
@@ -38,6 +38,7 @@
 		05E624901FEAD703001AF76F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		05FF4A0B1FEC3F7F00E9A65C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		05FF4A0D1FEC4FCD00E9A65C /* FilePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePaths.swift; sourceTree = "<group>"; };
+		05FF4A0F1FEC670C00E9A65C /* StaticFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticFunctions.swift; sourceTree = "<group>"; };
 		2D1F4B471FE1F36400371D9B /* SportsRoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsRoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D1F4B4C1FE1F36400371D9B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +57,6 @@
 		2D71A9BB1FE40C1E008C60F7 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		2D71A9BF1FE40D1A008C60F7 /* SetLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLocationViewController.swift; sourceTree = "<group>"; };
-		2DE26FA71FEC3F6B00F20EC8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2DE26FA91FEC5B2200F20EC8 /* MapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPin.swift; sourceTree = "<group>"; };
 		5D6F5EC96DFB1C7034020205 /* Pods-SportsRoom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsRoom.release.xcconfig"; path = "Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom.release.xcconfig"; sourceTree = "<group>"; };
 		78F2554F652C596510C8CEB8 /* Pods-SportsRoom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsRoom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom.debug.xcconfig"; sourceTree = "<group>"; };
@@ -107,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				C05EC3131FEC286E00122C5C /* SportsRoom.entitlements */,
-
 				05FF4A0B1FEC3F7F00E9A65C /* GoogleService-Info.plist */,
 				2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */,
 				2D1F4B4C1FE1F36400371D9B /* ViewController.swift */,
@@ -117,6 +116,7 @@
 				C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */,
 				05E0A0D41FE83D16006BE816 /* LoginViewController.swift */,
 				05FF4A0D1FEC4FCD00E9A65C /* FilePaths.swift */,
+				05FF4A0F1FEC670C00E9A65C /* StaticFunctions.swift */,
 				2D71A9B11FE40B19008C60F7 /* JoinedGameViewController.swift */,
 				2D71A9B31FE40B22008C60F7 /* OwnedGameViewController.swift */,
 				2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */,
@@ -292,6 +292,7 @@
 				2D71A9B81FE40B87008C60F7 /* ProfileViewController.swift in Sources */,
 				2D71A9BC1FE40C1E008C60F7 /* DetailsViewController.swift in Sources */,
 				2D71A9B21FE40B19008C60F7 /* JoinedGameViewController.swift in Sources */,
+				05FF4A101FEC670C00E9A65C /* StaticFunctions.swift in Sources */,
 				05E624911FEAD703001AF76F /* Game.swift in Sources */,
 				2D40E3FC1FEB2D1300C24D72 /* User.swift in Sources */,
 				C0F929AC1FE883F4007B1847 /* LocationSearchTable.swift in Sources */,

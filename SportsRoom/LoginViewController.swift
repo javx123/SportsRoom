@@ -23,11 +23,11 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginPressed(_ sender: UIButton) {
         if emailTxtField.text == "" || passwordTxtField.text == "" {
-            displayAlert(title: "Missing information.", message: "Please provide both email and password.")
+            StaticFunctions.displayAlert(title: "Missing information.", message: "Please provide both email and password.", uiviewcontroller: self)
         } else {
             Auth.auth().signIn(withEmail: emailTxtField.text!, password: passwordTxtField.text!) { (user, error) in
                 if error != nil {
-                    self.displayAlert(title: "Error", message: error!.localizedDescription)
+                    StaticFunctions.displayAlert(title: "Error", message: error!.localizedDescription, uiviewcontroller: self)
                 } else {
                     print("Login Success!")
                     self.performSegue(withIdentifier: "toMain", sender: self)
@@ -38,12 +38,12 @@ class LoginViewController: UIViewController {
     
     @IBAction func signUpPressed(_ sender: UIButton) {
         if emailTxtField.text == "" || passwordTxtField.text == "" {
-            displayAlert(title: "Missing information.", message: "Please provide both email and password.")
+            StaticFunctions.displayAlert(title: "Missing information.", message: "Please provide both email and password.", uiviewcontroller: self)
         } else {
             
             Auth.auth().createUser(withEmail: emailTxtField.text!, password: passwordTxtField.text!) { (user, error) in
                 if error != nil {
-                    self.displayAlert(title: "Error", message: error!.localizedDescription)
+                    StaticFunctions.displayAlert(title: "Error", message: error!.localizedDescription, uiviewcontroller: self)
                 } else {
                     let ref = Database.database().reference().child("users").child(user!.uid)
                     let key = "email"
@@ -54,14 +54,5 @@ class LoginViewController: UIViewController {
                 }
             }
         }
-    }
-    
-    func displayAlert (title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    
-    
+    } 
 }

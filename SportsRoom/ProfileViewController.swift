@@ -47,7 +47,7 @@ class ProfileViewController: UIViewController {
             fieldsState(hidden: true)
             editUserInfo()
             updateUserInfo()
-            displayAlert(title: "Request completed", message: "User profile updated!")
+            StaticFunctions.displayAlert(title: "Request completed", message: "User profile updated!", uiviewcontroller: self)
         }
     }
     
@@ -84,12 +84,6 @@ class ProfileViewController: UIViewController {
             self.ageLbl.text = currentUser.age
 
         }
-    }
-    
-    func displayAlert (title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func backBtnPressed(_ sender: UIButton) {

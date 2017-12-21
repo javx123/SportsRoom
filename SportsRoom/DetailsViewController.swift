@@ -18,8 +18,8 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var skillLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
-    var currentGame: Game!
     
     enum ButtonState: String {
         case joined = "Leave Game"
@@ -30,11 +30,15 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var gameActionBtn: UIButton!
     
     var btnText : ButtonState?
+    var currentGame: Game!
+    var playerNamesArray = [String] ()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setButtonState(buttonState: btnText!)
         setLabels()
+        getPlayerNames()
     }
     
     func setLabels(){
@@ -64,17 +68,25 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //    Mark: - DataSource Properties
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    func getPlayerNames() {
+            for id in currentGame.allPlayersArray {
+                let ref = Database.database().reference().child("users").child(id)
+                ref.observeSingleEvent(of: .value) { (snapshot) in
+                    let user = User(snapshot: snapshot)
+                    self.playerNamesArray.append(user.name)
+                    self.tableView.reloadData()
+                }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return playerNamesArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath)
-        cell.textLabel?.text = "Player One"
+        let name = playerNamesArray[indexPath.row]
+        cell.textLabel?.text = name
         return cell
     }
     
@@ -122,8 +134,6 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
             ref.child(gameKey).removeValue()
         }
     }
-//    @IBAction func locationTapped(_ sender: UITapGestureRecognizer) {
-//    }
     
     @IBAction func showLocation(_ sender: UITapGestureRecognizer) {
         performSegue(withIdentifier: "showLocation", sender: self)
@@ -131,7 +141,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showLocation"{
-            var locationVC = segue.destination as! LocationViewController
+            let locationVC = segue.destination as! LocationViewController
             locationVC.address = currentGame.address
             locationVC.latitude = currentGame.latitude
             locationVC.longitude = currentGame.longitude
@@ -145,19 +155,4 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
 
 
 
-//let userID = Auth.auth().currentUser?.uid
-//let ref = Database.database().reference().child("users").child(userID!).child("joinedGames")
-//
-//ref.observeSingleEvent(of: .value) {(snapshot) in
-//    let value = snapshot.value as? [String:String] ?? [:]
-//    let gamesArrayID = Array(value.keys)
-//    for id in gamesArrayID {
-//        let ref = Database.database().reference().child("games").child(id)
-//        ref.observeSingleEvent(of: .value) { (snapshot) in
-//            let game = Game(snapshot: snapshot)
-//            self.gamesArrayDetails.append(game)
-//            self.tableView.reloadData()
-//        }
-//    }
-//}
 

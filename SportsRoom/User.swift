@@ -14,10 +14,10 @@ class User: NSObject {
     var email: String = ""
     var age: String = ""
     var bio: String = ""
-    var hostedGame: Dictionary <String, String>
-    var joinedGame: Dictionary <String, String>
-    var hostedGameArray = [String]()
-    var joinedGameArray = [String]()
+    var hostedGame: Dictionary <String, String>?
+    var joinedGame: Dictionary <String, String>?
+    var hostedGameArray: [String]?
+    var joinedGameArray: [String]?
 
     
     
@@ -27,10 +27,10 @@ class User: NSObject {
         self.email = gameDict["email"] as? String ?? ""
         self.age = gameDict["age"] as? String ?? ""
         self.bio = gameDict["bios"] as? String ?? ""
-        self.hostedGame = gameDict["hostedGames"] as! Dictionary <String, String>
-        self.hostedGameArray = Array(hostedGame.keys)
-        self.joinedGame = gameDict["joinedGames"] as! Dictionary <String, String>
-        self.joinedGameArray = Array(joinedGame.keys)
+        self.hostedGame = gameDict["hostedGames"] as? Dictionary <String, String>
+        self.hostedGameArray = Array(hostedGame!.keys)
+        self.joinedGame = gameDict["joinedGames"] as? Dictionary <String, String>
+        self.joinedGameArray = Array(joinedGame!.keys)
 }
 
 }

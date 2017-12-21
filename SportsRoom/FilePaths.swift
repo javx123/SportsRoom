@@ -9,6 +9,9 @@
 import Foundation
 import Firebase
 
+// This needs to be revisted - LL
+
+
 let userID = Auth.auth().currentUser?.uid
 
 let refUserJoined = Database.database().reference().child("users").child(userID!).child("joinedGames")
