@@ -11,7 +11,7 @@ import FirebaseDatabase
 
 class Game : NSObject {
     
-    var address = ""
+    var address: String = ""
     var latitude : Double = 0
     var longitude : Double = 0
     var cost = ""
@@ -23,14 +23,16 @@ class Game : NSObject {
     var sport = ""
     var title = ""
     var gameID = ""
-    var joinedPlayers: Dictionary <String, String>
-    var joinedPlayersArray = [String]()
-    var allPlayersArray: [String] = []
+    var joinedPlayers: Dictionary <String, String>?
+    var joinedPlayersArray: [String]?
+    var allPlayersArray = [String]()
     
 //    var players = [String]
     
     init(snapshot: DataSnapshot) {
-        let gameDict = snapshot.value as! [String:Any]
+        let gameDic: [String:Any]? = snapshot.value as? [String:Any]
+        guard let gameDict = gameDic else {return}
+        
         self.address = gameDict["address"] as? String ?? ""
         self.latitude = gameDict["latitude"] as? Double ?? 0
         self.longitude = gameDict["longitude"] as? Double ?? 0
@@ -44,8 +46,8 @@ class Game : NSObject {
         self.title = gameDict["title"] as? String ?? ""
         self.gameID = gameDict["gameID"] as? String ?? ""
         self.joinedPlayers = gameDict["joinedPlayers"] as? Dictionary <String, String> ?? [:]
-        self.joinedPlayersArray = Array(joinedPlayers.keys)
-        self.allPlayersArray = Array(joinedPlayersArray)
+        self.joinedPlayersArray = Array(joinedPlayers!.keys)
+        self.allPlayersArray = Array(joinedPlayersArray!)
         self.allPlayersArray.append(hostID)
         
 

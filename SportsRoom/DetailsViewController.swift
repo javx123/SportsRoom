@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseMessaging
 
 class DetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -98,6 +99,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         let refGame = Database.database().reference().child("games").child(gameKey).child("joinedPlayers")
         refGame.updateChildValues([userID!:"true"])
         
+        Messaging.messaging().subscribe(toTopic: "/topics/\(gameKey)")
     }
     
     func leaveGame () {
@@ -117,7 +119,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         let refUserHosted = Database.database().reference().child("users").child(userID!).child("hostedGames")
         refUserHosted.child(gameKey).removeValue()
         
-        for id in currentGame.joinedPlayersArray {
+        for id in currentGame.joinedPlayersArray! {
             let ref = Database.database().reference().child("users").child(id).child("joinedGames")
             ref.child(gameKey).removeValue()
         }
