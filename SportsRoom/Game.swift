@@ -23,6 +23,9 @@ class Game : NSObject {
     var sport = ""
     var title = ""
     var gameID = ""
+    var joinedPlayers: Dictionary <String, String>
+    var joinedPlayersArray = [String]()
+    
 //    var players = [String]
     
     init(snapshot: DataSnapshot) {
@@ -39,6 +42,10 @@ class Game : NSObject {
         self.sport = gameDict["sport"] as? String ?? ""
         self.title = gameDict["title"] as? String ?? ""
         self.gameID = gameDict["gameID"] as? String ?? ""
+        self.joinedPlayers = gameDict["joinedPlayers"] as? Dictionary <String, String> ?? [:]
+        self.joinedPlayersArray = Array(joinedPlayers.keys)
+
+
     }
     
     init(address: String, latitude: Double, longitude: Double, cost: String, date: String, hostID: String, notes: String, numberOfPlayers: Int, skillLevel: String, sport: String, title: String, gameID: String) {
@@ -54,6 +61,8 @@ class Game : NSObject {
         self.sport = sport
         self.title = title
         self.gameID = gameID
+        self.joinedPlayers = [:]
+        self.joinedPlayersArray = []
     }
 }
 
