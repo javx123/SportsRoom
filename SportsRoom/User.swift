@@ -6,17 +6,18 @@
 //  Copyright © 2017 Javier Xing. All rights reserved.
 //
 
-import UIKit
-import FirebaseDatabase
+//import UIKit
+//import FirebaseDatabase
+//
+//class User: NSObject {
+//    var name: String = ""
+//    var email: String = ""
+//    var age: Int = 0
+//    var bio: String = ""
+//    
+//    override init() {
+//        <#code#>
+//    }
+//
+//}
 
-class User: NSObject {
-    var name: String = ""
-    var email: String = ""
-    var age: Int = 0
-    var bio: String = ""
-    
-    override init() {
-        <#code#>
-    }
-
-}

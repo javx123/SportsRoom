@@ -16,15 +16,17 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     var searchedSport: String!
     var currentLocation: CLLocation?
-    var pulledData: Dictionary<String,Any> = [:]
+    var pulledGames: [Game]?
     var searchResults: [Game] = []
     {
         didSet{
             self.tableView.reloadData()
         }
     }
+    
     var locationManager: LocationManager
     let ref = Database.database().reference(withPath: "games/")
+    
     
     required init?(coder aDecoder: NSCoder) {
         self.locationManager = LocationManager(manager: CLLocationManager())
@@ -35,25 +37,27 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         callLocationManager()
+        pullMatchingGames()
     }
     
-    func callLocationManager(){
-        locationManager.getCurrentLocation { [weak self] (location: CLLocation) in
-            guard let welf = self else { return }
-            welf.pullFireBaseData {(gameCoordinates, searchedGame) in
-                
-                let distance = location.distance(from: gameCoordinates)
-                print(distance)
-                //            print(searchedGame)
-                if ( Int(distance) < 30000 ){
-                    self?.searchResults.append(searchedGame)
-                    print(welf.searchResults, "\n\n\n\n\n")
-                    //                                self?.tableView.reloadData()
-                }
-                
+    func pullMatchingGames() {
+        pullFireBaseData { (matchingGames) in
+            print(matchingGames)
+            DispatchQueue.main.async {
+                self.pulledGames = matchingGames
+                self.filterResults()
             }
         }
+    }
 
+    func callLocationManager () {
+        locationManager.getCurrentLocation { [weak self] (location: CLLocation) in
+            guard let  `self` = self else { return }
+            DispatchQueue.main.async {
+                self.currentLocation = location
+                self.filterResults()
+            }
+        }
     }
     
     
@@ -98,40 +102,58 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     
     
-    func pullFireBaseData(completion: @escaping (_ coordinate: CLLocation, _ gameDetails : Game) -> Void) {
+    func pullFireBaseData(completion: @escaping ( _ games : [Game]) -> Void) {
         
-        ref.queryOrdered(byChild: "sport").queryEqual(toValue: searchedSport.lowercased()).observe(.childAdded) { [weak self] (snapshot) in
-            
-            guard let welf = self else { return }
-//            entry = snapshot.value as! Dictionary
-//            for entry in welf.pulledData {
-//                let key = entry.0 as String
-//                if (key == "coordinates"){
-//                    let dicCoordinates = entry.1 as! Dictionary<String, Any>
-//                    let gameCoordinates = CLLocation(latitude: dicCoordinates["latitude"] as! CLLocationDegrees , longitude: dicCoordinates["longitude"] as! CLLocationDegrees)
-//                    print(gameCoordinates)
-//                    completion(gameCoordinates, welf.pulledData)
-//                    //                    print(self.pulledData)
-//                }
-                let game = Game(snapshot: snapshot)
-            let gameCoordinates = CLLocation(latitude: game.latitude as! CLLocationDegrees, longitude: game.longitude as! CLLocationDegrees)
-                completion(gameCoordinates, game)
-            
-            
+        ref.queryOrdered(byChild: "sport").queryEqual(toValue: searchedSport.lowercased()).observe(.value) { (snapshot) in
+            print(snapshot.value!)
+            let games = snapshot.value as! Dictionary <String, Any>
+            var matchingGames: [Game] = []
+            for game in games {
+                print(game.value)
+                let gameValue = game.value as! Dictionary <String, Any>
+                print(gameValue)
+                print("\n\n\n\n\n\n")
+                
+                let game = Game(address: gameValue["address"] as! String, latitude: gameValue["latitude"] as! Double, longitude: gameValue["longitude"] as! Double, cost: gameValue["cost"] as! String, date: gameValue["date"] as! String, hostID: gameValue["hostID"] as! String, notes: gameValue["notes"] as! String, numberOfPlayers: gameValue["numberOfPlayers"] as! Int, skillLevel: gameValue["skillLevel"] as! String, sport: gameValue["sport"] as! String, title: gameValue["title"] as! String, gameID: gameValue["gameID"] as! String)
+                
+                print(game)
+                matchingGames.append(game)
+            }
+            completion(matchingGames)
+        }
+        
+    }
+    
+    func filterResults() {
+        guard let `pulledGames` = pulledGames else { return }
+        guard let `currentLocation` = currentLocation else { return }
+        
+        for game in pulledGames {
+            let gameCoordinates = CLLocation(latitude: game.latitude, longitude: game.longitude)
+            let distance = currentLocation.distance(from: gameCoordinates)
+            print(distance)
+            if ( Int(distance) < 30000 ){
+                self.searchResults.append(game)
+                print(self.searchResults, "\n\n\n\n\n")
+                //                                self?.tableView.reloadData()
             }
         }
         
+    }
+    
     
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         ref.removeAllObservers()
-        self.pulledData.removeAll()
     }
     
     deinit {
         print("Deallocated")
     }
+    
+    
+    
     
     
 }
