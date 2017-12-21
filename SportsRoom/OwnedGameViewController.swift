@@ -23,6 +23,7 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getHostedGames()
+        tableView.reloadData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
