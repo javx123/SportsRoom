@@ -18,8 +18,8 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     let locationManager: CLLocationManager = CLLocationManager()
     let searchBar: UISearchBar = UISearchBar()
     var pulledData: Dictionary<String,Any> = [:]
-    var currentLocation:CLLocation?
-    var searchResultsArray: [Dictionary <String,Any>] = []
+    var currentUser: User?
+    
     
     var createButton = UIBarButtonItem()
     var profileButton = UIBarButtonItem()
@@ -37,6 +37,7 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
         self.navigationItem.titleView = searchBar
         self.searchBar.delegate = self
         observeFireBase()
+        createCurrentUser()
         configureView()
         enableLocationServices()
     }
@@ -62,8 +63,8 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        self.locationManager.requestLocation()
         performSegue(withIdentifier: "searchGame", sender: self)
+        searchBar.text = ""
     }
     
     
@@ -128,52 +129,15 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
             break
         }
     }
+    
+    func createCurrentUser () {
+        let userID = Auth.auth().currentUser?.uid
+        let ref = Database.database().reference().child("users").child(userID!)
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            self.currentUser = User(snapshot: snapshot)
+        }
+    }
 
-    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        print("Got location updates")
-//        let localValue: CLLocationCoordinate2D = manager.location!.coordinate
-//        currentLocation = CLLocation(latitude: localValue.latitude, longitude: localValue.longitude)
-////        print(currentLocation)
-//        pullFireBaseData { (gameCoordinates, searchedGame) in
-//            let distance = self.currentLocation?.distance(from: gameCoordinates)
-//            print(distance!)
-////            print(searchedGame)
-//            if ( Int(distance!) < 30000 ){
-//                self.searchResultsArray.append(searchedGame)
-//            }
-//        }
-//
-//    }
-//
-//    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-//        print("Failed to find user's location \(error.localizedDescription)")
-//    }
-    
-    
-    
-    
-//
-//    func pullFireBaseData(completion: @escaping (_ coordinate: CLLocation, _ gameDetails : Dictionary<String, Any>) -> Void) {
-//        let ref = Database.database().reference(withPath: "games/")
-//        ref.queryOrdered(byChild: "sport").queryEqual(toValue: searchBar.text?.lowercased()).observe(.childAdded) { (snapshot) in
-//            self.pulledData = snapshot.value as! Dictionary
-//            for entry in self.pulledData {
-//                let key = entry.0 as String
-//                if (key == "coordinates"){
-//                    let dicCoordinates = entry.1 as! Dictionary<String, Any>
-//                    let gameCoordinates = CLLocation(latitude: dicCoordinates["latitude"] as! CLLocationDegrees , longitude: dicCoordinates["longitude"] as! CLLocationDegrees)
-//                    print(gameCoordinates)
-//                    completion(gameCoordinates, self.pulledData)
-//                }
-////                print("test")
-//            }
-//
-//            print(self.pulledData)
-//
-//        }
-//
-//    }
     
     @IBAction func unwind(_ sender: UIStoryboardSegue) {
         
@@ -185,7 +149,21 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
             let searchController = navController.topViewController as! SearchResultsViewController
             
             searchController.searchedSport = searchBar.text
+            searchController.currentUser = currentUser
+            
+//            searchBar.setShowsCancelButton(false, animated: true)
+//            searchBar.endEditing(true)
+//            self.navigationItem.setLeftBarButton(profileButton, animated: true)
+//            self.navigationItem.setRightBarButton(createButton, animated: true)
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.endEditing(true)
+        self.navigationItem.setLeftBarButton(profileButton, animated: true)
+        self.navigationItem.setRightBarButton(createButton, animated: true)
     }
     
     

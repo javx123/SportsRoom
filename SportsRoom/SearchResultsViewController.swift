@@ -14,6 +14,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet weak var tableView: UITableView!
     
+    var currentUser: User?
     var searchedSport: String!
     var currentLocation: CLLocation?
     var pulledGames: [Game]?
@@ -46,10 +47,11 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             DispatchQueue.main.async {
                 self.pulledGames = matchingGames
                 self.filterResults()
+                self.ref.removeAllObservers()
             }
         }
     }
-
+    
     func callLocationManager () {
         locationManager.getCurrentLocation { [weak self] (location: CLLocation) in
             guard let  `self` = self else { return }
@@ -61,25 +63,12 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "search") {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let game = searchResults[indexPath.row]
-                let VC2 : DetailsViewController = segue.destination as! DetailsViewController
-                VC2.btnText =  DetailsViewController.ButtonState.search
-                VC2.currentGame = game
-            }
-        }
-    }
-    
-    
     //    Mark: - Datasource methods
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return searchResults.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        //        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath)
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as? SearchTableViewCell else{fatalError("The dequeued cell is not an instance of SearchTableViewCell.")}
         let entry: Game? = searchResults[indexPath.row]
         
@@ -132,27 +121,24 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             let distance = currentLocation.distance(from: gameCoordinates)
             print(distance)
             if ( Int(distance) < 30000 ){
-                self.searchResults.append(game)
-                print(self.searchResults, "\n\n\n\n\n")
-                //                                self?.tableView.reloadData()
+                if !(currentUser!.joinedGameArray.contains(game.gameID)) && !(currentUser!.hostedGameArray.contains(game.gameID)) {
+                    self.searchResults.append(game)
+                    print(self.searchResults, "\n\n\n\n\n")
+                }
             }
         }
         
     }
     
-    
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-        ref.removeAllObservers()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "search") {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let game = searchResults[indexPath.row]
+                let VC2 : DetailsViewController = segue.destination as! DetailsViewController
+                VC2.btnText =  DetailsViewController.ButtonState.search
+                VC2.currentGame = game
+            }
+        }
     }
-    
-    deinit {
-        print("Deallocated")
-    }
-    
-    
-    
-    
     
 }
