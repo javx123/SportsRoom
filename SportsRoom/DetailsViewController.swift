@@ -45,6 +45,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         skillLabel.text = currentGame.skillLevel
         costLabel.text = currentGame.cost
         notesLabel.text = currentGame.notes
+        locationLabel.isUserInteractionEnabled = true
     }
     
     func setButtonState(buttonState : ButtonState) {
@@ -128,6 +129,21 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
 //    let refUserJoined = Database.database().reference().child("users").child(userID!).child("joinedGames").child(gameKey)
 //        refUserJoined.removeValue()
 
+    }
+//    @IBAction func locationTapped(_ sender: UITapGestureRecognizer) {
+//    }
+    
+    @IBAction func showLocation(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "showLocation", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showLocation"{
+            var locationVC = segue.destination as! LocationViewController
+            locationVC.address = currentGame.address
+            locationVC.latitude = currentGame.latitude
+            locationVC.longitude = currentGame.longitude
+        }
     }
 }
 
