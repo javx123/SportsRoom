@@ -77,15 +77,12 @@ class ProfileViewController: UIViewController {
         let userID = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("users").child(userID!)
         ref.observeSingleEvent(of: .value) { (snapshot) in
-            let value = snapshot.value as? NSDictionary
-            let email = value?[self.keyEmail] as? String ?? ""
-            let name = value?[self.keyName] as? String ?? ""
-            let bios = value?[self.keyBios] as? String ?? ""
-            let age = value?[self.keyAge] as? String ?? ""
-            self.emailLbl.text = email
-            self.nameLbl.text = name
-            self.biosLbl.text = bios
-            self.ageLbl.text = age
+            let currentUser = User(snapshot: snapshot)
+            self.emailLbl.text = currentUser.email
+            self.nameLbl.text = currentUser.name
+            self.biosLbl.text = currentUser.bio
+            self.ageLbl.text = currentUser.age
+
         }
     }
     
