@@ -12,8 +12,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager?
     
-//    var counter = 0
-    
     init(manager: CLLocationManager) {
         self.locationManager = manager
         super.init()
@@ -40,10 +38,4 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         print("Error: \(error.localizedDescription)")
     }
     
-//    deinit {
-//        locationManager?.stopUpdatingLocation()
-//        locationManager?.delegate = nil
-//        locationManager = nil
-//        print(#line)
-//    }
 }
