@@ -15,6 +15,7 @@
 		2D1F4B521FE1F36400371D9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B511FE1F36400371D9B /* Assets.xcassets */; };
 		2D1F4B551FE1F36400371D9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B531FE1F36400371D9B /* LaunchScreen.storyboard */; };
 		2D1F4B5D1FE1F5EC00371D9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B5C1FE1F5EC00371D9B /* GoogleService-Info.plist */; };
+		2D40E3FC1FEB2D1300C24D72 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D40E3FB1FEB2D1300C24D72 /* User.swift */; };
 		2D47D2461FE9D9A50067250B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D47D2451FE9D9A50067250B /* LocationManager.swift */; };
 		2D47D2481FEA1FEA0067250B /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D47D2471FEA1FEA0067250B /* SearchTableViewCell.swift */; };
 		2D71A9B21FE40B19008C60F7 /* JoinedGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9B11FE40B19008C60F7 /* JoinedGameViewController.swift */; };
@@ -40,6 +41,7 @@
 		2D1F4B541FE1F36400371D9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D1F4B561FE1F36400371D9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D1F4B5C1FE1F5EC00371D9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		2D40E3FB1FEB2D1300C24D72 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2D47D2451FE9D9A50067250B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2D47D2471FEA1FEA0067250B /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		2D71A9B11FE40B19008C60F7 /* JoinedGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedGameViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */,
 				2D1F4B4C1FE1F36400371D9B /* ViewController.swift */,
 				05E624901FEAD703001AF76F /* Game.swift */,
+				2D40E3FB1FEB2D1300C24D72 /* User.swift */,
 				2D1F4B4E1FE1F36400371D9B /* Main.storyboard */,
 				C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */,
 				05E0A0D41FE83D16006BE816 /* LoginViewController.swift */,
@@ -272,6 +275,7 @@
 				2D71A9BC1FE40C1E008C60F7 /* DetailsViewController.swift in Sources */,
 				2D71A9B21FE40B19008C60F7 /* JoinedGameViewController.swift in Sources */,
 				05E624911FEAD703001AF76F /* Game.swift in Sources */,
+				2D40E3FC1FEB2D1300C24D72 /* User.swift in Sources */,
 				C0F929AC1FE883F4007B1847 /* LocationSearchTable.swift in Sources */,
 				2D71A9C01FE40D1A008C60F7 /* SetLocationViewController.swift in Sources */,
 				2D71A9B41FE40B22008C60F7 /* OwnedGameViewController.swift in Sources */,
