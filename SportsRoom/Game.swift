@@ -23,6 +23,7 @@ class Game : NSObject {
     var sport = ""
     var title = ""
     var gameID = ""
+    var players = []
     
     init(snapshot: DataSnapshot) {
         let gameDict = snapshot.value as! [String:Any]
