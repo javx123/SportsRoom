@@ -25,6 +25,7 @@ class Game : NSObject {
     var gameID = ""
     var joinedPlayers: Dictionary <String, String>
     var joinedPlayersArray = [String]()
+    var allPlayersArray: [String] = []
     
 //    var players = [String]
     
@@ -44,6 +45,9 @@ class Game : NSObject {
         self.gameID = gameDict["gameID"] as? String ?? ""
         self.joinedPlayers = gameDict["joinedPlayers"] as? Dictionary <String, String> ?? [:]
         self.joinedPlayersArray = Array(joinedPlayers.keys)
+        self.allPlayersArray = Array(joinedPlayersArray)
+        self.allPlayersArray.append(hostID)
+        
 
 
     }
@@ -63,6 +67,7 @@ class Game : NSObject {
         self.gameID = gameID
         self.joinedPlayers = [:]
         self.joinedPlayersArray = []
+        self.allPlayersArray = []
     }
 }
 

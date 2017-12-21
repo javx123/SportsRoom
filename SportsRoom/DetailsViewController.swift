@@ -78,15 +78,15 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @IBAction func gameActionPressed(_ sender: UIButton) {
-            switch btnText! {
-            case .hosted:
-                cancelGame()
-            case .joined:
-                leaveGame()
-            case .search:
-                joinGame()
+        switch btnText! {
+        case .hosted:
+            cancelGame()
+        case .joined:
+            leaveGame()
+        case .search:
+            joinGame()
         }
-            dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     func joinGame () {
@@ -119,15 +119,9 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         for id in currentGame.joinedPlayersArray {
             let ref = Database.database().reference().child("users").child(id).child("joinedGames")
             ref.child(gameKey).removeValue()
-            }
         }
-        
-        
-
-//    let refUserJoined = Database.database().reference().child("users").child(userID!).child("joinedGames").child(gameKey)
-//        refUserJoined.removeValue()
-
     }
+}
 
 
 
