@@ -118,3 +118,25 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
 //        refUserJoined.removeValue()
     }
 }
+
+
+
+
+
+
+//let userID = Auth.auth().currentUser?.uid
+//let ref = Database.database().reference().child("users").child(userID!).child("joinedGames")
+//
+//ref.observeSingleEvent(of: .value) {(snapshot) in
+//    let value = snapshot.value as? [String:String] ?? [:]
+//    let gamesArrayID = Array(value.keys)
+//    for id in gamesArrayID {
+//        let ref = Database.database().reference().child("games").child(id)
+//        ref.observeSingleEvent(of: .value) { (snapshot) in
+//            let game = Game(snapshot: snapshot)
+//            self.gamesArrayDetails.append(game)
+//            self.tableView.reloadData()
+//        }
+//    }
+//}
+
