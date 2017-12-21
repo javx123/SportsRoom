@@ -47,7 +47,6 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
         
-    
         self.navigationItem.setLeftBarButton(nil, animated: true)
         self.navigationItem.setRightBarButton(nil, animated: true)
     }
@@ -57,6 +56,7 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
         searchBar.text = ""
         searchBar.setShowsCancelButton(false, animated: true)
         searchBar.endEditing(true)
+        
         self.navigationItem.setLeftBarButton(profileButton, animated: true)
         self.navigationItem.setRightBarButton(createButton, animated: true)
     }
