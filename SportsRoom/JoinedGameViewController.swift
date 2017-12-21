@@ -26,6 +26,7 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getJoinedGames()
+        tableView.reloadData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {

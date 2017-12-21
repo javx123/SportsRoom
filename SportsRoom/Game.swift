@@ -23,13 +23,13 @@ class Game : NSObject {
     var sport = ""
     var title = ""
     var gameID = ""
+//    var players = [String]
     
     init(snapshot: DataSnapshot) {
         let gameDict = snapshot.value as! [String:Any]
         self.address = gameDict["address"] as? String ?? ""
-        let coordinatesDict = gameDict["coordinates"] as! [String:Any]
-        self.latitude = coordinatesDict["latitude"] as? Double ?? 0
-        self.longitude = coordinatesDict["longitude"] as? Double ?? 0
+        self.latitude = gameDict["latitude"] as? Double ?? 0
+        self.longitude = gameDict["longitude"] as? Double ?? 0
         self.cost = gameDict["cost"] as? String ?? ""
         self.date = gameDict["date"] as? String ?? ""
         self.hostID = gameDict["hostID"] as? String ?? ""
@@ -40,4 +40,23 @@ class Game : NSObject {
         self.title = gameDict["title"] as? String ?? ""
         self.gameID = gameDict["gameID"] as? String ?? ""
     }
+    
+    init(address: String, latitude: Double, longitude: Double, cost: String, date: String, hostID: String, notes: String, numberOfPlayers: Int, skillLevel: String, sport: String, title: String, gameID: String) {
+        self.address = address
+        self.latitude = latitude
+        self.longitude = longitude
+        self.cost = cost
+        self.date = date
+        self.hostID = hostID
+        self.notes = notes
+        self.numberOfPlayers = numberOfPlayers
+        self.skillLevel = skillLevel
+        self.sport = sport
+        self.title = title
+        self.gameID = gameID
+    }
 }
+
+
+
+
