@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		05E0A0D51FE83D16006BE816 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E0A0D41FE83D16006BE816 /* LoginViewController.swift */; };
 		05E624911FEAD703001AF76F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E624901FEAD703001AF76F /* Game.swift */; };
+		05FF4A0C1FEC3F7F00E9A65C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05FF4A0B1FEC3F7F00E9A65C /* GoogleService-Info.plist */; };
+		05FF4A0E1FEC4FCD00E9A65C /* FilePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF4A0D1FEC4FCD00E9A65C /* FilePaths.swift */; };
 		2D1F4B4B1FE1F36400371D9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */; };
 		2D1F4B4D1FE1F36400371D9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4C1FE1F36400371D9B /* ViewController.swift */; };
 		2D1F4B501FE1F36400371D9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4E1FE1F36400371D9B /* Main.storyboard */; };
@@ -26,13 +28,14 @@
 		2D71A9BE1FE40C7F008C60F7 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */; };
 		2D71A9C01FE40D1A008C60F7 /* SetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9BF1FE40D1A008C60F7 /* SetLocationViewController.swift */; };
 		73738A0197A6DF179687D916 /* Pods_SportsRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */; };
-		C05EC3151FEC3B7200122C5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C05EC3141FEC3B7200122C5C /* GoogleService-Info.plist */; };
 		C0F929AC1FE883F4007B1847 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		05E0A0D41FE83D16006BE816 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		05E624901FEAD703001AF76F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		05FF4A0B1FEC3F7F00E9A65C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		05FF4A0D1FEC4FCD00E9A65C /* FilePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePaths.swift; sourceTree = "<group>"; };
 		2D1F4B471FE1F36400371D9B /* SportsRoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsRoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D1F4B4C1FE1F36400371D9B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +57,6 @@
 		5D6F5EC96DFB1C7034020205 /* Pods-SportsRoom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsRoom.release.xcconfig"; path = "Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom.release.xcconfig"; sourceTree = "<group>"; };
 		78F2554F652C596510C8CEB8 /* Pods-SportsRoom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsRoom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom.debug.xcconfig"; sourceTree = "<group>"; };
 		C05EC3131FEC286E00122C5C /* SportsRoom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SportsRoom.entitlements; sourceTree = "<group>"; };
-		C05EC3141FEC3B7200122C5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsRoom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -101,7 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				C05EC3131FEC286E00122C5C /* SportsRoom.entitlements */,
-				C05EC3141FEC3B7200122C5C /* GoogleService-Info.plist */,
+				05FF4A0B1FEC3F7F00E9A65C /* GoogleService-Info.plist */,
 				2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */,
 				2D1F4B4C1FE1F36400371D9B /* ViewController.swift */,
 				05E624901FEAD703001AF76F /* Game.swift */,
@@ -109,6 +111,7 @@
 				2D1F4B4E1FE1F36400371D9B /* Main.storyboard */,
 				C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */,
 				05E0A0D41FE83D16006BE816 /* LoginViewController.swift */,
+				05FF4A0D1FEC4FCD00E9A65C /* FilePaths.swift */,
 				2D71A9B11FE40B19008C60F7 /* JoinedGameViewController.swift */,
 				2D71A9B31FE40B22008C60F7 /* OwnedGameViewController.swift */,
 				2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */,
@@ -203,7 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D1F4B551FE1F36400371D9B /* LaunchScreen.storyboard in Resources */,
-				C05EC3151FEC3B7200122C5C /* GoogleService-Info.plist in Resources */,
+				05FF4A0C1FEC3F7F00E9A65C /* GoogleService-Info.plist in Resources */,
 				2D1F4B521FE1F36400371D9B /* Assets.xcassets in Resources */,
 				2D1F4B501FE1F36400371D9B /* Main.storyboard in Resources */,
 			);
@@ -292,6 +295,7 @@
 				2D1F4B4B1FE1F36400371D9B /* AppDelegate.swift in Sources */,
 				2D71A9BE1FE40C7F008C60F7 /* LocationViewController.swift in Sources */,
 				2D71A9BA1FE40BF4008C60F7 /* SearchResultsViewController.swift in Sources */,
+				05FF4A0E1FEC4FCD00E9A65C /* FilePaths.swift in Sources */,
 				2D71A9B61FE40B6A008C60F7 /* HostGameViewController.swift in Sources */,
 				05E0A0D51FE83D16006BE816 /* LoginViewController.swift in Sources */,
 				2D47D2461FE9D9A50067250B /* LocationManager.swift in Sources */,

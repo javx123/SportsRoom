@@ -29,7 +29,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var gameActionBtn: UIButton!
     
-    var btnText : ButtonState? = nil
+    var btnText : ButtonState?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,41 +78,34 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @IBAction func gameActionPressed(_ sender: UIButton) {
-        if let buttonState = btnText {
-            switch buttonState {
-            case .hosted:
-                cancelGame()
-            case .joined:
-                leaveGame()
-            case .search:
-                joinGame()
-            }
-            dismiss(animated: true, completion: nil)
+        switch btnText! {
+        case .hosted:
+            cancelGame()
+        case .joined:
+            leaveGame()
+        case .search:
+            joinGame()
         }
-//        if sender.title(for: UIControlState.normal) == ButtonState.joined.rawValue {
-//            leaveGame()
-//        }
-//        if btnText == DetailsViewController.ButtonState(rawValue: "Cancel Game") {
-//            cancelGame()
-//        }
-//        if btnText == DetailsViewController.ButtonState(rawValue: "Join Game") {
-//            joinGame()
-//        }
+        dismiss(animated: true, completion: nil)
     }
     
     func joinGame () {
         let userID = Auth.auth().currentUser?.uid
         let gameKey = currentGame.gameID
         let refUser = Database.database().reference().child("users").child(userID!).child("joinedGames")
-        let joinedGamesKey = gameKey
-        refUser.updateChildValues([joinedGamesKey:"true"])
+        refUser.updateChildValues([gameKey:"true"])
+        let refGame = Database.database().reference().child("games").child(gameKey).child("joinedPlayers")
+        refGame.updateChildValues([userID!:"true"])
+        
     }
     
     func leaveGame () {
         let userID = Auth.auth().currentUser?.uid
         let gameKey = currentGame.gameID
-        let refUser = Database.database().reference().child("users").child(userID!).child("joinedGames").child(gameKey)
-        refUser.removeValue()
+        let refUser = Database.database().reference().child("users").child(userID!).child("joinedGames")
+        refUser.child(gameKey).removeValue()
+        let refGame = Database.database().reference().child("games").child(gameKey).child("joinedPlayers")
+        refGame.child(userID!).removeValue()
     }
     
     func cancelGame () {
@@ -120,16 +113,16 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         let gameKey = currentGame.gameID
         let refGame = Database.database().reference().child("games").child(gameKey)
         refGame.removeValue()
+        let refUserHosted = Database.database().reference().child("users").child(userID!).child("hostedGames")
+        refUserHosted.child(gameKey).removeValue()
         
-        let refUserHosted = Database.database().reference().child("users").child(userID!).child("hostedGames").child(gameKey)
-        refUserHosted.removeValue()
-        
-
-//    let refUserJoined = Database.database().reference().child("users").child(userID!).child("joinedGames").child(gameKey)
-//        refUserJoined.removeValue()
-
+        for id in currentGame.joinedPlayersArray {
+            let ref = Database.database().reference().child("users").child(id).child("joinedGames")
+            ref.child(gameKey).removeValue()
+        }
     }
 }
+
 
 
 
