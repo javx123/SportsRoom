@@ -77,45 +77,57 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
     
-    
     @IBAction func gameActionPressed(_ sender: UIButton) {
-        if btnText == DetailsViewController.ButtonState(rawValue: "Leave Game") {
-            leaveGame()
+        if let buttonState = btnText {
+            switch buttonState {
+            case .hosted:
+                cancelGame()
+            case .joined:
+                leaveGame()
+            case .search:
+                joinGame()
+            }
+            dismiss(animated: true, completion: nil)
         }
-        if btnText == DetailsViewController.ButtonState(rawValue: "Cancel Game") {
-            cancelGame()
-        }
-        if btnText == DetailsViewController.ButtonState(rawValue: "Join Game") {
-            joinGame()
-        }
+//        if sender.title(for: UIControlState.normal) == ButtonState.joined.rawValue {
+//            leaveGame()
+//        }
+//        if btnText == DetailsViewController.ButtonState(rawValue: "Cancel Game") {
+//            cancelGame()
+//        }
+//        if btnText == DetailsViewController.ButtonState(rawValue: "Join Game") {
+//            joinGame()
+//        }
     }
     
     func joinGame () {
-      let userID = Auth.auth().currentUser?.uid
-      let gameKey = currentGame.gameID
+        let userID = Auth.auth().currentUser?.uid
+        let gameKey = currentGame.gameID
         let refUser = Database.database().reference().child("users").child(userID!).child("joinedGames")
         let joinedGamesKey = gameKey
         refUser.updateChildValues([joinedGamesKey:"true"])
     }
     
     func leaveGame () {
-    let userID = Auth.auth().currentUser?.uid
-    let gameKey = currentGame.gameID
-    let refUser = Database.database().reference().child("users").child(userID!).child("joinedGames").child(gameKey)
+        let userID = Auth.auth().currentUser?.uid
+        let gameKey = currentGame.gameID
+        let refUser = Database.database().reference().child("users").child(userID!).child("joinedGames").child(gameKey)
         refUser.removeValue()
     }
     
     func cancelGame () {
-    let userID = Auth.auth().currentUser?.uid
-    let gameKey = currentGame.gameID
-    let refGame = Database.database().reference().child("games").child(gameKey)
-    refGame.removeValue()
-
-    let refUserHosted = Database.database().reference().child("users").child(userID!).child("hostedGames").child(gameKey)
-    refUserHosted.removeValue()
+        let userID = Auth.auth().currentUser?.uid
+        let gameKey = currentGame.gameID
+        let refGame = Database.database().reference().child("games").child(gameKey)
+        refGame.removeValue()
         
+        let refUserHosted = Database.database().reference().child("users").child(userID!).child("hostedGames").child(gameKey)
+        refUserHosted.removeValue()
+        
+
 //    let refUserJoined = Database.database().reference().child("users").child(userID!).child("joinedGames").child(gameKey)
 //        refUserJoined.removeValue()
+
     }
 }
 
