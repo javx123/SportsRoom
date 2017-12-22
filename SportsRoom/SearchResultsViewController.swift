@@ -90,7 +90,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     
     func pullFireBaseData(completion: @escaping ( _ games : [Game]) -> Void) {
-        
+    
         ref.queryOrdered(byChild: "sport").queryEqual(toValue: searchedSport.lowercased()).observe(.value) { (snapshot) in
             print(snapshot.value!)
             let pulledGames = snapshot.value as? Dictionary <String, Any>
@@ -101,16 +101,16 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 let gameValue = game.value as! Dictionary <String, Any>
                 print(gameValue)
                 print("\n\n\n\n\n\n")
-                
-                let game = Game(address: gameValue["address"] as! String, latitude: gameValue["latitude"] as! Double, longitude: gameValue["longitude"] as! Double, cost: gameValue["cost"] as! String, date: gameValue["date"] as! String, hostID: gameValue["hostID"] as! String, notes: gameValue["notes"] as! String, numberOfPlayers: gameValue["numberOfPlayers"] as! Int, skillLevel: gameValue["skillLevel"] as! String, sport: gameValue["sport"] as! String, title: gameValue["title"] as! String, gameID: gameValue["gameID"] as! String)
-                
+                let game = Game(gameInfo: gameValue)
+    
                 print(game)
                 matchingGames.append(game)
             }
             completion(matchingGames)
         }
-        
+    
     }
+    
     
     func filterResults() {
         guard let `pulledGames` = pulledGames else { return }
