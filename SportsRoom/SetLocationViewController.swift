@@ -70,6 +70,7 @@ class SetLocationViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func backButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+
 }
 
 extension SetLocationViewController: HandleMapSearch {
@@ -97,4 +98,34 @@ extension SetLocationViewController: HandleMapSearch {
         longitudeDouble = (selectedPin?.coordinate.longitude)!
         latitudeDouble = (selectedPin?.coordinate.latitude)!
     }
+}
+
+extension SetLocationViewController : MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
+        if annotation is MKUserLocation {
+            //return nil so map view draws "blue dot" for standard user location
+            return nil
+        }
+        let reuseId = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+        pinView?.pinTintColor = UIColor.red
+        pinView?.canShowCallout = true
+        let smallSquare = CGSize(width: 90, height: 90)
+        let point = CGPoint(x: -100, y: -100)
+        let button = UIButton(frame: CGRect(origin: point, size: smallSquare))
+        button.setBackgroundImage(UIImage(named: "car120"), for: .normal)
+        button.addTarget(self, action: #selector(getDirections), for: .touchUpInside)
+        pinView?.leftCalloutAccessoryView = button
+        return pinView
+    }
+    
+    @objc func getDirections(){
+        if let selectPin = selectedPin {
+            let mapItem = MKMapItem(placemark: selectPin)
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+            mapItem.openInMaps(launchOptions: launchOptions)
+        }
+    }
+    
 }
