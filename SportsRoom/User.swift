@@ -27,9 +27,11 @@ class User: NSObject {
         self.email = gameDict["email"] as? String ?? ""
         self.age = gameDict["age"] as? String ?? ""
         self.bio = gameDict["bios"] as? String ?? ""
-        self.hostedGame = gameDict["hostedGames"] as? Dictionary <String, String>
+//        self.hostedGame = gameDict["hostedGames"] as? Dictionary <String, String>
+//        self.hostedGameArray = Array(hostedGame!.keys)
+        self.hostedGame = gameDict["hostedGames"] as? Dictionary <String, String> ?? [:]
         self.hostedGameArray = Array(hostedGame!.keys)
-        self.joinedGame = gameDict["joinedGames"] as? Dictionary <String, String>
+        self.joinedGame = gameDict["joinedGames"] as? Dictionary <String, String> ?? [:]
         self.joinedGameArray = Array(joinedGame!.keys)
 }
 

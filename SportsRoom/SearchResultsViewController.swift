@@ -121,7 +121,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             let distance = currentLocation.distance(from: gameCoordinates)
             print(distance)
             if ( Int(distance) < 30000 ){
-                if !(currentUser!.joinedGameArray.contains(game.gameID)) && !(currentUser!.hostedGameArray.contains(game.gameID)) {
+                if !(currentUser!.joinedGameArray!.contains(game.gameID)) && !(currentUser!.hostedGameArray!.contains(game.gameID)) {
                     self.searchResults.append(game)
                     print(self.searchResults, "\n\n\n\n\n")
                 }
