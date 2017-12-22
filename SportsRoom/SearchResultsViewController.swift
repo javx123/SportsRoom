@@ -90,7 +90,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     
     func pullFireBaseData(completion: @escaping ( _ games : [Game]) -> Void) {
-    
         ref.queryOrdered(byChild: "sport").queryEqual(toValue: searchedSport.lowercased()).observe(.value) { (snapshot) in
             print(snapshot.value!)
             let pulledGames = snapshot.value as? Dictionary <String, Any>
@@ -108,7 +107,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             }
             completion(matchingGames)
         }
-    
     }
     
     
@@ -122,8 +120,10 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             print(distance)
             if ( Int(distance) < 30000 ){
                 if !(currentUser!.joinedGameArray!.contains(game.gameID)) && !(currentUser!.hostedGameArray!.contains(game.gameID)) {
-                    self.searchResults.append(game)
-                    print(self.searchResults, "\n\n\n\n\n")
+                    if (game.joinedPlayersArray!.count < game.numberOfPlayers) {
+                        self.searchResults.append(game)
+                        print(self.searchResults, "\n\n\n\n\n")
+                    }
                 }
             }
         }
