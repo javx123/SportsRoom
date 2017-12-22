@@ -103,7 +103,6 @@ extension SetLocationViewController: HandleMapSearch {
 extension SetLocationViewController : MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
         if annotation is MKUserLocation {
-            //return nil so map view draws "blue dot" for standard user location
             return nil
         }
         let reuseId = "pin"
@@ -111,10 +110,10 @@ extension SetLocationViewController : MKMapViewDelegate {
         pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
         pinView?.pinTintColor = UIColor.red
         pinView?.canShowCallout = true
-        let smallSquare = CGSize(width: 90, height: 90)
-        let point = CGPoint(x: -100, y: -100)
+        let smallSquare = CGSize(width: 47, height: 47)
+        let point = CGPoint(x: 0, y: 0)
         let button = UIButton(frame: CGRect(origin: point, size: smallSquare))
-        button.setBackgroundImage(UIImage(named: "car120"), for: .normal)
+        button.setBackgroundImage(UIImage(named: "car700"), for: .normal)
         button.addTarget(self, action: #selector(getDirections), for: .touchUpInside)
         pinView?.leftCalloutAccessoryView = button
         return pinView
