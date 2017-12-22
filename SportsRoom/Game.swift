@@ -54,22 +54,23 @@ class Game : NSObject {
 
     }
     
-    init(address: String, latitude: Double, longitude: Double, cost: String, date: String, hostID: String, notes: String, numberOfPlayers: Int, skillLevel: String, sport: String, title: String, gameID: String) {
-        self.address = address
-        self.latitude = latitude
-        self.longitude = longitude
-        self.cost = cost
-        self.date = date
-        self.hostID = hostID
-        self.notes = notes
-        self.numberOfPlayers = numberOfPlayers
-        self.skillLevel = skillLevel
-        self.sport = sport
-        self.title = title
-        self.gameID = gameID
-        self.joinedPlayers = [:]
-        self.joinedPlayersArray = []
-        self.allPlayersArray = []
+    init(gameInfo: Dictionary <String, Any>) {
+        self.address = gameInfo["address"] as! String
+        self.latitude = gameInfo["latitude"] as! Double
+        self.longitude = gameInfo["longitude"] as! Double
+        self.cost = gameInfo["cost"] as! String
+        self.date = gameInfo["date"] as! String
+        self.hostID = gameInfo["hostID"] as! String
+        self.notes = gameInfo["notes"] as! String
+        self.numberOfPlayers = gameInfo["numberOfPlayers"] as! Int
+        self.skillLevel = gameInfo["skillLevel"] as! String
+        self.sport = gameInfo["sport"] as! String
+        self.title = gameInfo["title"] as! String
+        self.gameID = gameInfo["gameID"] as! String
+        self.joinedPlayers = gameInfo["joinedPlayers"] as? Dictionary <String, String> ?? [:]
+        self.joinedPlayersArray = Array(joinedPlayers!.keys)
+        self.allPlayersArray = Array(joinedPlayersArray!)
+        allPlayersArray.append(hostID)
     }
 }
 
