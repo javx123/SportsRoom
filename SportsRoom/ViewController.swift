@@ -19,12 +19,15 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     let searchBar: UISearchBar = UISearchBar()
     var pulledData: Dictionary<String,Any> = [:]
     var currentUser: User?
-    
-    
+    var customLocation: CLLocation?
+    var customAddress: String?
+    var searchRadius: Int?
+
     var createButton = UIBarButtonItem()
     var profileButton = UIBarButtonItem()
     
     @IBOutlet weak var addGameButton: UIBarButtonItem!
+    @IBOutlet weak var locationControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +43,13 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
         createCurrentUser()
         configureView()
         enableLocationServices()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if customAddress == nil || customLocation == nil {
+            locationControl.selectedSegmentIndex = 0
+        }
     }
     
     
@@ -137,12 +147,38 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
             self.currentUser = User(snapshot: snapshot)
         }
     }
-
     
-    @IBAction func unwind(_ sender: UIStoryboardSegue) {
-        
+    
+    @IBAction func locationOptions(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            customLocation = nil
+            customAddress = nil
+        case 1:
+            performSegue(withIdentifier: "searchLocation", sender: self)
+        default:
+            print("No matching segment")
+        }
     }
     
+    @IBAction func unwindFromMap (sender: UIStoryboardSegue) {
+        if sender.source is SetLocationViewController {
+            if let senderVC = sender.source as? SetLocationViewController {
+                customAddress = senderVC.addressString
+                customLocation = CLLocation(latitude: senderVC.latitudeDouble, longitude: senderVC.longitudeDouble) 
+            }
+            if customAddress == "" || (customLocation?.coordinate.latitude == 0.0 && customLocation?.coordinate.longitude == 0.0) {
+                locationControl.selectedSegmentIndex = 0
+                customAddress = nil
+                customLocation = nil
+            }
+        }
+    }
+    
+    @IBAction func unwindFromSearch (sender: UIStoryboardSegue){
+        
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "searchGame" {
             let navController = segue.destination as! UINavigationController
@@ -150,13 +186,17 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
             
             searchController.searchedSport = searchBar.text
             searchController.currentUser = currentUser
-            
-//            searchBar.setShowsCancelButton(false, animated: true)
-//            searchBar.endEditing(true)
-//            self.navigationItem.setLeftBarButton(profileButton, animated: true)
-//            self.navigationItem.setRightBarButton(createButton, animated: true)
+            searchController.searchLocation = customLocation
         }
+        
+        if segue.identifier == "searchLocation" {
+            let navController = segue.destination as! UINavigationController
+            let setLocationVC = navController.topViewController as! SetLocationViewController
+            setLocationVC.gamePurpose = SetLocationViewController.Purpose.searchGame
+        }
+        
     }
+    
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -165,7 +205,6 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
         self.navigationItem.setLeftBarButton(profileButton, animated: true)
         self.navigationItem.setRightBarButton(createButton, animated: true)
     }
-    
-    
+
 }
 

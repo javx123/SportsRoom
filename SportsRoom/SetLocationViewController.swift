@@ -18,6 +18,11 @@ class SetLocationViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    enum Purpose: String {
+        case searchGame
+        case createGame
+    }
+    
     let locationManager = CLLocationManager()
     var resultSearchController:UISearchController? = nil
     var selectedPin:MKPlacemark? = nil
@@ -25,6 +30,7 @@ class SetLocationViewController: UIViewController, CLLocationManagerDelegate {
     var addressString = String ()
     var longitudeDouble = Double ()
     var latitudeDouble = Double ()
+    var gamePurpose: Purpose?
     
     override func viewDidLoad() {
         super.viewDidLoad()

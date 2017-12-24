@@ -14,10 +14,12 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet weak var tableView: UITableView!
     
+    let ref = Database.database().reference(withPath: "games/")
     var currentUser: User?
     var searchedSport: String!
-    var currentLocation: CLLocation?
+    var searchLocation: CLLocation?
     var pulledGames: [Game]?
+    var locationManager: LocationManager
     var searchResults: [Game] = []
     {
         didSet{
@@ -25,8 +27,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    var locationManager: LocationManager
-    let ref = Database.database().reference(withPath: "games/")
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,7 +37,9 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        callLocationManager()
+        if searchLocation == nil {
+            callLocationManager()
+        }
         pullMatchingGames()
     }
     
@@ -56,7 +58,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         locationManager.getCurrentLocation { [weak self] (location: CLLocation) in
             guard let  `self` = self else { return }
             DispatchQueue.main.async {
-                self.currentLocation = location
+                self.searchLocation = location
                 self.filterResults()
             }
         }
@@ -112,11 +114,11 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     func filterResults() {
         guard let `pulledGames` = pulledGames else { return }
-        guard let `currentLocation` = currentLocation else { return }
+        guard let `searchLocation` = searchLocation else { return }
         
         for game in pulledGames {
             let gameCoordinates = CLLocation(latitude: game.latitude, longitude: game.longitude)
-            let distance = currentLocation.distance(from: gameCoordinates)
+            let distance = searchLocation.distance(from: gameCoordinates)
             print(distance)
             if ( Int(distance) < 30000 ){
                 if !(currentUser!.joinedGameArray!.contains(game.gameID)) && !(currentUser!.hostedGameArray!.contains(game.gameID)) {
@@ -127,7 +129,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 }
             }
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
