@@ -144,9 +144,6 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     func createCurrentUser () {
         let userID = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("users").child(userID!)
-//        ref.observeSingleEvent(of: .value) { (snapshot) in
-//            self.currentUser = User(snapshot: snapshot)
-//        }
         ref.observe(.value) { (snapshot) in
              self.currentUser = User(snapshot: snapshot)
         }
