@@ -23,6 +23,7 @@ class HostGameViewController: UIViewController {
     @IBOutlet weak var numberOfPlayersLabel: UILabel!
     @IBOutlet weak var notesTextField: UITextField!
     @IBOutlet weak var selectLocationLabel: UILabel!
+    @IBOutlet weak var selectedSportLabel: UILabel!
     
     var address = String()
     var longitude = Double()
@@ -40,6 +41,15 @@ class HostGameViewController: UIViewController {
                 longitude = senderVC.longitudeDouble
                 latitude = senderVC.latitudeDouble
                 selectLocationLabel.text = address
+            }
+            self.reloadInputViews()
+        }
+    }
+    
+    @IBAction func unwindFromSportSelection (sender: UIStoryboardSegue) {
+        if sender.source is SelectSportViewController {
+            if let senderVC = sender.source as? SelectSportViewController {
+                selectedSportLabel.text = senderVC.sportSelectionLabel.text
             }
             self.reloadInputViews()
         }
@@ -68,7 +78,7 @@ class HostGameViewController: UIViewController {
         // call the postGame method
         postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: sportTextField.text!.lowercased(), date:dateString, address:selectLocationLabel.text!, longitude:longitude, latitude:latitude, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!)
         
-       _ = navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     @IBAction func sliderChanged(_ sender: Any) {
