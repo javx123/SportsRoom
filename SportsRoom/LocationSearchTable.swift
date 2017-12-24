@@ -14,7 +14,6 @@ class LocationSearchTable : UITableViewController {
     var matchingItems:[MKMapItem] = []
     var mapView: MKMapView? = nil
     var handleMapSearchDelegate:HandleMapSearch? = nil
-    
 }
 
 extension LocationSearchTable : UISearchResultsUpdating {
