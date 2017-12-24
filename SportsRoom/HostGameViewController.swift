@@ -15,7 +15,6 @@ class HostGameViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var gameTitleTextField: UITextField!
-    @IBOutlet weak var sportTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var skillLevelControl: UISegmentedControl!
     @IBOutlet weak var costTextField: UITextField!
@@ -57,7 +56,6 @@ class HostGameViewController: UIViewController {
     
     @IBAction func screenTapped(_ sender: Any) {
         gameTitleTextField.resignFirstResponder()
-        sportTextField.resignFirstResponder()
         costTextField.resignFirstResponder()
         notesTextField.resignFirstResponder()
     }
@@ -76,7 +74,7 @@ class HostGameViewController: UIViewController {
         let skillLevelString = skillLevelControl.titleForSegment(at: skillLevelControl.selectedSegmentIndex)
         
         // call the postGame method
-        postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: sportTextField.text!.lowercased(), date:dateString, address:selectLocationLabel.text!, longitude:longitude, latitude:latitude, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!)
+        postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: selectedSportLabel.text!.lowercased(), date:dateString, address:selectLocationLabel.text!, longitude:longitude, latitude:latitude, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!)
         
         _ = navigationController?.popViewController(animated: true)
     }
