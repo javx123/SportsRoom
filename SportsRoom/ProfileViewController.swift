@@ -116,12 +116,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBAction func selectPicture(_ sender: Any) {
         let picker = UIImagePickerController()
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            picker.sourceType = .camera
-        }
-        else {
-            picker.sourceType = .photoLibrary
-        }
+        picker.sourceType = .photoLibrary
         let mediaTypes = UIImagePickerController.availableMediaTypes(for: picker.sourceType)
         picker.mediaTypes = mediaTypes ?? [String]()
         picker.delegate = self
