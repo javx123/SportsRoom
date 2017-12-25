@@ -15,7 +15,7 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var tableView: UITableView!
     
     var gamesArrayDetails = [Game]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -29,8 +29,8 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         gamesArrayDetails = [Game]()
-}
-
+    }
+    
     func getHostedGames () {
         let userID = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("users").child(userID!).child("hostedGames")
@@ -52,16 +52,18 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "hosted") {
             if let indexPath = tableView.indexPathForSelectedRow {
-            let game = gamesArrayDetails[indexPath.row]
-            let VC2 : DetailsViewController = segue.destination as! DetailsViewController
-            VC2.btnText =  DetailsViewController.ButtonState.hosted
-            VC2.currentGame = game
+                let game = gamesArrayDetails[indexPath.row]
+                let VC2 : DetailsViewController = segue.destination as! DetailsViewController
+                VC2.btnText =  DetailsViewController.ButtonState.hosted
+                VC2.currentGame = game
+            }
+        } else if (segue.identifier == "toChat") {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let game = gamesArrayDetails[indexPath.row]
+                let chatVC : ChatViewController = segue.destination as! ChatViewController
+                chatVC.currentGame = game
             }
         }
-    }
-    
-    @IBAction func chatBtnPressed(_ sender: UIButton) {
-        
     }
     
     

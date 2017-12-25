@@ -12,6 +12,7 @@ class OwnedGameTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var sportLabel: UILabel!
+    @IBOutlet weak var chatButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
