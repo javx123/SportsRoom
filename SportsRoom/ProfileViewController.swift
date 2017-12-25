@@ -37,6 +37,24 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUserInfo()
+        
+        let userID = Auth.auth().currentUser?.uid
+        let ref = Database.database().reference().child("users").child(userID!).child("profilePicture")
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            let snapshotValue = snapshot.value as? String
+            if snapshotValue == nil {
+                self.imageView.image = UIImage(named:"defaultimage")
+            } else {
+                self.imageURL = URL(string: snapshotValue!)
+                do {
+                self.imageData = try Data(contentsOf: self.imageURL!)
+                self.profileImage = UIImage(data: self.imageData)!
+                self.imageView.image = self.profileImage
+                } catch {
+                        print (error)
+                    }
+            }
+        }
     }
     
     @IBAction func editPressed(_ sender: UIButton) {
@@ -127,6 +145,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         // When the image has successfully uploaded, we get it's download URL
         self.imageString = (snapshot.metadata?.downloadURL()?.absoluteString)!
         print (self.imageString)
+            
+        let ref = Database.database().reference().child("users").child(userID!)
+        let profileKey = "profilePicture"
+            ref.updateChildValues([profileKey:self.imageString])
         self.setimage()
         }
         self.dismiss(animated: true, completion: nil)

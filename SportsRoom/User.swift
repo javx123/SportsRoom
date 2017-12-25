@@ -14,6 +14,7 @@ class User: NSObject {
     var email: String = ""
     var age: String = ""
     var bio: String = ""
+    var profileImageURLString: String = ""
     var hostedGame: Dictionary <String, String>?
     var joinedGame: Dictionary <String, String>?
     var hostedGameArray: [String]?
@@ -26,6 +27,7 @@ class User: NSObject {
         self.email = gameDict["email"] as? String ?? ""
         self.age = gameDict["age"] as? String ?? ""
         self.bio = gameDict["bios"] as? String ?? ""
+        self.profileImageURLString = gameDict["profilePicture"] as? String ?? ""
 //        self.hostedGame = gameDict["hostedGames"] as? Dictionary <String, String>
 //        self.hostedGameArray = Array(hostedGame!.keys)
         self.hostedGame = gameDict["hostedGames"] as? Dictionary <String, String> ?? [:]

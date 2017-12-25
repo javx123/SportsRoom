@@ -10,10 +10,13 @@ import UIKit
 
 class FriendProfileViewController: UIViewController {
     
+    @IBOutlet weak var imageView: UIImageView!
+    
     var name = String()
     var age = String()
     var email = String()
     var about = String()
+    var profilePhotoString: String?
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
@@ -26,6 +29,19 @@ class FriendProfileViewController: UIViewController {
         ageLabel.text = age
         emailLabel.text = email
         aboutLabel.text = about
+        
+        if profilePhotoString == "" {
+            imageView.image = UIImage(named:"defaultimage")
+        } else {
+            let imageURL = URL(string: profilePhotoString!)
+            do {
+                let imageData = try Data(contentsOf: imageURL!)
+                let profileImage = UIImage(data: imageData)!
+            imageView.image = profileImage
+            } catch {
+                print (error)
+            }
+    }
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {

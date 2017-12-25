@@ -42,6 +42,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     var playerAge = String ()
     var playerEmail = String ()
     var playerBio = String ()
+    var playerPhoto = String ()
 
     
     override func viewDidLoad() {
@@ -88,6 +89,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
                     self.playerAge = user.age
                     self.playerEmail = user.email
                     self.playerBio = user.bio
+                    self.playerPhoto = user.profileImageURLString
                     self.tableView.reloadData()
                 }
         }
@@ -163,10 +165,11 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         if segue.identifier == "showProfile"{
             let locationVC = segue.destination as! FriendProfileViewController
-            locationVC.name = playerName
-            locationVC.age = playerAge
-            locationVC.email = playerEmail
-            locationVC.about = playerBio
+        locationVC.name = playerName
+        locationVC.age = playerAge
+        locationVC.email = playerEmail
+        locationVC.about = playerBio
+        locationVC.profilePhotoString = playerPhoto
         }
     }
 }
