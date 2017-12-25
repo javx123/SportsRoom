@@ -10,13 +10,14 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var ageLbl: UILabel!
     @IBOutlet weak var emailLbl: UILabel!
     @IBOutlet weak var biosLbl: UILabel!
     
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var nameTxtField: UITextField!
     @IBOutlet weak var ageTxtField: UITextField!
@@ -89,5 +90,34 @@ class ProfileViewController: UIViewController {
     @IBAction func backBtnPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func selectPicture(_ sender: Any) {
+        let picker = UIImagePickerController()
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            picker.sourceType = .camera
+        }
+        else {
+            picker.sourceType = .photoLibrary
+        }
+        let mediaTypes = UIImagePickerController.availableMediaTypes(for: picker.sourceType)
+        picker.mediaTypes = mediaTypes ?? [String]()
+        picker.delegate = self
+        present(picker, animated: true, completion: {() -> Void in
+        })
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        imageView?.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        let imageData = UIImagePNGRepresentation(imageView.image!)
+        guard let imageURL: NSURL = info[UIImagePickerControllerReferenceURL] as? NSURL else { return }
+        
+        let photosRef = storage.reference().child("profilePhotos")
+        let photoRef = photosRef.child("\(NSUUID().UUIDString).png")
+
+        dismiss(animated: true, completion: {() -> Void in
+        })
+    }
+    
 }
 
