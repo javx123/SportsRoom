@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import FirebaseMessaging
+import CoreLocation
+import MapKit
 
 class DetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -20,6 +22,8 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
+    var handleMapSearchDelegate:HandleMapSearch? = nil
     
     
     enum ButtonState: String {
