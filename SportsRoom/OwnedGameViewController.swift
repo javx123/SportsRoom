@@ -60,6 +60,11 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    @IBAction func chatBtnPressed(_ sender: UIButton) {
+        
+    }
+    
+    
     //    Mark: - DataSource Properties
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -67,11 +72,11 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "hostCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "hostCell", for: indexPath) as? OwnedGameTableViewCell
         let currentGame = gamesArrayDetails[indexPath.row]
-        cell.textLabel?.text = currentGame.title
-        cell.detailTextLabel?.text = currentGame.sport
-        return cell
+        cell?.titleLabel.text = currentGame.title
+        cell?.sportLabel.text = currentGame.sport
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

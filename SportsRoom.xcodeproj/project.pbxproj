@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		052D556E1FF0991500602131 /* OwnedGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D556D1FF0991500602131 /* OwnedGameTableViewCell.swift */; };
+		052D55701FF09EA800602131 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D556F1FF09EA800602131 /* ChatViewController.swift */; };
+		052D55721FF0A1DA00602131 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */; };
 		05E0A0D51FE83D16006BE816 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E0A0D41FE83D16006BE816 /* LoginViewController.swift */; };
 		05E624911FEAD703001AF76F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E624901FEAD703001AF76F /* Game.swift */; };
 		05FF4A0C1FEC3F7F00E9A65C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05FF4A0B1FEC3F7F00E9A65C /* GoogleService-Info.plist */; };
@@ -34,6 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		052D556D1FF0991500602131 /* OwnedGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedGameTableViewCell.swift; sourceTree = "<group>"; };
+		052D556F1FF09EA800602131 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		05E0A0D41FE83D16006BE816 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		05E624901FEAD703001AF76F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		05FF4A0B1FEC3F7F00E9A65C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -119,7 +125,10 @@
 				05FF4A0D1FEC4FCD00E9A65C /* FilePaths.swift */,
 				05FF4A0F1FEC670C00E9A65C /* StaticFunctions.swift */,
 				2D71A9B11FE40B19008C60F7 /* JoinedGameViewController.swift */,
+				052D556D1FF0991500602131 /* OwnedGameTableViewCell.swift */,
 				2D71A9B31FE40B22008C60F7 /* OwnedGameViewController.swift */,
+				052D556F1FF09EA800602131 /* ChatViewController.swift */,
+				052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */,
 				2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */,
 				2D71A9BB1FE40C1E008C60F7 /* DetailsViewController.swift */,
 				2D71A9B51FE40B6A008C60F7 /* HostGameViewController.swift */,
@@ -290,14 +299,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D71A9B81FE40B87008C60F7 /* ProfileViewController.swift in Sources */,
+				052D556E1FF0991500602131 /* OwnedGameTableViewCell.swift in Sources */,
 				2D71A9BC1FE40C1E008C60F7 /* DetailsViewController.swift in Sources */,
 				2D71A9B21FE40B19008C60F7 /* JoinedGameViewController.swift in Sources */,
 				05FF4A101FEC670C00E9A65C /* StaticFunctions.swift in Sources */,
+				052D55721FF0A1DA00602131 /* ChatTableViewCell.swift in Sources */,
 				05E624911FEAD703001AF76F /* Game.swift in Sources */,
 				2D40E3FC1FEB2D1300C24D72 /* User.swift in Sources */,
 				C0F929AC1FE883F4007B1847 /* LocationSearchTable.swift in Sources */,
 				2D71A9C01FE40D1A008C60F7 /* SetLocationViewController.swift in Sources */,
 				2D71A9B41FE40B22008C60F7 /* OwnedGameViewController.swift in Sources */,
+				052D55701FF09EA800602131 /* ChatViewController.swift in Sources */,
 				2D1F4B4D1FE1F36400371D9B /* ViewController.swift in Sources */,
 				2D1F4B4B1FE1F36400371D9B /* AppDelegate.swift in Sources */,
 				2D71A9BE1FE40C7F008C60F7 /* LocationViewController.swift in Sources */,
