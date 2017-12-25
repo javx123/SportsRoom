@@ -12,5 +12,6 @@ target 'SportsRoom' do
   pod 'Firebase/Auth'
   pod 'XLPagerTabStrip'
 pod 'Firebase/Messaging'
+pod 'Firebase/Storage'
 
 end

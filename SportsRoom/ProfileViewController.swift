@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseStorage
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -23,6 +24,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var ageTxtField: UITextField!
     @IBOutlet weak var bioTextView: UITextView!
     
+    var imageString = String()
+    var imageURL: URL!
+    var imageData = Data ()
+    var profileImage = UIImage ()
+    
     let keyEmail = "email"
     let keyName = "name"
     let keyAge = "age"
@@ -31,7 +37,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUserInfo()
-        
     }
     
     @IBAction func editPressed(_ sender: UIButton) {
@@ -108,15 +113,34 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        imageView?.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        let imageData = UIImagePNGRepresentation(imageView.image!)
-        guard let imageURL: NSURL = info[UIImagePickerControllerReferenceURL] as? NSURL else { return }
+        let userID = Auth.auth().currentUser?.uid
         
-        let photosRef = storage.reference().child("profilePhotos")
-        let photoRef = photosRef.child("\(NSUUID().UUIDString).png")
-
-        dismiss(animated: true, completion: {() -> Void in
-        })
+        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        let imageData = UIImagePNGRepresentation(image!)
+        
+        let photosRef = Storage.storage().reference().child("profilePhotos").child(userID!)
+        let photoRef = photosRef.child("\(NSUUID().uuidString).png")
+        
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/png"
+        photoRef.putData(imageData!, metadata: metadata).observe(.success) { (snapshot) in
+        // When the image has successfully uploaded, we get it's download URL
+        self.imageString = (snapshot.metadata?.downloadURL()?.absoluteString)!
+        print (self.imageString)
+        self.setimage()
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func setimage () {
+        imageURL = URL(string: imageString)
+        do {
+        imageData = try Data(contentsOf: imageURL!)
+        profileImage = UIImage(data: imageData)!
+        imageView.image = profileImage
+        } catch {
+            print (error)
+        }
     }
     
 }
