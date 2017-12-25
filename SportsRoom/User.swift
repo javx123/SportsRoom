@@ -20,7 +20,6 @@ class User: NSObject {
     var joinedGameArray: [String]?
 
     
-    
     init(snapshot: DataSnapshot) {
         let gameDict = snapshot.value as! [String:Any]
         self.name = gameDict["name"] as? String ?? ""

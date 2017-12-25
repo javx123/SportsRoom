@@ -36,23 +36,5 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @IBAction func signUpPressed(_ sender: UIButton) {
-        if emailTxtField.text == "" || passwordTxtField.text == "" {
-            StaticFunctions.displayAlert(title: "Missing information.", message: "Please provide both email and password.", uiviewcontroller: self)
-        } else {
-            
-            Auth.auth().createUser(withEmail: emailTxtField.text!, password: passwordTxtField.text!) { (user, error) in
-                if error != nil {
-                    StaticFunctions.displayAlert(title: "Error", message: error!.localizedDescription, uiviewcontroller: self)
-                } else {
-                    let ref = Database.database().reference().child("users").child(user!.uid)
-                    let key = "email"
-                    let text = self.emailTxtField.text
-                    ref.updateChildValues([key:text!])
-                    print("Register Success!")
-                    self.performSegue(withIdentifier: "toMain", sender: self)
-                }
-            }
-        }
-    } 
+
 }

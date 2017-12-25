@@ -37,6 +37,11 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     var btnText : ButtonState?
     var currentGame: Game!
     var playerNamesArray = [String] ()
+    
+    var playerName = String ()
+    var playerAge = String ()
+    var playerEmail = String ()
+    var playerBio = String ()
 
     
     override func viewDidLoad() {
@@ -79,6 +84,10 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
                 ref.observeSingleEvent(of: .value) { (snapshot) in
                     let user = User(snapshot: snapshot)
                     self.playerNamesArray.append(user.name)
+                    self.playerName = user.name
+                    self.playerAge = user.age
+                    self.playerEmail = user.email
+                    self.playerBio = user.bio
                     self.tableView.reloadData()
                 }
         }
@@ -151,6 +160,13 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
             locationVC.address = currentGame.address
             locationVC.latitude = currentGame.latitude
             locationVC.longitude = currentGame.longitude
+        }
+        if segue.identifier == "showProfile"{
+            let locationVC = segue.destination as! FriendProfileViewController
+            locationVC.name = playerName
+            locationVC.age = playerAge
+            locationVC.email = playerEmail
+            locationVC.about = playerBio
         }
     }
 }
