@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UZv-9Q-qNe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UZv-9Q-qNe">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -79,7 +79,7 @@
                                                 </constraints>
                                                 <state key="normal" title="Select location"/>
                                                 <connections>
-                                                    <segue destination="XlM-SU-B33" kind="show" id="PWQ-ye-339"/>
+                                                    <segue destination="XlM-SU-B33" kind="show" identifier="setLocation" id="PWQ-ye-339"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iH1-qV-EKW">
@@ -208,7 +208,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Mhd-d1-fy0" kind="unwind" unwindAction="unwindFromMapWithSender:" id="uvg-PM-Gue"/>
+                                    <segue destination="Mhd-d1-fy0" kind="unwind" unwindAction="unwindFromMapWithSender:" id="OJa-bV-O0l"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -294,10 +294,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S50-FH-Kd6">
-                                <rect key="frame" x="0.0" y="148" width="375" height="519"/>
+                                <rect key="frame" x="0.0" y="168" width="375" height="499"/>
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="89r-fe-d6S" customClass="ButtonBarView" customModule="XLPagerTabStrip">
-                                <rect key="frame" x="0.0" y="64" width="375" height="64"/>
+                                <rect key="frame" x="0.0" y="115" width="375" height="64"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="n5F-7a-EoX"/>
@@ -310,31 +310,48 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xSH-ZR-RvC">
+                                <rect key="frame" x="72" y="79" width="231" height="29"/>
+                                <segments>
+                                    <segment title="CurrentLocation"/>
+                                    <segment title="Choose Location"/>
+                                </segments>
+                                <connections>
+                                    <action selector="locationOptions:" destination="BYZ-38-t0r" eventType="valueChanged" id="sfW-Qj-PxJ"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="89r-fe-d6S" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="100-hx-M8X"/>
-                            <constraint firstItem="S50-FH-Kd6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="84" id="7Jp-8s-buk"/>
+                            <constraint firstItem="S50-FH-Kd6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="104" id="7Jp-8s-buk"/>
+                            <constraint firstItem="xSH-ZR-RvC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="7uE-uO-EzK"/>
+                            <constraint firstItem="89r-fe-d6S" firstAttribute="top" secondItem="xSH-ZR-RvC" secondAttribute="bottom" constant="8" id="FhH-r4-3DR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xSH-ZR-RvC" secondAttribute="trailing" constant="72" id="GbR-AE-wMW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="S50-FH-Kd6" secondAttribute="bottom" id="Ohf-ow-G5c"/>
                             <constraint firstItem="S50-FH-Kd6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="QcZ-6r-5og"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="89r-fe-d6S" secondAttribute="trailing" id="aUa-lk-uah"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="S50-FH-Kd6" secondAttribute="trailing" id="gdm-Hq-G5O"/>
                             <constraint firstItem="89r-fe-d6S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nSi-Tk-6pV"/>
+                            <constraint firstItem="xSH-ZR-RvC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="72" id="tl7-Bu-nMN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Ovk-lj-c7d"/>
+                    <navigationItem key="navigationItem" id="Ovk-lj-c7d">
+                        <nil key="title"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="buttonBarView" destination="89r-fe-d6S" id="LrH-tv-gYp"/>
                         <outlet property="containerView" destination="S50-FH-Kd6" id="dA8-Gh-XFK"/>
+                        <outlet property="locationControl" destination="xSH-ZR-RvC" id="CUe-BC-diQ"/>
                         <segue destination="oNd-PB-sCQ" kind="show" identifier="createGame" id="BkY-he-WDK"/>
                         <segue destination="2br-XL-dXT" kind="presentation" identifier="searchGame" id="GIu-JD-8aE"/>
                         <segue destination="KbM-Lc-0Fu" kind="presentation" identifier="showProfile" id="hl1-VW-O6y"/>
+                        <segue destination="XlM-SU-B33" kind="show" identifier="searchLocation" id="pBv-12-t8v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-66" y="124"/>
+            <point key="canvasLocation" x="-66.400000000000006" y="123.68815592203899"/>
         </scene>
         <!--Search Results-->
         <scene sceneID="eWk-eD-cgY">
@@ -425,7 +442,7 @@
                     <navigationItem key="navigationItem" title="Search Results" id="X6n-OD-2ir">
                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="15V-qm-R0g">
                             <connections>
-                                <segue destination="rQo-LA-HC2" kind="unwind" unwindAction="unwind:" id="x8q-Mx-MEd"/>
+                                <segue destination="rQo-LA-HC2" kind="unwind" unwindAction="unwindFromSearchWithSender:" id="BHE-i2-MPR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -990,7 +1007,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AN0-bg-HEQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="801" y="-322"/>
+            <point key="canvasLocation" x="801" y="-326"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="tuN-99-6yS">
@@ -1274,6 +1291,7 @@
         <image name="profile" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="pBv-12-t8v"/>
         <segue reference="4lo-Ae-0es"/>
     </inferredMetricsTieBreakers>
 </document>
