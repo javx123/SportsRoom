@@ -634,9 +634,6 @@
                                                         <constraint firstItem="PTl-CE-Fq5" firstAttribute="leading" secondItem="QCc-NI-DMt" secondAttribute="leading" constant="8" id="wGY-U3-h5w"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
-                                                <connections>
-                                                    <segue destination="NnA-45-P0C" kind="showDetail" identifier="showProfile" id="atZ-3q-m9f"/>
-                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>
@@ -693,6 +690,7 @@
                         <outlet property="sportLabel" destination="wWh-Xm-2qt" id="2bG-4o-3LP"/>
                         <outlet property="tableView" destination="npg-HO-NeJ" id="og2-IP-wFG"/>
                         <segue destination="KkL-0h-Yv3" kind="show" identifier="showLocation" id="uSX-8c-dnb"/>
+                        <segue destination="NnA-45-P0C" kind="showDetail" identifier="showProfile" id="XRb-pK-MH3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SPf-1Y-iAR" userLabel="First Responder" sceneMemberID="firstResponder"/>
