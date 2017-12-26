@@ -33,27 +33,57 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidDisappear(animated)
         gamesArrayDetails = [Game]()
     }
-     
-     
+    
+    
     
     
     func getJoinedGames () {
         let userID = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("users").child(userID!).child("joinedGames")
-        
-        ref.observeSingleEvent(of: .value) {(snapshot) in
+
+        //        ref.observeSingleEvent(of: .value) {(snapshot) in
+        //            let value = snapshot.value as? [String:String] ?? [:]
+        //            let gamesArrayID = Array(value.keys)
+        //            for id in gamesArrayID {
+        //                let ref = Database.database().reference().child("games").child(id)
+        //                ref.observeSingleEvent(of: .value) { (snapshot) in
+        //                    let game = Game(snapshot: snapshot)
+        //                    self.gamesArrayDetails.append(game)
+        //                    self.tableView.reloadData()
+        //                }
+        //            }
+        //        }
+
+        ref.observe(.value) { (snapshot) in
             let value = snapshot.value as? [String:String] ?? [:]
             let gamesArrayID = Array(value.keys)
             for id in gamesArrayID {
                 let ref = Database.database().reference().child("games").child(id)
                 ref.observeSingleEvent(of: .value) { (snapshot) in
                     let game = Game(snapshot: snapshot)
-                    self.gamesArrayDetails.append(game)
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateStyle = .medium
+                    dateFormatter.timeStyle = .short
+                    dateFormatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
+                    let gameDate = dateFormatter.date(from: game.date)
+                    
+                    if gameDate! < Date() {
+                        let gameKey = game.gameID
+                        let refUser = Database.database().reference().child("users").child(userID!).child("joinedGames")
+                        refUser.child(gameKey).removeValue()
+                        let refGame = Database.database().reference().child("games").child(gameKey).child("joinedPlayers")
+                        refGame.child(userID!).removeValue()
+                    }
+                    else {
+                        self.gamesArrayDetails.append(game)
+                    }
                     self.tableView.reloadData()
                 }
             }
         }
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "joined") {

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		052D556E1FF0991500602131 /* OwnedGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D556D1FF0991500602131 /* OwnedGameTableViewCell.swift */; };
+		052D55701FF09EA800602131 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D556F1FF09EA800602131 /* ChatViewController.swift */; };
+		052D55721FF0A1DA00602131 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */; };
+		052D55741FF0A81000602131 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D55731FF0A81000602131 /* Message.swift */; };
 		05E0A0D51FE83D16006BE816 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E0A0D41FE83D16006BE816 /* LoginViewController.swift */; };
 		05E624911FEAD703001AF76F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E624901FEAD703001AF76F /* Game.swift */; };
 		05FF4A0C1FEC3F7F00E9A65C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05FF4A0B1FEC3F7F00E9A65C /* GoogleService-Info.plist */; };
@@ -30,10 +34,16 @@
 		2D71A9C01FE40D1A008C60F7 /* SetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9BF1FE40D1A008C60F7 /* SetLocationViewController.swift */; };
 		73738A0197A6DF179687D916 /* Pods_SportsRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */; };
 		C007B5921FEF272E00FC90D7 /* SelectSportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C007B5911FEF272E00FC90D7 /* SelectSportViewController.swift */; };
+		C07524851FF15103003DE253 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07524841FF15103003DE253 /* SignUpViewController.swift */; };
+		C07524871FF15989003DE253 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07524861FF15989003DE253 /* FriendProfileViewController.swift */; };
 		C0F929AC1FE883F4007B1847 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		052D556D1FF0991500602131 /* OwnedGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedGameTableViewCell.swift; sourceTree = "<group>"; };
+		052D556F1FF09EA800602131 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		052D55731FF0A81000602131 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		05E0A0D41FE83D16006BE816 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		05E624901FEAD703001AF76F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		05FF4A0B1FEC3F7F00E9A65C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -61,6 +71,8 @@
 		78F2554F652C596510C8CEB8 /* Pods-SportsRoom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsRoom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom.debug.xcconfig"; sourceTree = "<group>"; };
 		C007B5911FEF272E00FC90D7 /* SelectSportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSportViewController.swift; sourceTree = "<group>"; };
 		C05EC3131FEC286E00122C5C /* SportsRoom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SportsRoom.entitlements; sourceTree = "<group>"; };
+		C07524841FF15103003DE253 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C07524861FF15989003DE253 /* FriendProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileViewController.swift; sourceTree = "<group>"; };
 		C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsRoom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -112,14 +124,20 @@
 				2D1F4B4C1FE1F36400371D9B /* ViewController.swift */,
 				05E624901FEAD703001AF76F /* Game.swift */,
 				2D40E3FB1FEB2D1300C24D72 /* User.swift */,
+				052D55731FF0A81000602131 /* Message.swift */,
 				2D1F4B4E1FE1F36400371D9B /* Main.storyboard */,
+				C07524861FF15989003DE253 /* FriendProfileViewController.swift */,
+				C07524841FF15103003DE253 /* SignUpViewController.swift */,
 				C007B5911FEF272E00FC90D7 /* SelectSportViewController.swift */,
 				C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */,
 				05E0A0D41FE83D16006BE816 /* LoginViewController.swift */,
 				05FF4A0D1FEC4FCD00E9A65C /* FilePaths.swift */,
 				05FF4A0F1FEC670C00E9A65C /* StaticFunctions.swift */,
 				2D71A9B11FE40B19008C60F7 /* JoinedGameViewController.swift */,
+				052D556D1FF0991500602131 /* OwnedGameTableViewCell.swift */,
 				2D71A9B31FE40B22008C60F7 /* OwnedGameViewController.swift */,
+				052D556F1FF09EA800602131 /* ChatViewController.swift */,
+				052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */,
 				2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */,
 				2D71A9BB1FE40C1E008C60F7 /* DetailsViewController.swift */,
 				2D71A9B51FE40B6A008C60F7 /* HostGameViewController.swift */,
@@ -264,6 +282,8 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -273,6 +293,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -290,19 +312,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D71A9B81FE40B87008C60F7 /* ProfileViewController.swift in Sources */,
+				052D556E1FF0991500602131 /* OwnedGameTableViewCell.swift in Sources */,
 				2D71A9BC1FE40C1E008C60F7 /* DetailsViewController.swift in Sources */,
 				2D71A9B21FE40B19008C60F7 /* JoinedGameViewController.swift in Sources */,
 				05FF4A101FEC670C00E9A65C /* StaticFunctions.swift in Sources */,
+				052D55721FF0A1DA00602131 /* ChatTableViewCell.swift in Sources */,
 				05E624911FEAD703001AF76F /* Game.swift in Sources */,
 				2D40E3FC1FEB2D1300C24D72 /* User.swift in Sources */,
 				C0F929AC1FE883F4007B1847 /* LocationSearchTable.swift in Sources */,
 				2D71A9C01FE40D1A008C60F7 /* SetLocationViewController.swift in Sources */,
 				2D71A9B41FE40B22008C60F7 /* OwnedGameViewController.swift in Sources */,
+				052D55701FF09EA800602131 /* ChatViewController.swift in Sources */,
+				C07524871FF15989003DE253 /* FriendProfileViewController.swift in Sources */,
 				2D1F4B4D1FE1F36400371D9B /* ViewController.swift in Sources */,
 				2D1F4B4B1FE1F36400371D9B /* AppDelegate.swift in Sources */,
 				2D71A9BE1FE40C7F008C60F7 /* LocationViewController.swift in Sources */,
 				2D71A9BA1FE40BF4008C60F7 /* SearchResultsViewController.swift in Sources */,
 				05FF4A0E1FEC4FCD00E9A65C /* FilePaths.swift in Sources */,
+				052D55741FF0A81000602131 /* Message.swift in Sources */,
+				C07524851FF15103003DE253 /* SignUpViewController.swift in Sources */,
 				2D71A9B61FE40B6A008C60F7 /* HostGameViewController.swift in Sources */,
 				05E0A0D51FE83D16006BE816 /* LoginViewController.swift in Sources */,
 				C007B5921FEF272E00FC90D7 /* SelectSportViewController.swift in Sources */,

@@ -37,6 +37,13 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     var btnText : ButtonState?
     var currentGame: Game!
     var playerNamesArray = [String] ()
+    var playersArray: [User] = []
+    
+    var playerName = String ()
+    var playerAge = String ()
+    var playerEmail = String ()
+    var playerBio = String ()
+    var playerPhoto = String ()
 
     
     override func viewDidLoad() {
@@ -44,6 +51,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         setButtonState(buttonState: btnText!)
         setLabels()
         getPlayerNames()
+        tableView.delegate = self
     }
     
     func setLabels(){
@@ -79,6 +87,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
                 ref.observeSingleEvent(of: .value) { (snapshot) in
                     let user = User(snapshot: snapshot)
                     self.playerNamesArray.append(user.name)
+                    self.playersArray.append(user)
                     self.tableView.reloadData()
                 }
         }
@@ -92,7 +101,18 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath)
         let name = playerNamesArray[indexPath.row]
         cell.textLabel?.text = name
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedUser = playersArray[indexPath.row]
+        self.playerName = selectedUser.name
+        self.playerAge = selectedUser.age
+        self.playerEmail = selectedUser.email
+        self.playerBio = selectedUser.bio
+        self.playerPhoto = selectedUser.profileImageURLString
+        self.performSegue(withIdentifier: "showProfile", sender: self)
     }
     
     @IBAction func gameActionPressed(_ sender: UIButton) {
@@ -151,6 +171,14 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
             locationVC.address = currentGame.address
             locationVC.latitude = currentGame.latitude
             locationVC.longitude = currentGame.longitude
+        }
+        if segue.identifier == "showProfile"{
+        let locationVC = segue.destination as! FriendProfileViewController
+        locationVC.name = playerName
+        locationVC.age = playerAge
+        locationVC.email = playerEmail
+        locationVC.about = playerBio
+        locationVC.profilePhotoString = playerPhoto
         }
     }
 }
