@@ -152,8 +152,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func setimage () {
-        self.imageView.sd_setImage(with: URL(string: imageString))
-        SVProgressHUD.dismiss()
+        self.imageView.sd_setImage(with:URL(string:imageString)) { (image, error, type, url) in
+            SVProgressHUD.dismiss()
+        }
     }
 }
 
