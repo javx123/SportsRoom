@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FriendProfileViewController: UIViewController {
     
@@ -23,26 +24,29 @@ class FriendProfileViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var aboutLabel: UILabel!
     
+    var profileImage = UIImage ()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel.text = name
         ageLabel.text = age
         emailLabel.text = email
         aboutLabel.text = about
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkForImage()
+    }
+    
+    func checkForImage () {
         if profilePhotoString == "" {
             imageView.image = UIImage(named:"defaultimage")
         } else {
-            let imageURL = URL(string: profilePhotoString!)
-            do {
-                let imageData = try Data(contentsOf: imageURL!)
-                let profileImage = UIImage(data: imageData)!
-            imageView.image = profileImage
-            } catch {
-                print (error)
-            }
+            self.imageView.sd_setImage(with: URL(string: profilePhotoString!))
+        }
     }
-    }
+    
     
     @IBAction func backButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

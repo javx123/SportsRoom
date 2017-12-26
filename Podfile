@@ -13,5 +13,6 @@ target 'SportsRoom' do
   pod 'XLPagerTabStrip'
 pod 'Firebase/Messaging'
 pod 'Firebase/Storage'
-
+pod 'SDWebImage'
+pod 'SVProgressHUD'
 end
