@@ -25,12 +25,13 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     func getCurrentLocation(completion: @escaping (CLLocation) -> () ) {
         currentLocationCompletion = completion
         if (CLLocationManager.locationServicesEnabled()) {
-            locationManager?.requestLocation()
+            locationManager?.startUpdatingLocation()
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocationCompletion!(locations.first!)
+        locationManager?.stopUpdatingLocation()
 
     }
     
