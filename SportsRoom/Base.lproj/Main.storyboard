@@ -505,14 +505,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLx-QK-5Nn">
-                                                    <rect key="frame" x="24" y="0.0" width="42" height="21"/>
+                                                    <rect key="frame" x="24" y="0.0" width="217" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RsH-37-prK">
-                                                    <rect key="frame" x="24" y="22" width="42" height="21"/>
+                                                    <rect key="frame" x="24" y="22" width="199" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -561,12 +561,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="messageTxtField" destination="QiH-bL-Hkd" id="nKS-8m-KFo"/>
+                        <outlet property="sendBtn" destination="cJl-3U-ALV" id="0KL-0b-7db"/>
                         <outlet property="tableView" destination="PvS-W2-RoQ" id="8Z6-Ih-s32"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRw-jc-7ee" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2662" y="1137"/>
+            <point key="canvasLocation" x="2661.5999999999999" y="1136.5817091454273"/>
         </scene>
         <!--Owned Game View Controller-->
         <scene sceneID="4BT-ol-UJA">
@@ -1706,12 +1707,8 @@
         <image name="hockey_defualt" width="960" height="540"/>
     </resources>
     <inferredMetricsTieBreakers>
-
-        <segue reference="pBv-12-t8v"/>
-        <segue reference="gya-3q-gfY"/>
         <segue reference="PWQ-ye-339"/>
         <segue reference="mJo-hM-k1s"/>
-
         <segue reference="4lo-Ae-0es"/>
     </inferredMetricsTieBreakers>
 </document>

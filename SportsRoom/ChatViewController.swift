@@ -22,6 +22,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        retrieveMessage()
         
     }
     
@@ -33,7 +34,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func sendBtnPressed(_ sender: UIButton) {
         messageTxtField.endEditing(true)
         messageTxtField.isEnabled = false
-//        sendBtn.isEnabled = false
         let ref = Database.database().reference().child("games").child(currentGame.gameID).child("chatroom").childByAutoId()
         ref.setValue(["sender": Auth.auth().currentUser?.email, "messageBody": messageTxtField.text]) { (error, ref) in
             if error != nil {
@@ -41,10 +41,18 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             } else {
                 print("Message saved!!!")
                 self.messageTxtField.isEnabled = true
-//                self.sendBtn.isEnabled = true
                 self.messageTxtField.text = ""
             }
         }   
+    }
+    
+    func retrieveMessage() {
+        let ref = Database.database().reference().child("games").child(currentGame.gameID).child("chatroom")
+        ref.observe(.childAdded) { (snapshot) in
+            let message = Message(snapshot: snapshot)
+            self.messageArray.append(message)
+            self.tableView.reloadData()
+        }
     }
     
     
@@ -55,9 +63,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell
-        
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
+        if let cell = cell as? ChatTableViewCell {
+            let currentMessage = messageArray[indexPath.row]
+            cell.senderLbl.text = currentMessage.email
+            cell.messageLbl.text = currentMessage.messageBody
+        }
+        return cell
     }
     
 }
