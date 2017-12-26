@@ -115,11 +115,20 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     func filterResults() {
         guard let `pulledGames` = pulledGames else { return }
         guard let `searchLocation` = searchLocation else { return }
+
         
         for game in pulledGames {
             let gameCoordinates = CLLocation(latitude: game.latitude, longitude: game.longitude)
             let distance = searchLocation.distance(from: gameCoordinates)
             print(distance)
+
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .short
+            dateFormatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
+            let gameDate = dateFormatter.date(from: game.date)
+//            guard let gameDate = dateFormatter.date(from: game.date) else {continue}
+            if Date() < gameDate! {
             if ( Int(distance) < 30000 ){
                 if !(currentUser!.joinedGameArray!.contains(game.gameID)) && !(currentUser!.hostedGameArray!.contains(game.gameID)) {
                     if (game.joinedPlayersArray!.count < game.numberOfPlayers) {
@@ -128,6 +137,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                     }
                 }
             }
+        }
         }
     }
     
