@@ -25,6 +25,8 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     var searchRadius: Int?
     var joinedGames: [Game] = []
     var hostedGames: [Game] = []
+    var joinedGamesVC: JoinedGameViewController?
+    var ownedGamesVC: OwnedGameViewController?
 
     var createButton = UIBarButtonItem()
     var profileButton = UIBarButtonItem()
@@ -109,9 +111,14 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let child_1 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "joinedGame")
-        let child_2 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "hostedGame")
-        return [child_1, child_2]
+        let child_1 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "joinedGame") as? JoinedGameViewController
+        child_1?.gamesArrayDetails = joinedGames
+        joinedGamesVC = child_1
+        let child_2 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "hostedGame") as? OwnedGameViewController
+        ownedGamesVC = child_2
+        child_2?.gamesArrayDetails = hostedGames
+        
+        return [child_1!, child_2!]
     }
     
     func configureView() {
@@ -232,6 +239,11 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
                         let refGame = Database.database().reference().child("games").child(gameKey).child("joinedPlayers")
                         refGame.child(userID!).removeValue()
                     }
+//                    self.joinedGamesVC?.tableView.reloadData()
+//                    else {
+//                        self.joinedGames.append(game)
+//                        self.joinedGamesVC?.gamesArrayDetails.append(game)
+//                    }
                 }
             }
         }
@@ -252,12 +264,6 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
                     
                     let gameDate = self.dateFormatter.date(from: game.date)
                     if gameDate! < Date() {
-                        let userID = Auth.auth().currentUser?.uid
-                        let gameKey = game.gameID
-                        let refUser = Database.database().reference().child("users").child(userID!).child("hostedGames")
-                        refUser.child(gameKey).removeValue()
-                    }
-                    if gameDate! < Date() {
                         let gameKey = game.gameID
                         let refGame = Database.database().reference().child("games").child(gameKey)
                         refGame.removeValue()
@@ -269,6 +275,7 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
                             ref.child(gameKey).removeValue()
                         }
                     }
+//                    self.ownedGamesVC?.tableView.reloadData()
                 }
             }
         }

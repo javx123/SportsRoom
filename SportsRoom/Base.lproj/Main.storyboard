@@ -60,7 +60,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="rO0-Mh-ZV8">
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rO0-Mh-ZV8">
                                         <rect key="frame" x="0.0" y="89.5" width="359" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="QEJ-eT-xGv"/>
@@ -1291,7 +1291,7 @@
         <image name="profile" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pBv-12-t8v"/>
+        <segue reference="PWQ-ye-339"/>
         <segue reference="4lo-Ae-0es"/>
     </inferredMetricsTieBreakers>
 </document>

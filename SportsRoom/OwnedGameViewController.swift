@@ -15,6 +15,11 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var tableView: UITableView!
     
     var gamesArrayDetails = [Game]()
+//    {
+//        didSet{
+//            self.tableView.reloadData()
+//        }
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +40,19 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
         let userID = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("users").child(userID!).child("hostedGames")
         
-        ref.observeSingleEvent(of: .value) {(snapshot) in
+//        ref.observeSingleEvent(of: .value) {(snapshot) in
+//            let value = snapshot.value as? [String:String] ?? [:]
+//            let gamesArrayID = Array(value.keys)
+//            for id in gamesArrayID {
+//                let ref = Database.database().reference().child("games").child(id)
+//                ref.observeSingleEvent(of: .value) { (snapshot) in
+//                    let game = Game(snapshot: snapshot)
+//                    self.gamesArrayDetails.append(game)
+//                    self.tableView.reloadData()
+//                }
+//            }
+//        }
+        ref.observe(.value) { (snapshot) in
             let value = snapshot.value as? [String:String] ?? [:]
             let gamesArrayID = Array(value.keys)
             for id in gamesArrayID {
