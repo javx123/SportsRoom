@@ -15,6 +15,7 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var tableView: UITableView!
     
     var gamesArrayDetails = [Game]()
+    var buttonTag = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,9 +59,10 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
                 VC2.currentGame = game
             }
         } else if (segue.identifier == "toChat") {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let game = gamesArrayDetails[indexPath.row]
-                let chatVC : ChatViewController = segue.destination as! ChatViewController
+            if let sender = sender as? UIButton {
+                let game = gamesArrayDetails[sender.tag]
+                let nav = segue.destination as! UINavigationController
+                let chatVC = nav.topViewController as! ChatViewController
                 chatVC.currentGame = game
             }
         }
@@ -74,11 +76,21 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCell(withIdentifier: "hostCell", for: indexPath) as? OwnedGameTableViewCell
-        let currentGame = gamesArrayDetails[indexPath.row]
-        cell?.titleLabel.text = currentGame.title
-        cell?.sportLabel.text = currentGame.sport
-        return cell!
+        //        let cell = tableView.dequeueReusableCell(withIdentifier: "hostCell", for: indexPath) as? OwnedGameTableViewCell
+        //        let currentGame = gamesArrayDetails[indexPath.row]
+        //        cell?.titleLabel.text = currentGame.title
+        //        cell?.sportLabel.text = currentGame.sport
+        //        cell?.tag = indexPath.row
+        //        cell?.chatButton.tag = indexPath.row
+        //        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "hostCell", for: indexPath)
+        if let cell = cell as? OwnedGameTableViewCell {
+            let currentGame = gamesArrayDetails[indexPath.row]
+            cell.titleLabel.text = currentGame.title
+            cell.sportLabel.text = currentGame.sport
+            cell.chatButton.tag = indexPath.row
+        }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

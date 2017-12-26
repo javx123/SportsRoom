@@ -34,8 +34,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         messageTxtField.endEditing(true)
         messageTxtField.isEnabled = false
 //        sendBtn.isEnabled = false
-//        let ref = Database.database().reference().child("games").child(currentGame.gameID).child("chatroom").childByAutoId()
-        let ref = Database.database().reference().child("games").child("-L0v5d_PxtqiIU7GeZUi").child("chatroom").childByAutoId()
+        let ref = Database.database().reference().child("games").child(currentGame.gameID).child("chatroom").childByAutoId()
+//        let ref = Database.database().reference().child("games").child("-L0v5d_PxtqiIU7GeZUi").child("chatroom").childByAutoId()
         ref.setValue(["sender": Auth.auth().currentUser?.email, "messageBody": messageTxtField.text]) { (error, ref) in
             if error != nil {
                 print(error!.localizedDescription)
