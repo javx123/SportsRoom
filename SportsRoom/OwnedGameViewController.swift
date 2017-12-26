@@ -15,7 +15,8 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var tableView: UITableView!
     
     var gamesArrayDetails = [Game]()
-
+    var buttonTag = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -29,8 +30,8 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         gamesArrayDetails = [Game]()
-}
-
+    }
+    
     func getHostedGames () {
         let userID = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("users").child(userID!).child("hostedGames")
@@ -52,13 +53,21 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "hosted") {
             if let indexPath = tableView.indexPathForSelectedRow {
-            let game = gamesArrayDetails[indexPath.row]
-            let VC2 : DetailsViewController = segue.destination as! DetailsViewController
-            VC2.btnText =  DetailsViewController.ButtonState.hosted
-            VC2.currentGame = game
+                let game = gamesArrayDetails[indexPath.row]
+                let VC2 : DetailsViewController = segue.destination as! DetailsViewController
+                VC2.btnText =  DetailsViewController.ButtonState.hosted
+                VC2.currentGame = game
+            }
+        } else if (segue.identifier == "toChat") {
+            if let sender = sender as? UIButton {
+                let game = gamesArrayDetails[sender.tag]
+                let nav = segue.destination as! UINavigationController
+                let chatVC = nav.topViewController as! ChatViewController
+                chatVC.currentGame = game
             }
         }
     }
+    
     
     //    Mark: - DataSource Properties
     
@@ -67,10 +76,20 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "hostCell", for: indexPath)
-        let currentGame = gamesArrayDetails[indexPath.row]
-        cell.textLabel?.text = currentGame.title
-        cell.detailTextLabel?.text = currentGame.sport
+        //        let cell = tableView.dequeueReusableCell(withIdentifier: "hostCell", for: indexPath) as? OwnedGameTableViewCell
+        //        let currentGame = gamesArrayDetails[indexPath.row]
+        //        cell?.titleLabel.text = currentGame.title
+        //        cell?.sportLabel.text = currentGame.sport
+        //        cell?.tag = indexPath.row
+        //        cell?.chatButton.tag = indexPath.row
+        //        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "hostCell", for: indexPath)
+        if let cell = cell as? OwnedGameTableViewCell {
+            let currentGame = gamesArrayDetails[indexPath.row]
+            cell.titleLabel.text = currentGame.title
+            cell.sportLabel.text = currentGame.sport
+            cell.chatButton.tag = indexPath.row
+        }
         return cell
     }
     
