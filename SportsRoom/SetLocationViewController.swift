@@ -116,21 +116,21 @@ extension SetLocationViewController : MKMapViewDelegate {
         pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
         pinView?.pinTintColor = UIColor.red
         pinView?.canShowCallout = true
-        let smallSquare = CGSize(width: 47, height: 47)
-        let point = CGPoint(x: 0, y: 0)
-        let button = UIButton(frame: CGRect(origin: point, size: smallSquare))
-        button.setBackgroundImage(UIImage(named: "car700"), for: .normal)
-        button.addTarget(self, action: #selector(getDirections), for: .touchUpInside)
-        pinView?.leftCalloutAccessoryView = button
+//        let smallSquare = CGSize(width: 47, height: 47)
+//        let point = CGPoint(x: 0, y: 0)
+//        let button = UIButton(frame: CGRect(origin: point, size: smallSquare))
+//        button.setBackgroundImage(UIImage(named: "car700"), for: .normal)
+//        button.addTarget(self, action: #selector(getDirections), for: .touchUpInside)
+//        pinView?.leftCalloutAccessoryView = button
         return pinView
     }
     
-    @objc func getDirections(){
-        if let selectPin = selectedPin {
-            let mapItem = MKMapItem(placemark: selectPin)
-            let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
-            mapItem.openInMaps(launchOptions: launchOptions)
-        }
-    }
+//    @objc func getDirections(){
+//        if let selectPin = selectedPin {
+//            let mapItem = MKMapItem(placemark: selectPin)
+//            let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+//            mapItem.openInMaps(launchOptions: launchOptions)
+//        }
+//    }
     
 }

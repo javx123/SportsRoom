@@ -9,9 +9,11 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseMessaging
+import DropDown
 
 
-class HostGameViewController: UIViewController {
+class HostGameViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var gameTitleTextField: UITextField!
@@ -22,15 +24,46 @@ class HostGameViewController: UIViewController {
     @IBOutlet weak var numberOfPlayersLabel: UILabel!
     @IBOutlet weak var notesTextField: UITextField!
     @IBOutlet weak var selectLocationLabel: UILabel!
-    @IBOutlet weak var selectedSportLabel: UILabel!
+    
+    @IBOutlet weak var selectSportView: UIView!
+    @IBOutlet weak var dropDownSelectionLabel: UILabel!
+    
+    @IBOutlet weak var otherSportTextField: UITextField!
     
     var address = String()
     var longitude = Double()
     var latitude = Double()
     
+    let dropDown = DropDown()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         numberOfPlayersLabel.text = "1"
+        dropDown.anchorView = selectSportView
+        dropDown.dataSource = ["Baseball", "Basketball", "Hockey", "Soccer", "Football", "Tennis", "Softball", "Badminton", "Table Tennis", "Ball Hockey", "Ultimate", "Other"]
+        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
+        otherSportTextField.isHidden = true
+        self.otherSportTextField.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        dropDown.selectionAction = { (index: Int, item: String) in
+            if item == "Other"{
+                self.otherSportTextField.isHidden = false
+                self.dropDownSelectionLabel.text = item
+                
+            } else {
+    self.dropDownSelectionLabel.text = item
+            }
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.dropDownSelectionLabel.text = self.otherSportTextField.text
+        self.otherSportTextField.isHidden = true
+        self.otherSportTextField.text = ""
+        return true
     }
     
     @IBAction func unwindFromMap (sender: UIStoryboardSegue) {
@@ -45,14 +78,10 @@ class HostGameViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindFromSportSelection (sender: UIStoryboardSegue) {
-        if sender.source is SelectSportViewController {
-            if let senderVC = sender.source as? SelectSportViewController {
-                selectedSportLabel.text = senderVC.sportSelectionLabel.text
-            }
-            self.reloadInputViews()
-        }
+    @IBAction func sportSelectionTapped(_ sender: Any) {
+        dropDown.show()
     }
+    
     
     @IBAction func screenTapped(_ sender: Any) {
         gameTitleTextField.resignFirstResponder()
@@ -73,8 +102,11 @@ class HostGameViewController: UIViewController {
         // convert the segmented control value to a string
         let skillLevelString = skillLevelControl.titleForSegment(at: skillLevelControl.selectedSegmentIndex)
         
+        if costTextField.text == "" {
+            costTextField.text = "Free"
+        }
         // call the postGame method
-        postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: selectedSportLabel.text!.lowercased(), date:dateString, address:selectLocationLabel.text!, longitude:longitude, latitude:latitude, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!)
+        postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: dropDownSelectionLabel.text!.lowercased(), date:dateString, address:selectLocationLabel.text!, longitude:longitude, latitude:latitude, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!)
         
         _ = navigationController?.popViewController(animated: true)
     }
@@ -110,5 +142,8 @@ class HostGameViewController: UIViewController {
         let refUser = Database.database().reference().child("users").child(userID!).child("hostedGames")
         let hostedgamesKey = gameKey
         refUser.updateChildValues([hostedgamesKey:"true"])
+        
+        let MessagingTopic = "Message"
+        Messaging.messaging().subscribe(toTopic: "/topics/\(gameKey)\(MessagingTopic)")
     }
 }

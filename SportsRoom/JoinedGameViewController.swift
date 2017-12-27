@@ -27,7 +27,6 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         }
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +55,16 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
                 VC2.btnText =  DetailsViewController.ButtonState.joined
                 VC2.currentGame = game
             }
+        } else if (segue.identifier == "toChat2") {
+                if let sender = sender as? UIButton {
+                    let game = gamesArrayDetails[sender.tag]
+                    let nav = segue.destination as! UINavigationController
+                    let chatVC = nav.topViewController as! ChatViewController
+                    chatVC.currentGame = game
+                }
+            }
         }
-    }
+    
     
     
     //    Mark: - DataSource Methods
@@ -65,11 +72,22 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
         return gamesArrayDetails.count
     }
     
+//    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+//        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "joinCell", for: indexPath)
+//        let game = gamesArrayDetails[indexPath.row]
+//        cell.textLabel?.text = game.title
+//        cell.detailTextLabel?.text = game.sport
+//        return cell
+//    }
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "joinCell", for: indexPath)
-        let game = gamesArrayDetails[indexPath.row]
-        cell.textLabel?.text = game.title
-        cell.detailTextLabel?.text = game.sport
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "joinCell", for: indexPath)
+        if let cell = cell as? JoinedTableViewCell {
+            let currentGame = gamesArrayDetails[indexPath.row]
+            cell.titleLabel.text = currentGame.title
+            cell.sportLabel.text = currentGame.sport
+            cell.chatButton.tag = indexPath.row
+        }
         return cell
     }
     
