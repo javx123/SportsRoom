@@ -91,7 +91,6 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
             print("\(String(describing: value))")
         }
         childRef.removeAllObservers()
-        
     }
     
     //Mark: - NavBar Button Methods
@@ -157,7 +156,6 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
             self.ownedGamesVC?.gamesArrayDetails = [Game]()
             self.getJoinedGames()
             self.getHostedGames()
-            
         }
     }
     
@@ -285,6 +283,5 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
         self.navigationItem.setLeftBarButton(profileButton, animated: true)
         self.navigationItem.setRightBarButton(createButton, animated: true)
     }
-
 }
 
