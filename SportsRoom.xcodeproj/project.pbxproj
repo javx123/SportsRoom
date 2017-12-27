@@ -19,7 +19,6 @@
 		05FF4A101FEC670C00E9A65C /* StaticFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF4A0F1FEC670C00E9A65C /* StaticFunctions.swift */; };
 		2D1F4B4B1FE1F36400371D9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */; };
 		2D1F4B4D1FE1F36400371D9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4C1FE1F36400371D9B /* ViewController.swift */; };
-		2D1F4B501FE1F36400371D9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4E1FE1F36400371D9B /* Main.storyboard */; };
 		2D1F4B521FE1F36400371D9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B511FE1F36400371D9B /* Assets.xcassets */; };
 		2D1F4B551FE1F36400371D9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B531FE1F36400371D9B /* LaunchScreen.storyboard */; };
 		2D40E3FC1FEB2D1300C24D72 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D40E3FB1FEB2D1300C24D72 /* User.swift */; };
@@ -36,6 +35,7 @@
 		73738A0197A6DF179687D916 /* Pods_SportsRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */; };
 		C07524851FF15103003DE253 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07524841FF15103003DE253 /* SignUpViewController.swift */; };
 		C07524871FF15989003DE253 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07524861FF15989003DE253 /* FriendProfileViewController.swift */; };
+		C0B604541FF4664E0052E39E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0B604531FF4664E0052E39E /* Main.storyboard */; };
 		C0F929AC1FE883F4007B1847 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +53,6 @@
 		2D1F4B471FE1F36400371D9B /* SportsRoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsRoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D1F4B4C1FE1F36400371D9B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2D1F4B4F1FE1F36400371D9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2D1F4B511FE1F36400371D9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D1F4B541FE1F36400371D9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D1F4B561FE1F36400371D9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,6 +72,7 @@
 		C05EC3131FEC286E00122C5C /* SportsRoom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SportsRoom.entitlements; sourceTree = "<group>"; };
 		C07524841FF15103003DE253 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C07524861FF15989003DE253 /* FriendProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileViewController.swift; sourceTree = "<group>"; };
+		C0B604531FF4664E0052E39E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsRoom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -125,7 +125,7 @@
 				05E624901FEAD703001AF76F /* Game.swift */,
 				2D40E3FB1FEB2D1300C24D72 /* User.swift */,
 				052D55731FF0A81000602131 /* Message.swift */,
-				2D1F4B4E1FE1F36400371D9B /* Main.storyboard */,
+				C0B604531FF4664E0052E39E /* Main.storyboard */,
 				C07524861FF15989003DE253 /* FriendProfileViewController.swift */,
 				C07524841FF15103003DE253 /* SignUpViewController.swift */,
 				C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */,
@@ -232,7 +232,7 @@
 				2D1F4B551FE1F36400371D9B /* LaunchScreen.storyboard in Resources */,
 				05FF4A0C1FEC3F7F00E9A65C /* GoogleService-Info.plist in Resources */,
 				2D1F4B521FE1F36400371D9B /* Assets.xcassets in Resources */,
-				2D1F4B501FE1F36400371D9B /* Main.storyboard in Resources */,
+				C0B604541FF4664E0052E39E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,14 +344,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2D1F4B4E1FE1F36400371D9B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2D1F4B4F1FE1F36400371D9B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2D1F4B531FE1F36400371D9B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
