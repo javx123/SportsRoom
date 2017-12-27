@@ -33,5 +33,24 @@ var gameRef;
     exports.getMessage = functions.database.ref('/games/{pushId}/chatroom/{newEvent}').onWrite(event => {
     result = event.data.val()
     console.log(result)
-    console.log(result.messageBody)
+
+    var topic = "/topics/" + event.params.pushId + "Message"
+    console.log(topic)
+
+      var payload = {
+  notification: {
+    title: "New Message",
+    body: `${result.senderName}: ${result.messageBody}`
+  }
+}
+  admin.messaging().sendToTopic(topic, payload)
+  .then(function(response) {
+    console.log("Successfully sent message:", response);
+  })
+  .catch(function(error) {
+    console.log("Error sending message:", error);
+  });
+
+
+
   });

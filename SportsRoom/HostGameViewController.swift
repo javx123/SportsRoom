@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseMessaging
 
 
 class HostGameViewController: UIViewController {
@@ -110,5 +111,8 @@ class HostGameViewController: UIViewController {
         let refUser = Database.database().reference().child("users").child(userID!).child("hostedGames")
         let hostedgamesKey = gameKey
         refUser.updateChildValues([hostedgamesKey:"true"])
+        
+        let MessagingTopic = "Message"
+        Messaging.messaging().subscribe(toTopic: "/topics/\(gameKey)\(MessagingTopic)")
     }
 }

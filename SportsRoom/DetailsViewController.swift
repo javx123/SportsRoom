@@ -44,7 +44,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     var playerEmail = String ()
     var playerBio = String ()
     var playerPhoto = String ()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,14 +82,14 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     //    Mark: - DataSource Properties
     
     func getPlayerNames() {
-            for id in currentGame.allPlayersArray {
-                let ref = Database.database().reference().child("users").child(id)
-                ref.observeSingleEvent(of: .value) { (snapshot) in
-                    let user = User(snapshot: snapshot)
-                    self.playerNamesArray.append(user.name)
-                    self.playersArray.append(user)
-                    self.tableView.reloadData()
-                }
+        for id in currentGame.allPlayersArray {
+            let ref = Database.database().reference().child("users").child(id)
+            ref.observeSingleEvent(of: .value) { (snapshot) in
+                let user = User(snapshot: snapshot)
+                self.playerNamesArray.append(user.name)
+                self.playersArray.append(user)
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -135,7 +135,9 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         let refGame = Database.database().reference().child("games").child(gameKey).child("joinedPlayers")
         refGame.updateChildValues([userID!:"true"])
         
+        let MessagingTopic = "Message"
         Messaging.messaging().subscribe(toTopic: "/topics/\(gameKey)")
+        Messaging.messaging().subscribe(toTopic: "/topics/\(gameKey)\(MessagingTopic)")
     }
     
     func leaveGame () {
@@ -145,6 +147,10 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         refUser.child(gameKey).removeValue()
         let refGame = Database.database().reference().child("games").child(gameKey).child("joinedPlayers")
         refGame.child(userID!).removeValue()
+        
+        let MessagingTopic = "Message"
+        Messaging.messaging().unsubscribe(fromTopic: "/topics/\(gameKey)")
+        Messaging.messaging().unsubscribe(fromTopic: "/topics/\(gameKey)\(MessagingTopic)")
     }
     
     func cancelGame () {
@@ -159,6 +165,9 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
             let ref = Database.database().reference().child("users").child(id).child("joinedGames")
             ref.child(gameKey).removeValue()
         }
+        
+        let MessagingTopic = "Message"
+        Messaging.messaging().unsubscribe(fromTopic: "/topics/\(gameKey)\(MessagingTopic)")
     }
     
     @IBAction func showLocation(_ sender: UITapGestureRecognizer) {
@@ -173,12 +182,12 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
             locationVC.longitude = currentGame.longitude
         }
         if segue.identifier == "showProfile"{
-        let locationVC = segue.destination as! FriendProfileViewController
-        locationVC.name = playerName
-        locationVC.age = playerAge
-        locationVC.email = playerEmail
-        locationVC.about = playerBio
-        locationVC.profilePhotoString = playerPhoto
+            let locationVC = segue.destination as! FriendProfileViewController
+            locationVC.name = playerName
+            locationVC.age = playerAge
+            locationVC.email = playerEmail
+            locationVC.about = playerBio
+            locationVC.profilePhotoString = playerPhoto
         }
     }
 }
