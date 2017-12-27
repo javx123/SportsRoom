@@ -36,7 +36,6 @@
 		73738A0197A6DF179687D916 /* Pods_SportsRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */; };
 		C07524851FF15103003DE253 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07524841FF15103003DE253 /* SignUpViewController.swift */; };
 		C07524871FF15989003DE253 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07524861FF15989003DE253 /* FriendProfileViewController.swift */; };
-		C0B604521FF433510052E39E /* TestDropDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B604511FF433510052E39E /* TestDropDownViewController.swift */; };
 		C0F929AC1FE883F4007B1847 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,7 +73,6 @@
 		C05EC3131FEC286E00122C5C /* SportsRoom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SportsRoom.entitlements; sourceTree = "<group>"; };
 		C07524841FF15103003DE253 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C07524861FF15989003DE253 /* FriendProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileViewController.swift; sourceTree = "<group>"; };
-		C0B604511FF433510052E39E /* TestDropDownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDropDownViewController.swift; sourceTree = "<group>"; };
 		C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsRoom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -128,7 +126,6 @@
 				2D40E3FB1FEB2D1300C24D72 /* User.swift */,
 				052D55731FF0A81000602131 /* Message.swift */,
 				2D1F4B4E1FE1F36400371D9B /* Main.storyboard */,
-				C0B604511FF433510052E39E /* TestDropDownViewController.swift */,
 				C07524861FF15989003DE253 /* FriendProfileViewController.swift */,
 				C07524841FF15103003DE253 /* SignUpViewController.swift */,
 				C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */,
@@ -337,7 +334,6 @@
 				052D55741FF0A81000602131 /* Message.swift in Sources */,
 				C07524851FF15103003DE253 /* SignUpViewController.swift in Sources */,
 				2D71A9B61FE40B6A008C60F7 /* HostGameViewController.swift in Sources */,
-				C0B604521FF433510052E39E /* TestDropDownViewController.swift in Sources */,
 				05E0A0D51FE83D16006BE816 /* LoginViewController.swift in Sources */,
 				2D47D2461FE9D9A50067250B /* LocationManager.swift in Sources */,
 				052D55761FF34D7F00602131 /* JoinedTableViewCell.swift in Sources */,

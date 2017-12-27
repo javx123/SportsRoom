@@ -38,7 +38,7 @@ class HostGameViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        numberOfPlayersLabel.text = "1"
+        numberOfPlayersLabel.text = "1"
         dropDown.anchorView = selectSportView
         dropDown.dataSource = ["Baseball", "Basketball", "Hockey", "Soccer", "Football", "Tennis", "Softball", "Badminton", "Table Tennis", "Ball Hockey", "Ultimate", "Other"]
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
@@ -85,8 +85,8 @@ class HostGameViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func screenTapped(_ sender: Any) {
         gameTitleTextField.resignFirstResponder()
-//        costTextField.resignFirstResponder()
-//        notesTextField.resignFirstResponder()
+        costTextField.resignFirstResponder()
+        notesTextField.resignFirstResponder()
     }
     
     @IBAction func gamePosted(_ sender: Any) {
@@ -102,6 +102,9 @@ class HostGameViewController: UIViewController, UITextFieldDelegate {
         // convert the segmented control value to a string
         let skillLevelString = skillLevelControl.titleForSegment(at: skillLevelControl.selectedSegmentIndex)
         
+        if costTextField.text == "" {
+            costTextField.text = "Free"
+        }
         // call the postGame method
         postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: dropDownSelectionLabel.text!.lowercased(), date:dateString, address:selectLocationLabel.text!, longitude:longitude, latitude:latitude, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!)
         
