@@ -40,6 +40,13 @@ class SignUpViewController: UIViewController {
                     let agekey = "age"
                     let agetext = self.ageTxtField.text
                     ref.updateChildValues([emailkey:emailtext!,namekey:nametext!,agekey:agetext!])
+                    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                    changeRequest?.displayName = self.nameTxtField.text
+                    changeRequest?.commitChanges { (error) in
+                        if error != nil {
+                            print(error!.localizedDescription)
+                        }
+                    }
                     
                     print("Register Success!")
                     self.performSegue(withIdentifier: "signUpToMain", sender: self)

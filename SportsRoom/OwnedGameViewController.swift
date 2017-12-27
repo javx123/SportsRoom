@@ -13,30 +13,37 @@ import Firebase
 class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider {
     
     @IBOutlet weak var tableView: UITableView!
+//    var delegate: gamesOwnerVC?
     
-    var gamesArrayDetails = [Game]()
-//    {
-//        didSet{
-//            self.tableView.reloadData()
-//        }
-//    }
+
+    var gamesArrayDetails: [Game] = []
+    {
+        didSet{
+            if let tableView = self.tableView {
+                tableView.reloadData()
+            }
+        }
+    }
 
 
     var buttonTag = 0
   
     override func viewDidLoad() {
         super.viewDidLoad()
+//        getHostedGames()
+        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getHostedGames()
-        tableView.reloadData()
+//        delegate?.reassignData()
+//        getHostedGames()
+//        tableView.reloadData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        gamesArrayDetails = [Game]()
+//        gamesArrayDetails = [Game]()
     }
     
     func getHostedGames () {
@@ -95,13 +102,7 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        //        let cell = tableView.dequeueReusableCell(withIdentifier: "hostCell", for: indexPath) as? OwnedGameTableViewCell
-        //        let currentGame = gamesArrayDetails[indexPath.row]
-        //        cell?.titleLabel.text = currentGame.title
-        //        cell?.sportLabel.text = currentGame.sport
-        //        cell?.tag = indexPath.row
-        //        cell?.chatButton.tag = indexPath.row
-        //        return cell!
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "hostCell", for: indexPath)
         if let cell = cell as? OwnedGameTableViewCell {
             let currentGame = gamesArrayDetails[indexPath.row]

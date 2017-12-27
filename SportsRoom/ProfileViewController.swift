@@ -97,6 +97,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         let biosValue = bioTextView.text ?? ""
         let ageValue = ageTxtField.text ?? ""
         ref.updateChildValues([keyName:nameValue, keyBios:biosValue, keyAge:ageValue])
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.displayName = nameTxtField.text
+        changeRequest?.commitChanges { (error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+        }
     }
     
     func updateUserInfo () {
