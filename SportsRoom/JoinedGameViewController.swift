@@ -10,80 +10,42 @@ import UIKit
 import XLPagerTabStrip
 import Firebase
 
+//protocol gamesOwnerVC {
+//    func reassignData()
+//}
 
 class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider  {
     
     @IBOutlet weak var tableView: UITableView!
+//    var delegate: gamesOwnerVC?
     
-    var gamesArrayDetails = [Game]()
+    var gamesArrayDetails: [Game] = []
+    {
+        didSet{
+            if let tableView = self.tableView {
+                tableView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.reloadData()
         
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getJoinedGames()
-        tableView.reloadData()
+//        delegate?.reassignData()
+//        getJoinedGames()
+//        tableView.reloadData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        gamesArrayDetails = [Game]()
+//        gamesArrayDetails = [Game]()
     }
-    
-    
-    
-    
-    func getJoinedGames () {
-        let userID = Auth.auth().currentUser?.uid
-        let ref = Database.database().reference().child("users").child(userID!).child("joinedGames")
-
-        //        ref.observeSingleEvent(of: .value) {(snapshot) in
-        //            let value = snapshot.value as? [String:String] ?? [:]
-        //            let gamesArrayID = Array(value.keys)
-        //            for id in gamesArrayID {
-        //                let ref = Database.database().reference().child("games").child(id)
-        //                ref.observeSingleEvent(of: .value) { (snapshot) in
-        //                    let game = Game(snapshot: snapshot)
-        //                    self.gamesArrayDetails.append(game)
-        //                    self.tableView.reloadData()
-        //                }
-        //            }
-        //        }
-
-        ref.observe(.value) { (snapshot) in
-            let value = snapshot.value as? [String:String] ?? [:]
-            let gamesArrayID = Array(value.keys)
-            for id in gamesArrayID {
-                let ref = Database.database().reference().child("games").child(id)
-                ref.observeSingleEvent(of: .value) { (snapshot) in
-                    let game = Game(snapshot: snapshot)
-                    
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateStyle = .medium
-                    dateFormatter.timeStyle = .short
-                    dateFormatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
-                    let gameDate = dateFormatter.date(from: game.date)
-                    
-                    if gameDate! < Date() {
-                        let gameKey = game.gameID
-                        let refUser = Database.database().reference().child("users").child(userID!).child("joinedGames")
-                        refUser.child(gameKey).removeValue()
-                        let refGame = Database.database().reference().child("games").child(gameKey).child("joinedPlayers")
-                        refGame.child(userID!).removeValue()
-                    }
-                    else {
-                        self.gamesArrayDetails.append(game)
-                    }
-                    self.tableView.reloadData()
-                }
-            }
-        }
-    }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "joined") {

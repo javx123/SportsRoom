@@ -13,27 +13,37 @@ import Firebase
 class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider {
     
     @IBOutlet weak var tableView: UITableView!
+//    var delegate: gamesOwnerVC?
     
-    var gamesArrayDetails = [Game]()
-//    {
-//        didSet{
-//            self.tableView.reloadData()
-//        }
-//    }
+
+    var gamesArrayDetails: [Game] = []
+    {
+        didSet{
+            if let tableView = self.tableView {
+                tableView.reloadData()
+            }
+        }
+    }
+
+
+    var buttonTag = 0
   
     override func viewDidLoad() {
         super.viewDidLoad()
+//        getHostedGames()
+        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getHostedGames()
-        tableView.reloadData()
+//        delegate?.reassignData()
+//        getHostedGames()
+//        tableView.reloadData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        gamesArrayDetails = [Game]()
+//        gamesArrayDetails = [Game]()
     }
     
     func getHostedGames () {
