@@ -16,17 +16,27 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var tableView: UITableView!
     
     var gamesArrayDetails: [Game] = []
+    {
+        didSet{
+            if let tableView = self.tableView {
+                tableView.reloadData()
+            }
+        }
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        getJoinedGames()
+        tableView.reloadData()
         
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getJoinedGames()
-        tableView.reloadData()
+//        getJoinedGames()
+//        tableView.reloadData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {

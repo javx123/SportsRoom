@@ -14,24 +14,28 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var tableView: UITableView!
     
-    var gamesArrayDetails = [Game]()
-//    {
-//        didSet{
-//            self.tableView.reloadData()
-//        }
-//    }
+    var gamesArrayDetails: [Game] = []
+    {
+        didSet{
+            if let tableView = self.tableView {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
 
     var buttonTag = 0
   
     override func viewDidLoad() {
         super.viewDidLoad()
+//        getHostedGames()
+        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getHostedGames()
-        tableView.reloadData()
+//        getHostedGames()
+//        tableView.reloadData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {

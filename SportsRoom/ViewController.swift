@@ -112,11 +112,13 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let child_1 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "joinedGame") as? JoinedGameViewController
-        child_1?.gamesArrayDetails = joinedGames
         joinedGamesVC = child_1
+//        child_1?.gamesArrayDetails = joinedGames
+        joinedGamesVC?.gamesArrayDetails = joinedGames
         let child_2 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "hostedGame") as? OwnedGameViewController
         ownedGamesVC = child_2
-        child_2?.gamesArrayDetails = hostedGames
+//        child_2?.gamesArrayDetails = hostedGames
+        ownedGamesVC?.gamesArrayDetails = hostedGames
         
         return [child_1!, child_2!]
     }
@@ -230,6 +232,7 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
                 ref.observeSingleEvent(of: .value) { (snapshot) in
                     let game = Game(snapshot: snapshot)
                     self.joinedGames.append(game)
+                    self.joinedGamesVC?.gamesArrayDetails.append(game)
                     
                     let gameDate = self.dateFormatter.date(from: game.date)
                     if gameDate! < Date() {
@@ -261,6 +264,7 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
                 ref.observeSingleEvent(of: .value) { (snapshot) in
                     let game = Game(snapshot: snapshot)
                     self.hostedGames.append(game)
+                    self.ownedGamesVC?.gamesArrayDetails.append(game)
                     
                     let gameDate = self.dateFormatter.date(from: game.date)
                     if gameDate! < Date() {
