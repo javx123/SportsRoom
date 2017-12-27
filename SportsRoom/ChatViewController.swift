@@ -14,6 +14,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var messageArray = [Message]()
     var currentGame : Game!
+
     
     
     @IBOutlet weak var sendBtn: UIButton!
@@ -35,7 +36,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         messageTxtField.endEditing(true)
         messageTxtField.isEnabled = false
         let ref = Database.database().reference().child("games").child(currentGame.gameID).child("chatroom").childByAutoId()
-        ref.setValue(["sender": Auth.auth().currentUser?.email, "messageBody": messageTxtField.text]) { (error, ref) in
+//        let currentTime = Date()
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateStyle = .medium
+//        dateFormatter.timeStyle = .short
+//        let dateString = dateFormatter.string(from: currentTime)
+
+        ref.setValue(["senderID": Auth.auth().currentUser!.email, "messageBody": messageTxtField.text, "senderName": Auth.auth().currentUser!.displayName]) { (error, ref) in
             if error != nil {
                 print(error!.localizedDescription)
             } else {
@@ -43,7 +50,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.messageTxtField.isEnabled = true
                 self.messageTxtField.text = ""
             }
-        }   
+        }
     }
     
     func retrieveMessage() {
@@ -66,7 +73,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
         if let cell = cell as? ChatTableViewCell {
             let currentMessage = messageArray[indexPath.row]
-            cell.senderLbl.text = currentMessage.email
+            cell.senderLbl.text = currentMessage.senderName
             cell.messageLbl.text = currentMessage.messageBody
         }
         return cell

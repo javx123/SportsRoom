@@ -23,7 +23,7 @@ class Message: NSObject {
         self.senderName = messageDict ["senderName"] as? String ?? ""
         self.timestamp = messageDict ["timestamp"] as? String ?? ""
         self.messageBody = messageDict ["messageBody"] as? String ?? ""
-        self.email = messageDict ["sender"] as? String ?? ""
+        self.email = messageDict ["email"] as? String ?? ""
     }
 
     
