@@ -20,9 +20,6 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
 //            self.tableView.reloadData()
 //        }
 //    }
-
-
-    var buttonTag = 0
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,13 +92,7 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        //        let cell = tableView.dequeueReusableCell(withIdentifier: "hostCell", for: indexPath) as? OwnedGameTableViewCell
-        //        let currentGame = gamesArrayDetails[indexPath.row]
-        //        cell?.titleLabel.text = currentGame.title
-        //        cell?.sportLabel.text = currentGame.sport
-        //        cell?.tag = indexPath.row
-        //        cell?.chatButton.tag = indexPath.row
-        //        return cell!
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "hostCell", for: indexPath)
         if let cell = cell as? OwnedGameTableViewCell {
             let currentGame = gamesArrayDetails[indexPath.row]
