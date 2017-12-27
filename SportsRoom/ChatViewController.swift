@@ -79,4 +79,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
+    @IBAction func screenTapped(_ sender: Any) {
+        self.messageTxtField.resignFirstResponder()
+    }
+    
+    
 }

@@ -4,15 +4,11 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+var gameRef;
 
 
-    exports.notifyCancellation = functions.database.ref('/games/{pushId}').onDelete(event => {
+
+    exports.notifyCancelledGame = functions.database.ref('/games/{pushId}').onDelete(event => {
     var result = event.data.previous.val()
     console.log("game deleted", event.params.pushId, result);
     var resultGameTitle = result.gameID
@@ -33,3 +29,9 @@ admin.initializeApp(functions.config().firebase);
     console.log("Error sending message:", error);
   });
 });
+
+    exports.getMessage = functions.database.ref('/games/{pushId}/chatroom/{newEvent}').onWrite(event => {
+    result = event.data.val()
+    console.log(result)
+    console.log(result.messageBody)
+  });
