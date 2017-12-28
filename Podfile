@@ -11,9 +11,11 @@ target 'SportsRoom' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'XLPagerTabStrip'
-pod 'Firebase/Messaging'
-pod 'Firebase/Storage'
-pod 'SDWebImage'
-pod 'SVProgressHUD'
-pod 'DropDown'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Storage'
+  pod 'SDWebImage'
+  pod 'SVProgressHUD'
+  pod 'DropDown'
+  pod 'ChameleonFramework/Swift'
+
 end
