@@ -16,6 +16,5 @@ target 'SportsRoom' do
   pod 'SDWebImage'
   pod 'SVProgressHUD'
   pod 'DropDown'
-  pod 'ChameleonFramework/Swift'
 
 end
