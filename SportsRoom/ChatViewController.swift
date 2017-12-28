@@ -42,7 +42,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        dateFormatter.timeStyle = .short
 //        let dateString = dateFormatter.string(from: currentTime)
 
-        ref.setValue(["senderID": Auth.auth().currentUser!.email, "messageBody": messageTxtField.text, "senderName": Auth.auth().currentUser!.displayName]) { (error, ref) in
+        ref.updateChildValues(["email": Auth.auth().currentUser!.email!, "messageBody": messageTxtField.text!, "senderName": Auth.auth().currentUser!.displayName!, "timestamp": ServerValue.timestamp(), "senderID": Auth.auth().currentUser!.uid]) { (error, ref) in
             if error != nil {
                 print(error!.localizedDescription)
             } else {
@@ -75,6 +75,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             let currentMessage = messageArray[indexPath.row]
             cell.senderLbl.text = currentMessage.senderName
             cell.messageLbl.text = currentMessage.messageBody
+            cell.timestampLbl.text = currentMessage.timestamp
         }
         return cell
     }

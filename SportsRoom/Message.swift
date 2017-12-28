@@ -21,7 +21,15 @@ class Message: NSObject {
         let messageDict = snapshot.value as! [String:Any]
         self.senderID = messageDict ["senderID"] as? String ?? ""
         self.senderName = messageDict ["senderName"] as? String ?? ""
-        self.timestamp = messageDict ["timestamp"] as? String ?? ""
+        let timestampRaw = messageDict ["timestamp"] as? Double ?? 0
+        let timeStampconverted = NSDate(timeIntervalSince1970: timestampRaw / 1000)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = NSTimeZone.local
+//        dateFormatter.dateFormat = "hh:mm a"
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        let time = dateFormatter.string(from: timeStampconverted as Date)
+        self.timestamp = time
         self.messageBody = messageDict ["messageBody"] as? String ?? ""
         self.email = messageDict ["email"] as? String ?? ""
     }
