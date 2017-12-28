@@ -38,12 +38,17 @@ class HostGameViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        datePicker.setValue(UIColor.white, forKey:"textColor")
         numberOfPlayersLabel.text = "1"
         dropDown.anchorView = selectSportView
         dropDown.dataSource = ["Baseball", "Basketball", "Hockey", "Soccer", "Football", "Tennis", "Softball", "Badminton", "Table Tennis", "Ball Hockey", "Ultimate", "Other"]
+        dropDown.direction = .bottom
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
         otherSportTextField.isHidden = true
         self.otherSportTextField.delegate = self
+        
+        selectLocationLabel.text = ""
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

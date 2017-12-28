@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import UserNotifications
+import DropDown
 
 @UIApplicationMain
 class AppDelegate: UIResponder,UNUserNotificationCenterDelegate,UIApplicationDelegate,MessagingDelegate {
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder,UNUserNotificationCenterDelegate,UIApplicationDel
         registerGCMPush(application)
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
+        DropDown.startListeningToKeyboard()
         return true
     }
     
