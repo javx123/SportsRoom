@@ -34,6 +34,7 @@
 		2D71A9C01FE40D1A008C60F7 /* SetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9BF1FE40D1A008C60F7 /* SetLocationViewController.swift */; };
 		73738A0197A6DF179687D916 /* Pods_SportsRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */; };
 		C01E03981FF5CDA90029E5EC /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01E03971FF5CDA90029E5EC /* SelectDateViewController.swift */; };
+		C01E03BC1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01E03BB1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift */; };
 		C07524851FF15103003DE253 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07524841FF15103003DE253 /* SignUpViewController.swift */; };
 		C07524871FF15989003DE253 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07524861FF15989003DE253 /* FriendProfileViewController.swift */; };
 		C0B604541FF4664E0052E39E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0B604531FF4664E0052E39E /* Main.storyboard */; };
@@ -71,6 +72,7 @@
 		5D6F5EC96DFB1C7034020205 /* Pods-SportsRoom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsRoom.release.xcconfig"; path = "Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom.release.xcconfig"; sourceTree = "<group>"; };
 		78F2554F652C596510C8CEB8 /* Pods-SportsRoom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsRoom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom.debug.xcconfig"; sourceTree = "<group>"; };
 		C01E03971FF5CDA90029E5EC /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
+		C01E03BB1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersListCollectionViewCell.swift; sourceTree = "<group>"; };
 		C05EC3131FEC286E00122C5C /* SportsRoom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SportsRoom.entitlements; sourceTree = "<group>"; };
 		C07524841FF15103003DE253 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C07524861FF15989003DE253 /* FriendProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */,
 				2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */,
 				2D71A9BB1FE40C1E008C60F7 /* DetailsViewController.swift */,
+				C01E03BB1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift */,
 				2D71A9B51FE40B6A008C60F7 /* HostGameViewController.swift */,
 				2D71A9BF1FE40D1A008C60F7 /* SetLocationViewController.swift */,
 				2D71A9B71FE40B87008C60F7 /* ProfileViewController.swift */,
@@ -321,6 +324,7 @@
 				2D71A9BC1FE40C1E008C60F7 /* DetailsViewController.swift in Sources */,
 				C01E03981FF5CDA90029E5EC /* SelectDateViewController.swift in Sources */,
 				2D71A9B21FE40B19008C60F7 /* JoinedGameViewController.swift in Sources */,
+				C01E03BC1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift in Sources */,
 				05FF4A101FEC670C00E9A65C /* StaticFunctions.swift in Sources */,
 				052D55721FF0A1DA00602131 /* ChatTableViewCell.swift in Sources */,
 				05E624911FEAD703001AF76F /* Game.swift in Sources */,
