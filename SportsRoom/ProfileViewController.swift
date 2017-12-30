@@ -201,6 +201,17 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
     }
 
+    @IBAction func logOutPressed(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            print("Signout Success!")
+        }
+        catch {
+            print("error: there was a problem signing out")
+        }
+        self.performSegue(withIdentifier: "unwindToLoginVC", sender: self)
+        
+    }
 }
 
 
