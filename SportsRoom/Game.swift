@@ -26,6 +26,7 @@ class Game : NSObject {
     var joinedPlayers: Dictionary <String, String>?
     var joinedPlayersArray: [String]?
     var allPlayersArray = [String]()
+    var distance: Int? 
     
 //    var players = [String]
     

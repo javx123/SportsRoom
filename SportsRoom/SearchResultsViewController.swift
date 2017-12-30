@@ -133,14 +133,41 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             if ( Int(distance) < searchRadius!){
                 if !(currentUser!.joinedGameArray!.contains(game.gameID)) && !(currentUser!.hostedGameArray!.contains(game.gameID)) {
                     if (game.joinedPlayersArray!.count < game.numberOfPlayers) {
+                        game.distance = Int(distance)
                         self.searchResults.append(game)
-                        print(self.searchResults, "\n\n\n\n\n")
-                        self.searchResults.sort{ dateFormatter.date(from: $0.date)! < dateFormatter.date(from: $1.date)!}
+                        
+                        switch self.currentUser?.settings!["filter"] as! String {
+                        case "date":
+                            self.searchResults.sort{ dateFormatter.date(from: $0.date)! < dateFormatter.date(from: $1.date)!}
+                        case "distance":
+                            print("implement later")
+                            self.searchResults.sort{ $0.distance! <  $1.distance! }
+                        default:
+                            print("no filter???")
+                        }
                     }
                 }
             }
         }
         }
+    }
+    
+    func sortGames (){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        dateFormatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
+        
+        switch self.currentUser?.settings!["filter"] as! String {
+        case "date":
+            self.searchResults.sort{ dateFormatter.date(from: $0.date)! < dateFormatter.date(from: $1.date)!}
+        case "distance":
+            print("implement later")
+            self.searchResults.sort{ $0.distance! <  $1.distance! }
+        default:
+            print("no filter???")
+        }
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
