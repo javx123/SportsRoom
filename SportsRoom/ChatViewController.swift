@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import Firebase
+import FirebaseMessaging
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
@@ -36,13 +37,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         messageTxtField.endEditing(true)
         messageTxtField.isEnabled = false
         let ref = Database.database().reference().child("games").child(currentGame.gameID).child("chatroom").childByAutoId()
+    
 //        let currentTime = Date()
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.dateStyle = .medium
 //        dateFormatter.timeStyle = .short
 //        let dateString = dateFormatter.string(from: currentTime)
 
-        ref.setValue(["senderID": Auth.auth().currentUser!.email, "messageBody": messageTxtField.text, "senderName": Auth.auth().currentUser!.displayName]) { (error, ref) in
+        ref.updateChildValues(["email": Auth.auth().currentUser!.email!, "messageBody": messageTxtField.text!, "senderName": Auth.auth().currentUser!.displayName!, "timestamp": ServerValue.timestamp(), "senderID": Auth.auth().currentUser!.uid]) { (error, ref) in
             if error != nil {
                 print(error!.localizedDescription)
             } else {
@@ -75,6 +77,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             let currentMessage = messageArray[indexPath.row]
             cell.senderLbl.text = currentMessage.senderName
             cell.messageLbl.text = currentMessage.messageBody
+            cell.timestampLbl.text = currentMessage.timestamp
         }
         return cell
     }

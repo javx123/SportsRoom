@@ -17,6 +17,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     let ref = Database.database().reference(withPath: "games/")
     var currentUser: User?
     var searchedSport: String!
+    var searchRadius: Int?
     var searchLocation: CLLocation?
     var pulledGames: [Game]?
     var locationManager: LocationManager
@@ -127,18 +128,36 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             dateFormatter.timeStyle = .short
             dateFormatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
             let gameDate = dateFormatter.date(from: game.date)
-//            guard let gameDate = dateFormatter.date(from: game.date) else {continue}
             if Date() < gameDate! {
-            if ( Int(distance) < 30000 ){
+            if ( Int(distance) < searchRadius!){
                 if !(currentUser!.joinedGameArray!.contains(game.gameID)) && !(currentUser!.hostedGameArray!.contains(game.gameID)) {
                     if (game.joinedPlayersArray!.count < game.numberOfPlayers) {
+                        game.distance = Int(distance)
                         self.searchResults.append(game)
-                        print(self.searchResults, "\n\n\n\n\n")
+                        sortGames()
                     }
                 }
             }
         }
         }
+    }
+    
+    func sortGames (){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        dateFormatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
+        
+        switch self.currentUser?.settings!["filter"] as! String {
+        case "date":
+            self.searchResults.sort{ dateFormatter.date(from: $0.date)! < dateFormatter.date(from: $1.date)!}
+        case "distance":
+            print("implement later")
+            self.searchResults.sort{ $0.distance! <  $1.distance! }
+        default:
+            print("no filter???")
+        }
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

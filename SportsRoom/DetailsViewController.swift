@@ -11,8 +11,9 @@ import Firebase
 import FirebaseMessaging
 import CoreLocation
 import MapKit
+import SDWebImage
 
-class DetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DetailsViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var gameTitleLabel: UILabel!
     @IBOutlet weak var sportLabel: UILabel!
@@ -21,7 +22,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var skillLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var handleMapSearchDelegate:HandleMapSearch? = nil
     
@@ -51,12 +52,16 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         setButtonState(buttonState: btnText!)
         setLabels()
         getPlayerNames()
-        tableView.delegate = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
     func setLabels(){
         gameTitleLabel.text = currentGame.title
-        sportLabel.text = currentGame.sport
+        
+        let capitalizedSportString = currentGame.sport.capitalized
+        sportLabel.text = capitalizedSportString
+//        sportLabel.text = currentGame.sport
         dateLabel.text = currentGame.date
         locationLabel.text = currentGame.address
         skillLabel.text = currentGame.skillLevel
@@ -69,13 +74,13 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         switch buttonState {
         case .joined:
             gameActionBtn.setTitle(ButtonState.joined.rawValue, for: UIControlState.normal)
-            gameActionBtn.backgroundColor = UIColor.red
+//            gameActionBtn.backgroundColor = UIColor.red
         case .hosted:
             gameActionBtn.setTitle(ButtonState.hosted.rawValue, for: UIControlState.normal)
-            gameActionBtn.backgroundColor = UIColor.red
+//            gameActionBtn.backgroundColor = UIColor.red
         case .search:
             gameActionBtn.setTitle(ButtonState.search.rawValue, for: UIControlState.normal)
-            gameActionBtn.backgroundColor = UIColor.green
+//            gameActionBtn.backgroundColor = UIColor.green
         }
     }
     
@@ -88,25 +93,35 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
                 let user = User(snapshot: snapshot)
                 self.playerNamesArray.append(user.name)
                 self.playersArray.append(user)
-                self.tableView.reloadData()
+                self.collectionView.reloadData()
             }
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    // Mark: - Collection View Properties
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return playerNamesArray.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath)
-        let name = playerNamesArray[indexPath.row]
-        cell.textLabel?.text = name
-        
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayerCell", for: indexPath)
+        if let cell = cell as? PlayersListCollectionViewCell {
+            let name = playerNamesArray[indexPath.item]
+            cell.playerLabel.text = name
+            let currentUser = playersArray[indexPath.item]
+            let photoString = currentUser.profileImageURLString
+            if photoString == "" {
+                cell.playerImage.image = UIImage(named:"defaultimage")
+            } else {
+                cell.playerImage.sd_setImage(with: URL(string: photoString))
+            }
+        }
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedUser = playersArray[indexPath.row]
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedUser = playersArray[indexPath.item]
         self.playerName = selectedUser.name
         self.playerAge = selectedUser.age
         self.playerEmail = selectedUser.email
@@ -114,6 +129,9 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         self.playerPhoto = selectedUser.profileImageURLString
         self.performSegue(withIdentifier: "showProfile", sender: self)
     }
+    
+    
+
     
     @IBAction func gameActionPressed(_ sender: UIButton) {
         switch btnText! {

@@ -26,6 +26,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var ageTxtField: UITextField!
     @IBOutlet weak var bioTextView: UITextView!
     
+    var currentUser: User?
     var imageString = String()
     var imageURL: URL!
     var imageData = Data ()
@@ -44,6 +45,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkForImage()
+        updateUserInfo()
     }
 
     func checkForImage () {
@@ -110,12 +112,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         let userID = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("users").child(userID!)
         ref.observeSingleEvent(of: .value) { (snapshot) in
-            let currentUser = User(snapshot: snapshot)
-            self.emailLbl.text = currentUser.email
-            self.nameLbl.text = currentUser.name
-            self.biosLbl.text = currentUser.bio
-            self.ageLbl.text = currentUser.age
-
+            self.currentUser = User(snapshot: snapshot)
+            self.emailLbl.text = self.currentUser?.email
+            self.nameLbl.text = self.currentUser?.name
+            self.biosLbl.text = self.currentUser?.bio
+            self.ageLbl.text = self.currentUser?.age
+            
         }
     }
     
@@ -163,5 +165,53 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             SVProgressHUD.dismiss()
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "userSettings" {
+            let userSettingsVC = segue.destination as? UserSettingsViewController
+            userSettingsVC?.currentUser = currentUser
+        }
+    }
+    
+    @IBAction func unwindFromSettings (sender: UIStoryboardSegue) {
+        if sender.source is UserSettingsViewController {
+            if let senderVC = sender.source as? UserSettingsViewController {
+                let userID = Auth.auth().currentUser!.uid
+                let ref = Database.database().reference().child("users").child(userID)
+                
+                let userSearchRadius = senderVC.searchRadius
+                //                write info to user in firebase
+                
+                switch senderVC.filterOptions.selectedSegmentIndex {
+                case 0:
+                    //                    change filter in user info to date
+                    let defaultSettings: [String: Any] = ["radius": userSearchRadius,
+                                                          "filter": "date"]
+                    ref.updateChildValues(["settings" : defaultSettings])
+                case 1:
+                    //                    change filter in user info to location
+                    let defaultSettings: [String: Any] = ["radius": userSearchRadius,
+                                                          "filter": "distance"]
+                    ref.updateChildValues(["settings" : defaultSettings])
+                default:
+                    print("No matching segment")
+                }
+            }
+        }
+        
+    }
+
+    @IBAction func logOutPressed(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            print("Signout Success!")
+        }
+        catch {
+            print("error: there was a problem signing out")
+        }
+        self.performSegue(withIdentifier: "unwindToLoginVC", sender: self)
+        
+    }
 }
+
 
