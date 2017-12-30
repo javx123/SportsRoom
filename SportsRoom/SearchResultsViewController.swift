@@ -17,6 +17,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     let ref = Database.database().reference(withPath: "games/")
     var currentUser: User?
     var searchedSport: String!
+    var searchRadius: Int?
     var searchLocation: CLLocation?
     var pulledGames: [Game]?
     var locationManager: LocationManager
@@ -129,11 +130,12 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             let gameDate = dateFormatter.date(from: game.date)
 //            guard let gameDate = dateFormatter.date(from: game.date) else {continue}
             if Date() < gameDate! {
-            if ( Int(distance) < 30000 ){
+            if ( Int(distance) < searchRadius!){
                 if !(currentUser!.joinedGameArray!.contains(game.gameID)) && !(currentUser!.hostedGameArray!.contains(game.gameID)) {
                     if (game.joinedPlayersArray!.count < game.numberOfPlayers) {
                         self.searchResults.append(game)
                         print(self.searchResults, "\n\n\n\n\n")
+                        self.searchResults.sort{ dateFormatter.date(from: $0.date)! < dateFormatter.date(from: $1.date)!}
                     }
                 }
             }

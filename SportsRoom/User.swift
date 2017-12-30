@@ -19,7 +19,7 @@ class User: NSObject {
     var joinedGame: Dictionary <String, String>?
     var hostedGameArray: [String]?
     var joinedGameArray: [String]?
-
+    var settings: [String: Any]?
     
     init(snapshot: DataSnapshot) {
         let gameDict = snapshot.value as! [String:Any]
@@ -28,12 +28,11 @@ class User: NSObject {
         self.age = gameDict["age"] as? String ?? ""
         self.bio = gameDict["bios"] as? String ?? ""
         self.profileImageURLString = gameDict["profilePicture"] as? String ?? ""
-//        self.hostedGame = gameDict["hostedGames"] as? Dictionary <String, String>
-//        self.hostedGameArray = Array(hostedGame!.keys)
         self.hostedGame = gameDict["hostedGames"] as? Dictionary <String, String> ?? [:]
         self.hostedGameArray = Array(hostedGame!.keys)
         self.joinedGame = gameDict["joinedGames"] as? Dictionary <String, String> ?? [:]
         self.joinedGameArray = Array(joinedGame!.keys)
+        self.settings = gameDict["settings"] as? [String: Any]
 }
 
 }
