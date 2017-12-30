@@ -209,14 +209,11 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
                     if gameDate! < Date() {
                         let gameKey = game.gameID
                         let refGame = Database.database().reference().child("games").child(gameKey)
-                        refGame.removeValue()
+                        refGame.child("sport").removeValue()
+
+                        refGame.updateChildValues(["completedGameType" : "\(game.sport)"])
                         let refUserHosted = Database.database().reference().child("users").child(userID!).child("hostedGames")
                         refUserHosted.child(gameKey).removeValue()
-
-                        for id in game.joinedPlayersArray! {
-                            let ref = Database.database().reference().child("users").child(id).child("joinedGames")
-                            ref.child(gameKey).removeValue()
-                        }
                     }
                     else{
                         self.ownedGamesVC?.gamesArrayDetails.append(game)
@@ -225,7 +222,6 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
             }
         }
     }
-    
     
     @IBAction func locationOptions(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -265,14 +261,14 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
             searchController.searchedSport = searchBar.text
             searchController.currentUser = currentUser
             searchController.searchLocation = customLocation
+            searchController.searchRadius = (currentUser?.settings?["radius"] as? Int) ?? 30000
         }
         
         if segue.identifier == "searchLocation" {
             let navController = segue.destination as! UINavigationController
             let setLocationVC = navController.topViewController as! SetLocationViewController
             setLocationVC.gamePurpose = SetLocationViewController.Purpose.searchGame
-        }
-        
+        }        
     }
     
     

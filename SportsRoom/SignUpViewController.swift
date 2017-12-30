@@ -39,7 +39,10 @@ class SignUpViewController: UIViewController {
                     let nametext = self.nameTxtField.text
                     let agekey = "age"
                     let agetext = self.ageTxtField.text
-                    ref.updateChildValues([emailkey:emailtext!,namekey:nametext!,agekey:agetext!])
+                    let settingskey = "settings"
+                    let defaultSettings: [String: Any] = ["radius": 30000,
+                                                          "filter": "date"]
+                    ref.updateChildValues([emailkey:emailtext!,namekey:nametext!,agekey:agetext!, settingskey: defaultSettings])
                     let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                     changeRequest?.displayName = self.nameTxtField.text
                     changeRequest?.commitChanges { (error) in
