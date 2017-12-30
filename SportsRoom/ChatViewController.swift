@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import Firebase
+import FirebaseMessaging
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
@@ -36,6 +37,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         messageTxtField.endEditing(true)
         messageTxtField.isEnabled = false
         let ref = Database.database().reference().child("games").child(currentGame.gameID).child("chatroom").childByAutoId()
+    
 //        let currentTime = Date()
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.dateStyle = .medium
