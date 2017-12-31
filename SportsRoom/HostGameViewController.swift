@@ -66,11 +66,13 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
+        if !gameTitleTextField.isFirstResponder {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0{
                 self.view.frame.origin.y -= keyboardSize.height
             }
         }
+    }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -93,13 +95,22 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if otherSportTextField.isFirstResponder {
         self.dropDownSelectionLabel.text = self.otherSportTextField.text
         self.otherSportTextField.text = ""
         self.otherSportTextField.isHidden = true
         self.otherSportTextField.resignFirstResponder()
+        }
+        if gameTitleTextField.isFirstResponder {
         self.gameTitleTextField.resignFirstResponder()
+        }
+        if costTextField.isFirstResponder {
         self.costTextField.resignFirstResponder()
+        }
+        if notesTextField.isFirstResponder {
         self.notesTextField.resignFirstResponder()
+        }
         return true
     }
     
@@ -148,13 +159,13 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         // convert the segmented control value to a string
         let skillLevelString = skillLevelControl.titleForSegment(at: skillLevelControl.selectedSegmentIndex)
         
-        if costTextField.text == "" {
-            costTextField.text = "Free"
-        }
-        
-        if gameTitleTextField.text! == "" || dropDownSelectionLabel.text == "Select Sport" || pickLocationLabel.text == "Location" {
+        if gameTitleTextField.text! == "" || dropDownSelectionLabel.text == "Select Sport" || pickLocationLabel.text == "Location" || pickDateLabel.text == "Date/Time" {
             StaticFunctions.displayAlert(title: "Missing information.", message: "Some information is missing. Please check that all fields have been filled out", uiviewcontroller: self)
+            
         } else {
+            if costTextField.text == "" {
+                costTextField.text = "Free"
+            }
             postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: dropDownSelectionLabel.text!.lowercased(), date:dateString!, address: pickLocationLabel.text!, longitude:longitude, latitude:latitude, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!)
             
             _ = navigationController?.popViewController(animated: true)
