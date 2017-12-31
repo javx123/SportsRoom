@@ -14,12 +14,14 @@ import DropDown
 
 
 class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewControllerTransitioningDelegate {
+    @IBOutlet weak var upArrowImage: UIImageView!
     
     @IBOutlet weak var gameTitleTextField: UITextField!
     
     @IBOutlet weak var pickDateView: UIView!
     @IBOutlet weak var pickDateLabel: UILabel!
     
+    @IBOutlet weak var otherSportLabel: UILabel!
     @IBOutlet weak var pickLocationView: UIView!
     @IBOutlet weak var pickLocationLabel: UILabel!
     
@@ -50,7 +52,7 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         
         numberOfPlayersLabel.text = "1"
         dropDown.anchorView = selectSportView
-        dropDown.dataSource = ["Baseball", "Basketball", "Hockey", "Soccer", "Football", "Tennis", "Softball", "Badminton", "Table Tennis", "Ball Hockey", "Ultimate"]
+        dropDown.dataSource = ["Baseball", "Basketball", "Hockey", "Soccer", "Football", "Tennis", "Softball", "Badminton", "Table Tennis", "Ball Hockey", "Ultimate", "Other"]
         dropDown.direction = .bottom
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
         self.otherSportTextField.delegate = self
@@ -58,6 +60,9 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         let font = UIFont.systemFont(ofSize: 11.5)
         skillLevelControl.setTitleTextAttributes([NSAttributedStringKey.font: font],
                                                  for: .normal)
+        
+        otherSportTextField.isHidden = true
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,12 +70,16 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         dropDown.selectionAction = { (index: Int, item: String) in
             self.dropDownSelectionLabel.textColor = UIColor.black
             self.dropDownSelectionLabel.text = item
+            if item == "Other" {
+            self.otherSportTextField.isHidden = false
+            }
         }
     }
 
 func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     self.dropDownSelectionLabel.text = self.otherSportTextField.text
     self.otherSportTextField.text = ""
+    self.otherSportTextField.isHidden = true
     return true
 }
 
