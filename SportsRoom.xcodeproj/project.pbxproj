@@ -40,6 +40,8 @@
 		C07524871FF15989003DE253 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07524861FF15989003DE253 /* FriendProfileViewController.swift */; };
 		C0B604541FF4664E0052E39E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0B604531FF4664E0052E39E /* Main.storyboard */; };
 		C0F929AC1FE883F4007B1847 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */; };
+		FE3B00281FF9701500C56E24 /* SettingsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3B00271FF9701500C56E24 /* SettingsContainerViewController.swift */; };
+		FE3B002A1FF971B100C56E24 /* UserSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3B00291FF971B100C56E24 /* UserSettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +83,8 @@
 		C0B604531FF4664E0052E39E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsRoom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE3B00271FF9701500C56E24 /* SettingsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerViewController.swift; sourceTree = "<group>"; };
+		FE3B00291FF971B100C56E24 /* UserSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 				2D40E3FB1FEB2D1300C24D72 /* User.swift */,
 				052D55731FF0A81000602131 /* Message.swift */,
 				C0B604531FF4664E0052E39E /* Main.storyboard */,
+				FE3B00291FF971B100C56E24 /* UserSettingsTableViewController.swift */,
+				FE3B00271FF9701500C56E24 /* SettingsContainerViewController.swift */,
 				C01E03971FF5CDA90029E5EC /* SelectDateViewController.swift */,
 				C07524861FF15989003DE253 /* FriendProfileViewController.swift */,
 				C07524841FF15103003DE253 /* SignUpViewController.swift */,
@@ -322,8 +328,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE3B00281FF9701500C56E24 /* SettingsContainerViewController.swift in Sources */,
 				2D71A9B81FE40B87008C60F7 /* ProfileViewController.swift in Sources */,
 				052D556E1FF0991500602131 /* OwnedGameTableViewCell.swift in Sources */,
+				FE3B002A1FF971B100C56E24 /* UserSettingsTableViewController.swift in Sources */,
 				2D0612211FF5FC5600713545 /* UserSettingsViewController.swift in Sources */,
 				2D71A9BC1FE40C1E008C60F7 /* DetailsViewController.swift in Sources */,
 				C01E03981FF5CDA90029E5EC /* SelectDateViewController.swift in Sources */,
