@@ -80,7 +80,6 @@ func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             address = senderVC.addressString
             longitude = senderVC.longitudeDouble
             latitude = senderVC.latitudeDouble
-            
             pickLocationLabel.textColor = UIColor.black
             pickLocationLabel.text = address
         }
