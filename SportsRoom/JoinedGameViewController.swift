@@ -17,7 +17,7 @@ import Firebase
 class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider  {
     
     @IBOutlet weak var tableView: UITableView!
-//    var delegate: gamesOwnerVC?
+    //    var delegate: gamesOwnerVC?
     
     var gamesArrayDetails: [Game] = []
     {
@@ -37,14 +37,14 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        delegate?.reassignData()
-//        getJoinedGames()
-//        tableView.reloadData()
+        //        delegate?.reassignData()
+        //        getJoinedGames()
+        //        tableView.reloadData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-//        gamesArrayDetails = [Game]()
+        //        gamesArrayDetails = [Game]()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -56,36 +56,57 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
                 VC2.currentGame = game
             }
         } else if (segue.identifier == "toChat2") {
-                if let sender = sender as? UIButton {
-                    let game = gamesArrayDetails[sender.tag]
-                    let nav = segue.destination as! UINavigationController
-                    let chatVC = nav.topViewController as! ChatViewController
-                    chatVC.currentGame = game
-                }
+            if let sender = sender as? UIButton {
+                let game = gamesArrayDetails[sender.tag]
+                let nav = segue.destination as! UINavigationController
+                let chatVC = nav.topViewController as! ChatViewController
+                chatVC.currentGame = game
             }
         }
-    
-    
+    }
     
     //    Mark: - DataSource Methods
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return gamesArrayDetails.count
     }
     
-//    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-//        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "joinCell", for: indexPath)
-//        let game = gamesArrayDetails[indexPath.row]
-//        cell.textLabel?.text = game.title
-//        cell.detailTextLabel?.text = game.sport
-//        return cell
-//    }
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "joinCell", for: indexPath)
-        if let cell = cell as? JoinedTableViewCell {
+        if let cell = cell as? JoinedandHostedTableViewCell {
             let currentGame = gamesArrayDetails[indexPath.row]
             cell.titleLabel.text = currentGame.title
-            cell.sportLabel.text = currentGame.sport
+            cell.dateLabel.text = currentGame.date
+            cell.costLabel.text = currentGame.cost
+            cell.skillLabel.text = currentGame.skillLevel
+            
+            switch currentGame.sport {
+            case "basketball":
+                cell.sportImage.image = UIImage(named: "basketball")
+            case "baseball":
+                cell.sportImage.image = UIImage(named: "baseball")
+            case "badminton":
+                cell.sportImage.image = UIImage(named: "badminton")
+            case "hockey":
+                cell.sportImage.image = UIImage(named: "hockey")
+            case "tennis":
+                cell.sportImage.image = UIImage(named: "tennis")
+            case "squash":
+                cell.sportImage.image = UIImage(named: "squash")
+            case "table tennis":
+                cell.sportImage.image = UIImage(named: "tabletennis")
+            case "softball":
+                cell.sportImage.image = UIImage(named: "softball")
+            case "football":
+                cell.sportImage.image = UIImage(named: "football")
+            case "soccer":
+                cell.sportImage.image = UIImage(named: "soccer")
+            case "ball hockey":
+                cell.sportImage.image = UIImage(named: "hockey")
+            default:
+                cell.sportImage.image = UIImage(named: "defaultsport")
+            }
+            cell.locationLabel.text = currentGame.address
             cell.chatButton.tag = indexPath.row
         }
         return cell

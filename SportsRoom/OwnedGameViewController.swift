@@ -104,10 +104,40 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "hostCell", for: indexPath)
-        if let cell = cell as? OwnedGameTableViewCell {
+        if let cell = cell as? JoinedandHostedTableViewCell {
             let currentGame = gamesArrayDetails[indexPath.row]
             cell.titleLabel.text = currentGame.title
-            cell.sportLabel.text = currentGame.sport
+            cell.dateLabel.text = currentGame.date
+            cell.costLabel.text = currentGame.cost
+            cell.skillLabel.text = currentGame.skillLevel
+            
+            switch currentGame.sport {
+            case "basketball":
+                cell.sportImage.image = UIImage(named: "basketball")
+            case "baseball":
+                cell.sportImage.image = UIImage(named: "baseball")
+            case "badminton":
+                cell.sportImage.image = UIImage(named: "badminton")
+            case "hockey":
+                cell.sportImage.image = UIImage(named: "hockey")
+            case "tennis":
+                cell.sportImage.image = UIImage(named: "tennis")
+            case "squash":
+                cell.sportImage.image = UIImage(named: "squash")
+            case "table tennis":
+                cell.sportImage.image = UIImage(named: "tabletennis")
+            case "softball":
+                cell.sportImage.image = UIImage(named: "softball")
+            case "football":
+                cell.sportImage.image = UIImage(named: "football")
+            case "soccer":
+                cell.sportImage.image = UIImage(named: "soccer")
+            case "ball hockey":
+                cell.sportImage.image = UIImage(named: "hockey")
+            default:
+                cell.sportImage.image = UIImage(named: "defaultsport")
+            }
+            cell.locationLabel.text = currentGame.address
             cell.chatButton.tag = indexPath.row
         }
         return cell
