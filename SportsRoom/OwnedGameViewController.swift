@@ -31,6 +31,7 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 //        getHostedGames()
+        self.tableView.separatorStyle = .none
         tableView.reloadData()
     }
     
