@@ -21,7 +21,7 @@ class JoinedandHostedTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     
-        contentView.layer.cornerRadius = 10
+//        contentView.layer.cornerRadius = 10
         
     }
 
