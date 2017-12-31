@@ -25,6 +25,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var nameTxtField: UITextField!
     @IBOutlet weak var ageTxtField: UITextField!
     @IBOutlet weak var bioTextView: UITextView!
+    @IBOutlet weak var imageButton: UIButton!
     
     var currentUser: User?
     var imageString = String()
@@ -44,6 +45,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        imageView.clipsToBounds = true
         checkForImage()
         updateUserInfo()
     }
@@ -89,6 +92,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         nameTxtField.isHidden = hidden
         ageTxtField.isHidden = hidden
         bioTextView.isHidden = hidden
+        imageButton.isHidden = hidden
         
     }
     

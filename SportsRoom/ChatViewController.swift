@@ -79,10 +79,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func screenTapped(_ sender: Any) {
         self.messageTxtField.resignFirstResponder()
     }
-    
-    
-    
-    
+ 
     //MARK: - TableView DataSource Methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -96,6 +93,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.senderLbl.text = currentMessage.senderName
             cell.messageLbl.text = currentMessage.messageBody
             cell.timestampLbl.text = currentMessage.timestamp
+            
+            if currentMessage.senderID != Auth.auth().currentUser!.uid {
+                cell.senderLbl.textColor = UIColor.black
+                cell.messageLbl.textColor = UIColor.black
+            }
         }
         return cell
     }
