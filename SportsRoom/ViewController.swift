@@ -284,6 +284,7 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
             searchController.currentUser = currentUser
             searchController.searchLocation = customLocation
             searchController.searchRadius = (currentUser?.settings?["radius"] as? Int) ?? 30000
+            searchBarVC?.searchBar.text = ""
         }
         
         if segue.identifier == "searchLocation" {
