@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SHSearchBar
 
 protocol SearchContainerProtocol {
     func close()
@@ -24,6 +25,7 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
         super.viewDidLoad()
         searchBar.delegate = self
         // Do any additional setup after loading the view.
+//        let searchbar
     }
 
     @IBAction func search(_ sender: Any) {
