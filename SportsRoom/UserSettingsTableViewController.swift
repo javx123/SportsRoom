@@ -18,7 +18,9 @@ class UserSettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var dateFilterCell: UITableViewCell!
     @IBOutlet weak var distanceFilterCell: UITableViewCell!
-
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    
     
     var filterType: Filter?
     var searchRadius: Int?
@@ -78,14 +80,20 @@ class UserSettingsTableViewController: UITableViewController {
         filterType = Filter.date
 
         dateFilterCell.backgroundColor = UIColor.flatYellow
+        dateLabel.textColor = UIColor.flatNavyBlueDark
+        
         distanceFilterCell.backgroundColor = UIColor.flatNavyBlueDark
+        distanceLabel.textColor = UIColor.flatYellow
     }
     
     @IBAction func distanceFilterSelected(_ sender: Any) {
         print("Distance filter tapped")
         filterType = Filter.distance
         distanceFilterCell.backgroundColor = UIColor.flatYellow
+        distanceLabel.textColor = UIColor.flatNavyBlueDark
+        
         dateFilterCell.backgroundColor = UIColor.flatNavyBlueDark
+        dateLabel.textColor = UIColor.flatYellow
     }
     
     @IBAction func searchRadiusChanged(_ sender: UISlider) {

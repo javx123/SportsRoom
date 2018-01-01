@@ -2122,7 +2122,9 @@
                     </tableView>
                     <connections>
                         <outlet property="dateFilterCell" destination="yJ9-97-LPS" id="AVp-WH-kzg"/>
+                        <outlet property="dateLabel" destination="yhs-QD-cde" id="Z3D-QS-IsU"/>
                         <outlet property="distanceFilterCell" destination="CsP-NN-H9q" id="5aZ-cv-bIG"/>
+                        <outlet property="distanceLabel" destination="D7E-9T-0uZ" id="pFe-Vt-a5c"/>
                         <outlet property="searchRadiusLabel" destination="y1P-IT-pxK" id="g4y-mC-4aC"/>
                         <outlet property="searchRadiusSlider" destination="niz-Qh-UgU" id="tUe-fg-eUC"/>
                     </connections>

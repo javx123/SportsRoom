@@ -40,6 +40,7 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
         searchBar.text = ""
         searchBar.setShowsCancelButton(false, animated: true)
         searchBar.endEditing(true)
+        delegate?.close()
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
