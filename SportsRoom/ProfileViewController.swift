@@ -27,6 +27,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var bioTextView: UITextView!
     @IBOutlet weak var imageButton: UIButton!
     
+    @IBOutlet weak var ageStack: UIStackView!
+    @IBOutlet weak var biosStack: UIStackView!
+    
     var currentUser: User?
     var imageString = String()
     var imageURL: URL!
@@ -69,7 +72,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             editBtn.setTitle("Save", for: UIControlState.normal)
             labelsState(hidden: true)
             fieldsState(hidden: false)
-            nameTxtField.text = nameLbl.text
+//            nameTxtField.text = nameLbl.text
             ageTxtField.text = ageLbl.text
             bioTextView.text = biosLbl.text
         } else {
@@ -83,13 +86,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func labelsState (hidden:Bool) {
-        nameLbl.isHidden = hidden
+//        nameLbl.isHidden = hidden
         ageLbl.isHidden = hidden
         biosLbl.isHidden = hidden
     }
     
     func fieldsState (hidden:Bool) {
-        nameTxtField.isHidden = hidden
+//        nameTxtField.isHidden = hidden
         ageTxtField.isHidden = hidden
         bioTextView.isHidden = hidden
         imageButton.isHidden = hidden
@@ -99,17 +102,17 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     func editUserInfo () {
         let userID = Auth.auth().currentUser!.uid
         let ref = Database.database().reference().child("users").child(userID)
-        let nameValue = nameTxtField.text ?? ""
+//        let nameValue = nameTxtField.text ?? ""
         let biosValue = bioTextView.text ?? ""
         let ageValue = ageTxtField.text ?? ""
-        ref.updateChildValues([keyName:nameValue, keyBios:biosValue, keyAge:ageValue])
-        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-        changeRequest?.displayName = nameTxtField.text
-        changeRequest?.commitChanges { (error) in
-            if error != nil {
-                print(error!.localizedDescription)
-            }
-        }
+        ref.updateChildValues([keyBios:biosValue, keyAge:ageValue])
+//        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+//        changeRequest?.displayName = nameTxtField.text
+//        changeRequest?.commitChanges { (error) in
+//            if error != nil {
+//                print(error!.localizedDescription)
+//            }
+//        }
     }
     
     func updateUserInfo () {

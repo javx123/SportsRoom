@@ -25,6 +25,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         retrieveMessage()
+        tableView.tableFooterView = UIView()
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         notificationCenter.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -93,10 +94,17 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.senderLbl.text = currentMessage.senderName
             cell.messageLbl.text = currentMessage.messageBody
             cell.timestampLbl.text = currentMessage.timestamp
+            self.tableView.separatorStyle = .none
+
+//            let imageView = UIImageView(frame: CGRect(x: 10, y: 20, width: cell.frame.width-10, height: cell.frame.height-10))
+//            cell.backgroundView = UIView()
+//            cell.backgroundView!.addSubview(imageView)
             
             if currentMessage.senderID != Auth.auth().currentUser!.uid {
                 cell.senderLbl.textColor = UIColor.black
-                cell.messageLbl.textColor = UIColor.black
+//                imageView.image = UIImage(named: "chatReceived")
+            } else {
+//                imageView.image = UIImage(named: "chatSent")
             }
         }
         return cell
