@@ -7,14 +7,4 @@ target 'SportsRoom' do
 
   # Pods for SportsRoom
 
-  pod 'Firebase/Core'
-  pod 'Firebase/Database'
-  pod 'Firebase/Auth'
-  pod 'XLPagerTabStrip'
-  pod 'Firebase/Messaging'
-  pod 'Firebase/Storage'
-  pod 'SDWebImage'
-  pod 'SVProgressHUD'
-  pod 'DropDown'
-
 end
