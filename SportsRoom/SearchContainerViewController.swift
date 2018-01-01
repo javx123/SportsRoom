@@ -13,7 +13,7 @@ protocol SearchContainerProtocol {
     func search()
 }
 
-class SearchContainerViewController: UIViewController {
+class SearchContainerViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -22,13 +22,30 @@ class SearchContainerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        searchBar.delegate = self
         // Do any additional setup after loading the view.
     }
 
     @IBAction func search(_ sender: Any) {
         delegate?.close()
         delegate?.search()
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.endEditing(true)
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        delegate?.close()
+        delegate?.search()
+        searchBar.setShowsCancelButton(false, animated: true)
     }
     
 

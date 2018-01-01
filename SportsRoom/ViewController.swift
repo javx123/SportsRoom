@@ -279,7 +279,6 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
             let navController = segue.destination as! UINavigationController
             let searchController = navController.topViewController as! SearchResultsViewController
             
-//            searchController.searchedSport = searchBar.text
             searchController.searchedSport = searchBarVC?.searchBar.text
             searchController.currentUser = currentUser
             searchController.searchLocation = customLocation
