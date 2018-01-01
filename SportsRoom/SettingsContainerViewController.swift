@@ -12,6 +12,9 @@ class SettingsContainerViewController: UIViewController {
     
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var settingsTableView: UIView!
+    
+    var userSettingsVC: UserSettingsTableViewController?
+    var currentUser: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,9 +22,11 @@ class SettingsContainerViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? UserSettingsTableViewController {
+            userSettingsVC = vc
+            vc.currentUser = currentUser
+        }
     }
     
 

@@ -18,6 +18,7 @@ class UserSettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var dateFilterCell: UITableViewCell!
     @IBOutlet weak var distanceFilterCell: UITableViewCell!
+
     
     var filterType: Filter?
     var searchRadius: Int?
@@ -25,20 +26,22 @@ class UserSettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        searchRadiusSlider.value = (currentUser?.settings!["radius"] as! Float) / 1000
-//        searchRadius = Int(searchRadiusSlider.value) * 1000
-//        searchRadiusLabel.text = "\(Int(searchRadiusSlider.value)) Km"
-//
-//
-//        if (currentUser?.settings!["filter"] as? String) == "date" {
-//            filterType = Filter.date
-////            dateFilterCell == selected someway
-//        }
-//        else if (currentUser?.settings!["filter"] as? String) == "distance" {
-//            filterType = Filter.distance
-////            distanceFilterCell == selected someway
-//        }
-        dateFilterSelected(self)
+        searchRadiusSlider.value = (currentUser?.settings!["radius"] as! Float) / 1000
+        searchRadius = Int(searchRadiusSlider.value) * 1000
+        searchRadiusLabel.text = "\(Int(searchRadiusSlider.value)) Km"
+
+
+        if (currentUser?.settings!["filter"] as? String) == "date" {
+            filterType = Filter.date
+
+            dateFilterSelected(self)
+        }
+        else if (currentUser?.settings!["filter"] as? String) == "distance" {
+            filterType = Filter.distance
+            
+            distanceFilterSelected(self)
+        }
+        
         tableView.allowsSelection = false
         
     }
