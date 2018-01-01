@@ -7,21 +7,86 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		052D556E1FF0991500602131 /* OwnedGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D556D1FF0991500602131 /* OwnedGameTableViewCell.swift */; };
+		052D55701FF09EA800602131 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D556F1FF09EA800602131 /* ChatViewController.swift */; };
+		052D55721FF0A1DA00602131 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */; };
+		052D55741FF0A81000602131 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D55731FF0A81000602131 /* Message.swift */; };
+		052D55761FF34D7F00602131 /* JoinedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D55751FF34D7F00602131 /* JoinedTableViewCell.swift */; };
+		05E0A0D51FE83D16006BE816 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E0A0D41FE83D16006BE816 /* LoginViewController.swift */; };
+		05E624911FEAD703001AF76F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E624901FEAD703001AF76F /* Game.swift */; };
+		05FF4A0C1FEC3F7F00E9A65C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05FF4A0B1FEC3F7F00E9A65C /* GoogleService-Info.plist */; };
+		05FF4A0E1FEC4FCD00E9A65C /* FilePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF4A0D1FEC4FCD00E9A65C /* FilePaths.swift */; };
+		05FF4A101FEC670C00E9A65C /* StaticFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF4A0F1FEC670C00E9A65C /* StaticFunctions.swift */; };
+		2D0612211FF5FC5600713545 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0612201FF5FC5600713545 /* UserSettingsViewController.swift */; };
 		2D1F4B4B1FE1F36400371D9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */; };
 		2D1F4B4D1FE1F36400371D9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4C1FE1F36400371D9B /* ViewController.swift */; };
-		2D1F4B501FE1F36400371D9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4E1FE1F36400371D9B /* Main.storyboard */; };
 		2D1F4B521FE1F36400371D9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B511FE1F36400371D9B /* Assets.xcassets */; };
 		2D1F4B551FE1F36400371D9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B531FE1F36400371D9B /* LaunchScreen.storyboard */; };
+		2D40E3FC1FEB2D1300C24D72 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D40E3FB1FEB2D1300C24D72 /* User.swift */; };
+		2D47D2461FE9D9A50067250B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D47D2451FE9D9A50067250B /* LocationManager.swift */; };
+		2D47D2481FEA1FEA0067250B /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D47D2471FEA1FEA0067250B /* SearchTableViewCell.swift */; };
+		2D71A9B21FE40B19008C60F7 /* JoinedGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9B11FE40B19008C60F7 /* JoinedGameViewController.swift */; };
+		2D71A9B41FE40B22008C60F7 /* OwnedGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9B31FE40B22008C60F7 /* OwnedGameViewController.swift */; };
+		2D71A9B61FE40B6A008C60F7 /* HostGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9B51FE40B6A008C60F7 /* HostGameViewController.swift */; };
+		2D71A9B81FE40B87008C60F7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9B71FE40B87008C60F7 /* ProfileViewController.swift */; };
+		2D71A9BA1FE40BF4008C60F7 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9B91FE40BF4008C60F7 /* SearchResultsViewController.swift */; };
+		2D71A9BC1FE40C1E008C60F7 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9BB1FE40C1E008C60F7 /* DetailsViewController.swift */; };
+		2D71A9BE1FE40C7F008C60F7 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */; };
+		2D71A9C01FE40D1A008C60F7 /* SetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D71A9BF1FE40D1A008C60F7 /* SetLocationViewController.swift */; };
+		73738A0197A6DF179687D916 /* Pods_SportsRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */; };
+		C01E03981FF5CDA90029E5EC /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01E03971FF5CDA90029E5EC /* SelectDateViewController.swift */; };
+		C01E03BC1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01E03BB1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift */; };
+		C07524851FF15103003DE253 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07524841FF15103003DE253 /* SignUpViewController.swift */; };
+		C07524871FF15989003DE253 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07524861FF15989003DE253 /* FriendProfileViewController.swift */; };
+		C0B604541FF4664E0052E39E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0B604531FF4664E0052E39E /* Main.storyboard */; };
+		C0F929AC1FE883F4007B1847 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */; };
+		FE3B00281FF9701500C56E24 /* SettingsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3B00271FF9701500C56E24 /* SettingsContainerViewController.swift */; };
+		FE3B002A1FF971B100C56E24 /* UserSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3B00291FF971B100C56E24 /* UserSettingsTableViewController.swift */; };
+		FE75D4ED1FFA0D21001BCD7E /* SearchContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE75D4EC1FFA0D21001BCD7E /* SearchContainerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		052D556D1FF0991500602131 /* OwnedGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedGameTableViewCell.swift; sourceTree = "<group>"; };
+		052D556F1FF09EA800602131 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		052D55731FF0A81000602131 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		052D55751FF34D7F00602131 /* JoinedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedTableViewCell.swift; sourceTree = "<group>"; };
+		05E0A0D41FE83D16006BE816 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		05E624901FEAD703001AF76F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		05FF4A0B1FEC3F7F00E9A65C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		05FF4A0D1FEC4FCD00E9A65C /* FilePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePaths.swift; sourceTree = "<group>"; };
+		05FF4A0F1FEC670C00E9A65C /* StaticFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticFunctions.swift; sourceTree = "<group>"; };
+		2D0612201FF5FC5600713545 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		2D1F4B471FE1F36400371D9B /* SportsRoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsRoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D1F4B4C1FE1F36400371D9B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2D1F4B4F1FE1F36400371D9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2D1F4B511FE1F36400371D9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D1F4B541FE1F36400371D9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D1F4B561FE1F36400371D9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D40E3FB1FEB2D1300C24D72 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2D47D2451FE9D9A50067250B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		2D47D2471FEA1FEA0067250B /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		2D71A9B11FE40B19008C60F7 /* JoinedGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedGameViewController.swift; sourceTree = "<group>"; };
+		2D71A9B31FE40B22008C60F7 /* OwnedGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedGameViewController.swift; sourceTree = "<group>"; };
+		2D71A9B51FE40B6A008C60F7 /* HostGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostGameViewController.swift; sourceTree = "<group>"; };
+		2D71A9B71FE40B87008C60F7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2D71A9B91FE40BF4008C60F7 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		2D71A9BB1FE40C1E008C60F7 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		2D71A9BF1FE40D1A008C60F7 /* SetLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLocationViewController.swift; sourceTree = "<group>"; };
+		5D6F5EC96DFB1C7034020205 /* Pods-SportsRoom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsRoom.release.xcconfig"; path = "Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom.release.xcconfig"; sourceTree = "<group>"; };
+		78F2554F652C596510C8CEB8 /* Pods-SportsRoom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsRoom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom.debug.xcconfig"; sourceTree = "<group>"; };
+		C01E03971FF5CDA90029E5EC /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
+		C01E03BB1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersListCollectionViewCell.swift; sourceTree = "<group>"; };
+		C05EC3131FEC286E00122C5C /* SportsRoom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SportsRoom.entitlements; sourceTree = "<group>"; };
+		C07524841FF15103003DE253 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C07524861FF15989003DE253 /* FriendProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileViewController.swift; sourceTree = "<group>"; };
+		C0B604531FF4664E0052E39E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
+		F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsRoom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE3B00271FF9701500C56E24 /* SettingsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerViewController.swift; sourceTree = "<group>"; };
+		FE3B00291FF971B100C56E24 /* UserSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsTableViewController.swift; sourceTree = "<group>"; };
+		FE75D4EC1FFA0D21001BCD7E /* SearchContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContainerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +94,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73738A0197A6DF179687D916 /* Pods_SportsRoom.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06E0B265ABD6777B04C0AE2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2D1F4B3E1FE1F36400371D9B = {
 			isa = PBXGroup;
 			children = (
 				2D1F4B491FE1F36400371D9B /* SportsRoom */,
 				2D1F4B481FE1F36400371D9B /* Products */,
+				FAE14F0A132822A22784553A /* Pods */,
+				06E0B265ABD6777B04C0AE2D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +130,54 @@
 		2D1F4B491FE1F36400371D9B /* SportsRoom */ = {
 			isa = PBXGroup;
 			children = (
+				C05EC3131FEC286E00122C5C /* SportsRoom.entitlements */,
+				05FF4A0B1FEC3F7F00E9A65C /* GoogleService-Info.plist */,
 				2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */,
 				2D1F4B4C1FE1F36400371D9B /* ViewController.swift */,
-				2D1F4B4E1FE1F36400371D9B /* Main.storyboard */,
+				05E624901FEAD703001AF76F /* Game.swift */,
+				2D40E3FB1FEB2D1300C24D72 /* User.swift */,
+				052D55731FF0A81000602131 /* Message.swift */,
+				C0B604531FF4664E0052E39E /* Main.storyboard */,
+				FE75D4EC1FFA0D21001BCD7E /* SearchContainerViewController.swift */,
+				FE3B00271FF9701500C56E24 /* SettingsContainerViewController.swift */,
+				FE3B00291FF971B100C56E24 /* UserSettingsTableViewController.swift */,
+				C01E03971FF5CDA90029E5EC /* SelectDateViewController.swift */,
+				C07524861FF15989003DE253 /* FriendProfileViewController.swift */,
+				C07524841FF15103003DE253 /* SignUpViewController.swift */,
+				C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */,
+				05E0A0D41FE83D16006BE816 /* LoginViewController.swift */,
+				05FF4A0D1FEC4FCD00E9A65C /* FilePaths.swift */,
+				05FF4A0F1FEC670C00E9A65C /* StaticFunctions.swift */,
+				2D71A9B11FE40B19008C60F7 /* JoinedGameViewController.swift */,
+				052D55751FF34D7F00602131 /* JoinedTableViewCell.swift */,
+				052D556D1FF0991500602131 /* OwnedGameTableViewCell.swift */,
+				2D71A9B31FE40B22008C60F7 /* OwnedGameViewController.swift */,
+				052D556F1FF09EA800602131 /* ChatViewController.swift */,
+				052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */,
+				2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */,
+				2D71A9BB1FE40C1E008C60F7 /* DetailsViewController.swift */,
+				C01E03BB1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift */,
+				2D71A9B51FE40B6A008C60F7 /* HostGameViewController.swift */,
+				2D71A9BF1FE40D1A008C60F7 /* SetLocationViewController.swift */,
+				2D71A9B71FE40B87008C60F7 /* ProfileViewController.swift */,
+				2D0612201FF5FC5600713545 /* UserSettingsViewController.swift */,
+				2D71A9B91FE40BF4008C60F7 /* SearchResultsViewController.swift */,
+				2D47D2451FE9D9A50067250B /* LocationManager.swift */,
+				2D47D2471FEA1FEA0067250B /* SearchTableViewCell.swift */,
 				2D1F4B511FE1F36400371D9B /* Assets.xcassets */,
 				2D1F4B531FE1F36400371D9B /* LaunchScreen.storyboard */,
 				2D1F4B561FE1F36400371D9B /* Info.plist */,
 			);
 			path = SportsRoom;
+			sourceTree = "<group>";
+		};
+		FAE14F0A132822A22784553A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				78F2554F652C596510C8CEB8 /* Pods-SportsRoom.debug.xcconfig */,
+				5D6F5EC96DFB1C7034020205 /* Pods-SportsRoom.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D1F4B591FE1F36400371D9B /* Build configuration list for PBXNativeTarget "SportsRoom" */;
 			buildPhases = (
+				5F0C73076C4719ECA11985F4 /* [CP] Check Pods Manifest.lock */,
 				2D1F4B431FE1F36400371D9B /* Sources */,
 				2D1F4B441FE1F36400371D9B /* Frameworks */,
 				2D1F4B451FE1F36400371D9B /* Resources */,
+				C25C3AF7F0F6989CA8794592 /* [CP] Embed Pods Frameworks */,
+				120F21C33807E127576D8312 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -97,6 +216,11 @@
 					2D1F4B461FE1F36400371D9B = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -124,34 +248,128 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D1F4B551FE1F36400371D9B /* LaunchScreen.storyboard in Resources */,
+				05FF4A0C1FEC3F7F00E9A65C /* GoogleService-Info.plist in Resources */,
 				2D1F4B521FE1F36400371D9B /* Assets.xcassets in Resources */,
-				2D1F4B501FE1F36400371D9B /* Main.storyboard in Resources */,
+				C0B604541FF4664E0052E39E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		120F21C33807E127576D8312 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5F0C73076C4719ECA11985F4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SportsRoom-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C25C3AF7F0F6989CA8794592 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2D1F4B431FE1F36400371D9B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE3B00281FF9701500C56E24 /* SettingsContainerViewController.swift in Sources */,
+				2D71A9B81FE40B87008C60F7 /* ProfileViewController.swift in Sources */,
+				052D556E1FF0991500602131 /* OwnedGameTableViewCell.swift in Sources */,
+				FE3B002A1FF971B100C56E24 /* UserSettingsTableViewController.swift in Sources */,
+				2D0612211FF5FC5600713545 /* UserSettingsViewController.swift in Sources */,
+				2D71A9BC1FE40C1E008C60F7 /* DetailsViewController.swift in Sources */,
+				C01E03981FF5CDA90029E5EC /* SelectDateViewController.swift in Sources */,
+				2D71A9B21FE40B19008C60F7 /* JoinedGameViewController.swift in Sources */,
+				C01E03BC1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift in Sources */,
+				05FF4A101FEC670C00E9A65C /* StaticFunctions.swift in Sources */,
+				052D55721FF0A1DA00602131 /* ChatTableViewCell.swift in Sources */,
+				FE75D4ED1FFA0D21001BCD7E /* SearchContainerViewController.swift in Sources */,
+				05E624911FEAD703001AF76F /* Game.swift in Sources */,
+				2D40E3FC1FEB2D1300C24D72 /* User.swift in Sources */,
+				C0F929AC1FE883F4007B1847 /* LocationSearchTable.swift in Sources */,
+				2D71A9C01FE40D1A008C60F7 /* SetLocationViewController.swift in Sources */,
+				2D71A9B41FE40B22008C60F7 /* OwnedGameViewController.swift in Sources */,
+				052D55701FF09EA800602131 /* ChatViewController.swift in Sources */,
+				C07524871FF15989003DE253 /* FriendProfileViewController.swift in Sources */,
 				2D1F4B4D1FE1F36400371D9B /* ViewController.swift in Sources */,
 				2D1F4B4B1FE1F36400371D9B /* AppDelegate.swift in Sources */,
+				2D71A9BE1FE40C7F008C60F7 /* LocationViewController.swift in Sources */,
+				2D71A9BA1FE40BF4008C60F7 /* SearchResultsViewController.swift in Sources */,
+				05FF4A0E1FEC4FCD00E9A65C /* FilePaths.swift in Sources */,
+				052D55741FF0A81000602131 /* Message.swift in Sources */,
+				C07524851FF15103003DE253 /* SignUpViewController.swift in Sources */,
+				2D71A9B61FE40B6A008C60F7 /* HostGameViewController.swift in Sources */,
+				05E0A0D51FE83D16006BE816 /* LoginViewController.swift in Sources */,
+				2D47D2461FE9D9A50067250B /* LocationManager.swift in Sources */,
+				052D55761FF34D7F00602131 /* JoinedTableViewCell.swift in Sources */,
+				2D47D2481FEA1FEA0067250B /* SearchTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2D1F4B4E1FE1F36400371D9B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2D1F4B4F1FE1F36400371D9B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2D1F4B531FE1F36400371D9B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -272,12 +490,16 @@
 		};
 		2D1F4B5A1FE1F36400371D9B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78F2554F652C596510C8CEB8 /* Pods-SportsRoom.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SportsRoom/SportsRoom.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 55BW5T8VB9;
 				INFOPLIST_FILE = SportsRoom/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HellowWorld.SportsRoom;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jxdgll.sportsroom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -286,12 +508,16 @@
 		};
 		2D1F4B5B1FE1F36400371D9B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D6F5EC96DFB1C7034020205 /* Pods-SportsRoom.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SportsRoom/SportsRoom.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 55BW5T8VB9;
 				INFOPLIST_FILE = SportsRoom/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HellowWorld.SportsRoom;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jxdgll.sportsroom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
