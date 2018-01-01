@@ -114,32 +114,34 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
             
             switch currentGame.sport {
             case "basketball":
-                cell.sportImage.image = UIImage(named: "basketballblue")
+                cell.sportImage.image = UIImage(named: "basketball")
             case "baseball":
-                cell.sportImage.image = UIImage(named: "baseballblue")
+                cell.sportImage.image = UIImage(named: "baseball")
             case "badminton":
-                cell.sportImage.image = UIImage(named: "badmintonblue")
+                cell.sportImage.image = UIImage(named: "badminton")
             case "hockey":
-                cell.sportImage.image = UIImage(named: "hockeyblue")
+                cell.sportImage.image = UIImage(named: "hockey")
             case "tennis":
-                cell.sportImage.image = UIImage(named: "tennisblue")
+                cell.sportImage.image = UIImage(named: "tennis")
             case "squash":
-                cell.sportImage.image = UIImage(named: "squashblue")
+                cell.sportImage.image = UIImage(named: "squash")
             case "table tennis":
-                cell.sportImage.image = UIImage(named: "tabletennisblue")
+                cell.sportImage.image = UIImage(named: "tabletennis")
             case "softball":
-                cell.sportImage.image = UIImage(named: "softballblue")
+                cell.sportImage.image = UIImage(named: "softball")
             case "football":
-                cell.sportImage.image = UIImage(named: "footballblue")
+                cell.sportImage.image = UIImage(named: "football")
             case "soccer":
-                cell.sportImage.image = UIImage(named: "soccerblue")
+                cell.sportImage.image = UIImage(named: "soccer")
             case "ball hockey":
-                cell.sportImage.image = UIImage(named: "hockeyblue")
+                cell.sportImage.image = UIImage(named: "hockey")
             default:
-                cell.sportImage.image = UIImage(named: "defaultsportblue")
+                cell.sportImage.image = UIImage(named: "defaultsport")
             }
             cell.locationLabel.text = currentGame.address
             cell.chatButton.tag = indexPath.row
+            
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
         }
         return cell
     }

@@ -109,6 +109,8 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
             }
             cell.locationLabel.text = currentGame.address
             cell.chatButton.tag = indexPath.row
+            
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
         }
         return cell
     }
