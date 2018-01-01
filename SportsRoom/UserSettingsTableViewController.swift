@@ -38,8 +38,8 @@ class UserSettingsTableViewController: UITableViewController {
 //            filterType = Filter.distance
 ////            distanceFilterCell == selected someway
 //        }
-        
-
+        dateFilterSelected(self)
+        tableView.allowsSelection = false
         
     }
 
@@ -70,7 +70,7 @@ class UserSettingsTableViewController: UITableViewController {
         }
     }
 
-    @IBAction func dateFilterSelected(_ sender: UITapGestureRecognizer) {
+    @IBAction func dateFilterSelected(_ sender: Any) {
         print("Date filter tapped")
         filterType = Filter.date
 
@@ -78,7 +78,7 @@ class UserSettingsTableViewController: UITableViewController {
         distanceFilterCell.backgroundColor = UIColor.flatNavyBlueDark
     }
     
-    @IBAction func distanceFilterSelected(_ sender: UITapGestureRecognizer) {
+    @IBAction func distanceFilterSelected(_ sender: Any) {
         print("Distance filter tapped")
         filterType = Filter.distance
         distanceFilterCell.backgroundColor = UIColor.flatYellow
