@@ -38,6 +38,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.tableView.separatorStyle = .none
         if searchLocation == nil {
             callLocationManager()
         }
@@ -77,9 +78,35 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         
         if let entry = entry {
             cell.titleLabel.text = entry.title
-            cell.sportLabel.text = entry.sport
             cell.locationLabel.text = entry.address
             cell.timeLabel.text = entry.date
+            switch entry.sport {
+            case "basketball":
+                cell.sportImage.image = UIImage(named: "basketball")
+            case "baseball":
+                cell.sportImage.image = UIImage(named: "baseball")
+            case "badminton":
+                cell.sportImage.image = UIImage(named: "badminton")
+            case "hockey":
+                cell.sportImage.image = UIImage(named: "hockey")
+            case "tennis":
+                cell.sportImage.image = UIImage(named: "tennis")
+            case "squash":
+                cell.sportImage.image = UIImage(named: "squash")
+            case "table tennis":
+                cell.sportImage.image = UIImage(named: "tabletennis")
+            case "softball":
+                cell.sportImage.image = UIImage(named: "softball")
+            case "football":
+                cell.sportImage.image = UIImage(named: "football")
+            case "soccer":
+                cell.sportImage.image = UIImage(named: "soccer")
+            case "ball hockey":
+                cell.sportImage.image = UIImage(named: "hockey")
+            default:
+                cell.sportImage.image = UIImage(named: "defaultsport")
+            }
+            
             return cell
         }
         

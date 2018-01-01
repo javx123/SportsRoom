@@ -4,7 +4,7 @@
 //
 //  Created by Javier Xing on 2017-12-15.
 //  Copyright © 2017 Javier Xing. All rights reserved.
-//
+
 
 import UIKit
 import Firebase
@@ -25,6 +25,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var nameTxtField: UITextField!
     @IBOutlet weak var ageTxtField: UITextField!
     @IBOutlet weak var bioTextView: UITextView!
+    @IBOutlet weak var imageButton: UIButton!
+    
+    @IBOutlet weak var ageStack: UIStackView!
+    @IBOutlet weak var biosStack: UIStackView!
     
     var currentUser: User?
     var imageString = String()
@@ -44,6 +48,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        imageView.clipsToBounds = true
         checkForImage()
         updateUserInfo()
     }
@@ -66,7 +72,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             editBtn.setTitle("Save", for: UIControlState.normal)
             labelsState(hidden: true)
             fieldsState(hidden: false)
-            nameTxtField.text = nameLbl.text
+//            nameTxtField.text = nameLbl.text
             ageTxtField.text = ageLbl.text
             bioTextView.text = biosLbl.text
         } else {
@@ -80,32 +86,33 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func labelsState (hidden:Bool) {
-        nameLbl.isHidden = hidden
+//        nameLbl.isHidden = hidden
         ageLbl.isHidden = hidden
         biosLbl.isHidden = hidden
     }
     
     func fieldsState (hidden:Bool) {
-        nameTxtField.isHidden = hidden
+//        nameTxtField.isHidden = hidden
         ageTxtField.isHidden = hidden
         bioTextView.isHidden = hidden
+        imageButton.isHidden = hidden
         
     }
     
     func editUserInfo () {
         let userID = Auth.auth().currentUser!.uid
         let ref = Database.database().reference().child("users").child(userID)
-        let nameValue = nameTxtField.text ?? ""
+//        let nameValue = nameTxtField.text ?? ""
         let biosValue = bioTextView.text ?? ""
         let ageValue = ageTxtField.text ?? ""
-        ref.updateChildValues([keyName:nameValue, keyBios:biosValue, keyAge:ageValue])
-        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-        changeRequest?.displayName = nameTxtField.text
-        changeRequest?.commitChanges { (error) in
-            if error != nil {
-                print(error!.localizedDescription)
-            }
-        }
+        ref.updateChildValues([keyBios:biosValue, keyAge:ageValue])
+//        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+//        changeRequest?.displayName = nameTxtField.text
+//        changeRequest?.commitChanges { (error) in
+//            if error != nil {
+//                print(error!.localizedDescription)
+//            }
+//        }
     }
     
     func updateUserInfo () {
@@ -117,7 +124,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             self.nameLbl.text = self.currentUser?.name
             self.biosLbl.text = self.currentUser?.bio
             self.ageLbl.text = self.currentUser?.age
-            
         }
     }
     
@@ -168,34 +174,46 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "userSettings" {
-            let userSettingsVC = segue.destination as? UserSettingsViewController
+            let userSettingsVC = segue.destination as? SettingsContainerViewController
             userSettingsVC?.currentUser = currentUser
         }
     }
     
     @IBAction func unwindFromSettings (sender: UIStoryboardSegue) {
-        if sender.source is UserSettingsViewController {
-            if let senderVC = sender.source as? UserSettingsViewController {
+        if sender.source is SettingsContainerViewController {
+            if let senderVC = sender.source as? SettingsContainerViewController {
                 let userID = Auth.auth().currentUser!.uid
                 let ref = Database.database().reference().child("users").child(userID)
                 
-                let userSearchRadius = senderVC.searchRadius
+                let userSearchRadius = senderVC.userSettingsVC?.searchRadius
                 //                write info to user in firebase
                 
-                switch senderVC.filterOptions.selectedSegmentIndex {
-                case 0:
-                    //                    change filter in user info to date
-                    let defaultSettings: [String: Any] = ["radius": userSearchRadius,
-                                                          "filter": "date"]
+//                switch senderVC.filterOptions.selectedSegmentIndex {
+//                case 0:
+//                    //                    change filter in user info to date
+//                    let defaultSettings: [String: Any] = ["radius": userSearchRadius,
+//                                                          "filter": "date"]
+//                    ref.updateChildValues(["settings" : defaultSettings])
+//                case 1:
+//                    //                    change filter in user info to location
+//                    let defaultSettings: [String: Any] = ["radius": userSearchRadius,
+//                                                          "filter": "distance"]
+//                    ref.updateChildValues(["settings" : defaultSettings])
+//                default:
+//                    print("No matching segment")
+//                }
+                switch senderVC.userSettingsVC?.filterType {
+                case .date?:
+//                    change filter in user info to date
+                    let defaultSettings: [String : Any] = ["radius": userSearchRadius, "filter": "date"]
                     ref.updateChildValues(["settings" : defaultSettings])
-                case 1:
-                    //                    change filter in user info to location
-                    let defaultSettings: [String: Any] = ["radius": userSearchRadius,
-                                                          "filter": "distance"]
+                case .distance?:
+                    let defaultSettings: [String : Any] = ["radius" : userSearchRadius, "filter": "distance"]
                     ref.updateChildValues(["settings" : defaultSettings])
-                default:
-                    print("No matching segment")
+                case .none:
+                    print("There's a bug if this is hit....")
                 }
+                
             }
         }
         
