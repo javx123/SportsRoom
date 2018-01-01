@@ -42,6 +42,7 @@
 		C0F929AC1FE883F4007B1847 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */; };
 		FE3B00281FF9701500C56E24 /* SettingsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3B00271FF9701500C56E24 /* SettingsContainerViewController.swift */; };
 		FE3B002A1FF971B100C56E24 /* UserSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3B00291FF971B100C56E24 /* UserSettingsTableViewController.swift */; };
+		FE75D4ED1FFA0D21001BCD7E /* SearchContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE75D4EC1FFA0D21001BCD7E /* SearchContainerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsRoom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE3B00271FF9701500C56E24 /* SettingsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerViewController.swift; sourceTree = "<group>"; };
 		FE3B00291FF971B100C56E24 /* UserSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsTableViewController.swift; sourceTree = "<group>"; };
+		FE75D4EC1FFA0D21001BCD7E /* SearchContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContainerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,8 +138,9 @@
 				2D40E3FB1FEB2D1300C24D72 /* User.swift */,
 				052D55731FF0A81000602131 /* Message.swift */,
 				C0B604531FF4664E0052E39E /* Main.storyboard */,
-				FE3B00291FF971B100C56E24 /* UserSettingsTableViewController.swift */,
+				FE75D4EC1FFA0D21001BCD7E /* SearchContainerViewController.swift */,
 				FE3B00271FF9701500C56E24 /* SettingsContainerViewController.swift */,
+				FE3B00291FF971B100C56E24 /* UserSettingsTableViewController.swift */,
 				C01E03971FF5CDA90029E5EC /* SelectDateViewController.swift */,
 				C07524861FF15989003DE253 /* FriendProfileViewController.swift */,
 				C07524841FF15103003DE253 /* SignUpViewController.swift */,
@@ -341,6 +344,7 @@
 				C01E03BC1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift in Sources */,
 				05FF4A101FEC670C00E9A65C /* StaticFunctions.swift in Sources */,
 				052D55721FF0A1DA00602131 /* ChatTableViewCell.swift in Sources */,
+				FE75D4ED1FFA0D21001BCD7E /* SearchContainerViewController.swift in Sources */,
 				05E624911FEAD703001AF76F /* Game.swift in Sources */,
 				2D40E3FC1FEB2D1300C24D72 /* User.swift in Sources */,
 				C0F929AC1FE883F4007B1847 /* LocationSearchTable.swift in Sources */,
