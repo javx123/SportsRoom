@@ -15,9 +15,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var passwordTxtField: UITextField!
     
+    @IBOutlet weak var blueView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        blueView.layer.cornerRadius = 5
         
     }
     

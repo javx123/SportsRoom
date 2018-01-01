@@ -100,7 +100,7 @@ extension SetLocationViewController: HandleMapSearch {
         
         let parsedAddress = placemark.title?.components(separatedBy:",")
         let parsedAddressString = "\(parsedAddress![0]),\(parsedAddress![1])"
-        addressString = parsedAddressString
+        addressString = placemark.name!
         longitudeDouble = (selectedPin?.coordinate.longitude)!
         latitudeDouble = (selectedPin?.coordinate.latitude)!
     }

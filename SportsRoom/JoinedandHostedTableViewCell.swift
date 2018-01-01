@@ -8,21 +8,26 @@
 
 import UIKit
 
-class JoinedTableViewCell: UITableViewCell {
+class JoinedandHostedTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var blueView: UIView!
+    @IBOutlet weak var yellowView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var sportLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var chatButton: UIButton!
+    @IBOutlet weak var sportImage: UIImageView!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var skillLabel: UILabel!
+    @IBOutlet weak var costLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
+    
 }
+
+
