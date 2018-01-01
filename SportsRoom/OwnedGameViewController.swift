@@ -31,6 +31,7 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 //        getHostedGames()
+        self.tableView.separatorStyle = .none
         tableView.reloadData()
     }
     
@@ -109,7 +110,7 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.titleLabel.text = currentGame.title
             cell.dateLabel.text = currentGame.date
             cell.costLabel.text = currentGame.cost
-            cell.skillLabel.text = currentGame.skillLevel
+            cell.skillLabel.text = "Skill Level: \(currentGame.skillLevel)"
             
             switch currentGame.sport {
             case "basketball":

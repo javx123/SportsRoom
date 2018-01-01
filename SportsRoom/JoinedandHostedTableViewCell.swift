@@ -10,6 +10,8 @@ import UIKit
 
 class JoinedandHostedTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var blueView: UIView!
+    @IBOutlet weak var yellowView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var chatButton: UIButton!
@@ -20,13 +22,12 @@ class JoinedandHostedTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    
-//        contentView.layer.cornerRadius = 10
-        
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
+    
 }
+
+
