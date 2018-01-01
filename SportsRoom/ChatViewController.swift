@@ -15,8 +15,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var messageArray = [Message]()
     var currentGame : Game!
-
-    
     
     @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -25,9 +23,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         retrieveMessage()
-        
     }
-    
     
     @IBAction func backBtnPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
@@ -63,7 +59,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.tableView.reloadData()
         }
     }
-    
     
     //MARK: - TableView DataSource Methods
     

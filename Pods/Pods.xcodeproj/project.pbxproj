@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
 		016F27C991CE8CE5A0A6A4781203CCC6 /* bloom.cc in Sources */ = {isa = PBXBuildFile; fileRef = CF553C0ECD30D39504ECC2D70EA5251D /* bloom.cc */; settings = {COMPILER_FLAGS = "-DOS_MACOSX -DLEVELDB_PLATFORM_POSIX -fno-objc-arc"; }; };
 		022BA60EB6ADD7B97EE365CCCE52A1C2 /* arena.h in Headers */ = {isa = PBXBuildFile; fileRef = 90E4ECA7EC0A19F5745CD9D07FC026F1 /* arena.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		02CAE638EF1CEEBD6F5740498F9CA3F8 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026F5616E0B6F4685C8B7BF8F094C55B /* DropDown.swift */; };
@@ -340,6 +341,7 @@
 		FCA6DE5683C287EC8E5567117B913910 /* format.cc in Sources */ = {isa = PBXBuildFile; fileRef = 424BF91C90E3770DADAE987D83F85E4A /* format.cc */; settings = {COMPILER_FLAGS = "-DOS_MACOSX -DLEVELDB_PLATFORM_POSIX -fno-objc-arc"; }; };
 		FE359E6EB693AF9724AA9CE1B2FFBE28 /* FieldMask.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = A515D2B537746135824EF2B742E429FB /* FieldMask.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FF0041686222983A2A5B428AEF450939 /* GPBProtocolBuffers.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F6D45B29E550234FCFD64E17D1551F /* GPBProtocolBuffers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -814,6 +816,7 @@
 		FE27C3522D97136D3E9BD85CC2EFA28E /* GoogleToolboxForMac-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-umbrella.h"; sourceTree = "<group>"; };
 		FF20BB64BAB38C974ADB381FE99DC666 /* Pods-SportsRoom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SportsRoom.debug.xcconfig"; sourceTree = "<group>"; };
 		FF649BE9D9C34EBCEA7336F1016E413F /* SVProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = SVProgressHUD/SVProgressHUD.m; sourceTree = "<group>"; };
+		
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1429,6 +1432,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
@@ -1441,6 +1445,7 @@
 			sourceTree = "<group>";
 		};
 		84258135567E014EAF9516C534B7BE5C /* Frameworks */ = {
+
 			isa = PBXGroup;
 			children = (
 				C67A55F48373B77BC3172797F1C86121 /* FirebaseStorage.framework */,
@@ -1451,7 +1456,9 @@
 		84C60EA55A15064508F8A88FF8306980 /* FirebaseMessaging */ = {
 			isa = PBXGroup;
 			children = (
+
 				0691467E4E4A9125BBB21315756C54FF /* Frameworks */,
+
 			);
 			name = FirebaseMessaging;
 			path = FirebaseMessaging;
@@ -1530,7 +1537,9 @@
 			path = "../Target Support Files/nanopb";
 			sourceTree = "<group>";
 		};
+
 		9ED8280BB3145B28B74697F14BFAE157 /* Support Files */ = {
+
 			isa = PBXGroup;
 			children = (
 				999CEEE72CF0BEA441F776DEC6510E6C /* Info.plist */,
