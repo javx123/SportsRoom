@@ -124,7 +124,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             self.nameLbl.text = self.currentUser?.name
             self.biosLbl.text = self.currentUser?.bio
             self.ageLbl.text = self.currentUser?.age
-            
         }
     }
     
