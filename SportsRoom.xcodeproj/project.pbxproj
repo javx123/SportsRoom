@@ -294,6 +294,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -306,6 +307,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -330,7 +332,6 @@
 			files = (
 				FE3B00281FF9701500C56E24 /* SettingsContainerViewController.swift in Sources */,
 				2D71A9B81FE40B87008C60F7 /* ProfileViewController.swift in Sources */,
-				052D556E1FF0991500602131 /* OwnedGameTableViewCell.swift in Sources */,
 				FE3B002A1FF971B100C56E24 /* UserSettingsTableViewController.swift in Sources */,
 				2D0612211FF5FC5600713545 /* UserSettingsViewController.swift in Sources */,
 				2D71A9BC1FE40C1E008C60F7 /* DetailsViewController.swift in Sources */,
