@@ -15,8 +15,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var messageArray = [Message]()
     var currentGame : Game!
-
-    
     
     @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!

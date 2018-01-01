@@ -60,10 +60,10 @@ func dropPinZoomIn(placemark:MKPlacemark) {
         pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
         pinView?.pinTintColor = UIColor.red
         pinView?.canShowCallout = true
-        let smallSquare = CGSize(width: 47, height: 47)
+        let smallSquare = CGSize(width: 40, height: 40)
         let point = CGPoint(x: 0, y: 0)
         let button = UIButton(frame: CGRect(origin: point, size: smallSquare))
-        button.setBackgroundImage(UIImage(named: "car700"), for: .normal)
+        button.setBackgroundImage(UIImage(named: "bluecar"), for: .normal)
         button.addTarget(self, action: #selector(getDirections), for: .touchUpInside)
         pinView?.leftCalloutAccessoryView = button
         return pinView
