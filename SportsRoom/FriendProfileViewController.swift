@@ -28,6 +28,8 @@ class FriendProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        imageView.clipsToBounds = true
         nameLabel.text = name
         ageLabel.text = age
         emailLabel.text = email

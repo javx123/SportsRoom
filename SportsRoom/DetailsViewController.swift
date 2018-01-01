@@ -169,6 +169,8 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         let MessagingTopic = "Message"
         Messaging.messaging().unsubscribe(fromTopic: "/topics/\(gameKey)")
         Messaging.messaging().unsubscribe(fromTopic: "/topics/\(gameKey)\(MessagingTopic)")
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
     func cancelGame () {
@@ -185,7 +187,9 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         }
         
         let MessagingTopic = "Message"
-        Messaging.messaging().unsubscribe(fromTopic: "/topics/\(gameKey)\(MessagingTopic)")
+        Messaging.messaging().unsubscribe(fromTopic: "/to pics/\(gameKey)\(MessagingTopic)")
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func showLocation(_ sender: UITapGestureRecognizer) {
