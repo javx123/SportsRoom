@@ -30,6 +30,7 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.separatorStyle = .none
         tableView.reloadData()
         
         // Do any additional setup after loading the view.
@@ -78,7 +79,7 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.titleLabel.text = currentGame.title
             cell.dateLabel.text = currentGame.date
             cell.costLabel.text = currentGame.cost
-            cell.skillLabel.text = currentGame.skillLevel
+            cell.skillLabel.text = "Skill Level: \(currentGame.skillLevel)"
             
             switch currentGame.sport {
             case "basketball":
