@@ -7,6 +7,4 @@ target 'SportsRoom' do
 
   # Pods for SportsRoom
 
-
-
 end

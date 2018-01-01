@@ -4,7 +4,7 @@
 //
 //  Created by Javier Xing on 2017-12-15.
 //  Copyright © 2017 Javier Xing. All rights reserved.
-//
+
 
 import UIKit
 import Firebase
@@ -174,34 +174,46 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "userSettings" {
-            let userSettingsVC = segue.destination as? UserSettingsViewController
+            let userSettingsVC = segue.destination as? SettingsContainerViewController
             userSettingsVC?.currentUser = currentUser
         }
     }
     
     @IBAction func unwindFromSettings (sender: UIStoryboardSegue) {
-        if sender.source is UserSettingsViewController {
-            if let senderVC = sender.source as? UserSettingsViewController {
+        if sender.source is SettingsContainerViewController {
+            if let senderVC = sender.source as? SettingsContainerViewController {
                 let userID = Auth.auth().currentUser!.uid
                 let ref = Database.database().reference().child("users").child(userID)
                 
-                let userSearchRadius = senderVC.searchRadius
+                let userSearchRadius = senderVC.userSettingsVC?.searchRadius
                 //                write info to user in firebase
                 
-                switch senderVC.filterOptions.selectedSegmentIndex {
-                case 0:
-                    //                    change filter in user info to date
-                    let defaultSettings: [String: Any] = ["radius": userSearchRadius,
-                                                          "filter": "date"]
+//                switch senderVC.filterOptions.selectedSegmentIndex {
+//                case 0:
+//                    //                    change filter in user info to date
+//                    let defaultSettings: [String: Any] = ["radius": userSearchRadius,
+//                                                          "filter": "date"]
+//                    ref.updateChildValues(["settings" : defaultSettings])
+//                case 1:
+//                    //                    change filter in user info to location
+//                    let defaultSettings: [String: Any] = ["radius": userSearchRadius,
+//                                                          "filter": "distance"]
+//                    ref.updateChildValues(["settings" : defaultSettings])
+//                default:
+//                    print("No matching segment")
+//                }
+                switch senderVC.userSettingsVC?.filterType {
+                case .date?:
+//                    change filter in user info to date
+                    let defaultSettings: [String : Any] = ["radius": userSearchRadius, "filter": "date"]
                     ref.updateChildValues(["settings" : defaultSettings])
-                case 1:
-                    //                    change filter in user info to location
-                    let defaultSettings: [String: Any] = ["radius": userSearchRadius,
-                                                          "filter": "distance"]
+                case .distance?:
+                    let defaultSettings: [String : Any] = ["radius" : userSearchRadius, "filter": "distance"]
                     ref.updateChildValues(["settings" : defaultSettings])
-                default:
-                    print("No matching segment")
+                case .none:
+                    print("There's a bug if this is hit....")
                 }
+                
             }
         }
         

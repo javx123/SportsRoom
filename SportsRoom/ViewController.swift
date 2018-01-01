@@ -13,7 +13,7 @@ import XLPagerTabStrip
 import MapKit
 
 
-class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate, CLLocationManagerDelegate{
+class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate, CLLocationManagerDelegate, SearchContainerProtocol{
     
     let locationManager: CLLocationManager = CLLocationManager()
     let dateFormatter = DateFormatter()
@@ -25,12 +25,16 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     var searchRadius: Int?
     var joinedGamesVC: JoinedGameViewController?
     var ownedGamesVC: OwnedGameViewController?
+    var searchBarVC: SearchContainerViewController?
 
     var createButton = UIBarButtonItem()
     var profileButton = UIBarButtonItem()
     
     @IBOutlet weak var addGameButton: UIBarButtonItem!
     @IBOutlet weak var locationControl: UISegmentedControl!
+    @IBOutlet weak var searchBarContainer: UIView!
+    
+    @IBOutlet weak var buttonBarViewTopConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,13 +44,14 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
         self.navigationItem.leftBarButtonItem = profileButton
         self.navigationItem.rightBarButtonItem = createButton
         
-        self.navigationItem.titleView = searchBar
+//        self.navigationItem.titleView = searchBar
         self.searchBar.delegate = self
         observeFireBase()
         createCurrentUser()
         configureView()
         setupDateFormatter()
         enableLocationServices()
+        searchBarContainer.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -223,6 +228,20 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
         }
     }
     
+    @IBAction func showSearchBar(_ sender: Any) {
+        searchBarContainer.isHidden = false
+        buttonBarViewTopConstraint.constant = 100
+    }
+    
+    func close() {
+        searchBarContainer.isHidden = true
+        buttonBarViewTopConstraint.constant = 8
+    }
+    
+    func search() {
+        performSegue(withIdentifier: "searchGame", sender: self)
+    }
+    
     @IBAction func locationOptions(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -234,6 +253,8 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
             print("No matching segment")
         }
     }
+    
+    
     
     @IBAction func unwindFromMap (sender: UIStoryboardSegue) {
         if sender.source is SetLocationViewController {
@@ -258,17 +279,24 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
             let navController = segue.destination as! UINavigationController
             let searchController = navController.topViewController as! SearchResultsViewController
             
-            searchController.searchedSport = searchBar.text
+            searchController.searchedSport = searchBarVC?.searchBar.text
             searchController.currentUser = currentUser
             searchController.searchLocation = customLocation
             searchController.searchRadius = (currentUser?.settings?["radius"] as? Int) ?? 30000
+            searchBarVC?.searchBar.text = ""
         }
         
         if segue.identifier == "searchLocation" {
             let navController = segue.destination as! UINavigationController
             let setLocationVC = navController.topViewController as! SetLocationViewController
             setLocationVC.gamePurpose = SetLocationViewController.Purpose.searchGame
-        }        
+        }
+        
+        if segue.identifier == "searchBar" {
+            let searchContainerVC = segue.destination as! SearchContainerViewController
+            searchContainerVC.delegate = self
+            searchBarVC = searchContainerVC
+        }
     }
     
     
