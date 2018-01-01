@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 class UserSettingsTableViewController: UITableViewController {
     
@@ -72,15 +73,16 @@ class UserSettingsTableViewController: UITableViewController {
     @IBAction func dateFilterSelected(_ sender: UITapGestureRecognizer) {
         print("Date filter tapped")
         filterType = Filter.date
-        dateFilterCell.backgroundColor = UIColor(red: 251, green: 199, blue: 0, alpha: 1)
-        distanceFilterCell.backgroundColor = UIColor(red: 34, green: 46, blue: 64, alpha: 1)
+
+        dateFilterCell.backgroundColor = UIColor.flatYellow
+        distanceFilterCell.backgroundColor = UIColor.flatNavyBlueDark
     }
     
     @IBAction func distanceFilterSelected(_ sender: UITapGestureRecognizer) {
         print("Distance filter tapped")
         filterType = Filter.distance
-        distanceFilterCell.backgroundColor = UIColor(red: 251, green: 199, blue: 0, alpha: 1)
-        dateFilterCell.backgroundColor = UIColor(red: 34, green: 46, blue: 64, alpha: 1)
+        distanceFilterCell.backgroundColor = UIColor.flatYellow
+        dateFilterCell.backgroundColor = UIColor.flatNavyBlueDark
     }
     
     @IBAction func searchRadiusChanged(_ sender: UISlider) {
