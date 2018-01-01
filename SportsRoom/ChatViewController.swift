@@ -23,6 +23,26 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         retrieveMessage()
+        tableView.tableFooterView = UIView()
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
     }
     
     @IBAction func backBtnPressed(_ sender: UIBarButtonItem) {
@@ -33,12 +53,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         messageTxtField.endEditing(true)
         messageTxtField.isEnabled = false
         let ref = Database.database().reference().child("games").child(currentGame.gameID).child("chatroom").childByAutoId()
-    
-//        let currentTime = Date()
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateStyle = .medium
-//        dateFormatter.timeStyle = .short
-//        let dateString = dateFormatter.string(from: currentTime)
 
         ref.updateChildValues(["email": Auth.auth().currentUser!.email!, "messageBody": messageTxtField.text!, "senderName": Auth.auth().currentUser!.displayName!, "timestamp": ServerValue.timestamp(), "senderID": Auth.auth().currentUser!.uid]) { (error, ref) in
             if error != nil {
@@ -60,6 +74,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    
+    @IBAction func screenTapped(_ sender: Any) {
+        self.messageTxtField.resignFirstResponder()
+    }
+ 
     //MARK: - TableView DataSource Methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -73,13 +92,19 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.senderLbl.text = currentMessage.senderName
             cell.messageLbl.text = currentMessage.messageBody
             cell.timestampLbl.text = currentMessage.timestamp
+            self.tableView.separatorStyle = .none
+
+//            let imageView = UIImageView(frame: CGRect(x: 10, y: 20, width: cell.frame.width-10, height: cell.frame.height-10))
+//            cell.backgroundView = UIView()
+//            cell.backgroundView!.addSubview(imageView)
+            
+            if currentMessage.senderID != Auth.auth().currentUser!.uid {
+                cell.senderLbl.textColor = UIColor.black
+//                imageView.image = UIImage(named: "chatReceived")
+            } else {
+//                imageView.image = UIImage(named: "chatSent")
+            }
         }
         return cell
     }
-    
-    @IBAction func screenTapped(_ sender: Any) {
-        self.messageTxtField.resignFirstResponder()
-    }
-    
-    
-}
+  }
