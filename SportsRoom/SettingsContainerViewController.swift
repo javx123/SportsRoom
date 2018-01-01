@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsContainerViewController: UIViewController {
+class SettingsContainerViewController: UIViewController, UINavigationBarDelegate {
     
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var settingsTableView: UIView!
@@ -18,8 +18,12 @@ class SettingsContainerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navBar.delegate = self
         // Do any additional setup after loading the view.
+    }
+    
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
