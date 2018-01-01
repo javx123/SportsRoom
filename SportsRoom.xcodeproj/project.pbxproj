@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		052D556E1FF0991500602131 /* OwnedGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D556D1FF0991500602131 /* OwnedGameTableViewCell.swift */; };
 		052D55701FF09EA800602131 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D556F1FF09EA800602131 /* ChatViewController.swift */; };
 		052D55721FF0A1DA00602131 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */; };
 		052D55741FF0A81000602131 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D55731FF0A81000602131 /* Message.swift */; };
-		052D55761FF34D7F00602131 /* JoinedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D55751FF34D7F00602131 /* JoinedTableViewCell.swift */; };
+		052D55761FF34D7F00602131 /* JoinedandHostedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D55751FF34D7F00602131 /* JoinedandHostedTableViewCell.swift */; };
 		05E0A0D51FE83D16006BE816 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E0A0D41FE83D16006BE816 /* LoginViewController.swift */; };
 		05E624911FEAD703001AF76F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E624901FEAD703001AF76F /* Game.swift */; };
 		05FF4A0C1FEC3F7F00E9A65C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05FF4A0B1FEC3F7F00E9A65C /* GoogleService-Info.plist */; };
@@ -43,11 +42,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		052D556D1FF0991500602131 /* OwnedGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedGameTableViewCell.swift; sourceTree = "<group>"; };
 		052D556F1FF09EA800602131 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		052D55731FF0A81000602131 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		052D55751FF34D7F00602131 /* JoinedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedTableViewCell.swift; sourceTree = "<group>"; };
+		052D55751FF34D7F00602131 /* JoinedandHostedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedandHostedTableViewCell.swift; sourceTree = "<group>"; };
 		05E0A0D41FE83D16006BE816 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		05E624901FEAD703001AF76F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		05FF4A0B1FEC3F7F00E9A65C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -140,9 +138,8 @@
 				05FF4A0D1FEC4FCD00E9A65C /* FilePaths.swift */,
 				05FF4A0F1FEC670C00E9A65C /* StaticFunctions.swift */,
 				2D71A9B11FE40B19008C60F7 /* JoinedGameViewController.swift */,
-				052D55751FF34D7F00602131 /* JoinedTableViewCell.swift */,
-				052D556D1FF0991500602131 /* OwnedGameTableViewCell.swift */,
 				2D71A9B31FE40B22008C60F7 /* OwnedGameViewController.swift */,
+				052D55751FF34D7F00602131 /* JoinedandHostedTableViewCell.swift */,
 				052D556F1FF09EA800602131 /* ChatViewController.swift */,
 				052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */,
 				2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */,
@@ -323,7 +320,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D71A9B81FE40B87008C60F7 /* ProfileViewController.swift in Sources */,
-				052D556E1FF0991500602131 /* OwnedGameTableViewCell.swift in Sources */,
 				2D0612211FF5FC5600713545 /* UserSettingsViewController.swift in Sources */,
 				2D71A9BC1FE40C1E008C60F7 /* DetailsViewController.swift in Sources */,
 				C01E03981FF5CDA90029E5EC /* SelectDateViewController.swift in Sources */,
@@ -348,7 +344,7 @@
 				2D71A9B61FE40B6A008C60F7 /* HostGameViewController.swift in Sources */,
 				05E0A0D51FE83D16006BE816 /* LoginViewController.swift in Sources */,
 				2D47D2461FE9D9A50067250B /* LocationManager.swift in Sources */,
-				052D55761FF34D7F00602131 /* JoinedTableViewCell.swift in Sources */,
+				052D55761FF34D7F00602131 /* JoinedandHostedTableViewCell.swift in Sources */,
 				2D47D2481FEA1FEA0067250B /* SearchTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
