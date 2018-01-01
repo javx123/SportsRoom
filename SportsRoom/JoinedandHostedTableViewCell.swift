@@ -22,8 +22,6 @@ class JoinedandHostedTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        blueView.layer.cornerRadius = 10
-//        yellowView.layer.cornerRadius = 10
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
