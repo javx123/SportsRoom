@@ -2645,20 +2645,25 @@
                                             <action selector="loginPressed:" destination="UZv-9Q-qNe" eventType="touchUpInside" id="Q1Q-Bv-eE5"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginBackground3" translatesAutoresizingMaskIntoConstraints="NO" id="EhO-DP-VoC">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginBackground7" translatesAutoresizingMaskIntoConstraints="NO" id="EhO-DP-VoC">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="578"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CXh-cE-WyJ">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="578"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="testuser4@gmail.com" placeholder="Email address" adjustsFontForContentSizeCategory="YES" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="r0B-nI-2RC">
-                                                <rect key="frame" x="70" y="132" width="235" height="30"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="testuser4@gmail.com" placeholder="E-mail" adjustsFontForContentSizeCategory="YES" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="r0B-nI-2RC">
+                                                <rect key="frame" x="53" y="132" width="270" height="34"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uzg-XJ-Wzn">
-                                                <rect key="frame" x="70" y="103" width="152" height="21"/>
+                                                <rect key="frame" x="53" y="103" width="152" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="152" id="3xk-Zj-QE1"/>
                                                 </constraints>
@@ -2667,7 +2672,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3l-b1-az9">
-                                                <rect key="frame" x="70" y="177" width="121" height="21"/>
+                                                <rect key="frame" x="53" y="175" width="121" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="121" id="qfj-PJ-m9E"/>
                                                 </constraints>
@@ -2676,44 +2681,53 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email" translatesAutoresizingMaskIntoConstraints="NO" id="v37-90-m9J">
-                                                <rect key="frame" x="76" y="135" width="20" height="23"/>
+                                                <rect key="frame" x="61" y="137" width="22" height="24"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="23" id="Hu9-4i-5Ok"/>
-                                                    <constraint firstAttribute="width" constant="20" id="h9N-SA-7DM"/>
+                                                    <constraint firstAttribute="height" constant="24" id="Hu9-4i-5Ok"/>
+                                                    <constraint firstAttribute="width" constant="22" id="h9N-SA-7DM"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="y0p-LH-AHN">
-                                                <rect key="frame" x="75" y="210" width="22" height="23"/>
+                                                <rect key="frame" x="61" y="210" width="22" height="23"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="23" id="f0B-qc-fLS"/>
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="87654321" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2vp-zX-rg8">
-                                                <rect key="frame" x="70" y="206" width="235" height="30"/>
+                                                <rect key="frame" x="52" y="204" width="270" height="35"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
                                         </subviews>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="uzg-XJ-Wzn" firstAttribute="leading" secondItem="r0B-nI-2RC" secondAttribute="leading" id="694-Ww-MhA"/>
-                                            <constraint firstItem="y0p-LH-AHN" firstAttribute="top" secondItem="o3l-b1-az9" secondAttribute="bottom" constant="12" id="82K-lc-C3Y"/>
-                                            <constraint firstItem="v37-90-m9J" firstAttribute="leading" secondItem="CXh-cE-WyJ" secondAttribute="leading" constant="76" id="Ahy-TO-iFH"/>
+                                            <constraint firstItem="y0p-LH-AHN" firstAttribute="top" secondItem="o3l-b1-az9" secondAttribute="bottom" constant="14" id="82K-lc-C3Y"/>
+                                            <constraint firstItem="v37-90-m9J" firstAttribute="leading" secondItem="CXh-cE-WyJ" secondAttribute="leading" constant="61" id="Ahy-TO-iFH"/>
                                             <constraint firstItem="r0B-nI-2RC" firstAttribute="centerX" secondItem="CXh-cE-WyJ" secondAttribute="centerX" id="GJp-hd-Gjp"/>
-                                            <constraint firstItem="r0B-nI-2RC" firstAttribute="centerX" secondItem="2vp-zX-rg8" secondAttribute="centerX" id="IQJ-H4-VdU"/>
+                                            <constraint firstItem="r0B-nI-2RC" firstAttribute="centerX" secondItem="2vp-zX-rg8" secondAttribute="centerX" constant="1" id="IQJ-H4-VdU"/>
                                             <constraint firstItem="r0B-nI-2RC" firstAttribute="top" secondItem="uzg-XJ-Wzn" secondAttribute="bottom" constant="8" symbolic="YES" id="Lvr-BP-eOk"/>
-                                            <constraint firstItem="v37-90-m9J" firstAttribute="trailing" secondItem="y0p-LH-AHN" secondAttribute="trailing" constant="-1" id="NbK-GS-T8d"/>
-                                            <constraint firstItem="v37-90-m9J" firstAttribute="leading" secondItem="y0p-LH-AHN" secondAttribute="leading" constant="1" id="X7n-6w-hl5"/>
+                                            <constraint firstItem="v37-90-m9J" firstAttribute="trailing" secondItem="y0p-LH-AHN" secondAttribute="trailing" id="NbK-GS-T8d"/>
+                                            <constraint firstItem="v37-90-m9J" firstAttribute="leading" secondItem="y0p-LH-AHN" secondAttribute="leading" id="X7n-6w-hl5"/>
                                             <constraint firstItem="uzg-XJ-Wzn" firstAttribute="top" secondItem="CXh-cE-WyJ" secondAttribute="top" constant="103" id="XDP-Ep-sUj"/>
                                             <constraint firstItem="r0B-nI-2RC" firstAttribute="centerY" secondItem="v37-90-m9J" secondAttribute="centerY" id="Zoh-Nx-Xsc"/>
-                                            <constraint firstItem="uzg-XJ-Wzn" firstAttribute="leading" secondItem="CXh-cE-WyJ" secondAttribute="leading" constant="70" id="aDW-fh-w4a"/>
+                                            <constraint firstItem="uzg-XJ-Wzn" firstAttribute="leading" secondItem="CXh-cE-WyJ" secondAttribute="leading" constant="53" id="aDW-fh-w4a"/>
                                             <constraint firstItem="2vp-zX-rg8" firstAttribute="centerY" secondItem="y0p-LH-AHN" secondAttribute="centerY" id="apo-85-g85"/>
                                             <constraint firstItem="r0B-nI-2RC" firstAttribute="leading" secondItem="o3l-b1-az9" secondAttribute="leading" id="cys-85-LAa"/>
-                                            <constraint firstItem="2vp-zX-rg8" firstAttribute="top" secondItem="o3l-b1-az9" secondAttribute="bottom" constant="8" symbolic="YES" id="e63-7A-X7y"/>
-                                            <constraint firstItem="2vp-zX-rg8" firstAttribute="leading" secondItem="CXh-cE-WyJ" secondAttribute="leading" constant="70" id="wOf-6T-VCq"/>
-                                            <constraint firstItem="v37-90-m9J" firstAttribute="top" secondItem="uzg-XJ-Wzn" secondAttribute="bottom" constant="11" id="wVU-JL-H5r"/>
-                                            <constraint firstItem="o3l-b1-az9" firstAttribute="top" secondItem="r0B-nI-2RC" secondAttribute="bottom" constant="15" id="zzO-z8-J5K"/>
+                                            <constraint firstItem="2vp-zX-rg8" firstAttribute="top" secondItem="o3l-b1-az9" secondAttribute="bottom" constant="8" id="e63-7A-X7y"/>
+                                            <constraint firstItem="2vp-zX-rg8" firstAttribute="leading" secondItem="CXh-cE-WyJ" secondAttribute="leading" constant="52" id="wOf-6T-VCq"/>
+                                            <constraint firstItem="v37-90-m9J" firstAttribute="top" secondItem="uzg-XJ-Wzn" secondAttribute="bottom" constant="13" id="wVU-JL-H5r"/>
+                                            <constraint firstItem="o3l-b1-az9" firstAttribute="top" secondItem="r0B-nI-2RC" secondAttribute="bottom" constant="9" id="zzO-z8-J5K"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="OQ2-xU-gCx" appends="YES" id="1iP-ZG-gHj"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2752,6 +2766,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k3M-aF-WLs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="OQ2-xU-gCx">
+                    <connections>
+                        <action selector="screenTapped:" destination="UZv-9Q-qNe" id="48s-Ff-fIV"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1712.8" y="122.78860569715144"/>
         </scene>
@@ -2763,7 +2782,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LoginBackground3" translatesAutoresizingMaskIntoConstraints="NO" id="WWu-aG-5y9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LoginBackground7" translatesAutoresizingMaskIntoConstraints="NO" id="WWu-aG-5y9">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -2837,14 +2856,14 @@
                                             <rect key="frame" x="137" y="184" width="101" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" red="0.1334631741" green="0.1823148429" blue="0.25190103050000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sim-sF-2Ws">
                                             <rect key="frame" x="120" y="329" width="135" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" red="0.1334631741" green="0.1823148429" blue="0.25190103050000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THX-Zo-wo3">
@@ -2981,7 +3000,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LoginBackground3" width="1050" height="700"/>
+        <image name="LoginBackground7" width="634" height="951"/>
         <image name="age" width="100" height="100"/>
         <image name="calendarblue" width="100" height="100"/>
         <image name="chat1" width="100" height="100"/>
@@ -3006,7 +3025,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="PW0-zy-WNu"/>
         <segue reference="Cua-Xk-AZH"/>
-        <segue reference="YfC-3w-XDr"/>
+        <segue reference="mJo-hM-k1s"/>
         <segue reference="Pef-54-S3u"/>
     </inferredMetricsTieBreakers>
 </document>
