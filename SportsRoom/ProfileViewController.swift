@@ -45,15 +45,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         navBar.delegate = self
-        updateUserInfo()
+        imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        imageView.clipsToBounds = true
+        bottomViewOverlay.layer.cornerRadius = 10
         }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        imageView.layer.cornerRadius = imageView.frame.size.width / 2
-        imageView.clipsToBounds = true
-        bottomViewOverlay.layer.cornerRadius = 10
-        
         checkForImage()
         updateUserInfo()
     }
