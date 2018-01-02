@@ -13,22 +13,23 @@ import FirebaseStorage
 import SDWebImage
 import SVProgressHUD
 
-class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UINavigationBarDelegate {
     
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var ageLbl: UILabel!
     @IBOutlet weak var emailLbl: UILabel!
     @IBOutlet weak var biosLbl: UILabel!
+    @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var profileBGImage: UIImageView!
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var editBtn: UIButton!
-    @IBOutlet weak var nameTxtField: UITextField!
     @IBOutlet weak var ageTxtField: UITextField!
     @IBOutlet weak var bioTextView: UITextView!
     @IBOutlet weak var imageButton: UIButton!
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var bottomViewOverlay: UIView!
     
-    @IBOutlet weak var ageStack: UIStackView!
-    @IBOutlet weak var biosStack: UIStackView!
     
     var currentUser: User?
     var imageString = String()
@@ -43,6 +44,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navBar.delegate = self
         updateUserInfo()
         }
     
@@ -50,8 +52,14 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         super.viewDidAppear(animated)
         imageView.layer.cornerRadius = imageView.frame.size.width / 2
         imageView.clipsToBounds = true
+        bottomViewOverlay.layer.cornerRadius = 10
+        
         checkForImage()
         updateUserInfo()
+    }
+    
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
 
     func checkForImage () {
@@ -64,19 +72,20 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             } else {
                 self.imageView.sd_setImage(with: URL(string: snapshotValue!))
             }
+
     }
     }
     
     @IBAction func editPressed(_ sender: UIButton) {
-        if (editBtn.title(for: UIControlState.normal) == "Edit") {
-            editBtn.setTitle("Save", for: UIControlState.normal)
+        if (editBtn.imageView?.image == UIImage (named: "profileEdit")) {
+            editBtn.setImage(UIImage (named: "profileSave"), for: UIControlState.normal)
             labelsState(hidden: true)
             fieldsState(hidden: false)
 //            nameTxtField.text = nameLbl.text
             ageTxtField.text = ageLbl.text
             bioTextView.text = biosLbl.text
         } else {
-            editBtn.setTitle("Edit", for: UIControlState.normal)
+            editBtn.setImage(UIImage (named: "profileEdit"), for: UIControlState.normal)         
             labelsState(hidden: false)
             fieldsState(hidden: true)
             editUserInfo()
