@@ -50,6 +50,8 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         dropDown.dataSource = ["Baseball", "Basketball", "Hockey", "Soccer", "Football", "Tennis", "Softball", "Badminton", "Table Tennis", "Ball Hockey", "Ultimate", "Other"]
         dropDown.direction = .bottom
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
+//        dropDown.backgroundColor = UIColor(hexString: "222E40", withAlpha: 0.85)
+//        dropDown.textColor = UIColor.flatYellow
         self.otherSportTextField.delegate = self
         
         let font = UIFont.systemFont(ofSize: 11.5)

@@ -24,6 +24,54 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         passwordTxtField.delegate = self
         ageTxtField.delegate = self
         nameTxtField.delegate = self
+        
+        nameTxtField.backgroundColor = UIColor.clear
+        nameTxtField.layer.borderColor = UIColor.white.cgColor
+        nameTxtField.layer.borderWidth = 1
+        nameTxtField.layer.cornerRadius = 7
+        nameTxtField.textColor = UIColor.white
+        let namePaddingView = UIView(frame: CGRect(x:0,y:0,width:40,height:nameTxtField.frame.height))
+        nameTxtField.leftViewMode = UITextFieldViewMode.always
+        nameTxtField.leftView = namePaddingView
+        
+        ageTxtField.backgroundColor = UIColor.clear
+        ageTxtField.layer.borderColor = UIColor.white.cgColor
+        ageTxtField.layer.borderWidth = 1
+        ageTxtField.layer.cornerRadius = 7
+        ageTxtField.textColor = UIColor.white
+        let agePaddingView = UIView(frame: CGRect(x:0,y:0,width:40,height:ageTxtField.frame.height))
+        ageTxtField.leftViewMode = UITextFieldViewMode.always
+        ageTxtField.leftView = agePaddingView
+        
+        emailTxtField.backgroundColor = UIColor.clear
+        emailTxtField.layer.borderColor = UIColor.white.cgColor
+        emailTxtField.layer.borderWidth = 1
+        emailTxtField.layer.cornerRadius = 7
+        emailTxtField.textColor = UIColor.white
+        let emailPaddingView = UIView(frame: CGRect(x:0,y:0,width:40,height:emailTxtField.frame.height))
+        emailTxtField.leftViewMode = UITextFieldViewMode.always
+        emailTxtField.leftView = emailPaddingView
+        
+        passwordTxtField.backgroundColor = UIColor.clear
+        passwordTxtField.layer.borderColor = UIColor.white.cgColor
+        passwordTxtField.layer.borderWidth = 1
+        passwordTxtField.layer.cornerRadius = 7
+        passwordTxtField.textColor = UIColor.white
+        let passPaddingView = UIView(frame: CGRect(x:0,y:0,width:40,height:passwordTxtField.frame.height))
+        passwordTxtField.leftViewMode = UITextFieldViewMode.always
+        passwordTxtField.leftView = passPaddingView
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        emailTxtField.resignFirstResponder()
+        passwordTxtField.resignFirstResponder()
+        ageTxtField.resignFirstResponder()
+        nameTxtField.resignFirstResponder()
+        return true
+    }
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func screenTapped(_ sender: Any) {
