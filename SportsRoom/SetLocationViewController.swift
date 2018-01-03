@@ -47,6 +47,7 @@ class SetLocationViewController: UIViewController, CLLocationManagerDelegate {
         searchBar.sizeToFit()
         searchBar.placeholder = "Search for places"
         navigationItem.titleView = resultSearchController?.searchBar
+        
         resultSearchController?.hidesNavigationBarDuringPresentation = false
         resultSearchController?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
@@ -97,9 +98,7 @@ extension SetLocationViewController: HandleMapSearch {
         let span = MKCoordinateSpanMake(0.05, 0.05)
         let region = MKCoordinateRegionMake(placemark.coordinate, span)
         mapView.setRegion(region, animated: true)
-        
-        let parsedAddress = placemark.title?.components(separatedBy:",")
-        let parsedAddressString = "\(parsedAddress![0]),\(parsedAddress![1])"
+
         addressString = placemark.name!
         longitudeDouble = (selectedPin?.coordinate.longitude)!
         latitudeDouble = (selectedPin?.coordinate.latitude)!

@@ -54,6 +54,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         getPlayerNames()
         collectionView.delegate = self
         collectionView.dataSource = self
+        notesLabel.sizeToFit()
     }
     
     func setLabels(){

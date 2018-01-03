@@ -16,10 +16,11 @@ class SelectDateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        datePicker.setValue(UIColor.white, forKeyPath: "textColor")
         datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
     }
     
-    @objc func dateChanged () {
+    @objc func dateChanged () {  
         let dateFormatter = DateFormatter ()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short

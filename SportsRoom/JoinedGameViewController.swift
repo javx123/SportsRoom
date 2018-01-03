@@ -30,6 +30,7 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        addGameButton.setTitle("+", for: .normal)
         self.tableView.separatorStyle = .none
         tableView.reloadData()
         
@@ -66,6 +67,11 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    
+    @IBAction func addGame(_ sender: Any) {
+        performSegue(withIdentifier: "createGame", sender: self)
+    }
+    
     //    Mark: - DataSource Methods
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return gamesArrayDetails.count
@@ -83,29 +89,29 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
             
             switch currentGame.sport {
             case "basketball":
-                cell.sportImage.image = UIImage(named: "basketball")
+                cell.sportImage.image = UIImage(named: "basketball-1")
             case "baseball":
-                cell.sportImage.image = UIImage(named: "baseball")
-            case "badminton":
-                cell.sportImage.image = UIImage(named: "badminton")
+                cell.sportImage.image = UIImage(named: "baseball-1")
             case "hockey":
-                cell.sportImage.image = UIImage(named: "hockey")
+                cell.sportImage.image = UIImage(named: "hockey-1")
             case "tennis":
-                cell.sportImage.image = UIImage(named: "tennis")
+                cell.sportImage.image = UIImage(named: "tennis-1")
             case "squash":
-                cell.sportImage.image = UIImage(named: "squash")
+                cell.sportImage.image = UIImage(named: "squash-1")
             case "table tennis":
-                cell.sportImage.image = UIImage(named: "tabletennis")
+                cell.sportImage.image = UIImage(named: "tabletennis-1")
             case "softball":
-                cell.sportImage.image = UIImage(named: "softball")
+                cell.sportImage.image = UIImage(named: "softball-1")
             case "football":
-                cell.sportImage.image = UIImage(named: "football")
+                cell.sportImage.image = UIImage(named: "football2")
             case "soccer":
-                cell.sportImage.image = UIImage(named: "soccer")
-            case "ball hockey":
-                cell.sportImage.image = UIImage(named: "hockey")
+                cell.sportImage.image = UIImage(named: "soccer-1")
+            case "ultimate":
+                cell.sportImage.image = UIImage(named: "ultimate-1")
+            case "rugby":
+                cell.sportImage.image = UIImage(named: "rugby")
             default:
-                cell.sportImage.image = UIImage(named: "defaultsport")
+                cell.sportImage.image = UIImage(named: "default1")
             }
             cell.locationLabel.text = currentGame.address
             cell.chatButton.tag = indexPath.row
