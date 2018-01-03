@@ -42,7 +42,7 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
 //        let clearButton = textFieldInsideSearchBar?.value(forKey: "clearButton") as! UIButton
 //        clearButton.setImage(clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
 //
-//        clearButton.tintColor = UIColor.white
+//        clearButton.tintColor = UIColor.flatYellow
         
         
         
@@ -50,6 +50,10 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
         dropDown.dataSource = ["Current Location", "Custom Location..."]
         dropDown.direction = .bottom
         dropDown.bottomOffset = CGPoint(x: 0, y: (dropDown.anchorView?.plainView.bounds.height)!)
+        
+        dropDown.backgroundColor = UIColor.flatNavyBlueDark
+        dropDown.textColor = UIColor.white
+        dropDown.selectionBackgroundColor = UIColor.flatYellow
         
         
     }
@@ -88,15 +92,33 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        delegate?.close()
-        delegate?.search()
-        searchBar.setShowsCancelButton(false, animated: true)
+//        delegate?.close()
+//        delegate?.search()
+//        searchBar.setShowsCancelButton(false, animated: true)
+        
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+                let clearButton = textFieldInsideSearchBar?.value(forKey: "clearButton") as! UIButton
+                clearButton.setImage(clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
+            clearButton.isHidden = false
+                clearButton.tintColor = UIColor.flatYellow
     }
     
     @IBAction func searchLocationDropDown(_ sender: Any) {
+        searchLocationLabel.text = ""
         dropDown.show()
+        searchBar.resignFirstResponder()
+
+        if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
+            cancelButton.isEnabled = true
+        }
     }
     
-    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        let clearButton = textFieldInsideSearchBar?.value(forKey: "clearButton") as! UIButton
+        clearButton.setImage(clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
 
+        clearButton.tintColor = UIColor.flatYellow
+    }
+    
 }
