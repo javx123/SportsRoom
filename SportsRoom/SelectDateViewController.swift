@@ -16,6 +16,7 @@ class SelectDateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        datePicker.setValue(UIColor.white, forKeyPath: "textColor")
         datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
     }
     
