@@ -21,7 +21,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var biosLbl: UILabel!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var profileBGImage: UIImageView!
-    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var ageTxtField: UITextField!
@@ -29,6 +28,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bottomViewOverlay: UIView!
+
     
     
     var currentUser: User?
@@ -45,15 +45,18 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         navBar.delegate = self
-        imageView.layer.cornerRadius = imageView.frame.size.width / 2
-        imageView.clipsToBounds = true
-        bottomViewOverlay.layer.cornerRadius = 10
         }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkForImage()
         updateUserInfo()
+    }
+    
+    func configUI () {
+        imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        imageView.clipsToBounds = true
+        bottomViewOverlay.layer.cornerRadius = 10
     }
     
     func position(for bar: UIBarPositioning) -> UIBarPosition {
