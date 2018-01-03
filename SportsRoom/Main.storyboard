@@ -840,14 +840,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="Ovk-lj-c7d">
                         <nil key="title"/>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EEL-m9-sVv">
-                            <rect key="frame" x="163.5" y="7" width="48" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Search"/>
-                            <connections>
-                                <action selector="showSearchBar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Cs-Ht-SFA"/>
-                            </connections>
-                        </button>
                     </navigationItem>
                     <connections>
                         <outlet property="addGameButton" destination="his-FS-iIJ" id="Fnc-Je-AFt"/>
@@ -3384,7 +3376,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8GS-dW-uDp"/>
-        <segue reference="Cua-Xk-AZH"/>
+        <segue reference="pBv-12-t8v"/>
         <segue reference="YfC-3w-XDr"/>
         <segue reference="ZIw-xV-HT4"/>
     </inferredMetricsTieBreakers>

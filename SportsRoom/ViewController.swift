@@ -26,7 +26,7 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     var ownedGamesVC: OwnedGameViewController?
     var searchBarVC: SearchContainerViewController?
 
-    var createButton = UIBarButtonItem()
+    var searchBarButton = UIBarButtonItem()
     var profileButton = UIBarButtonItem()
     
 
@@ -40,13 +40,11 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            addGameButton.layer.cornerRadius = addGameButton.frame.size.height/2
-//        createButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action:#selector(createGame))
-        
-        
+        addGameButton.layer.cornerRadius = addGameButton.frame.size.height/2
+        searchBarButton = UIBarButtonItem(image: UIImage(named: "searchlogo"), style: .plain, target: self, action: #selector(showSearchBar))
         profileButton = UIBarButtonItem(image: UIImage(named: "profile-1"), style: .plain, target: self, action: #selector(showProfile))
         self.navigationItem.leftBarButtonItem = profileButton
-        self.navigationItem.rightBarButtonItem = createButton
+        self.navigationItem.rightBarButtonItem = searchBarButton
         observeFireBase()
         createCurrentUser()
         configureView()
@@ -205,7 +203,7 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         }
     }
     
-    @IBAction func showSearchBar(_ sender: Any) {
+    @objc func showSearchBar () {
         searchBarContainer.isHidden = false
         buttonBarViewTopConstraint.constant = searchBarContainer.frame.height
         containerViewTopConstraint.constant += searchBarContainer.frame.height
