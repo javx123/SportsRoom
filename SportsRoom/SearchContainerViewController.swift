@@ -41,6 +41,7 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
         glassIconView?.image = glassIconView?.image?.withRenderingMode(.alwaysTemplate)
         glassIconView?.tintColor = .flatYellow
         
+        
 //        let clearButton = textFieldInsideSearchBar?.value(forKey: "clearButton") as! UIButton
 //        clearButton.setImage(clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
 //
@@ -67,7 +68,6 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
             self.searchLocationLabel.text = item
             if item == "Current Location" {
 //                set search location to current location
-//                self.dropDown.selectRow(at: 0)
                 self.delegate?.searchCurrentLocation()
             }
             
@@ -76,6 +76,14 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
                 self.delegate?.chooseSearchLocation()
             }
             
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
+            cancelButton.isEnabled = true
         }
     }
 
@@ -107,9 +115,9 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
         dropDown.show()
         searchLocationView.becomeFirstResponder()
 
-        if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
-            cancelButton.isEnabled = true
-        }
+//        if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
+//            cancelButton.isEnabled = true
+//        }
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
