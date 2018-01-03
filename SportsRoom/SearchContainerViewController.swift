@@ -35,6 +35,17 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
         searchBar.tintColor = .flatYellow
         searchBar.placeholder = "Search game"
         
+        let glassIconView = textFieldInsideSearchBar?.leftView as? UIImageView
+        glassIconView?.image = glassIconView?.image?.withRenderingMode(.alwaysTemplate)
+        glassIconView?.tintColor = .flatYellow
+        
+//        let clearButton = textFieldInsideSearchBar?.value(forKey: "clearButton") as! UIButton
+//        clearButton.setImage(clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
+//
+//        clearButton.tintColor = UIColor.white
+        
+        
+        
         dropDown.anchorView = searchLocationView
         dropDown.dataSource = ["Current Location", "Custom Location..."]
         dropDown.direction = .bottom
