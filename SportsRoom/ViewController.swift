@@ -13,11 +13,10 @@ import XLPagerTabStrip
 import MapKit
 
 
-class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate, CLLocationManagerDelegate, SearchContainerProtocol{
+class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDelegate, SearchContainerProtocol{
     
     let locationManager: CLLocationManager = CLLocationManager()
     let dateFormatter = DateFormatter()
-    let searchBar: UISearchBar = UISearchBar()
     var pulledData: Dictionary<String,Any> = [:]
     var currentUser: User?
     var customLocation: CLLocation?
@@ -30,12 +29,15 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     var createButton = UIBarButtonItem()
     var profileButton = UIBarButtonItem()
     
-    @IBOutlet weak var locationControl: UISegmentedControl!
+
+    @IBOutlet weak var addGameButton: UIBarButtonItem!
     @IBOutlet weak var searchBarContainer: UIView!
     @IBOutlet weak var buttonBarViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var addGameButton: UIButton!
     
 
+    
+    @IBOutlet weak var containerViewTopConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,10 +47,7 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
         
         profileButton = UIBarButtonItem(image: UIImage(named: "profile-1"), style: .plain, target: self, action: #selector(showProfile))
         self.navigationItem.leftBarButtonItem = profileButton
-//        self.navigationItem.rightBarButtonItem = createButton
-        
-//        self.navigationItem.titleView = searchBar
-        self.searchBar.delegate = self
+        self.navigationItem.rightBarButtonItem = createButton
         observeFireBase()
         createCurrentUser()
         configureView()
@@ -60,36 +59,15 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if customAddress == nil || customLocation == nil {
-            locationControl.selectedSegmentIndex = 0
+            
+            if let searchBar = searchBarVC {
+                searchBar.searchLocationLabel.text = "Current Location"
+//                searchBar.dropDown.deselectRow(1)
+                searchBar.dropDown.deselectRow(at: 1)
+                searchBar.dropDown.selectRow(0)
+            }
         }
     }
-    
-    
-    //Mark: - SearchBar Methods
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(true, animated: true)
-        
-        self.navigationItem.setLeftBarButton(nil, animated: true)
-        self.navigationItem.setRightBarButton(nil, animated: true)
-    }
-    
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        searchBar.setShowsCancelButton(false, animated: true)
-        searchBar.endEditing(true)
-        
-        self.navigationItem.setLeftBarButton(profileButton, animated: true)
-        self.navigationItem.setRightBarButton(createButton, animated: true)
-    }
-    
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        performSegue(withIdentifier: "searchGame", sender: self)
-        searchBar.text = ""
-    }
-    
     
     //Mark: - FireBase Methods
     
@@ -230,40 +208,41 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     
     @IBAction func showSearchBar(_ sender: Any) {
         searchBarContainer.isHidden = false
-        buttonBarViewTopConstraint.constant = 100
+        buttonBarViewTopConstraint.constant = searchBarContainer.frame.height
+        containerViewTopConstraint.constant += searchBarContainer.frame.height
+//        searchBar?.becomeFirstResponder()
+        searchBarVC?.searchBar.becomeFirstResponder()
     }
     
     func close() {
         searchBarContainer.isHidden = true
-        buttonBarViewTopConstraint.constant = 8
+        buttonBarViewTopConstraint.constant = 0
+        containerViewTopConstraint.constant -= searchBarContainer.frame.height
     }
     
     func search() {
         performSegue(withIdentifier: "searchGame", sender: self)
     }
     
-    @IBAction func locationOptions(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            customLocation = nil
-            customAddress = nil
-        case 1:
-            performSegue(withIdentifier: "searchLocation", sender: self)
-        default:
-            print("No matching segment")
-        }
+    
+    func searchCurrentLocation() {
+        customLocation = nil
+        customAddress = nil
     }
     
-    
+    func chooseSearchLocation() {
+        performSegue(withIdentifier: "searchLocation", sender: self)
+    }
     
     @IBAction func unwindFromMap (sender: UIStoryboardSegue) {
         if sender.source is SetLocationViewController {
             if let senderVC = sender.source as? SetLocationViewController {
                 customAddress = senderVC.addressString
-                customLocation = CLLocation(latitude: senderVC.latitudeDouble, longitude: senderVC.longitudeDouble) 
+                customLocation = CLLocation(latitude: senderVC.latitudeDouble, longitude: senderVC.longitudeDouble)
+                searchBarVC?.searchLocationLabel.text = customAddress
             }
             if customAddress == "" || (customLocation?.coordinate.latitude == 0.0 && customLocation?.coordinate.longitude == 0.0) {
-                locationControl.selectedSegmentIndex = 0
+                searchBarVC?.searchLocationLabel.text = "Current Location"
                 customAddress = nil
                 customLocation = nil
             }
@@ -302,10 +281,6 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        searchBar.setShowsCancelButton(false, animated: true)
-        searchBar.endEditing(true)
-        self.navigationItem.setLeftBarButton(profileButton, animated: true)
-        self.navigationItem.setRightBarButton(createButton, animated: true)
     }
 }
 
