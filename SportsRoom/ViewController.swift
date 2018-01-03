@@ -30,7 +30,6 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     var profileButton = UIBarButtonItem()
     
 
-    @IBOutlet weak var addGameButton: UIBarButtonItem!
     @IBOutlet weak var searchBarContainer: UIView!
     @IBOutlet weak var buttonBarViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var addGameButton: UIButton!

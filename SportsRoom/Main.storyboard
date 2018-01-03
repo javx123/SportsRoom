@@ -822,17 +822,14 @@
                         </subviews>
                         <color key="backgroundColor" red="0.1334631741" green="0.1823148429" blue="0.25190103050000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="xSH-ZR-RvC" firstAttribute="top" secondItem="Uzs-xk-MOL" secondAttribute="top" constant="15" id="7uE-uO-EzK"/>
                             <constraint firstItem="S50-FH-Kd6" firstAttribute="trailing" secondItem="89r-fe-d6S" secondAttribute="trailing" id="DEr-Xt-4hH"/>
                             <constraint firstItem="Uzs-xk-MOL" firstAttribute="bottom" secondItem="S50-FH-Kd6" secondAttribute="bottom" id="F4I-9T-bry"/>
-                            <constraint firstItem="89r-fe-d6S" firstAttribute="top" secondItem="xSH-ZR-RvC" secondAttribute="bottom" constant="8" id="FhH-r4-3DR"/>
-                            <constraint firstItem="Uzs-xk-MOL" firstAttribute="trailing" secondItem="xSH-ZR-RvC" secondAttribute="trailing" constant="72" id="GbR-AE-wMW"/>
                             <constraint firstAttribute="bottom" secondItem="his-FS-iIJ" secondAttribute="bottom" constant="20" id="Jmn-JL-9jz"/>
                             <constraint firstItem="S50-FH-Kd6" firstAttribute="leading" secondItem="89r-fe-d6S" secondAttribute="leading" id="KTl-Hg-SYi"/>
                             <constraint firstItem="hfC-Qn-fYq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="64" id="LhY-kj-7ea"/>
                             <constraint firstItem="his-FS-iIJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="S0Z-mZ-kks"/>
                             <constraint firstItem="hfC-Qn-fYq" firstAttribute="trailing" secondItem="Uzs-xk-MOL" secondAttribute="trailing" id="YTD-Je-EKP"/>
-                            <constraint firstItem="S50-FH-Kd6" firstAttribute="top" secondItem="89r-fe-d6S" secondAttribute="bottom" id="ZT3-Se-j23"/>
+                            <constraint firstItem="S50-FH-Kd6" firstAttribute="top" secondItem="Uzs-xk-MOL" secondAttribute="top" constant="64" id="ZT3-Se-j23"/>
                             <constraint firstItem="Uzs-xk-MOL" firstAttribute="trailing" secondItem="89r-fe-d6S" secondAttribute="trailing" id="aUa-lk-uah"/>
                             <constraint firstItem="89r-fe-d6S" firstAttribute="leading" secondItem="Uzs-xk-MOL" secondAttribute="leading" id="nSi-Tk-6pV"/>
                             <constraint firstItem="hfC-Qn-fYq" firstAttribute="leading" secondItem="Uzs-xk-MOL" secondAttribute="leading" id="pJR-pH-dRd"/>
@@ -856,7 +853,7 @@
                         <outlet property="buttonBarView" destination="89r-fe-d6S" id="LrH-tv-gYp"/>
                         <outlet property="buttonBarViewTopConstraint" destination="xiU-Nk-W5F" id="Dyi-rJ-AcK"/>
                         <outlet property="containerView" destination="S50-FH-Kd6" id="dA8-Gh-XFK"/>
-                        <outlet property="containerViewTopConstraint" destination="7Jp-8s-buk" id="QqH-pF-mFw"/>
+                        <outlet property="containerViewTopConstraint" destination="ZT3-Se-j23" id="uiA-KR-tzS"/>
                         <outlet property="searchBarContainer" destination="hfC-Qn-fYq" id="fL6-z4-LsH"/>
                         <segue destination="2br-XL-dXT" kind="presentation" identifier="searchGame" id="GIu-JD-8aE"/>
                         <segue destination="XlM-SU-B33" kind="show" identifier="searchLocation" id="pBv-12-t8v"/>
@@ -3321,13 +3318,10 @@
         <image name="sport" width="24" height="24"/>
         <image name="whiteDropDown" width="25" height="25"/>
     </resources>
-<<<<<<< HEAD
     <inferredMetricsTieBreakers>
         <segue reference="8GS-dW-uDp"/>
         <segue reference="pBv-12-t8v"/>
         <segue reference="YfC-3w-XDr"/>
         <segue reference="W1f-EQ-S7k"/>
     </inferredMetricsTieBreakers>
-=======
->>>>>>> 3b51ccf954acd9d5b45512315d156513aef461e7
 </document>
