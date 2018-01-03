@@ -29,6 +29,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bottomViewOverlay: UIView!
 
+    @IBOutlet weak var rightOverlay: UIView!
+    @IBOutlet weak var leftOverlay: UIView!
     
     
     var currentUser: User?
@@ -45,6 +47,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         navBar.delegate = self
+        configUI()
         }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,6 +60,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         imageView.layer.cornerRadius = imageView.frame.size.width / 2
         imageView.clipsToBounds = true
         bottomViewOverlay.layer.cornerRadius = 10
+        leftOverlay.layer.cornerRadius = leftOverlay.frame.size.width / 2
+        leftOverlay.clipsToBounds = true
+        rightOverlay.layer.cornerRadius = rightOverlay.frame.size.width / 2
+        rightOverlay.clipsToBounds = true
     }
     
     func position(for bar: UIBarPositioning) -> UIBarPosition {
