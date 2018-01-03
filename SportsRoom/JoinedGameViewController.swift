@@ -16,7 +16,6 @@ import Firebase
 
 class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider  {
     
-    @IBOutlet weak var addGameButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     //    var delegate: gamesOwnerVC?
     
@@ -31,7 +30,7 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addGameButton.layer.cornerRadius = 15
+//        addGameButton.setTitle("+", for: .normal)
         self.tableView.separatorStyle = .none
         tableView.reloadData()
         

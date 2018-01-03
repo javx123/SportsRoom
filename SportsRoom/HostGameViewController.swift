@@ -90,7 +90,7 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
         self.otherSportTextField.delegate = self
         
-        let font = UIFont.systemFont(ofSize: 11.5)
+        let font = UIFont.systemFont(ofSize: 10)
         skillLevelControl.setTitleTextAttributes([NSAttributedStringKey.font: font],
                                                  for: .normal)
         
@@ -125,31 +125,34 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         dropDown.selectionAction = { (index: Int, item: String) in
             self.dropDownSelectionLabel.text = item
             if item == "Other" {
+                self.otherSportTextField.isEnabled = true
+                self.otherSportTextField.placeholder = "Enter Sport Name"
+                self.otherSportTextField.setValue(UIColor.white, forKeyPath: "_placeholderLabel.textColor")
                 self.otherSportTextField.layer.borderColor = UIColor.white.cgColor
                 self.otherSportTextField.textColor = UIColor.white
-                self.otherSportTextField.isEnabled = true
             }
         }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         if otherSportTextField.isFirstResponder {
-        self.dropDownSelectionLabel.text = self.otherSportTextField.text
-        self.otherSportTextField.text = "Enter Sport Name"
-            otherSportTextField.layer.borderColor = UIColor.flatGrayDark.cgColor
-            otherSportTextField.textColor = UIColor.flatGrayDark
-        self.otherSportTextField.isEnabled = false
-        self.otherSportTextField.resignFirstResponder()
+        self.dropDownSelectionLabel.text = otherSportTextField.text
+        otherSportTextField.layer.borderColor = UIColor.flatGrayDark.cgColor
+            self.otherSportTextField.setValue(UIColor.flatGrayDark, forKeyPath: "_placeholderLabel.textColor")
+
+        otherSportTextField.text = ""
+        otherSportTextField.placeholder = "Select 'Other' to enter a new sport"
+        otherSportTextField.isEnabled = false
+        otherSportTextField.resignFirstResponder()
         }
         if gameTitleTextField.isFirstResponder {
-        self.gameTitleTextField.resignFirstResponder()
+        gameTitleTextField.resignFirstResponder()
         }
         if costTextField.isFirstResponder {
-        self.costTextField.resignFirstResponder()
+        costTextField.resignFirstResponder()
         }
         if notesTextField.isFirstResponder {
-        self.notesTextField.resignFirstResponder()
+        notesTextField.resignFirstResponder()
         }
         return true
     }
@@ -170,7 +173,16 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         if sender.source is SelectDateViewController {
             if let senderVC = sender.source as? SelectDateViewController {
                 dateString = senderVC.dateString
+                if dateString == "" {
+                    let currentDate = Date()
+                    let dateFormatter = DateFormatter ()
+                    dateFormatter.dateStyle = .medium
+                    dateFormatter.timeStyle = .short
+                    let noDateString = dateFormatter.string(from: currentDate)
+                    pickDateLabel.text = noDateString
+                } else {
                 pickDateLabel.text = dateString
+            }
             }
             self.reloadInputViews()
         }
@@ -203,6 +215,9 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         } else {
             if costTextField.text == "" {
                 costTextField.text = "Free"
+            }
+            if notesTextField.text == "" {
+                notesTextField.text = "The organizer did not inlcude a note"
             }
             postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: dropDownSelectionLabel.text!.lowercased(), date:dateString!, address: pickLocationLabel.text!, longitude:longitude, latitude:latitude, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!)
             

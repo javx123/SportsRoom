@@ -33,10 +33,13 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     @IBOutlet weak var locationControl: UISegmentedControl!
     @IBOutlet weak var searchBarContainer: UIView!
     @IBOutlet weak var buttonBarViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var addGameButton: UIButton!
+    
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+            addGameButton.layer.cornerRadius = addGameButton.frame.size.height/2
 //        createButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action:#selector(createGame))
         
         
