@@ -8,6 +8,7 @@
 
 import UIKit
 import SHSearchBar
+import ChameleonFramework
 
 protocol SearchContainerProtocol {
     func close()
@@ -25,7 +26,16 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
         super.viewDidLoad()
         searchBar.delegate = self
         // Do any additional setup after loading the view.
-//        let searchbar
+
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+            textFieldInsideSearchBar?.textColor = .white
+        searchBar.tintColor = .flatYellow
+        searchBar.placeholder = "Search game"
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     @IBAction func search(_ sender: Any) {

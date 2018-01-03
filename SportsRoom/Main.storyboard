@@ -1810,9 +1810,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="146"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hKZ-T2-YAI">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="hKZ-T2-YAI">
+                                <rect key="frame" x="20" y="0.0" width="335" height="56"/>
+                                <color key="barTintColor" red="0.1334631741" green="0.1823148429" blue="0.25190103050000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Current Location" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kd7-EW-dE4">
@@ -1831,7 +1831,12 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.15868747234344482" green="0.21822044253349304" blue="0.30320093035697937" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.13346317410469055" green="0.18231484293937683" blue="0.25190103054046631" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="hgj-IQ-M6k" firstAttribute="trailing" secondItem="hKZ-T2-YAI" secondAttribute="trailing" constant="20" id="4kA-Uw-LgD"/>
+                            <constraint firstItem="hKZ-T2-YAI" firstAttribute="leading" secondItem="hgj-IQ-M6k" secondAttribute="leading" constant="20" id="HgO-1x-pvz"/>
+                            <constraint firstItem="hKZ-T2-YAI" firstAttribute="top" secondItem="hgj-IQ-M6k" secondAttribute="top" id="amh-9s-tfk"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="hgj-IQ-M6k"/>
                     </view>
                     <connections>
@@ -1841,7 +1846,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EjH-0u-V1f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-863" y="664"/>
+            <point key="canvasLocation" x="-863.20000000000005" y="662.96851574212894"/>
         </scene>
         <!--Joined Game View Controller-->
         <scene sceneID="0VE-Yp-ZKt">

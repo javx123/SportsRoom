@@ -13,11 +13,10 @@ import XLPagerTabStrip
 import MapKit
 
 
-class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate, CLLocationManagerDelegate, SearchContainerProtocol{
+class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDelegate, SearchContainerProtocol{
     
     let locationManager: CLLocationManager = CLLocationManager()
     let dateFormatter = DateFormatter()
-    let searchBar: UISearchBar = UISearchBar()
     var pulledData: Dictionary<String,Any> = [:]
     var currentUser: User?
     var customLocation: CLLocation?
@@ -43,9 +42,7 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
         
         self.navigationItem.leftBarButtonItem = profileButton
         self.navigationItem.rightBarButtonItem = createButton
-        
-//        self.navigationItem.titleView = searchBar
-        self.searchBar.delegate = self
+
         observeFireBase()
         createCurrentUser()
         configureView()
@@ -60,32 +57,6 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
             locationControl.selectedSegmentIndex = 0
         }
     }
-    
-    
-    //Mark: - SearchBar Methods
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(true, animated: true)
-        
-        self.navigationItem.setLeftBarButton(nil, animated: true)
-        self.navigationItem.setRightBarButton(nil, animated: true)
-    }
-    
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        searchBar.setShowsCancelButton(false, animated: true)
-        searchBar.endEditing(true)
-        
-        self.navigationItem.setLeftBarButton(profileButton, animated: true)
-        self.navigationItem.setRightBarButton(createButton, animated: true)
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        performSegue(withIdentifier: "searchGame", sender: self)
-        searchBar.text = ""
-    }
-    
     
     //Mark: - FireBase Methods
     
@@ -231,6 +202,8 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     @IBAction func showSearchBar(_ sender: Any) {
         searchBarContainer.isHidden = false
         buttonBarViewTopConstraint.constant = 100
+//        searchBar?.becomeFirstResponder()
+        searchBarVC?.searchBar.becomeFirstResponder()
     }
     
     func close() {
@@ -302,10 +275,6 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        searchBar.setShowsCancelButton(false, animated: true)
-        searchBar.endEditing(true)
-        self.navigationItem.setLeftBarButton(profileButton, animated: true)
-        self.navigationItem.setRightBarButton(createButton, animated: true)
     }
 }
 
