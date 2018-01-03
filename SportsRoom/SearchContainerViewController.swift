@@ -36,6 +36,7 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
             textFieldInsideSearchBar?.textColor = .white
         searchBar.tintColor = .flatYellow
         searchBar.placeholder = "Search game"
+        searchBar.enablesReturnKeyAutomatically = true
         
         let glassIconView = textFieldInsideSearchBar?.leftView as? UIImageView
         glassIconView?.image = glassIconView?.image?.withRenderingMode(.alwaysTemplate)
@@ -122,11 +123,11 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
-        let clearButton = textFieldInsideSearchBar?.value(forKey: "clearButton") as! UIButton
-        clearButton.setImage(clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
-
-        clearButton.tintColor = UIColor.flatYellow
+//        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+//        let clearButton = textFieldInsideSearchBar?.value(forKey: "clearButton") as! UIButton
+//        clearButton.setImage(clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
+//
+//        clearButton.tintColor = UIColor.flatYellow
     }
     
 }
