@@ -1815,17 +1815,36 @@
                                 <color key="barTintColor" red="0.1334631741" green="0.1823148429" blue="0.25190103050000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Current Location" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kd7-EW-dE4">
-                                <rect key="frame" x="16" y="58" width="343" height="30"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TpZ-Wb-xnY">
+                                <rect key="frame" x="36" y="54" width="305" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="whiteDropDown" translatesAutoresizingMaskIntoConstraints="NO" id="ofa-W7-W1y">
+                                        <rect key="frame" x="283" y="6" width="14" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyz-C3-TQI">
+                                        <rect key="frame" x="8" y="4" width="296" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.15868747229999999" green="0.2182204425" blue="0.30320093040000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="EEV-1r-seK" appends="YES" id="q1c-LI-0EV"/>
+                                </connections>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbD-WM-6to">
-                                <rect key="frame" x="77" y="96" width="222" height="30"/>
+                                <rect key="frame" x="150" y="90" width="91" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Search"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="search:" destination="XQj-ey-Nm2" eventType="touchUpInside" id="QWq-8l-x4W"/>
                                 </connections>
@@ -1841,10 +1860,16 @@
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="hKZ-T2-YAI" id="FMy-oP-jsF"/>
-                        <outlet property="searchLocation" destination="kd7-EW-dE4" id="mrO-5z-0q8"/>
+                        <outlet property="searchLocationLabel" destination="zyz-C3-TQI" id="hGN-xv-NDf"/>
+                        <outlet property="searchLocationView" destination="TpZ-Wb-xnY" id="y0O-Bk-saU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EjH-0u-V1f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="EEV-1r-seK">
+                    <connections>
+                        <action selector="searchLocationDropDown:" destination="XQj-ey-Nm2" id="Ior-wz-d7C"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-863.20000000000005" y="662.96851574212894"/>
         </scene>
@@ -2959,6 +2984,7 @@
         <image name="people" width="24" height="24"/>
         <image name="skillblue" width="100" height="100"/>
         <image name="sport" width="24" height="24"/>
+        <image name="whiteDropDown" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="PW0-zy-WNu"/>

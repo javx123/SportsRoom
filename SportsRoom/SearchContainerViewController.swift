@@ -9,6 +9,7 @@
 import UIKit
 import SHSearchBar
 import ChameleonFramework
+import DropDown
 
 protocol SearchContainerProtocol {
     func close()
@@ -18,8 +19,10 @@ protocol SearchContainerProtocol {
 class SearchContainerViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchLocationView: UIView!
+    @IBOutlet weak var searchLocationLabel: UILabel!
     
-    @IBOutlet weak var searchLocation: UITextField!
+    let dropDown = DropDown()
     var delegate: SearchContainerProtocol?
 
     override func viewDidLoad() {
@@ -32,10 +35,28 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
         searchBar.tintColor = .flatYellow
         searchBar.placeholder = "Search game"
         
+        dropDown.anchorView = searchLocationView
+        dropDown.dataSource = ["Current Location", "Custom Location..."]
+        dropDown.direction = .bottom
+        dropDown.bottomOffset = CGPoint(x: 0, y: (dropDown.anchorView?.plainView.bounds.height)!)
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        dropDown.selectionAction = { (index: Int, item: String) in
+            self.searchLocationLabel.textColor = UIColor.white
+            self.searchLocationLabel.text = item
+            if item == "Current Location" {
+//                set search location to current location
+            }
+            
+            if item == "Custom Location..." {
+//                present selectLocationViewController
+            }
+            
+        }
     }
 
     @IBAction func search(_ sender: Any) {
@@ -60,6 +81,11 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
         delegate?.search()
         searchBar.setShowsCancelButton(false, animated: true)
     }
+    
+    @IBAction func searchLocationDropDown(_ sender: Any) {
+        dropDown.show()
+    }
+    
     
 
 }
