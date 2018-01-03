@@ -55,6 +55,13 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         super.viewWillAppear(animated)
         if customAddress == nil || customLocation == nil {
             locationControl.selectedSegmentIndex = 0
+            
+            if let searchBar = searchBarVC {
+                searchBar.searchLocationLabel.text = "Current Location"
+//                searchBar.dropDown.deselectRow(1)
+                searchBar.dropDown.deselectRow(at: 1)
+                searchBar.dropDown.selectRow(0)
+            }
         }
     }
     
@@ -215,11 +222,22 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         performSegue(withIdentifier: "searchGame", sender: self)
     }
     
+    
+    func searchCurrentLocation() {
+        customLocation = nil
+        customAddress = nil
+    }
+    
+    func chooseSearchLocation() {
+        performSegue(withIdentifier: "searchLocation", sender: self)
+    }
+    
     @IBAction func locationOptions(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             customLocation = nil
             customAddress = nil
+            
         case 1:
             performSegue(withIdentifier: "searchLocation", sender: self)
         default:
@@ -233,10 +251,12 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         if sender.source is SetLocationViewController {
             if let senderVC = sender.source as? SetLocationViewController {
                 customAddress = senderVC.addressString
-                customLocation = CLLocation(latitude: senderVC.latitudeDouble, longitude: senderVC.longitudeDouble) 
+                customLocation = CLLocation(latitude: senderVC.latitudeDouble, longitude: senderVC.longitudeDouble)
+                searchBarVC?.searchLocationLabel.text = customAddress
             }
             if customAddress == "" || (customLocation?.coordinate.latitude == 0.0 && customLocation?.coordinate.longitude == 0.0) {
                 locationControl.selectedSegmentIndex = 0
+                searchBarVC?.searchLocationLabel.text = "Current Location"
                 customAddress = nil
                 customLocation = nil
             }

@@ -14,6 +14,8 @@ import DropDown
 protocol SearchContainerProtocol {
     func close()
     func search()
+    func chooseSearchLocation()
+    func searchCurrentLocation()
 }
 
 class SearchContainerViewController: UIViewController, UISearchBarDelegate {
@@ -65,10 +67,13 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
             self.searchLocationLabel.text = item
             if item == "Current Location" {
 //                set search location to current location
+//                self.dropDown.selectRow(at: 0)
+                self.delegate?.searchCurrentLocation()
             }
             
             if item == "Custom Location..." {
 //                present selectLocationViewController
+                self.delegate?.chooseSearchLocation()
             }
             
         }
@@ -98,9 +103,9 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
     }
     
     @IBAction func searchLocationDropDown(_ sender: Any) {
-        searchLocationLabel.text = ""
+//        searchLocationLabel.text = ""
         dropDown.show()
-        searchBar.resignFirstResponder()
+        searchLocationView.becomeFirstResponder()
 
         if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
             cancelButton.isEnabled = true
