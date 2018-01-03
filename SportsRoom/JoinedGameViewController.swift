@@ -30,6 +30,7 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        addGameButton.setTitle("+", for: .normal)
         self.tableView.separatorStyle = .none
         tableView.reloadData()
         
@@ -64,6 +65,11 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
                 chatVC.currentGame = game
             }
         }
+    }
+    
+    
+    @IBAction func addGame(_ sender: Any) {
+        performSegue(withIdentifier: "createGame", sender: self)
     }
     
     //    Mark: - DataSource Methods

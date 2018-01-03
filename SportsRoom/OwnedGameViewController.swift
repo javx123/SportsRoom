@@ -95,6 +95,9 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    @IBAction func addGame(_ sender: Any) {
+        performSegue(withIdentifier: "createGameFromHosted", sender: self)
+    }
     
     //    Mark: - DataSource Properties
     

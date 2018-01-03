@@ -30,19 +30,22 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     var createButton = UIBarButtonItem()
     var profileButton = UIBarButtonItem()
     
-    @IBOutlet weak var addGameButton: UIBarButtonItem!
     @IBOutlet weak var locationControl: UISegmentedControl!
     @IBOutlet weak var searchBarContainer: UIView!
-    
     @IBOutlet weak var buttonBarViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var addGameButton: UIButton!
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action:#selector(createGame))
-        profileButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(showProfile))
+            addGameButton.layer.cornerRadius = addGameButton.frame.size.height/2
+//        createButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action:#selector(createGame))
         
+        
+        profileButton = UIBarButtonItem(image: UIImage(named: "profile-1"), style: .plain, target: self, action: #selector(showProfile))
         self.navigationItem.leftBarButtonItem = profileButton
-        self.navigationItem.rightBarButtonItem = createButton
+//        self.navigationItem.rightBarButtonItem = createButton
         
 //        self.navigationItem.titleView = searchBar
         self.searchBar.delegate = self
@@ -81,6 +84,7 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
         self.navigationItem.setRightBarButton(createButton, animated: true)
     }
     
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         performSegue(withIdentifier: "searchGame", sender: self)
         searchBar.text = ""
@@ -101,10 +105,6 @@ class ViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate,
     //Mark: - NavBar Button Methods
     @objc func showProfile() {
         performSegue(withIdentifier: "showProfile", sender: self)
-    }
-    
-    @objc func createGame () {
-        performSegue(withIdentifier: "createGame", sender: self)
     }
     
     deinit {

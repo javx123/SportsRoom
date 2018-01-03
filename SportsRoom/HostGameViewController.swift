@@ -38,28 +38,63 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectSportView.layer.cornerRadius = 5
-        pickDateView.layer.cornerRadius = 5
-        pickLocationView.layer.cornerRadius = 5
+        
+        gameTitleTextField.layer.borderColor = UIColor.white.cgColor
+        gameTitleTextField.layer.borderWidth = 1
+        gameTitleTextField.layer.cornerRadius = 7
+        let titlePaddingView = UIView(frame: CGRect(x:0,y:0,width:10,height:gameTitleTextField.frame.height))
+        gameTitleTextField.leftViewMode = UITextFieldViewMode.always
+        gameTitleTextField.leftView = titlePaddingView
+        
+        selectSportView.layer.borderColor = UIColor.flatYellow.cgColor
+        selectSportView.layer.borderWidth = 1
+        selectSportView.layer.cornerRadius = 7
+        
+        otherSportTextField.layer.borderColor = UIColor.flatGrayDark.cgColor
+        otherSportTextField.textColor = UIColor.flatGrayDark
+        otherSportTextField.layer.borderWidth = 1
+        otherSportTextField.layer.cornerRadius = 7
+        let otherPaddingView = UIView(frame: CGRect(x:0,y:0,width:10,height:otherSportTextField.frame.height))
+        otherSportTextField.leftViewMode = UITextFieldViewMode.always
+        otherSportTextField.leftView = otherPaddingView
+        
+        pickDateView.layer.borderColor = UIColor.flatYellow.cgColor
+        pickDateView.layer.borderWidth = 1
+        pickDateView.layer.cornerRadius = 7
+        
+        pickLocationView.layer.borderColor = UIColor.flatYellow.cgColor
+        pickLocationView.layer.borderWidth = 1
+        pickLocationView.layer.cornerRadius = 7
+        
+        costTextField.layer.borderColor = UIColor.white.cgColor
+        costTextField.layer.borderWidth = 1
+        costTextField.layer.cornerRadius = 7
+        let costPaddingView = UIView(frame: CGRect(x:0,y:0,width:10,height:costTextField.frame.height))
+        costTextField.leftViewMode = UITextFieldViewMode.always
+        costTextField.leftView = costPaddingView
+        
+        notesTextField.layer.borderColor = UIColor.white.cgColor
+        notesTextField.layer.borderWidth = 1
+        notesTextField.layer.cornerRadius = 7
+        let notesPaddingView = UIView(frame: CGRect(x:0,y:0,width:10,height:notesTextField.frame.height))
+        notesTextField.leftViewMode = UITextFieldViewMode.always
+        notesTextField.leftView = notesPaddingView
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         numberOfPlayersLabel.text = "1"
         dropDown.anchorView = selectSportView
-        dropDown.dataSource = ["Baseball", "Basketball", "Hockey", "Soccer", "Football", "Tennis", "Softball", "Badminton", "Table Tennis", "Ball Hockey", "Ultimate", "Other"]
+        dropDown.dataSource = ["Baseball", "Basketball", "Hockey", "Soccer", "Football", "Tennis", "Softball", "Badminton", "Table Tennis", "Squash", "Ultimate", "Other"]
         dropDown.direction = .bottom
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
-//        dropDown.backgroundColor = UIColor(hexString: "222E40", withAlpha: 0.85)
-//        dropDown.textColor = UIColor.flatYellow
         self.otherSportTextField.delegate = self
         
-        let font = UIFont.systemFont(ofSize: 11.5)
+        let font = UIFont.systemFont(ofSize: 10)
         skillLevelControl.setTitleTextAttributes([NSAttributedStringKey.font: font],
                                                  for: .normal)
         
-        otherSportTextField.isHidden = true
-        
+        otherSportTextField.isEnabled = false
         gameTitleTextField.delegate = self
         costTextField.delegate = self
         notesTextField.delegate = self
@@ -68,7 +103,7 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if !gameTitleTextField.isFirstResponder {
+        if !gameTitleTextField.isFirstResponder && !otherSportTextField.isFirstResponder{
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0{
                 self.view.frame.origin.y -= keyboardSize.height
@@ -88,30 +123,36 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         dropDown.selectionAction = { (index: Int, item: String) in
-            self.dropDownSelectionLabel.textColor = UIColor.black
             self.dropDownSelectionLabel.text = item
             if item == "Other" {
-                self.otherSportTextField.isHidden = false
+                self.otherSportTextField.isEnabled = true
+                self.otherSportTextField.placeholder = "Enter Sport Name"
+                self.otherSportTextField.setValue(UIColor.white, forKeyPath: "_placeholderLabel.textColor")
+                self.otherSportTextField.layer.borderColor = UIColor.white.cgColor
+                self.otherSportTextField.textColor = UIColor.white
             }
         }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         if otherSportTextField.isFirstResponder {
-        self.dropDownSelectionLabel.text = self.otherSportTextField.text
-        self.otherSportTextField.text = ""
-        self.otherSportTextField.isHidden = true
-        self.otherSportTextField.resignFirstResponder()
+        self.dropDownSelectionLabel.text = otherSportTextField.text
+        otherSportTextField.layer.borderColor = UIColor.flatGrayDark.cgColor
+            self.otherSportTextField.setValue(UIColor.flatGrayDark, forKeyPath: "_placeholderLabel.textColor")
+
+        otherSportTextField.text = ""
+        otherSportTextField.placeholder = "Select 'Other' to enter a new sport"
+        otherSportTextField.isEnabled = false
+        otherSportTextField.resignFirstResponder()
         }
         if gameTitleTextField.isFirstResponder {
-        self.gameTitleTextField.resignFirstResponder()
+        gameTitleTextField.resignFirstResponder()
         }
         if costTextField.isFirstResponder {
-        self.costTextField.resignFirstResponder()
+        costTextField.resignFirstResponder()
         }
         if notesTextField.isFirstResponder {
-        self.notesTextField.resignFirstResponder()
+        notesTextField.resignFirstResponder()
         }
         return true
     }
@@ -122,7 +163,6 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
                 address = senderVC.addressString
                 longitude = senderVC.longitudeDouble
                 latitude = senderVC.latitudeDouble
-                pickLocationLabel.textColor = UIColor.black
                 pickLocationLabel.text = address
             }
             self.reloadInputViews()
@@ -132,9 +172,17 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
     @IBAction func unwindFromDateSelector (sender: UIStoryboardSegue) {
         if sender.source is SelectDateViewController {
             if let senderVC = sender.source as? SelectDateViewController {
-                pickDateLabel.textColor = UIColor.black
                 dateString = senderVC.dateString
+                if dateString == "" {
+                    let currentDate = Date()
+                    let dateFormatter = DateFormatter ()
+                    dateFormatter.dateStyle = .medium
+                    dateFormatter.timeStyle = .short
+                    let noDateString = dateFormatter.string(from: currentDate)
+                    pickDateLabel.text = noDateString
+                } else {
                 pickDateLabel.text = dateString
+            }
             }
             self.reloadInputViews()
         }
@@ -167,6 +215,9 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         } else {
             if costTextField.text == "" {
                 costTextField.text = "Free"
+            }
+            if notesTextField.text == "" {
+                notesTextField.text = "The organizer did not inlcude a note"
             }
             postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: dropDownSelectionLabel.text!.lowercased(), date:dateString!, address: pickLocationLabel.text!, longitude:longitude, latitude:latitude, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!)
             
