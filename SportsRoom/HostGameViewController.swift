@@ -85,7 +85,7 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         
         numberOfPlayersLabel.text = "1"
         dropDown.anchorView = selectSportView
-        dropDown.dataSource = ["Baseball", "Basketball", "Hockey", "Soccer", "Football", "Tennis", "Softball", "Badminton", "Table Tennis", "Squash", "Ultimate", "Other"]
+        dropDown.dataSource = ["Baseball", "Basketball", "Hockey", "Soccer", "Football", "Tennis", "Softball", "Table Tennis", "Squash", "Ultimate", "Rugby", "Other"]
         dropDown.direction = .bottom
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
         self.otherSportTextField.delegate = self
