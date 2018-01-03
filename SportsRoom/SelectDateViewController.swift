@@ -20,7 +20,7 @@ class SelectDateViewController: UIViewController {
         datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
     }
     
-    @objc func dateChanged () {
+    @objc func dateChanged () {  
         let dateFormatter = DateFormatter ()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
