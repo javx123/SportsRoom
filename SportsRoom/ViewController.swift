@@ -30,10 +30,11 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     var profileButton = UIBarButtonItem()
     
     @IBOutlet weak var addGameButton: UIBarButtonItem!
-    @IBOutlet weak var locationControl: UISegmentedControl!
     @IBOutlet weak var searchBarContainer: UIView!
     
     @IBOutlet weak var buttonBarViewTopConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var containerViewTopConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +55,6 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if customAddress == nil || customLocation == nil {
-            locationControl.selectedSegmentIndex = 0
             
             if let searchBar = searchBarVC {
                 searchBar.searchLocationLabel.text = "Current Location"
@@ -208,14 +208,16 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     
     @IBAction func showSearchBar(_ sender: Any) {
         searchBarContainer.isHidden = false
-        buttonBarViewTopConstraint.constant = 100
+        buttonBarViewTopConstraint.constant = searchBarContainer.frame.height
+        containerViewTopConstraint.constant += searchBarContainer.frame.height
 //        searchBar?.becomeFirstResponder()
         searchBarVC?.searchBar.becomeFirstResponder()
     }
     
     func close() {
         searchBarContainer.isHidden = true
-        buttonBarViewTopConstraint.constant = 8
+        buttonBarViewTopConstraint.constant = 0
+        containerViewTopConstraint.constant -= searchBarContainer.frame.height
     }
     
     func search() {
@@ -232,21 +234,6 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         performSegue(withIdentifier: "searchLocation", sender: self)
     }
     
-    @IBAction func locationOptions(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            customLocation = nil
-            customAddress = nil
-            
-        case 1:
-            performSegue(withIdentifier: "searchLocation", sender: self)
-        default:
-            print("No matching segment")
-        }
-    }
-    
-    
-    
     @IBAction func unwindFromMap (sender: UIStoryboardSegue) {
         if sender.source is SetLocationViewController {
             if let senderVC = sender.source as? SetLocationViewController {
@@ -255,7 +242,6 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
                 searchBarVC?.searchLocationLabel.text = customAddress
             }
             if customAddress == "" || (customLocation?.coordinate.latitude == 0.0 && customLocation?.coordinate.longitude == 0.0) {
-                locationControl.selectedSegmentIndex = 0
                 searchBarVC?.searchLocationLabel.text = "Current Location"
                 customAddress = nil
                 customLocation = nil

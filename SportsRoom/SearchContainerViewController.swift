@@ -113,11 +113,12 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
     @IBAction func searchLocationDropDown(_ sender: Any) {
 //        searchLocationLabel.text = ""
         dropDown.show()
-        searchLocationView.becomeFirstResponder()
+//        searchLocationView.becomeFirstResponder()
+        searchBar.resignFirstResponder()
 
-//        if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
-//            cancelButton.isEnabled = true
-//        }
+        if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
+            cancelButton.isEnabled = true
+        }
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

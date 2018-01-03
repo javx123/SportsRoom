@@ -597,10 +597,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S50-FH-Kd6">
-                                <rect key="frame" x="0.0" y="179" width="375" height="488"/>
+                                <rect key="frame" x="0.0" y="128" width="375" height="539"/>
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="89r-fe-d6S" customClass="ButtonBarView" customModule="XLPagerTabStrip">
-                                <rect key="frame" x="0.0" y="115" width="375" height="64"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="64"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="n5F-7a-EoX"/>
@@ -613,17 +613,6 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xSH-ZR-RvC">
-                                <rect key="frame" x="72" y="79" width="231" height="29"/>
-                                <segments>
-                                    <segment title="CurrentLocation"/>
-                                    <segment title="Choose Location"/>
-                                </segments>
-                                <color key="tintColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="locationOptions:" destination="BYZ-38-t0r" eventType="valueChanged" id="sfW-Qj-PxJ"/>
-                                </connections>
-                            </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfC-Qn-fYq">
                                 <rect key="frame" x="0.0" y="64" width="375" height="146"/>
                                 <constraints>
@@ -636,10 +625,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.1334631741" green="0.1823148429" blue="0.25190103050000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="S50-FH-Kd6" firstAttribute="top" secondItem="Uzs-xk-MOL" secondAttribute="top" constant="115" id="7Jp-8s-buk"/>
-                            <constraint firstItem="xSH-ZR-RvC" firstAttribute="top" secondItem="Uzs-xk-MOL" secondAttribute="top" constant="15" id="7uE-uO-EzK"/>
-                            <constraint firstItem="89r-fe-d6S" firstAttribute="top" secondItem="xSH-ZR-RvC" secondAttribute="bottom" constant="8" id="FhH-r4-3DR"/>
-                            <constraint firstItem="Uzs-xk-MOL" firstAttribute="trailing" secondItem="xSH-ZR-RvC" secondAttribute="trailing" constant="72" id="GbR-AE-wMW"/>
+                            <constraint firstItem="S50-FH-Kd6" firstAttribute="top" secondItem="Uzs-xk-MOL" secondAttribute="top" constant="64" id="7Jp-8s-buk"/>
                             <constraint firstItem="hfC-Qn-fYq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="64" id="LhY-kj-7ea"/>
                             <constraint firstItem="Uzs-xk-MOL" firstAttribute="bottom" secondItem="S50-FH-Kd6" secondAttribute="bottom" id="Ohf-ow-G5c"/>
                             <constraint firstItem="S50-FH-Kd6" firstAttribute="leading" secondItem="Uzs-xk-MOL" secondAttribute="leading" id="QcZ-6r-5og"/>
@@ -648,7 +634,7 @@
                             <constraint firstItem="Uzs-xk-MOL" firstAttribute="trailing" secondItem="S50-FH-Kd6" secondAttribute="trailing" id="gdm-Hq-G5O"/>
                             <constraint firstItem="89r-fe-d6S" firstAttribute="leading" secondItem="Uzs-xk-MOL" secondAttribute="leading" id="nSi-Tk-6pV"/>
                             <constraint firstItem="hfC-Qn-fYq" firstAttribute="leading" secondItem="Uzs-xk-MOL" secondAttribute="leading" id="pJR-pH-dRd"/>
-                            <constraint firstItem="xSH-ZR-RvC" firstAttribute="leading" secondItem="Uzs-xk-MOL" secondAttribute="leading" constant="72" id="tl7-Bu-nMN"/>
+                            <constraint firstItem="89r-fe-d6S" firstAttribute="top" secondItem="Uzs-xk-MOL" secondAttribute="top" id="xiU-Nk-W5F"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Uzs-xk-MOL"/>
                     </view>
@@ -665,9 +651,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="buttonBarView" destination="89r-fe-d6S" id="LrH-tv-gYp"/>
-                        <outlet property="buttonBarViewTopConstraint" destination="FhH-r4-3DR" id="5ny-UG-q5n"/>
+                        <outlet property="buttonBarViewTopConstraint" destination="xiU-Nk-W5F" id="Dyi-rJ-AcK"/>
                         <outlet property="containerView" destination="S50-FH-Kd6" id="dA8-Gh-XFK"/>
-                        <outlet property="locationControl" destination="xSH-ZR-RvC" id="CUe-BC-diQ"/>
+                        <outlet property="containerViewTopConstraint" destination="7Jp-8s-buk" id="QqH-pF-mFw"/>
                         <outlet property="searchBarContainer" destination="hfC-Qn-fYq" id="fL6-z4-LsH"/>
                         <segue destination="oNd-PB-sCQ" kind="show" identifier="createGame" id="BkY-he-WDK"/>
                         <segue destination="2br-XL-dXT" kind="presentation" identifier="searchGame" id="GIu-JD-8aE"/>
@@ -2988,7 +2974,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="PW0-zy-WNu"/>
-        <segue reference="Cua-Xk-AZH"/>
+        <segue reference="pBv-12-t8v"/>
         <segue reference="YfC-3w-XDr"/>
         <segue reference="Pef-54-S3u"/>
     </inferredMetricsTieBreakers>
