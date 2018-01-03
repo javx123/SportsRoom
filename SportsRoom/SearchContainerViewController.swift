@@ -92,15 +92,9 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        delegate?.close()
-//        delegate?.search()
-//        searchBar.setShowsCancelButton(false, animated: true)
-        
-        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
-                let clearButton = textFieldInsideSearchBar?.value(forKey: "clearButton") as! UIButton
-                clearButton.setImage(clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
-            clearButton.isHidden = false
-                clearButton.tintColor = UIColor.flatYellow
+        delegate?.close()
+        delegate?.search()
+        searchBar.setShowsCancelButton(false, animated: true)
     }
     
     @IBAction func searchLocationDropDown(_ sender: Any) {
