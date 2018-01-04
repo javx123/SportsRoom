@@ -92,8 +92,9 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let numberOfPlayers = self.playerNamesArray.count
-        let numOfPlayersString = String(numberOfPlayers)
-        self.playersLabel.text = "\(numOfPlayersString) Player(s)"
+        let numberOfSpotsInt = (currentGame.numberOfPlayers+1) - numberOfPlayers
+        let numberOfSpotsString = String(numberOfSpotsInt)
+        self.playersLabel.text = "\(numberOfSpotsString) Open Spots"
     }
     
     func updateMapView(_ location: CLLocation) {
@@ -157,7 +158,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
             sportImageView.image = UIImage(named: "ultimate")
 //            backgroundImageView.image = UIImage(named: "ultimate-1")
         case "rugby":
-            sportImageView.image = UIImage(named: "rugby")
+            sportImageView.image = UIImage(named: "football")
 //            backgroundImageView.image = UIImage(named: "rugby")
         default:
             sportImageView.image = UIImage(named: "defaultsport")
