@@ -20,18 +20,14 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var emailLbl: UILabel!
     @IBOutlet weak var biosLbl: UILabel!
     @IBOutlet weak var navBar: UINavigationBar!
-    @IBOutlet weak var profileBGImage: UIImageView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var ageTxtField: UITextField!
     @IBOutlet weak var bioTextView: UITextView!
     @IBOutlet weak var imageButton: UIButton!
-    @IBOutlet weak var bottomView: UIView!
-    @IBOutlet weak var bottomViewOverlay: UIView!
-
-    @IBOutlet weak var rightOverlay: UIView!
-    @IBOutlet weak var leftOverlay: UIView!
+    @IBOutlet weak var profileImageBackground: UIView!
     
+    @IBOutlet weak var settingsBtn: UIButton!
     
     var currentUser: User?
     var imageString = String()
@@ -50,72 +46,52 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         configUI()
         updateUserInfo()
         userCheck()
-        }
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkForImage()
-//        updateUserInfo()
     }
     
     func configUI () {
+        profileImageBackground.layer.cornerRadius = profileImageBackground.frame.height/2
         imageView.layer.cornerRadius = imageView.frame.size.width / 2
         imageView.clipsToBounds = true
-        bottomViewOverlay.layer.cornerRadius = 10
-        leftOverlay.layer.cornerRadius = leftOverlay.frame.size.width / 2
-        leftOverlay.clipsToBounds = true
-        rightOverlay.layer.cornerRadius = rightOverlay.frame.size.width / 2
-        rightOverlay.clipsToBounds = true
     }
     
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
     }
-
-//    func checkForImage () {
-//        let userID = Auth.auth().currentUser?.uid
-//        let ref = Database.database().reference().child("users").child(userID!).child("profilePicture")
-//        ref.observeSingleEvent(of: .value) { (snapshot) in
-//            let snapshotValue = snapshot.value as? String
-//            if snapshotValue == nil {
-//                self.imageView.image = UIImage(named:"defaultimage")
-//            } else {
-//                self.imageView.sd_setImage(with: URL(string: snapshotValue!))
-//            }
-//    }
-//    }
+    
     
     func userCheck() {
         if currentUser?.email != Auth.auth().currentUser?.email {
-            editBtn.isEnabled = false
+            editBtn.isHidden = true
+            settingsBtn.isHidden = true
         } else {
-            editBtn.isEnabled = true
+            editBtn.isHidden = false
+            settingsBtn.isHidden = false
         }
     }
     
     func checkForImage () {
-//        let userID = Auth.auth().currentUser?.uid
-//        let ref = Database.database().reference().child("users").child(userID!).child("profilePicture")
-//        ref.observeSingleEvent(of: .value) { (snapshot) in
-//            let snapshotValue = snapshot.value as? String
-            if currentUser!.profileImageURLString == "" {
-                self.imageView.image = UIImage(named:"defaultimage")
-            } else {
-                self.imageView.sd_setImage(with: URL(string: currentUser!.profileImageURLString))
-            }
-        
+        if currentUser!.profileImageURLString == "" {
+            self.imageView.image = UIImage(named:"defaultimage")
+        } else {
+            self.imageView.sd_setImage(with: URL(string: currentUser!.profileImageURLString))
+        }
     }
     
     @IBAction func editPressed(_ sender: UIButton) {
-        if (editBtn.imageView?.image == UIImage (named: "profileEdit")) {
-            editBtn.setImage(UIImage (named: "profileSave"), for: UIControlState.normal)
+        if (editBtn.imageView?.image == UIImage (named: "editwhite")) {
+            editBtn.setImage(UIImage (named: "savewhite"), for: UIControlState.normal)
             labelsState(hidden: true)
             fieldsState(hidden: false)
-//            nameTxtField.text = nameLbl.text
+            //            nameTxtField.text = nameLbl.text
             ageTxtField.text = ageLbl.text
             bioTextView.text = biosLbl.text
         } else {
-            editBtn.setImage(UIImage (named: "profileEdit"), for: UIControlState.normal)         
+            editBtn.setImage(UIImage (named: "editwhite"), for: UIControlState.normal)
             labelsState(hidden: false)
             fieldsState(hidden: true)
             editUserInfo()
@@ -125,13 +101,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func labelsState (hidden:Bool) {
-//        nameLbl.isHidden = hidden
+        //        nameLbl.isHidden = hidden
         ageLbl.isHidden = hidden
         biosLbl.isHidden = hidden
     }
     
     func fieldsState (hidden:Bool) {
-//        nameTxtField.isHidden = hidden
+        //        nameTxtField.isHidden = hidden
         ageTxtField.isHidden = hidden
         bioTextView.isHidden = hidden
         imageButton.isHidden = hidden
@@ -141,39 +117,39 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     func editUserInfo () {
         let userID = Auth.auth().currentUser!.uid
         let ref = Database.database().reference().child("users").child(userID)
-//        let nameValue = nameTxtField.text ?? ""
         let biosValue = bioTextView.text ?? ""
         let ageValue = ageTxtField.text ?? ""
         ref.updateChildValues([keyBios:biosValue, keyAge:ageValue])
-//        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-//        changeRequest?.displayName = nameTxtField.text
-//        changeRequest?.commitChanges { (error) in
-//            if error != nil {
-//                print(error!.localizedDescription)
-//            }
-//        }
     }
     
-//    func updateUserInfo () {
-//        let userID = Auth.auth().currentUser?.uid
-//        let ref = Database.database().reference().child("users").child(userID!)
-//        ref.observeSingleEvent(of: .value) { (snapshot) in
-//            self.currentUser = User(snapshot: snapshot)
-//            self.emailLbl.text = self.currentUser?.email
-//            self.nameLbl.text = self.currentUser?.name
-//            self.biosLbl.text = self.currentUser?.bio
-//            self.ageLbl.text = self.currentUser?.age
-//        }
-//    }
-    
     func updateUserInfo () {
-
+        if currentUser?.email == Auth.auth().currentUser?.email {
+            let userID = Auth.auth().currentUser?.uid
+            let ref = Database.database().reference().child("users").child(userID!)
+            ref.observeSingleEvent(of: .value) { (snapshot) in
+                self.currentUser = User(snapshot: snapshot)
+                self.emailLbl.text = self.currentUser?.email
+                self.nameLbl.text = self.currentUser?.name
+                self.biosLbl.text = self.currentUser?.bio
+                self.ageLbl.text = self.currentUser?.age
+            }
+        }
+        else {
             self.emailLbl.text = currentUser?.email
             self.nameLbl.text = currentUser?.name
             self.biosLbl.text = currentUser?.bio
             self.ageLbl.text = currentUser?.age
-        
+        }
     }
+    
+    //    func updateUserInfo () {
+    //        let userID = Auth.auth().currentUser!.uid
+    //        let ref = Database.database().reference().child("users").child(userID)
+    //            self.emailLbl.text = currentUser?.email
+    //            self.nameLbl.text = currentUser?.name
+    //            self.biosLbl.text = currentUser?.bio
+    //            self.ageLbl.text = currentUser?.age
+    //    }
     
     @IBAction func backBtnPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -202,13 +178,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         let metadata = StorageMetadata()
         metadata.contentType = "image/png"
         photoRef.putData(imageData!, metadata: metadata).observe(.success) { (snapshot) in
-        // When the image has successfully uploaded, we get it's download URL
-        self.imageString = (snapshot.metadata?.downloadURL()?.absoluteString)!
-        print (self.imageString)
-        let ref = Database.database().reference().child("users").child(userID!)
-        let profileKey = "profilePicture"
+            // When the image has successfully uploaded, we get it's download URL
+            self.imageString = (snapshot.metadata?.downloadURL()?.absoluteString)!
+            print (self.imageString)
+            let ref = Database.database().reference().child("users").child(userID!)
+            let profileKey = "profilePicture"
             ref.updateChildValues([profileKey:self.imageString])
-        self.setimage()
+            self.setimage()
         }
         self.dismiss(animated: true, completion: nil)
         SVProgressHUD.show(withStatus:"loading")
@@ -236,23 +212,23 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                 let userSearchRadius = senderVC.userSettingsVC?.searchRadius
                 //                write info to user in firebase
                 
-//                switch senderVC.filterOptions.selectedSegmentIndex {
-//                case 0:
-//                    //                    change filter in user info to date
-//                    let defaultSettings: [String: Any] = ["radius": userSearchRadius,
-//                                                          "filter": "date"]
-//                    ref.updateChildValues(["settings" : defaultSettings])
-//                case 1:
-//                    //                    change filter in user info to location
-//                    let defaultSettings: [String: Any] = ["radius": userSearchRadius,
-//                                                          "filter": "distance"]
-//                    ref.updateChildValues(["settings" : defaultSettings])
-//                default:
-//                    print("No matching segment")
-//                }
+                //                switch senderVC.filterOptions.selectedSegmentIndex {
+                //                case 0:
+                //                    //                    change filter in user info to date
+                //                    let defaultSettings: [String: Any] = ["radius": userSearchRadius,
+                //                                                          "filter": "date"]
+                //                    ref.updateChildValues(["settings" : defaultSettings])
+                //                case 1:
+                //                    //                    change filter in user info to location
+                //                    let defaultSettings: [String: Any] = ["radius": userSearchRadius,
+                //                                                          "filter": "distance"]
+                //                    ref.updateChildValues(["settings" : defaultSettings])
+                //                default:
+                //                    print("No matching segment")
+                //                }
                 switch senderVC.userSettingsVC?.filterType {
                 case .date?:
-//                    change filter in user info to date
+                    //                    change filter in user info to date
                     let defaultSettings: [String : Any] = ["radius": userSearchRadius, "filter": "date"]
                     ref.updateChildValues(["settings" : defaultSettings])
                 case .distance?:
@@ -266,7 +242,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
         
     }
-
+    
     @IBAction func logOutPressed(_ sender: Any) {
         do {
             try Auth.auth().signOut()
