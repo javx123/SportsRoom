@@ -20,8 +20,6 @@ protocol SearchContainerProtocol {
 
 class SearchContainerViewController: UIViewController, ModernSearchBarDelegate {
     
-//    @IBOutlet weak var searchBar: UISearchBar!
-    
     @IBOutlet weak var searchBar: ModernSearchBar!
     @IBOutlet weak var searchLocationView: UIView!
     @IBOutlet weak var searchLocationLabel: UILabel!
@@ -99,6 +97,12 @@ class SearchContainerViewController: UIViewController, ModernSearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
     }
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+//        kinda hacky way but nothing I can figure out at the moment
+        searchBar.setShowsCancelButton(true, animated: true)
+        return true
+    }
 
     
     
@@ -119,20 +123,22 @@ class SearchContainerViewController: UIViewController, ModernSearchBarDelegate {
     func onClickItemSuggestionsView(item: String) {
         searchBar.text = item
         searchBar.resignFirstResponder()
-        searchBar.setShowsCancelButton(true, animated: false)
+        enableCancelButton()
     }
     
     func onClickShadowView(shadowView: UIView) {
         searchBar.resignFirstResponder()
-        searchBar.setShowsCancelButton(true, animated: false)
+        enableCancelButton()
     }
     
     @IBAction func searchLocationDropDown(_ sender: Any) {
-//        searchLocationLabel.text = ""
         dropDown.show()
-//        searchLocationView.becomeFirstResponder()
         searchBar.resignFirstResponder()
 
+        enableCancelButton()
+    }
+    
+    func enableCancelButton() {
         if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
             cancelButton.isEnabled = true
         }
