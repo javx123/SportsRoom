@@ -986,15 +986,10 @@
                                 <segue destination="rQo-LA-HC2" kind="unwind" unwindAction="unwindFromSearchWithSender:" id="BHE-i2-MPR"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="profileCog" id="CjR-hU-CLK">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="Hdj-MT-zrh" kind="presentation" identifier="userSettings" id="mUZ-jg-LFw"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="eDt-Lg-TeC" id="Dze-Ov-eQs"/>
+                        <segue destination="Hdj-MT-zrh" kind="presentation" identifier="showSettings" id="u7U-XN-rWT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVv-kl-xX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1793,7 +1788,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BLh-a8-br7">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3189,8 +3184,7 @@
         <image name="password" width="100" height="100"/>
         <image name="people" width="24" height="24"/>
         <image name="player" width="100" height="100"/>
-        <image name="profileCog" width="40" height="40"/>
-        <image name="settingswhite" width="100" height="100"/>
+        <image name="settingswhite" width="24" height="24"/>
         <image name="skillblue" width="100" height="100"/>
         <image name="sport" width="24" height="24"/>
         <image name="whiteDropDown" width="25" height="25"/>
@@ -3201,6 +3195,6 @@
         <segue reference="YfC-3w-XDr"/>
         <segue reference="Ggk-91-cho"/>
         <segue reference="nDZ-df-YF2"/>
-        <segue reference="ZIw-xV-HT4"/>
+        <segue reference="W1f-EQ-S7k"/>
     </inferredMetricsTieBreakers>
 </document>

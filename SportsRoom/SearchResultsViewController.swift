@@ -38,12 +38,25 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let settingsImage = UIImage(named: "settingswhite-1")
+        let iconSize = CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30))
+        let settingsButton = UIButton(frame: iconSize)
+        settingsButton.setBackgroundImage(settingsImage, for: .normal)
+        let settingsBarButton = UIBarButtonItem(customView: settingsButton)
+        settingsButton.contentMode = UIViewContentMode.scaleAspectFit
+        settingsButton.addTarget(self, action: #selector(showSettings), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItem = settingsBarButton
+        
         self.tableView.backgroundColor = UIColor.clear
         self.tableView.separatorStyle = .none
         if searchLocation == nil {
             callLocationManager()
         }
         pullMatchingGames()
+    }
+    
+    @objc func showSettings () {
+    performSegue(withIdentifier: "showSettings", sender: self)
     }
     
     func pullMatchingGames() {
@@ -199,7 +212,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             }
         }
         
-        if segue.identifier == "userSettings" {
+        if segue.identifier == "showSettings" {
             let userSettingsVC = segue.destination as? SettingsContainerViewController
             userSettingsVC?.currentUser = currentUser
         }
