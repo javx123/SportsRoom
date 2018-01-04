@@ -49,6 +49,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         navBar.delegate = self
         configUI()
         updateUserInfo()
+        userCheck()
         }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -84,12 +85,20 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 //    }
 //    }
     
+    func userCheck() {
+        if currentUser?.email != Auth.auth().currentUser?.email {
+            editBtn.isEnabled = false
+        } else {
+            editBtn.isEnabled = true
+        }
+    }
+    
     func checkForImage () {
 //        let userID = Auth.auth().currentUser?.uid
 //        let ref = Database.database().reference().child("users").child(userID!).child("profilePicture")
 //        ref.observeSingleEvent(of: .value) { (snapshot) in
 //            let snapshotValue = snapshot.value as? String
-            if currentUser!.profileImageURLString == nil {
+            if currentUser!.profileImageURLString == "" {
                 self.imageView.image = UIImage(named:"defaultimage")
             } else {
                 self.imageView.sd_setImage(with: URL(string: currentUser!.profileImageURLString))
