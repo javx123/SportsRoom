@@ -11,6 +11,7 @@ import Firebase
 import FirebaseDatabase
 import XLPagerTabStrip
 import MapKit
+import ChameleonFramework
 
 
 class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDelegate, SearchContainerProtocol{
@@ -26,27 +27,36 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     var ownedGamesVC: OwnedGameViewController?
     var searchBarVC: SearchContainerViewController?
 
-    var createButton = UIBarButtonItem()
-    var profileButton = UIBarButtonItem()
+//    var searchBarButton = UIBarButtonItem()
+//    var profileButton = UIBarButtonItem()
     
 
     @IBOutlet weak var searchBarContainer: UIView!
     @IBOutlet weak var buttonBarViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var addGameButton: UIButton!
-    
 
     
     @IBOutlet weak var containerViewTopConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            addGameButton.layer.cornerRadius = addGameButton.frame.size.height/2
-//        createButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action:#selector(createGame))
+        addGameButton.layer.cornerRadius = addGameButton.frame.size.height/2
+    
         
-        
-        profileButton = UIBarButtonItem(image: UIImage(named: "profile-1"), style: .plain, target: self, action: #selector(showProfile))
-        self.navigationItem.leftBarButtonItem = profileButton
-        self.navigationItem.rightBarButtonItem = createButton
+        let profileImage = UIImage(named: "profile-1")
+        let searchImage = UIImage(named: "searchlogo")
+        let iconSize = CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30))
+        let profileButton = UIButton(frame: iconSize)
+        let searchButton = UIButton(frame: iconSize)
+        profileButton.setBackgroundImage(profileImage, for: .normal)
+        searchButton.setBackgroundImage(searchImage, for: .normal)
+        let profileBarButton = UIBarButtonItem(customView: profileButton)
+        let searchBarButton = UIBarButtonItem(customView: searchButton)
+        profileButton.addTarget(self, action: #selector(showProfile), for: .touchUpInside)
+        searchButton.addTarget(self, action: #selector(showSearchBar), for: .touchUpInside)
+
+        self.navigationItem.leftBarButtonItem = profileBarButton
+        self.navigationItem.rightBarButtonItem = searchBarButton
         observeFireBase()
         createCurrentUser()
         configureView()
@@ -96,24 +106,24 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         ownedGamesVC = child_2
         
         return [child_1!, child_2!]
+//        return [child_1!]
     }
     
     func configureView() {
-        let purpleInspireColor = UIColor(red:0.13, green:0.03, blue:0.25, alpha:1.0)
-        settings.style.buttonBarBackgroundColor = .white
-        settings.style.buttonBarItemBackgroundColor = .white
-        settings.style.selectedBarBackgroundColor = purpleInspireColor
+        buttonBarView.backgroundColor = .flatNavyBlue
+        settings.style.buttonBarItemBackgroundColor = .flatNavyBlue
+        buttonBarView.selectedBar.backgroundColor = .flatYellow
         settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
         settings.style.selectedBarHeight = 2.0
         settings.style.buttonBarMinimumLineSpacing = 0
-        settings.style.buttonBarItemTitleColor = .black
+        settings.style.buttonBarItemTitleColor = .white
         settings.style.buttonBarItemsShouldFillAvailiableWidth = true
         settings.style.buttonBarLeftContentInset = 0
         settings.style.buttonBarRightContentInset = 0
         changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
-            oldCell?.label.textColor = .black
-            newCell?.label.textColor = purpleInspireColor
+            oldCell?.label.textColor = .white
+            newCell?.label.textColor = .flatYellow
         }
     }
     
@@ -205,18 +215,24 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         }
     }
     
-    @IBAction func showSearchBar(_ sender: Any) {
-        searchBarContainer.isHidden = false
-        buttonBarViewTopConstraint.constant = searchBarContainer.frame.height
-        containerViewTopConstraint.constant += searchBarContainer.frame.height
-//        searchBar?.becomeFirstResponder()
-        searchBarVC?.searchBar.becomeFirstResponder()
+    @objc func showSearchBar () {
+        if searchBarContainer.isHidden == true {
+            searchBarContainer.isHidden = false
+            buttonBarViewTopConstraint.constant = searchBarContainer.frame.height + 0.5
+            containerViewTopConstraint.constant += searchBarContainer.frame.height + 0.5
+            //        searchBar?.becomeFirstResponder()
+            searchBarVC?.searchBar.becomeFirstResponder()
+        }
+        else{
+            close()
+        }
+
     }
     
     func close() {
         searchBarContainer.isHidden = true
-        buttonBarViewTopConstraint.constant = 0
-        containerViewTopConstraint.constant -= searchBarContainer.frame.height
+        buttonBarViewTopConstraint.constant = 0.5
+        containerViewTopConstraint.constant -= searchBarContainer.frame.height + 0.5
     }
     
     func search() {
@@ -272,7 +288,7 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         
         if segue.identifier == "searchBar" {
             let searchContainerVC = segue.destination as! SearchContainerViewController
-            searchContainerVC.delegate = self
+            searchContainerVC.searchDelegate = self
             searchBarVC = searchContainerVC
         }
         
