@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import FirebaseDatabase
+import Firebase
 
 class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
@@ -176,6 +177,15 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
 
     }
     
+    func updateUserInfo () {
+        let userID = Auth.auth().currentUser?.uid
+        let ref = Database.database().reference().child("users").child(userID!)
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            self.currentUser = User(snapshot: snapshot)
+            self.sortGames()
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "search") {
             if let indexPath = tableView.indexPathForSelectedRow {
@@ -188,6 +198,39 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 VC2.address = game.address
             }
         }
+        
+        if segue.identifier == "userSettings" {
+            let userSettingsVC = segue.destination as? SettingsContainerViewController
+            userSettingsVC?.currentUser = currentUser
+        }
+    }
+    
+    @IBAction func unwindFromSettings (sender: UIStoryboardSegue) {
+        if sender.source is SettingsContainerViewController {
+            if let senderVC = sender.source as? SettingsContainerViewController {
+                let userID = Auth.auth().currentUser!.uid
+                let ref = Database.database().reference().child("users").child(userID)
+                
+                let userSearchRadius = senderVC.userSettingsVC?.searchRadius
+                switch senderVC.userSettingsVC?.filterType {
+                case .date?:
+                    let defaultSettings: [String : Any] = ["radius": userSearchRadius, "filter": "date"]
+                    ref.updateChildValues(["settings" : defaultSettings])
+                case .distance?:
+                    let defaultSettings: [String : Any] = ["radius" : userSearchRadius, "filter": "distance"]
+                    ref.updateChildValues(["settings" : defaultSettings])
+                case .none:
+                    print("There's a bug if this is hit....")
+                }
+                updateUserInfo()
+                searchRadius = senderVC.userSettingsVC?.searchRadius
+                searchResults.removeAll()
+                filterResults()
+            }
+        }
+        
     }
     
 }
+
+
