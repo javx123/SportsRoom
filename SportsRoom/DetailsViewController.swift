@@ -86,6 +86,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         dropPinZoomIn(placemark: selectedPin!)
         
         mapView.delegate = self
+        mapView.isScrollEnabled = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
