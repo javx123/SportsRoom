@@ -62,6 +62,12 @@ class SearchContainerViewController: UIViewController, ModernSearchBarDelegate {
         
         let sportSuggestionList = ["Baseball", "Basketball", "Hockey", "Soccer", "Football", "Tennis", "Softball", "Table Tennis", "Squash", "Ultimate", "Rugby"]
         searchBar.setDatas(datas: sportSuggestionList)
+        
+        searchBar.searchLabel_textColor = .white
+        
+        searchBar.suggestionsView_backgroundColor = .flatNavyBlue
+        searchBar.suggestionsView_contentViewColor = .flatNavyBlue
+        searchBar.suggestionsView_selectionStyle = UITableViewCellSelectionStyle.gray
     }
     
     override func viewDidAppear(_ animated: Bool) {
