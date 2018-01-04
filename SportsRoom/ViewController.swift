@@ -101,8 +101,8 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     }
     
     func configureView() {
-        buttonBarView.backgroundColor = .flatNavyBlueDark
-        settings.style.buttonBarItemBackgroundColor = .flatNavyBlueDark
+        buttonBarView.backgroundColor = .flatNavyBlue
+        settings.style.buttonBarItemBackgroundColor = .flatNavyBlue
         buttonBarView.selectedBar.backgroundColor = .flatYellow
         settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
         settings.style.selectedBarHeight = 2.0

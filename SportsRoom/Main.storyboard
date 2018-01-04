@@ -795,9 +795,9 @@
                                 <cells/>
                             </collectionView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfC-Qn-fYq">
-                                <rect key="frame" x="0.0" y="64" width="375" height="127"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="134"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="127" id="tuJ-4x-oi6"/>
+                                    <constraint firstAttribute="height" constant="134" id="tuJ-4x-oi6"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="XQj-ey-Nm2" kind="embed" identifier="searchBar" id="ZeJ-tS-cYl"/>
@@ -1999,7 +1999,7 @@
             <objects>
                 <viewController id="XQj-ey-Nm2" customClass="SearchContainerViewController" customModule="SportsRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TcG-q3-nWr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="127"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="hKZ-T2-YAI" customClass="ModernSearchBar" customModule="ModernSearchBar">
@@ -2042,7 +2042,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="orp-xN-Wo5">
-                                <rect key="frame" x="0.0" y="126" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="133" width="375" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="sbF-o8-dwi"/>
@@ -2340,7 +2340,7 @@
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FiB-pS-VRb">
                                 <rect key="frame" x="0.0" y="63.5" width="375" height="603.5"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Uhh-jn-nfK">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="604"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603.5"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="light"/>
