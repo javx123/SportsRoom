@@ -275,6 +275,12 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
             searchContainerVC.delegate = self
             searchBarVC = searchContainerVC
         }
+        
+        if segue.identifier == "showProfile" {
+            let profileVC = segue.destination as! ProfileViewController
+            profileVC.currentUser = currentUser
+        }
+        
     }
     
     

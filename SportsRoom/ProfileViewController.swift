@@ -48,12 +48,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         super.viewDidLoad()
         navBar.delegate = self
         configUI()
+        updateUserInfo()
         }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkForImage()
-        updateUserInfo()
+//        updateUserInfo()
     }
     
     func configUI () {
@@ -70,18 +71,30 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         return .topAttached
     }
 
+//    func checkForImage () {
+//        let userID = Auth.auth().currentUser?.uid
+//        let ref = Database.database().reference().child("users").child(userID!).child("profilePicture")
+//        ref.observeSingleEvent(of: .value) { (snapshot) in
+//            let snapshotValue = snapshot.value as? String
+//            if snapshotValue == nil {
+//                self.imageView.image = UIImage(named:"defaultimage")
+//            } else {
+//                self.imageView.sd_setImage(with: URL(string: snapshotValue!))
+//            }
+//    }
+//    }
+    
     func checkForImage () {
-        let userID = Auth.auth().currentUser?.uid
-        let ref = Database.database().reference().child("users").child(userID!).child("profilePicture")
-        ref.observeSingleEvent(of: .value) { (snapshot) in
-            let snapshotValue = snapshot.value as? String
-            if snapshotValue == nil {
+//        let userID = Auth.auth().currentUser?.uid
+//        let ref = Database.database().reference().child("users").child(userID!).child("profilePicture")
+//        ref.observeSingleEvent(of: .value) { (snapshot) in
+//            let snapshotValue = snapshot.value as? String
+            if currentUser!.profileImageURLString == nil {
                 self.imageView.image = UIImage(named:"defaultimage")
             } else {
-                self.imageView.sd_setImage(with: URL(string: snapshotValue!))
+                self.imageView.sd_setImage(with: URL(string: currentUser!.profileImageURLString))
             }
-
-    }
+        
     }
     
     @IBAction func editPressed(_ sender: UIButton) {
@@ -132,16 +145,25 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 //        }
     }
     
+//    func updateUserInfo () {
+//        let userID = Auth.auth().currentUser?.uid
+//        let ref = Database.database().reference().child("users").child(userID!)
+//        ref.observeSingleEvent(of: .value) { (snapshot) in
+//            self.currentUser = User(snapshot: snapshot)
+//            self.emailLbl.text = self.currentUser?.email
+//            self.nameLbl.text = self.currentUser?.name
+//            self.biosLbl.text = self.currentUser?.bio
+//            self.ageLbl.text = self.currentUser?.age
+//        }
+//    }
+    
     func updateUserInfo () {
-        let userID = Auth.auth().currentUser?.uid
-        let ref = Database.database().reference().child("users").child(userID!)
-        ref.observeSingleEvent(of: .value) { (snapshot) in
-            self.currentUser = User(snapshot: snapshot)
-            self.emailLbl.text = self.currentUser?.email
-            self.nameLbl.text = self.currentUser?.name
-            self.biosLbl.text = self.currentUser?.bio
-            self.ageLbl.text = self.currentUser?.age
-        }
+
+            self.emailLbl.text = currentUser?.email
+            self.nameLbl.text = currentUser?.name
+            self.biosLbl.text = currentUser?.bio
+            self.ageLbl.text = currentUser?.age
+        
     }
     
     @IBAction func backBtnPressed(_ sender: UIButton) {
