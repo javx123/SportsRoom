@@ -13,16 +13,23 @@ import CoreLocation
 import MapKit
 import SDWebImage
 
-class DetailsViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
+class DetailsViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var gameTitleLabel: UILabel!
-    @IBOutlet weak var sportLabel: UILabel!
+    @IBOutlet weak var playersLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var skillLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var sportImageView: UIImageView!
+    @IBOutlet weak var mapView: MKMapView!
+    
+    @IBOutlet weak var costView: UIView!
+    @IBOutlet weak var skillView: UIView!
+    @IBOutlet weak var infoView: UIView!
     
     var handleMapSearchDelegate:HandleMapSearch? = nil
     
@@ -45,24 +52,120 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
     var playerEmail = String ()
     var playerBio = String ()
     var playerPhoto = String ()
+    var currentUser : User?
+    
+    var latitude: Double?
+    var longitude: Double?
+    var address: String?
+    
+    var selectedPin : MKPlacemark?
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setButtonState(buttonState: btnText!)
-        setLabels()
         getPlayerNames()
+        setLabels()
         collectionView.delegate = self
         collectionView.dataSource = self
         notesLabel.sizeToFit()
+        
+        costView.layer.cornerRadius = costView.frame.size.height/2
+        costView.layer.borderColor = UIColor.white.cgColor
+        costView.layer.borderWidth = 1
+        skillView.layer.cornerRadius = skillView.frame.size.height/2
+        skillView.layer.borderColor = UIColor.flatNavyBlueDark.cgColor
+        skillView.layer.borderWidth = 1
+        infoView.layer.cornerRadius = infoView.frame.size.height/2
+        infoView.layer.borderColor = UIColor.flatYellow.cgColor
+        infoView.layer.borderWidth = 1
+        
+        let currentLocation = CLLocation(latitude: latitude!, longitude: longitude!)
+        selectedPin = MKPlacemark(coordinate: CLLocationCoordinate2DMake(latitude!, longitude!), addressDictionary: nil)
+        updateMapView(currentLocation)
+        dropPinZoomIn(placemark: selectedPin!)
+        
+        mapView.delegate = self
+        mapView.isScrollEnabled = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let numberOfPlayers = self.playerNamesArray.count
+        let numberOfSpotsInt = (currentGame.numberOfPlayers+1) - numberOfPlayers
+        let numberOfSpotsString = String(numberOfSpotsInt)
+        self.playersLabel.text = "\(numberOfSpotsString) Open Spots"
+    }
+    
+    func updateMapView(_ location: CLLocation) {
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegion(center: location.coordinate, span: span)
+        mapView.setRegion(region, animated: true)
+    }
+    
+    func dropPinZoomIn(placemark:MKPlacemark) {
+        selectedPin = placemark
+        mapView.removeAnnotations(mapView.annotations)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        mapView.addAnnotation(annotation)
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegionMake(placemark.coordinate, span)
+        mapView.setRegion(region, animated: true)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
+        if annotation is MKUserLocation {
+            return nil
+        }
+        let reuseId = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+        pinView?.pinTintColor = UIColor.red
+        return pinView
     }
     
     func setLabels(){
+        switch currentGame.sport {
+        case "basketball":
+            sportImageView.image = UIImage(named: "basketball")
+//            backgroundImageView.image = UIImage(named: "basketball-1")
+        case "baseball":
+            sportImageView.image = UIImage(named: "baseball")
+//            backgroundImageView.image = UIImage(named: "baseball-1")
+        case "hockey":
+            sportImageView.image = UIImage(named: "hockey")
+//            backgroundImageView.image = UIImage(named: "hockey-1")
+        case "tennis":
+            sportImageView.image = UIImage(named: "tennis")
+//            backgroundImageView.image = UIImage(named: "tennis-1")
+        case "squash":
+            sportImageView.image = UIImage(named: "squash")
+//            backgroundImageView.image = UIImage(named: "squash-1")
+        case "table tennis":
+            sportImageView.image = UIImage(named: "tabletennis")
+//            backgroundImageView.image = UIImage(named: "tabletennis-1")
+        case "softball":
+            sportImageView.image = UIImage(named: "softball")
+//            backgroundImageView.image = UIImage(named: "softball-1")
+        case "football":
+            sportImageView.image = UIImage(named: "football")
+//            backgroundImageView.image = UIImage(named: "football2")
+        case "soccer":
+            sportImageView.image = UIImage(named: "soccer")
+//            backgroundImageView.image = UIImage(named: "soccer-1")
+        case "ultimate":
+            sportImageView.image = UIImage(named: "ultimate")
+//            backgroundImageView.image = UIImage(named: "ultimate-1")
+        case "rugby":
+            sportImageView.image = UIImage(named: "football")
+//            backgroundImageView.image = UIImage(named: "rugby")
+        default:
+            sportImageView.image = UIImage(named: "defaultsport")
+//            backgroundImageView.image = UIImage(named: "default1")
+        }
         gameTitleLabel.text = currentGame.title
-        
-        let capitalizedSportString = currentGame.sport.capitalized
-        sportLabel.text = capitalizedSportString
-//        sportLabel.text = currentGame.sport
         dateLabel.text = currentGame.date
         locationLabel.text = currentGame.address
         skillLabel.text = currentGame.skillLevel
@@ -128,6 +231,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         self.playerEmail = selectedUser.email
         self.playerBio = selectedUser.bio
         self.playerPhoto = selectedUser.profileImageURLString
+        currentUser = selectedUser
         self.performSegue(withIdentifier: "showProfile", sender: self)
     }
     
@@ -205,12 +309,13 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
             locationVC.longitude = currentGame.longitude
         }
         if segue.identifier == "showProfile"{
-            let locationVC = segue.destination as! FriendProfileViewController
-            locationVC.name = playerName
-            locationVC.age = playerAge
-            locationVC.email = playerEmail
-            locationVC.about = playerBio
-            locationVC.profilePhotoString = playerPhoto
+            let locationVC = segue.destination as! ProfileViewController
+            locationVC.currentUser = currentUser
+//            locationVC.name = playerName
+//            locationVC.age = playerAge
+//            locationVC.email = playerEmail
+//            locationVC.about = playerBio
+//            locationVC.profilePhotoString = playerPhoto
         }
     }
 }

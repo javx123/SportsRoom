@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import FirebaseDatabase
+import Firebase
 
 class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
@@ -37,7 +38,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.tableView.backgroundColor = UIColor.clear
         self.tableView.separatorStyle = .none
         if searchLocation == nil {
             callLocationManager()
@@ -80,34 +81,23 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             cell.titleLabel.text = entry.title
             cell.locationLabel.text = entry.address
             cell.timeLabel.text = entry.date
-            switch entry.sport {
-            case "basketball":
-                cell.sportImage.image = UIImage(named: "basketball")
-            case "baseball":
-                cell.sportImage.image = UIImage(named: "baseball")
-            case "badminton":
-                cell.sportImage.image = UIImage(named: "badminton")
-            case "hockey":
-                cell.sportImage.image = UIImage(named: "hockey")
-            case "tennis":
-                cell.sportImage.image = UIImage(named: "tennis")
-            case "squash":
-                cell.sportImage.image = UIImage(named: "squash")
-            case "table tennis":
-                cell.sportImage.image = UIImage(named: "tabletennis")
-            case "softball":
-                cell.sportImage.image = UIImage(named: "softball")
-            case "football":
-                cell.sportImage.image = UIImage(named: "football")
-            case "soccer":
-                cell.sportImage.image = UIImage(named: "soccer")
-            case "ball hockey":
-                cell.sportImage.image = UIImage(named: "hockey")
-            default:
-                cell.sportImage.image = UIImage(named: "defaultsport")
-            }
             
-            return cell
+            cell.backgroundColor = UIColor.clear
+            cell.backgroundView = UIView()
+            cell.selectedBackgroundView = UIView()
+            
+//            if(indexPath.row % 2 == 0) {
+//                cell.roundedView.backgroundColor = UIColor.flatNavyBlueDark
+//                cell.titleLabel.textColor = UIColor.white
+//                cell.locationLabel.textColor = UIColor.white
+//                cell.timeLabel.textColor = UIColor.white
+//
+//            }else{
+//                cell.roundedView.backgroundColor = UIColor.flatYellow
+//                cell.titleLabel.textColor = UIColor.flatNavyBlueDark
+//                cell.locationLabel.textColor = UIColor.flatNavyBlueDark
+//                cell.timeLabel.textColor = UIColor.flatNavyBlueDark
+//            }
         }
         
         return cell
@@ -187,6 +177,15 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
 
     }
     
+    func updateUserInfo () {
+        let userID = Auth.auth().currentUser?.uid
+        let ref = Database.database().reference().child("users").child(userID!)
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            self.currentUser = User(snapshot: snapshot)
+            self.sortGames()
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "search") {
             if let indexPath = tableView.indexPathForSelectedRow {
@@ -194,8 +193,44 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 let VC2 : DetailsViewController = segue.destination as! DetailsViewController
                 VC2.btnText =  DetailsViewController.ButtonState.search
                 VC2.currentGame = game
+                VC2.longitude = game.longitude
+                VC2.latitude = game.latitude
+                VC2.address = game.address
             }
+        }
+        
+        if segue.identifier == "userSettings" {
+            let userSettingsVC = segue.destination as? SettingsContainerViewController
+            userSettingsVC?.currentUser = currentUser
         }
     }
     
+    @IBAction func unwindFromSettings (sender: UIStoryboardSegue) {
+        if sender.source is SettingsContainerViewController {
+            if let senderVC = sender.source as? SettingsContainerViewController {
+                let userID = Auth.auth().currentUser!.uid
+                let ref = Database.database().reference().child("users").child(userID)
+                
+                let userSearchRadius = senderVC.userSettingsVC?.searchRadius
+                switch senderVC.userSettingsVC?.filterType {
+                case .date?:
+                    let defaultSettings: [String : Any] = ["radius": userSearchRadius, "filter": "date"]
+                    ref.updateChildValues(["settings" : defaultSettings])
+                case .distance?:
+                    let defaultSettings: [String : Any] = ["radius" : userSearchRadius, "filter": "distance"]
+                    ref.updateChildValues(["settings" : defaultSettings])
+                case .none:
+                    print("There's a bug if this is hit....")
+                }
+                updateUserInfo()
+                searchRadius = senderVC.userSettingsVC?.searchRadius
+                searchResults.removeAll()
+                filterResults()
+            }
+        }
+        
+    }
+    
 }
+
+
