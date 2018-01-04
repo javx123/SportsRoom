@@ -209,8 +209,8 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     @IBAction func showSearchBar(_ sender: Any) {
         if searchBarContainer.isHidden == true {
             searchBarContainer.isHidden = false
-            buttonBarViewTopConstraint.constant = searchBarContainer.frame.height + 1
-            containerViewTopConstraint.constant += searchBarContainer.frame.height + 1
+            buttonBarViewTopConstraint.constant = searchBarContainer.frame.height + 0.5
+            containerViewTopConstraint.constant += searchBarContainer.frame.height + 0.5
             //        searchBar?.becomeFirstResponder()
             searchBarVC?.searchBar.becomeFirstResponder()
         }
@@ -221,8 +221,8 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     
     func close() {
         searchBarContainer.isHidden = true
-        buttonBarViewTopConstraint.constant = 1
-        containerViewTopConstraint.constant -= searchBarContainer.frame.height + 1
+        buttonBarViewTopConstraint.constant = 0.5
+        containerViewTopConstraint.constant -= searchBarContainer.frame.height + 0.5
     }
     
     func search() {
