@@ -11,7 +11,6 @@ import Firebase
 import FirebaseDatabase
 import FirebaseStorage
 import SDWebImage
-import SVProgressHUD
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UINavigationBarDelegate {
     
@@ -39,6 +38,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     let keyName = "name"
     let keyAge = "age"
     let keyBios = "bios"
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -187,12 +187,18 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             self.setimage()
         }
         self.dismiss(animated: true, completion: nil)
-        SVProgressHUD.show(withStatus:"loading")
+        let loadActivity = MBProgressHUD.showAdded(to: profileImageBackground, animated: true)
+        loadActivity.label.text = "Loading"
+        loadActivity.detailsLabel.text = "Please Wait"
+        loadActivity.backgroundColor = UIColor.flatNavyBlueDark
+        loadActivity.contentColor = UIColor.white
+//        SVProgressHUD.show(withStatus:"loading")
+//        profileImageBackground.addSubview(SVProgressHUD)
     }
     
     func setimage () {
         self.imageView.sd_setImage(with:URL(string:imageString)) { (image, error, type, url) in
-            SVProgressHUD.dismiss()
+            MBProgressHUD.hide(for: self.profileImageBackground, animated: true)
         }
     }
     
@@ -210,22 +216,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                 let ref = Database.database().reference().child("users").child(userID)
                 
                 let userSearchRadius = senderVC.userSettingsVC?.searchRadius
-                //                write info to user in firebase
-                
-                //                switch senderVC.filterOptions.selectedSegmentIndex {
-                //                case 0:
-                //                    //                    change filter in user info to date
-                //                    let defaultSettings: [String: Any] = ["radius": userSearchRadius,
-                //                                                          "filter": "date"]
-                //                    ref.updateChildValues(["settings" : defaultSettings])
-                //                case 1:
-                //                    //                    change filter in user info to location
-                //                    let defaultSettings: [String: Any] = ["radius": userSearchRadius,
-                //                                                          "filter": "distance"]
-                //                    ref.updateChildValues(["settings" : defaultSettings])
-                //                default:
-                //                    print("No matching segment")
-                //                }
                 switch senderVC.userSettingsVC?.filterType {
                 case .date?:
                     //                    change filter in user info to date
@@ -237,10 +227,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                 case .none:
                     print("There's a bug if this is hit....")
                 }
-                
             }
         }
-        
     }
     
     @IBAction func logOutPressed(_ sender: Any) {

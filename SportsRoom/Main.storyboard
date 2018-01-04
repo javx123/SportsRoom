@@ -2160,7 +2160,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a label." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYc-B4-r5P">
-                                        <rect key="frame" x="35" y="127" width="305" height="20.5"/>
+                                        <rect key="frame" x="35" y="127" width="305" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.1334631741" green="0.1823148429" blue="0.25190103050000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2245,23 +2245,33 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XrJ-qa-4M3">
                                         <rect key="frame" x="112" y="126" width="150" height="150"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rl6-md-eKt">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rl6-md-eKt">
                                                 <rect key="frame" x="3" y="3" width="144" height="144"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
                                             </imageView>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Tg-WK-fT9">
-                                                <rect key="frame" x="-1" y="58" width="151" height="36"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Tg-WK-fT9">
+                                                <rect key="frame" x="-1" y="3" width="151" height="144"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <state key="normal" title="Update Photo">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="selectPicture:" destination="KbM-Lc-0Fu" eventType="touchUpInside" id="SrZ-AD-lGJ"/>
+                                                    <action selector="selectPicture:" destination="KbM-Lc-0Fu" eventType="touchUpInside" id="osb-9B-Nzy"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="8Tg-WK-fT9" firstAttribute="top" secondItem="rl6-md-eKt" secondAttribute="top" id="7i1-NO-maH"/>
+                                            <constraint firstItem="8Tg-WK-fT9" firstAttribute="centerX" secondItem="rl6-md-eKt" secondAttribute="centerX" id="Pek-2H-bYF"/>
+                                            <constraint firstItem="8Tg-WK-fT9" firstAttribute="centerY" secondItem="XrJ-qa-4M3" secondAttribute="centerY" id="TJw-jW-7wc"/>
+                                            <constraint firstItem="8Tg-WK-fT9" firstAttribute="centerX" secondItem="XrJ-qa-4M3" secondAttribute="centerX" id="Wle-2J-FBE"/>
+                                            <constraint firstAttribute="trailing" secondItem="8Tg-WK-fT9" secondAttribute="trailing" id="aid-i9-7mI"/>
+                                            <constraint firstItem="rl6-md-eKt" firstAttribute="leading" secondItem="XrJ-qa-4M3" secondAttribute="leading" constant="3" id="frj-G5-Rkg"/>
+                                            <constraint firstItem="8Tg-WK-fT9" firstAttribute="top" secondItem="XrJ-qa-4M3" secondAttribute="top" constant="3" id="gfj-Zr-xE5"/>
+                                            <constraint firstItem="8Tg-WK-fT9" firstAttribute="bottom" secondItem="rl6-md-eKt" secondAttribute="bottom" id="sCr-Of-1re"/>
+                                        </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGe-QB-oLS">
                                         <rect key="frame" x="36" y="145" width="40" height="40"/>
