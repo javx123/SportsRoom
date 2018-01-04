@@ -52,6 +52,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
     var playerEmail = String ()
     var playerBio = String ()
     var playerPhoto = String ()
+    var currentUser : User?
     
     var latitude: Double?
     var longitude: Double?
@@ -230,6 +231,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         self.playerEmail = selectedUser.email
         self.playerBio = selectedUser.bio
         self.playerPhoto = selectedUser.profileImageURLString
+        currentUser = selectedUser
         self.performSegue(withIdentifier: "showProfile", sender: self)
     }
     
@@ -307,12 +309,13 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
             locationVC.longitude = currentGame.longitude
         }
         if segue.identifier == "showProfile"{
-            let locationVC = segue.destination as! FriendProfileViewController
-            locationVC.name = playerName
-            locationVC.age = playerAge
-            locationVC.email = playerEmail
-            locationVC.about = playerBio
-            locationVC.profilePhotoString = playerPhoto
+            let locationVC = segue.destination as! ProfileViewController
+            locationVC.currentUser = currentUser
+//            locationVC.name = playerName
+//            locationVC.age = playerAge
+//            locationVC.email = playerEmail
+//            locationVC.about = playerBio
+//            locationVC.profilePhotoString = playerPhoto
         }
     }
 }
