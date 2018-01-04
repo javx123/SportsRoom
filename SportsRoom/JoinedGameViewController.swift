@@ -56,6 +56,9 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
                 let VC2 : DetailsViewController = segue.destination as! DetailsViewController
                 VC2.btnText =  DetailsViewController.ButtonState.joined
                 VC2.currentGame = game
+                VC2.longitude = game.longitude
+                VC2.latitude = game.latitude
+                VC2.address = game.address
             }
         } else if (segue.identifier == "toChat2") {
             if let sender = sender as? UIButton {

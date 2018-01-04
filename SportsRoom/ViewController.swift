@@ -26,27 +26,36 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     var ownedGamesVC: OwnedGameViewController?
     var searchBarVC: SearchContainerViewController?
 
-    var createButton = UIBarButtonItem()
-    var profileButton = UIBarButtonItem()
+//    var searchBarButton = UIBarButtonItem()
+//    var profileButton = UIBarButtonItem()
     
 
     @IBOutlet weak var searchBarContainer: UIView!
     @IBOutlet weak var buttonBarViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var addGameButton: UIButton!
-    
 
     
     @IBOutlet weak var containerViewTopConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            addGameButton.layer.cornerRadius = addGameButton.frame.size.height/2
-//        createButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action:#selector(createGame))
+        addGameButton.layer.cornerRadius = addGameButton.frame.size.height/2
+    
         
-        
-        profileButton = UIBarButtonItem(image: UIImage(named: "profile-1"), style: .plain, target: self, action: #selector(showProfile))
-        self.navigationItem.leftBarButtonItem = profileButton
-        self.navigationItem.rightBarButtonItem = createButton
+        let profileImage = UIImage(named: "profile-1")
+        let searchImage = UIImage(named: "searchlogo")
+        let iconSize = CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30))
+        let profileButton = UIButton(frame: iconSize)
+        let searchButton = UIButton(frame: iconSize)
+        profileButton.setBackgroundImage(profileImage, for: .normal)
+        searchButton.setBackgroundImage(searchImage, for: .normal)
+        let profileBarButton = UIBarButtonItem(customView: profileButton)
+        let searchBarButton = UIBarButtonItem(customView: searchButton)
+        profileButton.addTarget(self, action: #selector(showProfile), for: .touchUpInside)
+        searchButton.addTarget(self, action: #selector(showSearchBar), for: .touchUpInside)
+
+        self.navigationItem.leftBarButtonItem = profileBarButton
+        self.navigationItem.rightBarButtonItem = searchBarButton
         observeFireBase()
         createCurrentUser()
         configureView()
@@ -205,7 +214,7 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         }
     }
     
-    @IBAction func showSearchBar(_ sender: Any) {
+    @objc func showSearchBar () {
         searchBarContainer.isHidden = false
         buttonBarViewTopConstraint.constant = searchBarContainer.frame.height
         containerViewTopConstraint.constant += searchBarContainer.frame.height
