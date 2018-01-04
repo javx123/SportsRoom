@@ -273,7 +273,7 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         
         if segue.identifier == "searchBar" {
             let searchContainerVC = segue.destination as! SearchContainerViewController
-            searchContainerVC.delegate = self
+            searchContainerVC.searchDelegate = self
             searchBarVC = searchContainerVC
         }
     }

@@ -2002,7 +2002,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="127"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="hKZ-T2-YAI">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="hKZ-T2-YAI" customClass="ModernSearchBar" customModule="ModernSearchBar">
                                 <rect key="frame" x="20" y="0.0" width="335" height="56"/>
                                 <color key="barTintColor" red="0.1334631741" green="0.1823148429" blue="0.25190103050000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -2061,7 +2061,7 @@
                         <viewLayoutGuide key="safeArea" id="hgj-IQ-M6k"/>
                     </view>
                     <connections>
-                        <outlet property="searchBar" destination="hKZ-T2-YAI" id="FMy-oP-jsF"/>
+                        <outlet property="searchBar" destination="hKZ-T2-YAI" id="emo-bW-KN1"/>
                         <outlet property="searchLocationLabel" destination="zyz-C3-TQI" id="hGN-xv-NDf"/>
                         <outlet property="searchLocationView" destination="TpZ-Wb-xnY" id="y0O-Bk-saU"/>
                     </connections>
@@ -2340,7 +2340,7 @@
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FiB-pS-VRb">
                                 <rect key="frame" x="0.0" y="63.5" width="375" height="603.5"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Uhh-jn-nfK">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="604"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="light"/>

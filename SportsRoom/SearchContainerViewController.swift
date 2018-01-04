@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import SHSearchBar
 import ChameleonFramework
 import DropDown
+import ModernSearchBar
 
 protocol SearchContainerProtocol {
     func close()
@@ -18,18 +18,21 @@ protocol SearchContainerProtocol {
     func searchCurrentLocation()
 }
 
-class SearchContainerViewController: UIViewController, UISearchBarDelegate {
+class SearchContainerViewController: UIViewController, ModernSearchBarDelegate {
     
-    @IBOutlet weak var searchBar: UISearchBar!
+//    @IBOutlet weak var searchBar: UISearchBar!
+    
+    @IBOutlet weak var searchBar: ModernSearchBar!
     @IBOutlet weak var searchLocationView: UIView!
     @IBOutlet weak var searchLocationLabel: UILabel!
     
     let dropDown = DropDown()
-    var delegate: SearchContainerProtocol?
+    var searchDelegate: SearchContainerProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.delegate = self
+//        searchBar.delegate = self
+        searchBar.delegateModernSearchBar = self
         // Do any additional setup after loading the view.
 
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
@@ -59,24 +62,23 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
         dropDown.textColor = UIColor.white
         dropDown.selectionBackgroundColor = UIColor.flatYellow
         
-        
+        let sportSuggestionList = ["Baseball", "Basketball", "Hockey", "Soccer", "Football", "Tennis", "Softball", "Table Tennis", "Squash", "Ultimate", "Rugby"]
+        searchBar.setDatas(datas: sportSuggestionList)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        searchBar.setShowsCancelButton(true, animated: true)
         dropDown.selectionAction = { (index: Int, item: String) in
             self.searchLocationLabel.textColor = UIColor.white
             self.searchLocationLabel.text = item
             if item == "Current Location" {
-//                set search location to current location
-                self.delegate?.searchCurrentLocation()
+                self.searchDelegate?.searchCurrentLocation()
             }
             
             if item == "Custom Location..." {
-//                present selectLocationViewController
-                self.delegate?.chooseSearchLocation()
+                self.searchDelegate?.chooseSearchLocation()
             }
-            
         }
     }
     
@@ -89,8 +91,8 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
     }
 
     @IBAction func search(_ sender: Any) {
-        delegate?.close()
-        delegate?.search()
+        searchDelegate?.close()
+        searchDelegate?.search()
         searchBar.setShowsCancelButton(false, animated: true)
     }
     
@@ -98,17 +100,31 @@ class SearchContainerViewController: UIViewController, UISearchBarDelegate {
         searchBar.setShowsCancelButton(true, animated: true)
     }
 
+    
+    
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
         searchBar.setShowsCancelButton(false, animated: true)
         searchBar.endEditing(true)
-        delegate?.close()
+        searchDelegate?.close()
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        delegate?.close()
-        delegate?.search()
+        searchDelegate?.close()
+        searchDelegate?.search()
         searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
+    func onClickItemSuggestionsView(item: String) {
+        searchBar.text = item
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(true, animated: false)
+    }
+    
+    func onClickShadowView(shadowView: UIView) {
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(true, animated: false)
     }
     
     @IBAction func searchLocationDropDown(_ sender: Any) {

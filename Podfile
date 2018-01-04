@@ -16,6 +16,6 @@ pod 'SDWebImage'
 pod 'SVProgressHUD'
 pod 'DropDown'
 pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon', :branch => 'wip/swift4'
-pod 'SHSearchBar'
+pod 'ModernSearchBar'
 
 end
