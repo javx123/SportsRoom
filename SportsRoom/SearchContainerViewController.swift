@@ -36,7 +36,7 @@ class SearchContainerViewController: UIViewController, ModernSearchBarDelegate {
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
             textFieldInsideSearchBar?.textColor = .white
         searchBar.tintColor = .flatYellow
-        searchBar.placeholder = "Search game"
+        searchBar.placeholder = "Search (e.g. Soccer)"
         searchBar.enablesReturnKeyAutomatically = true
         
         let glassIconView = textFieldInsideSearchBar?.leftView as? UIImageView

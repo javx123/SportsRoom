@@ -84,6 +84,9 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
                 let VC2 : DetailsViewController = segue.destination as! DetailsViewController
                 VC2.btnText =  DetailsViewController.ButtonState.hosted
                 VC2.currentGame = game
+                VC2.longitude = game.longitude
+                VC2.latitude = game.latitude
+                VC2.address = game.address
             }
         } else if (segue.identifier == "toChat") {
             if let sender = sender as? UIButton {

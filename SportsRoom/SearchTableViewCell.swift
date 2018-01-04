@@ -13,11 +13,10 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var sportImage: UIImageView!
-    
+    @IBOutlet weak var roundedView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        roundedView.layer.cornerRadius = 7
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
