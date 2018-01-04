@@ -11,6 +11,7 @@ import Firebase
 import FirebaseDatabase
 import XLPagerTabStrip
 import MapKit
+import ChameleonFramework
 
 
 class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDelegate, SearchContainerProtocol{
@@ -96,24 +97,24 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         ownedGamesVC = child_2
         
         return [child_1!, child_2!]
+//        return [child_1!]
     }
     
     func configureView() {
-        let purpleInspireColor = UIColor(red:0.13, green:0.03, blue:0.25, alpha:1.0)
-        settings.style.buttonBarBackgroundColor = .white
-        settings.style.buttonBarItemBackgroundColor = .white
-        settings.style.selectedBarBackgroundColor = purpleInspireColor
+        buttonBarView.backgroundColor = .flatNavyBlueDark
+        settings.style.buttonBarItemBackgroundColor = .flatNavyBlueDark
+        buttonBarView.selectedBar.backgroundColor = .flatYellow
         settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
         settings.style.selectedBarHeight = 2.0
         settings.style.buttonBarMinimumLineSpacing = 0
-        settings.style.buttonBarItemTitleColor = .black
+        settings.style.buttonBarItemTitleColor = .white
         settings.style.buttonBarItemsShouldFillAvailiableWidth = true
         settings.style.buttonBarLeftContentInset = 0
         settings.style.buttonBarRightContentInset = 0
         changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
-            oldCell?.label.textColor = .black
-            newCell?.label.textColor = purpleInspireColor
+            oldCell?.label.textColor = .white
+            newCell?.label.textColor = .flatYellow
         }
     }
     
