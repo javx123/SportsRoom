@@ -97,9 +97,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.senderLbl.text = currentMessage.senderName
             cell.messageLbl.text = currentMessage.messageBody
             cell.timestampLbl.text = currentMessage.timestamp
-            
             return cell
-            
         } else {
             //load sent
             
@@ -108,9 +106,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.senderLbl.text = currentMessage.senderName
             cell.messageLbl.text = currentMessage.messageBody
             cell.timestampLbl.text = currentMessage.timestamp
-            
             return cell
-            
         }
         
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
