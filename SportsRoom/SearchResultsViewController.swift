@@ -38,12 +38,28 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let settingsImage = UIImage(named: "settingswhite-1")
+        let iconSize = CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30))
+        let settingsButton = UIButton(frame: iconSize)
+        settingsButton.setBackgroundImage(settingsImage, for: .normal)
+        let settingsBarButton = UIBarButtonItem(customView: settingsButton)
+        settingsButton.contentMode = UIViewContentMode.scaleAspectFit
+        settingsButton.addTarget(self, action: #selector(showSettings), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItem = settingsBarButton
+        
         self.tableView.backgroundColor = UIColor.clear
         self.tableView.separatorStyle = .none
+        let inset = UIEdgeInsetsMake(10, 0, 0, 0);
+        self.tableView.contentInset = inset
+        
         if searchLocation == nil {
             callLocationManager()
         }
         pullMatchingGames()
+    }
+    
+    @objc func showSettings () {
+    performSegue(withIdentifier: "showSettings", sender: self)
     }
     
     func pullMatchingGames() {
@@ -79,29 +95,68 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         
         if let entry = entry {
             cell.titleLabel.text = entry.title
-            cell.locationLabel.text = entry.address
+            cell.locationLabel.text = "Location: \(entry.address)"
+//            cell.locationLabel.font = cell.locationLabel.font.italic
             cell.timeLabel.text = entry.date
+            cell.costLabel.text = entry.cost
+            cell.skillLabel.text = "Skill: \(entry.skillLevel)"
+            let numberofPlayers = entry.allPlayersArray.count
+            let numberofSpots = entry.numberOfPlayers+1 - numberofPlayers
+            let numberofPlayersString = String(numberofSpots)
+            cell.spotsLabel.text = "\(numberofPlayersString) Spot(s)"
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .short
+            dateFormatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
+            let gameDate = dateFormatter.date(from: entry.date)
+            if let gregorianCalendar = NSCalendar(calendarIdentifier: .gregorian) {
+                let month = gregorianCalendar.component(.month, from: gameDate!)
+                let monthName = DateFormatter().monthSymbols[month - 1]
+                cell.monthLabel.text = String(monthName)
+                let day = gregorianCalendar.component(.day, from: gameDate!)
+                cell.timeLabel.text = String (day)
+                let hour = gregorianCalendar.component(.hour, from: gameDate!)
+                let minute = gregorianCalendar.component(.minute, from: gameDate!)
+                let dateAsString = String ("\(hour):\(minute)")
+                let dateFormatterNew = DateFormatter()
+                dateFormatterNew.dateFormat = "HH:mm"
+                let date = dateFormatterNew.date(from: dateAsString)
+                dateFormatterNew.dateFormat = "h:mm a"
+                let Date12 = dateFormatterNew.string(from: date!)
+                cell.hourLabel.text = Date12
+                
+                
+                
+//                let amPM = gregorianCalendar.component(., from: <#T##Date#>)
+            }
             
             cell.backgroundColor = UIColor.clear
             cell.backgroundView = UIView()
             cell.selectedBackgroundView = UIView()
             
-//            if(indexPath.row % 2 == 0) {
-//                cell.roundedView.backgroundColor = UIColor.flatNavyBlueDark
-//                cell.titleLabel.textColor = UIColor.white
-//                cell.locationLabel.textColor = UIColor.white
-//                cell.timeLabel.textColor = UIColor.white
-//
-//            }else{
-//                cell.roundedView.backgroundColor = UIColor.flatYellow
-//                cell.titleLabel.textColor = UIColor.flatNavyBlueDark
-//                cell.locationLabel.textColor = UIColor.flatNavyBlueDark
-//                cell.timeLabel.textColor = UIColor.flatNavyBlueDark
-//            }
+            if(indexPath.row % 4 == 0) {
+                cell.roundedView.backgroundColor = UIColor.flatWhiteDark
+            }
+            else if(indexPath.row % 4 == 1) {
+            cell.roundedView.backgroundColor = UIColor.flatYellow
+                cell.costLabel.textColor = UIColor.flatNavyBlueDark
+                cell.skillLabel.textColor = UIColor.flatNavyBlueDark
+                cell.spotsLabel.textColor = UIColor.flatNavyBlueDark
+            }
+            else if(indexPath.row % 4 == 2) {
+                cell.roundedView.backgroundColor = UIColor.flatPowderBlue
+            }
+            else {
+                cell.roundedView.backgroundColor = UIColor.flatWhite
+                cell.timeLabel.textColor = UIColor.flatYellow
+                cell.costLabel.textColor = UIColor.flatNavyBlueDark
+                cell.skillLabel.textColor = UIColor.flatNavyBlueDark
+                cell.spotsLabel.textColor = UIColor.flatNavyBlueDark
+                
+            }
         }
-        
         return cell
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -199,7 +254,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             }
         }
         
-        if segue.identifier == "userSettings" {
+        if segue.identifier == "showSettings" {
             let userSettingsVC = segue.destination as? SettingsContainerViewController
             userSettingsVC?.currentUser = currentUser
         }
@@ -232,5 +287,28 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
 }
+
+extension UIFont {
+    var bold: UIFont {
+        return with(traits: .traitBold)
+    } // bold
+    
+    var italic: UIFont {
+        return with(traits: .traitItalic)
+    } // italic
+    
+    var boldItalic: UIFont {
+        return with(traits: [.traitBold, .traitItalic])
+    } // boldItalic
+    
+    
+    func with(traits: UIFontDescriptorSymbolicTraits) -> UIFont {
+        guard let descriptor = self.fontDescriptor.withSymbolicTraits(traits) else {
+            return self
+        } // guard
+        
+        return UIFont(descriptor: descriptor, size: 0)
+    } // with(traits:)
+} // extension
 
 

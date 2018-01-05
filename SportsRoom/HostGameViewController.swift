@@ -185,11 +185,22 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
             }
             }
             self.reloadInputViews()
+            if gameTitleTextField.isFirstResponder {
+                gameTitleTextField.resignFirstResponder()
+            }
+            if costTextField.isFirstResponder {
+                costTextField.resignFirstResponder()
+            }
+            if notesTextField.isFirstResponder {
+                notesTextField.resignFirstResponder()
+            }
+            
         }
     }
     
     @IBAction func sportSelectionTapped(_ sender: Any) {
         dropDown.show()
+        gameTitleTextField.resignFirstResponder()
     }
     
     
