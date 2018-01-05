@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import FirebaseDatabase
 import Firebase
+import MBProgressHUD
 
 class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
@@ -29,6 +30,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
+    var loadingNotification: MBProgressHUD?
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -44,6 +46,10 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             callLocationManager()
         }
         pullMatchingGames()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     func pullMatchingGames() {
@@ -127,8 +133,12 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             }
             completion(matchingGames)
         }
+
+        loadingNotification = MBProgressHUD.showAdded(to: self.view, animated: true)
+        loadingNotification?.mode = MBProgressHUDMode.indeterminate
+        loadingNotification?.label.text = "Searching"
+        
     }
-    
     
     func filterResults() {
         guard let `pulledGames` = pulledGames else { return }
@@ -151,12 +161,15 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                     if (game.joinedPlayersArray!.count < game.numberOfPlayers) {
                         game.distance = Int(distance)
                         self.searchResults.append(game)
-                        sortGames()
+//                        sortGames()
                     }
                 }
             }
         }
         }
+//        Can put sortGames() here, which would definetly make it more efficient then calling sortGames() many times, but in the current setup, although it's more inefficient, we ensure that the loading Icon only disappears after the sort is finished
+        sortGames()
+        MBProgressHUD.hide(for: self.view, animated: true)
     }
     
     func sortGames (){
@@ -182,7 +195,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         let ref = Database.database().reference().child("users").child(userID!)
         ref.observeSingleEvent(of: .value) { (snapshot) in
             self.currentUser = User(snapshot: snapshot)
-            self.sortGames()
+//            self.sortGames()
+            self.filterResults()
         }
     }
     
@@ -222,13 +236,20 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 case .none:
                     print("There's a bug if this is hit....")
                 }
-                updateUserInfo()
                 searchRadius = senderVC.userSettingsVC?.searchRadius
                 searchResults.removeAll()
-                filterResults()
+                loadingNotification = MBProgressHUD.showAdded(to: self.view, animated: true)
+                updateUserInfo()
             }
         }
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let loadingIcon = loadingNotification {
+            MBProgressHUD.hide(for: loadingIcon, animated: true)
+        }
     }
     
 }

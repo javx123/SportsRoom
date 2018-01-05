@@ -29,28 +29,36 @@ class SearchContainerViewController: UIViewController, ModernSearchBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        searchBar.delegate = self
         searchBar.delegateModernSearchBar = self
         // Do any additional setup after loading the view.
 
-        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
-            textFieldInsideSearchBar?.textColor = .white
-        searchBar.tintColor = .flatYellow
-        searchBar.placeholder = "Search (e.g. Soccer)"
-        searchBar.enablesReturnKeyAutomatically = true
+        configureSearchBar()
+        setupDropDown()
+        setupModernSearch()
         
-        let glassIconView = textFieldInsideSearchBar?.leftView as? UIImageView
-        glassIconView?.image = glassIconView?.image?.withRenderingMode(.alwaysTemplate)
-        glassIconView?.tintColor = .flatYellow
-        
-        
-//        let clearButton = textFieldInsideSearchBar?.value(forKey: "clearButton") as! UIButton
-//        clearButton.setImage(clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
-//
-//        clearButton.tintColor = UIColor.flatYellow
-        
-        
-        
+    }
+    
+    
+    func configureSearchBar() {
+    
+    let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+    textFieldInsideSearchBar?.textColor = .white
+    searchBar.tintColor = .flatYellow
+    searchBar.placeholder = "Search (e.g. Soccer)"
+    searchBar.enablesReturnKeyAutomatically = true
+    
+    let glassIconView = textFieldInsideSearchBar?.leftView as? UIImageView
+    glassIconView?.image = glassIconView?.image?.withRenderingMode(.alwaysTemplate)
+    glassIconView?.tintColor = .flatYellow
+    
+    
+    //        let clearButton = textFieldInsideSearchBar?.value(forKey: "clearButton") as! UIButton
+    //        clearButton.setImage(clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
+    //
+    //        clearButton.tintColor = UIColor.flatYellow
+    }
+    
+    func setupDropDown() {
         dropDown.anchorView = searchLocationView
         dropDown.dataSource = ["Current Location", "Custom Location..."]
         dropDown.direction = .bottom
@@ -59,7 +67,9 @@ class SearchContainerViewController: UIViewController, ModernSearchBarDelegate {
         dropDown.backgroundColor = UIColor.flatNavyBlueDark
         dropDown.textColor = UIColor.white
         dropDown.selectionBackgroundColor = UIColor.flatYellow
-        
+    }
+    
+    func setupModernSearch() {
         let sportSuggestionList = ["Baseball", "Basketball", "Hockey", "Soccer", "Football", "Tennis", "Softball", "Table Tennis", "Squash", "Ultimate", "Rugby"]
         searchBar.setDatas(datas: sportSuggestionList)
         

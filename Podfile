@@ -17,5 +17,6 @@ pod 'SVProgressHUD'
 pod 'DropDown'
 pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon', :branch => 'wip/swift4'
 pod 'ModernSearchBar'
+pod 'MBProgressHUD', '~> 1.0.0'
 
 end
