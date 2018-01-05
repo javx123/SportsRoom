@@ -876,9 +876,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="155" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eDt-Lg-TeC">
-
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1542,10 +1540,10 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xr8-st-2ze">
-                                                            <rect key="frame" x="0.0" y="389" width="375" height="150"/>
+                                                            <rect key="frame" x="0.0" y="390" width="375" height="149"/>
                                                             <gestureRecognizers/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="150" id="fiV-is-jG2"/>
+                                                                <constraint firstAttribute="height" constant="149" id="fiV-is-jG2"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outletCollection property="gestureRecognizers" destination="1Ha-GT-X9z" appends="YES" id="IcA-84-FeC"/>
@@ -1587,7 +1585,7 @@
                                                             <rect key="frame" x="0.0" y="539" width="375" height="41.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Players:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYL-Xf-V6s">
-                                                                    <rect key="frame" x="8" y="8" width="72" height="21"/>
+                                                                    <rect key="frame" x="8" y="10" width="72" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="72" id="Fre-3s-zLz"/>
                                                                     </constraints>
@@ -1599,7 +1597,7 @@
                                                             <color key="backgroundColor" red="0.13346317410469055" green="0.18231484293937683" blue="0.25190103054046631" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="oYL-Xf-V6s" firstAttribute="leading" secondItem="js1-NG-Yjt" secondAttribute="leadingMargin" id="ZKa-1j-kKw"/>
-                                                                <constraint firstItem="oYL-Xf-V6s" firstAttribute="top" secondItem="js1-NG-Yjt" secondAttribute="topMargin" id="y7a-oo-7eE"/>
+                                                                <constraint firstItem="oYL-Xf-V6s" firstAttribute="top" secondItem="js1-NG-Yjt" secondAttribute="topMargin" constant="2" id="y7a-oo-7eE"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahm-W1-rkK">
@@ -1758,7 +1756,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="js1-NG-Yjt" secondAttribute="trailing" id="so1-di-bno"/>
                                                         <constraint firstItem="Zw8-QE-mNm" firstAttribute="top" secondItem="iWu-bx-Q0k" secondAttribute="top" id="uWU-ZF-3ue"/>
                                                         <constraint firstItem="MBU-lR-BJc" firstAttribute="top" secondItem="js1-NG-Yjt" secondAttribute="bottom" constant="-0.5" id="uYM-1x-TwC"/>
-                                                        <constraint firstItem="xr8-st-2ze" firstAttribute="top" secondItem="rzF-Ce-e1K" secondAttribute="bottom" constant="-1" id="vBL-Ur-rx9"/>
+                                                        <constraint firstItem="xr8-st-2ze" firstAttribute="top" secondItem="rzF-Ce-e1K" secondAttribute="bottom" id="vBL-Ur-rx9"/>
                                                         <constraint firstItem="BpG-dZ-8lX" firstAttribute="leading" secondItem="Zw8-QE-mNm" secondAttribute="leading" constant="-8" id="vR8-7m-DvP"/>
                                                         <constraint firstItem="e9S-R3-T5a" firstAttribute="top" secondItem="ahm-W1-rkK" secondAttribute="bottom" constant="-5" id="xJU-TI-swB"/>
                                                         <constraint firstItem="e9S-R3-T5a" firstAttribute="leading" secondItem="Z7v-gH-uNh" secondAttribute="leading" id="yQJ-6A-gBc"/>
@@ -3144,9 +3142,14 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Dth-WZ-ef8">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.13346317410469055" green="0.18231484293937683" blue="0.25190103054046631" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -3241,4 +3244,12 @@
         <image name="sport" width="24" height="24"/>
         <image name="whiteDropDown" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="HeY-CS-lKV"/>
+        <segue reference="Cua-Xk-AZH"/>
+        <segue reference="YfC-3w-XDr"/>
+        <segue reference="u7U-XN-rWT"/>
+        <segue reference="nDZ-df-YF2"/>
+        <segue reference="W1f-EQ-S7k"/>
+    </inferredMetricsTieBreakers>
 </document>

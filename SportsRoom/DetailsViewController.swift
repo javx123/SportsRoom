@@ -95,11 +95,11 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         let numberOfPlayers = self.playerNamesArray.count
         let numberOfSpotsInt = (currentGame.numberOfPlayers+1) - numberOfPlayers
         let numberOfSpotsString = String(numberOfSpotsInt)
-        self.playersLabel.text = "\(numberOfSpotsString) Open Spots"
+        self.playersLabel.text = "\(numberOfSpotsString) Open Spot(s)"
     }
     
     func updateMapView(_ location: CLLocation) {
-        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let span = MKCoordinateSpanMake(0.005, 0.005)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
         mapView.setRegion(region, animated: true)
     }
@@ -110,7 +110,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
         mapView.addAnnotation(annotation)
-        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let span = MKCoordinateSpanMake(0.005, 0.005)
         let region = MKCoordinateRegionMake(placemark.coordinate, span)
         mapView.setRegion(region, animated: true)
     }
