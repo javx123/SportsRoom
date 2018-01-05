@@ -170,7 +170,9 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         ref.queryOrdered(byChild: "sport").queryEqual(toValue: searchedSport.lowercased()).observe(.value) { (snapshot) in
             print(snapshot.value!)
             let pulledGames = snapshot.value as? Dictionary <String, Any>
-            guard let games = pulledGames else { return }
+            guard let games = pulledGames else {
+                MBProgressHUD.hide(for: self.view, animated: true)
+                return }
             var matchingGames: [Game] = []
             for game in games {
                 print(game.value)
