@@ -94,7 +94,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as? SearchTableViewCell else{fatalError("The dequeued cell is not an instance of SearchTableViewCell.")}
         let entry: Game? = searchResults[indexPath.row]
-        
+        cell.selectionStyle = .none
         if let entry = entry {
             cell.titleLabel.text = entry.title
             cell.locationLabel.text = "Location: \(entry.address)"
