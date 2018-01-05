@@ -95,7 +95,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         
         if let entry = entry {
             cell.titleLabel.text = entry.title
-            cell.locationLabel.text = entry.address
+            cell.locationLabel.text = "Location: \(entry.address)"
+//            cell.locationLabel.font = cell.locationLabel.font.italic
             cell.timeLabel.text = entry.date
             cell.costLabel.text = entry.cost
             cell.skillLabel.text = "Skill: \(entry.skillLevel)"
@@ -286,5 +287,28 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
 }
+
+extension UIFont {
+    var bold: UIFont {
+        return with(traits: .traitBold)
+    } // bold
+    
+    var italic: UIFont {
+        return with(traits: .traitItalic)
+    } // italic
+    
+    var boldItalic: UIFont {
+        return with(traits: [.traitBold, .traitItalic])
+    } // boldItalic
+    
+    
+    func with(traits: UIFontDescriptorSymbolicTraits) -> UIFont {
+        guard let descriptor = self.fontDescriptor.withSymbolicTraits(traits) else {
+            return self
+        } // guard
+        
+        return UIFont(descriptor: descriptor, size: 0)
+    } // with(traits:)
+} // extension
 
 
