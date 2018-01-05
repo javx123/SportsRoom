@@ -228,7 +228,7 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
                 costTextField.text = "Free"
             }
             if notesTextField.text == "" {
-                notesTextField.text = "The organizer did not inlcude a note"
+                notesTextField.text = "The organizer did not include a note"
             }
             postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: dropDownSelectionLabel.text!.lowercased(), date:dateString!, address: pickLocationLabel.text!, longitude:longitude, latitude:latitude, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!)
             
