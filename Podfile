@@ -7,5 +7,18 @@ target 'SportsRoom' do
 
   # Pods for SportsRoom
 
+pod 'Firebase/Core'
+pod 'Firebase/Database'
+pod 'Firebase/Auth'
+pod 'XLPagerTabStrip'
+pod 'Firebase/Messaging'
+pod 'Firebase/Storage'
+pod 'SDWebImage'
+pod 'SVProgressHUD'
+pod 'DropDown'
+pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon', :branch => 'wip/swift4'
+pod 'ModernSearchBar'
+pod 'MBProgressHUD', '~> 1.0.0'
+
 
 end
