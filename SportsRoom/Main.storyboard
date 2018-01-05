@@ -967,13 +967,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spots" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEQ-8d-6hc">
-                                                            <rect key="frame" x="272" y="118" width="83" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skill" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToG-t1-NFa">
-                                                            <rect key="frame" x="184" y="118" width="84" height="21"/>
+                                                            <rect key="frame" x="278" y="118" width="70" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -997,6 +991,12 @@
                                                             <color key="textColor" red="0.13333333333333333" green="0.1803921568627451" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skill" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToG-t1-NFa">
+                                                            <rect key="frame" x="175" y="118" width="101" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -1006,21 +1006,21 @@
                                                         <constraint firstItem="CP3-dL-yH7" firstAttribute="centerX" secondItem="3SD-rT-qKK" secondAttribute="centerX" id="79k-nm-ser"/>
                                                         <constraint firstAttribute="bottom" secondItem="3SD-rT-qKK" secondAttribute="bottom" constant="4" id="9G2-iy-3UD"/>
                                                         <constraint firstItem="CP3-dL-yH7" firstAttribute="top" secondItem="s4n-vX-jaq" secondAttribute="bottom" constant="18" id="EPz-gf-Doc"/>
-                                                        <constraint firstItem="eEQ-8d-6hc" firstAttribute="leading" secondItem="ToG-t1-NFa" secondAttribute="trailing" constant="4" id="GjB-Mr-f6q"/>
+                                                        <constraint firstItem="eEQ-8d-6hc" firstAttribute="leading" secondItem="ToG-t1-NFa" secondAttribute="trailing" constant="2" id="GjB-Mr-f6q"/>
                                                         <constraint firstItem="s4n-vX-jaq" firstAttribute="top" secondItem="YM9-0V-hnJ" secondAttribute="bottom" constant="3" id="HZV-wN-iNb"/>
                                                         <constraint firstItem="YM9-0V-hnJ" firstAttribute="leading" secondItem="s4n-vX-jaq" secondAttribute="leading" id="HsS-qY-ZCW"/>
                                                         <constraint firstItem="YM9-0V-hnJ" firstAttribute="trailing" secondItem="s4n-vX-jaq" secondAttribute="trailing" id="MRd-I4-YGl"/>
                                                         <constraint firstItem="3SD-rT-qKK" firstAttribute="baseline" secondItem="ToG-t1-NFa" secondAttribute="baseline" id="UXc-vd-RN1"/>
                                                         <constraint firstItem="CP3-dL-yH7" firstAttribute="leading" secondItem="rdj-jh-pFa" secondAttribute="trailing" constant="25" id="UxV-gq-sdk"/>
                                                         <constraint firstItem="YM9-0V-hnJ" firstAttribute="trailing" secondItem="nMr-rv-f91" secondAttribute="trailingMargin" id="WH5-sE-Nsi"/>
-                                                        <constraint firstAttribute="trailing" secondItem="eEQ-8d-6hc" secondAttribute="trailing" id="Xd0-sl-QT6"/>
+                                                        <constraint firstAttribute="trailing" secondItem="eEQ-8d-6hc" secondAttribute="trailing" constant="7" id="Xd0-sl-QT6"/>
                                                         <constraint firstItem="CP3-dL-yH7" firstAttribute="top" secondItem="3ff-vM-17e" secondAttribute="top" id="Zcg-Ui-sCq"/>
                                                         <constraint firstItem="3ff-vM-17e" firstAttribute="centerX" secondItem="ToG-t1-NFa" secondAttribute="centerX" id="aOT-Lh-mMP"/>
                                                         <constraint firstItem="ToG-t1-NFa" firstAttribute="firstBaseline" secondItem="eEQ-8d-6hc" secondAttribute="firstBaseline" id="d1S-h6-Dbe"/>
                                                         <constraint firstAttribute="bottom" secondItem="rdj-jh-pFa" secondAttribute="bottom" id="gvd-MG-UIZ"/>
                                                         <constraint firstItem="jKX-Kt-Xbd" firstAttribute="centerX" secondItem="eEQ-8d-6hc" secondAttribute="centerX" id="ilR-qD-qHK"/>
                                                         <constraint firstItem="YM9-0V-hnJ" firstAttribute="top" secondItem="nMr-rv-f91" secondAttribute="top" constant="12" id="jkX-uA-ZYV"/>
-                                                        <constraint firstItem="ToG-t1-NFa" firstAttribute="leading" secondItem="3SD-rT-qKK" secondAttribute="trailing" constant="17" id="kG8-22-czR"/>
+                                                        <constraint firstItem="ToG-t1-NFa" firstAttribute="leading" secondItem="3SD-rT-qKK" secondAttribute="trailing" constant="8" id="kG8-22-czR"/>
                                                         <constraint firstItem="3ff-vM-17e" firstAttribute="top" secondItem="jKX-Kt-Xbd" secondAttribute="top" id="kur-Rp-XGT"/>
                                                         <constraint firstItem="3ff-vM-17e" firstAttribute="leading" secondItem="CP3-dL-yH7" secondAttribute="trailing" constant="58" id="n1C-Ow-rq6"/>
                                                         <constraint firstItem="jKX-Kt-Xbd" firstAttribute="leading" secondItem="3ff-vM-17e" secondAttribute="trailing" constant="57" id="n7r-e9-wOd"/>
