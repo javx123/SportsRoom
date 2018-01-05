@@ -3241,4 +3241,12 @@
         <image name="sport" width="24" height="24"/>
         <image name="whiteDropDown" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="HeY-CS-lKV"/>
+        <segue reference="pBv-12-t8v"/>
+        <segue reference="mJo-hM-k1s"/>
+        <segue reference="mUZ-jg-LFw"/>
+        <segue reference="vrG-ED-cfp"/>
+        <segue reference="ZIw-xV-HT4"/>
+    </inferredMetricsTieBreakers>
 </document>
