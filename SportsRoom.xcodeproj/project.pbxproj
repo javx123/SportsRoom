@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0523ABFD1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523ABFB1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.swift */; };
+		0523ABFE1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0523ABFC1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.xib */; };
+		0523AC011FFF129500EB7223 /* MessageSentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523ABFF1FFF129500EB7223 /* MessageSentTableViewCell.swift */; };
+		0523AC021FFF129500EB7223 /* MessageSentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0523AC001FFF129500EB7223 /* MessageSentTableViewCell.xib */; };
 		052D55701FF09EA800602131 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D556F1FF09EA800602131 /* ChatViewController.swift */; };
 		052D55721FF0A1DA00602131 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */; };
 		052D55741FF0A81000602131 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D55731FF0A81000602131 /* Message.swift */; };
@@ -44,6 +48,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0523ABFB1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageReceivedTableViewCell.swift; sourceTree = "<group>"; };
+		0523ABFC1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageReceivedTableViewCell.xib; sourceTree = "<group>"; };
+		0523ABFF1FFF129500EB7223 /* MessageSentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSentTableViewCell.swift; sourceTree = "<group>"; };
+		0523AC001FFF129500EB7223 /* MessageSentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageSentTableViewCell.xib; sourceTree = "<group>"; };
 		052D556F1FF09EA800602131 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		052D55731FF0A81000602131 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -149,6 +157,10 @@
 				052D55751FF34D7F00602131 /* JoinedandHostedTableViewCell.swift */,
 				052D556F1FF09EA800602131 /* ChatViewController.swift */,
 				052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */,
+				0523ABFB1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.swift */,
+				0523ABFC1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.xib */,
+				0523ABFF1FFF129500EB7223 /* MessageSentTableViewCell.swift */,
+				0523AC001FFF129500EB7223 /* MessageSentTableViewCell.xib */,
 				2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */,
 				2D71A9BB1FE40C1E008C60F7 /* DetailsViewController.swift */,
 				C01E03BB1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift */,
@@ -246,8 +258,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0523ABFE1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.xib in Resources */,
 				2D1F4B551FE1F36400371D9B /* LaunchScreen.storyboard in Resources */,
 				05FF4A0C1FEC3F7F00E9A65C /* GoogleService-Info.plist in Resources */,
+				0523AC021FFF129500EB7223 /* MessageSentTableViewCell.xib in Resources */,
 				2D1F4B521FE1F36400371D9B /* Assets.xcassets in Resources */,
 				C0B604541FF4664E0052E39E /* Main.storyboard in Resources */,
 			);
@@ -341,6 +355,7 @@
 				2D71A9BC1FE40C1E008C60F7 /* DetailsViewController.swift in Sources */,
 				C01E03981FF5CDA90029E5EC /* SelectDateViewController.swift in Sources */,
 				2D71A9B21FE40B19008C60F7 /* JoinedGameViewController.swift in Sources */,
+				0523AC011FFF129500EB7223 /* MessageSentTableViewCell.swift in Sources */,
 				C01E03BC1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift in Sources */,
 				C059228E1FFEAF8500F9CF65 /* MBProgressHUD.m in Sources */,
 				05FF4A101FEC670C00E9A65C /* StaticFunctions.swift in Sources */,
@@ -355,6 +370,7 @@
 				2D1F4B4D1FE1F36400371D9B /* ViewController.swift in Sources */,
 				2D1F4B4B1FE1F36400371D9B /* AppDelegate.swift in Sources */,
 				2D71A9BE1FE40C7F008C60F7 /* LocationViewController.swift in Sources */,
+				0523ABFD1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.swift in Sources */,
 				2D71A9BA1FE40BF4008C60F7 /* SearchResultsViewController.swift in Sources */,
 				052D55741FF0A81000602131 /* Message.swift in Sources */,
 				C07524851FF15103003DE253 /* SignUpViewController.swift in Sources */,

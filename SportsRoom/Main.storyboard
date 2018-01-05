@@ -876,7 +876,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="155" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eDt-Lg-TeC">
+
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1134,54 +1136,9 @@
                                     <constraint firstItem="cJl-3U-ALV" firstAttribute="leading" secondItem="QiH-bL-Hkd" secondAttribute="trailing" constant="8" id="x0D-9M-7z7"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PvS-W2-RoQ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PvS-W2-RoQ">
                                 <rect key="frame" x="0.0" y="64" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatCell" id="HLr-Dq-Sov" customClass="ChatTableViewCell" customModule="SportsRoom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HLr-Dq-Sov" id="kgC-U4-x6b">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLx-QK-5Nn">
-                                                    <rect key="frame" x="8" y="0.0" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.98624199628829956" green="0.7796865701675415" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RsH-37-prK">
-                                                    <rect key="frame" x="15" y="22" width="270" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.13346317410469055" green="0.18231484293937683" blue="0.25190103054046631" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyS-ar-G4p">
-                                                    <rect key="frame" x="338.5" y="33" width="21.5" height="10"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="kyS-ar-G4p" secondAttribute="trailing" constant="15" id="Lkt-Y7-s3n"/>
-                                                <constraint firstAttribute="bottom" secondItem="kyS-ar-G4p" secondAttribute="bottom" id="SCc-AT-2lf"/>
-                                                <constraint firstItem="sLx-QK-5Nn" firstAttribute="leading" secondItem="kgC-U4-x6b" secondAttribute="leading" constant="8" id="T5M-BC-FgZ"/>
-                                                <constraint firstItem="RsH-37-prK" firstAttribute="top" secondItem="sLx-QK-5Nn" secondAttribute="bottom" id="Vfi-OE-oBQ"/>
-                                                <constraint firstItem="RsH-37-prK" firstAttribute="width" secondItem="kgC-U4-x6b" secondAttribute="width" multiplier="0.72" id="ZHe-nL-rJw"/>
-                                                <constraint firstAttribute="bottom" secondItem="RsH-37-prK" secondAttribute="bottom" id="itU-Yh-zV4"/>
-                                                <constraint firstItem="sLx-QK-5Nn" firstAttribute="top" secondItem="kgC-U4-x6b" secondAttribute="top" constant="10" id="vGg-5r-gYa"/>
-                                                <constraint firstItem="RsH-37-prK" firstAttribute="leading" secondItem="kgC-U4-x6b" secondAttribute="leading" constant="15" id="vTE-wy-x3t"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="messageLbl" destination="RsH-37-prK" id="db4-QV-3VD"/>
-                                            <outlet property="senderLbl" destination="sLx-QK-5Nn" id="NsF-Hs-UXY"/>
-                                            <outlet property="timestampLbl" destination="kyS-ar-G4p" id="hAB-Jd-cRy"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="RYz-Hk-UVD" id="LJg-Au-E1a"/>
                                     <outlet property="delegate" destination="RYz-Hk-UVD" id="VlC-jG-L9i"/>
@@ -3284,12 +3241,4 @@
         <image name="sport" width="24" height="24"/>
         <image name="whiteDropDown" width="25" height="25"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="8GS-dW-uDp"/>
-        <segue reference="Cua-Xk-AZH"/>
-        <segue reference="YfC-3w-XDr"/>
-        <segue reference="u7U-XN-rWT"/>
-        <segue reference="nDZ-df-YF2"/>
-        <segue reference="W1f-EQ-S7k"/>
-    </inferredMetricsTieBreakers>
 </document>
