@@ -1870,18 +1870,19 @@
                                 <color key="barTintColor" red="0.1334631741" green="0.1823148429" blue="0.25190103050000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TpZ-Wb-xnY">
-                                <rect key="frame" x="36" y="54" width="305" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TpZ-Wb-xnY">
+                                <rect key="frame" x="35" y="54" width="305" height="29"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="whiteDropDown" translatesAutoresizingMaskIntoConstraints="NO" id="ofa-W7-W1y">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whiteDropDown" translatesAutoresizingMaskIntoConstraints="NO" id="ofa-W7-W1y">
                                         <rect key="frame" x="283" y="6" width="14" height="17"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="Zaw-bQ-xSp"/>
+                                            <constraint firstAttribute="width" constant="14" id="vqw-Bx-PDl"/>
+                                        </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyz-C3-TQI">
-                                        <rect key="frame" x="8" y="4" width="296" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyz-C3-TQI">
+                                        <rect key="frame" x="8" y="4" width="267" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1889,13 +1890,21 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.15868747229999999" green="0.2182204425" blue="0.30320093040000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="zyz-C3-TQI" firstAttribute="leading" secondItem="TpZ-Wb-xnY" secondAttribute="leading" constant="8" id="4Qe-fi-rbt"/>
+                                    <constraint firstAttribute="trailing" secondItem="ofa-W7-W1y" secondAttribute="trailing" constant="8" id="6fz-Ua-I9v"/>
+                                    <constraint firstAttribute="bottom" secondItem="ofa-W7-W1y" secondAttribute="bottom" constant="6" id="G5N-fK-MvD"/>
+                                    <constraint firstItem="zyz-C3-TQI" firstAttribute="top" secondItem="TpZ-Wb-xnY" secondAttribute="top" constant="4" id="dL5-O6-ceZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="zyz-C3-TQI" secondAttribute="bottom" constant="4" id="daH-GY-ySx"/>
+                                    <constraint firstItem="ofa-W7-W1y" firstAttribute="leading" secondItem="zyz-C3-TQI" secondAttribute="trailing" constant="8" id="kTS-ck-hsc"/>
+                                    <constraint firstItem="ofa-W7-W1y" firstAttribute="top" secondItem="TpZ-Wb-xnY" secondAttribute="top" constant="6" id="sIt-fm-egB"/>
+                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="EEV-1r-seK" appends="YES" id="q1c-LI-0EV"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbD-WM-6to">
-                                <rect key="frame" x="150" y="90" width="91" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbD-WM-6to">
+                                <rect key="frame" x="157" y="91" width="61" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Search">
                                     <color key="titleColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1908,8 +1917,13 @@
                         <color key="backgroundColor" red="0.13346317410469055" green="0.18231484293937683" blue="0.25190103054046631" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hgj-IQ-M6k" firstAttribute="trailing" secondItem="hKZ-T2-YAI" secondAttribute="trailing" constant="20" id="4kA-Uw-LgD"/>
+                            <constraint firstItem="hgj-IQ-M6k" firstAttribute="trailing" secondItem="TpZ-Wb-xnY" secondAttribute="trailing" constant="35" id="8K4-58-Eow"/>
+                            <constraint firstItem="MbD-WM-6to" firstAttribute="centerX" secondItem="TcG-q3-nWr" secondAttribute="centerX" id="9va-Db-ZRV"/>
+                            <constraint firstItem="TpZ-Wb-xnY" firstAttribute="leading" secondItem="hgj-IQ-M6k" secondAttribute="leading" constant="35" id="BXz-jj-ibn"/>
                             <constraint firstItem="hKZ-T2-YAI" firstAttribute="leading" secondItem="hgj-IQ-M6k" secondAttribute="leading" constant="20" id="HgO-1x-pvz"/>
                             <constraint firstItem="hKZ-T2-YAI" firstAttribute="top" secondItem="hgj-IQ-M6k" secondAttribute="top" id="amh-9s-tfk"/>
+                            <constraint firstItem="MbD-WM-6to" firstAttribute="top" secondItem="TpZ-Wb-xnY" secondAttribute="bottom" constant="8" id="cB4-zX-blv"/>
+                            <constraint firstItem="TpZ-Wb-xnY" firstAttribute="top" secondItem="hgj-IQ-M6k" secondAttribute="top" constant="54" id="cXt-aA-WRc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hgj-IQ-M6k"/>
                     </view>
