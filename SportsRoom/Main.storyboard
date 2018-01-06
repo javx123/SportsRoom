@@ -6,7 +6,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -1481,7 +1480,6 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="100" id="7Rj-p8-NxY"/>
                                                                 <constraint firstAttribute="height" constant="100" id="Kbr-XH-VR1"/>
-                                                                <constraint firstAttribute="width" secondItem="J4k-rs-mJ2" secondAttribute="height" multiplier="1:1" id="wgc-lU-YrO"/>
                                                             </constraints>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zw8-QE-mNm">
@@ -1775,7 +1773,6 @@
                                             <constraint firstItem="NyV-3J-HB9" firstAttribute="leading" secondItem="JAZ-Ds-Iq1" secondAttribute="leading" id="CTP-6b-6FF"/>
                                             <constraint firstItem="JAZ-Ds-Iq1" firstAttribute="top" secondItem="7al-fK-meg" secondAttribute="top" id="EAf-11-5n3"/>
                                             <constraint firstItem="NyV-3J-HB9" firstAttribute="top" secondItem="JAZ-Ds-Iq1" secondAttribute="top" id="NBE-AN-AXO"/>
-                                            <constraint firstItem="NyV-3J-HB9" firstAttribute="trailing" secondItem="JAZ-Ds-Iq1" secondAttribute="trailing" id="dnd-uj-0bK"/>
                                             <constraint firstItem="NyV-3J-HB9" firstAttribute="bottom" secondItem="JAZ-Ds-Iq1" secondAttribute="bottom" constant="5" id="n8C-I5-825"/>
                                             <constraint firstAttribute="trailing" secondItem="JAZ-Ds-Iq1" secondAttribute="trailing" id="pgY-OZ-nVg"/>
                                         </constraints>
