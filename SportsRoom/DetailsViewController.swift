@@ -92,8 +92,6 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        getNumberOfPlayers()
-
     }
     
     func updateMapView(_ location: CLLocation) {
@@ -169,6 +167,8 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         skillLabel.text = "Skill: \(currentGame.skillLevel)"
         costLabel.text = currentGame.cost
         notesLabel.text = currentGame.notes
+        let playersString = String(currentGame.spotsRemaining)
+        playersLabel.text = "\(playersString) Spot(s)"
         locationLabel.isUserInteractionEnabled = true
     }
     
@@ -198,13 +198,6 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
                 self.collectionView.reloadData()
         }
         }
-    }
-    
-    func getNumberOfPlayers () {
-        let numberOfPlayers = self.playerNamesArray.count
-        let numberOfSpotsInt = (self.currentGame.numberOfPlayers+1) - numberOfPlayers
-        let numberOfSpotsString = String(numberOfSpotsInt)
-        self.playersLabel.text = "\(numberOfSpotsString) Spot(s)"
     }
     
     // Mark: - Collection View Properties
@@ -260,6 +253,12 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         let refGame = Database.database().reference().child("games").child(gameKey).child("joinedPlayers")
         refGame.updateChildValues([userID!:"true"])
         
+        let spotsKey  = "spotsRemaining"
+        let SpotsRemaining = currentGame.spotsRemaining
+        let newSpotsRemaining = SpotsRemaining - 1
+        let refSpots = Database.database().reference().child("games").child(gameKey)
+        refSpots.updateChildValues([spotsKey:newSpotsRemaining])
+        
         let MessagingTopic = "Message"
         Messaging.messaging().subscribe(toTopic: "/topics/\(gameKey)")
         Messaging.messaging().subscribe(toTopic: "/topics/\(gameKey)\(MessagingTopic)")
@@ -272,6 +271,12 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         refUser.child(gameKey).removeValue()
         let refGame = Database.database().reference().child("games").child(gameKey).child("joinedPlayers")
         refGame.child(userID!).removeValue()
+        
+        let spotsKey  = "spotsRemaining"
+        let SpotsRemaining = currentGame.spotsRemaining
+        let newSpotsRemaining = SpotsRemaining + 1
+        let refSpots = Database.database().reference().child("games").child(gameKey)
+        refSpots.updateChildValues([spotsKey:newSpotsRemaining])
         
         let MessagingTopic = "Message"
         Messaging.messaging().unsubscribe(fromTopic: "/topics/\(gameKey)")
