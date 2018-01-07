@@ -11,6 +11,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseStorage
 import SDWebImage
+import MBProgressHUD
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UINavigationBarDelegate {
     
