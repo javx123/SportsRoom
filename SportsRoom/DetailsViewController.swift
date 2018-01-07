@@ -65,8 +65,6 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         setButtonState(buttonState: btnText!)
-        getPlayerNames()
-        setLabels()
         collectionView.delegate = self
         collectionView.dataSource = self
         notesLabel.sizeToFit()
@@ -92,10 +90,8 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let numberOfPlayers = self.playerNamesArray.count
-        let numberOfSpotsInt = (currentGame.numberOfPlayers+1) - numberOfPlayers
-        let numberOfSpotsString = String(numberOfSpotsInt)
-        self.playersLabel.text = "\(numberOfSpotsString) Open Spot(s)"
+        getPlayerNames()
+        setLabels()
     }
     
     func updateMapView(_ location: CLLocation) {
@@ -197,6 +193,10 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
                 let user = User(snapshot: snapshot)
                 self.playerNamesArray.append(user.name)
                 self.playersArray.append(user)
+                let numberOfPlayers = self.playersArray.count
+                let numberOfSpotsInt = (self.currentGame.numberOfPlayers+1) - numberOfPlayers
+                let numberOfSpotsString = String(numberOfSpotsInt)
+                self.playersLabel.text = "\(numberOfSpotsString) Open Spot(s)"
                 self.collectionView.reloadData()
             }
         }
