@@ -240,9 +240,6 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         self.performSegue(withIdentifier: "showProfile", sender: self)
     }
     
-    
-
-    
     @IBAction func gameActionPressed(_ sender: UIButton) {
         switch btnText! {
         case .hosted:

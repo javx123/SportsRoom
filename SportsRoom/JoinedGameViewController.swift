@@ -14,7 +14,7 @@ import Firebase
 //    func reassignData()
 //}
 
-class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider  {
+class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate  {
     
     @IBOutlet weak var tableView: UITableView!
     //    var delegate: gamesOwnerVC?
@@ -30,6 +30,9 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
 //        addGameButton.setTitle("+", for: .normal)
         self.tableView.backgroundColor = UIColor.clear
         self.tableView.separatorStyle = .none
@@ -40,17 +43,21 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //        delegate?.reassignData()
-        //        getJoinedGames()
-        //        tableView.reloadData()
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "Welcome to SportsRoom"
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: str, attributes: attrs)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        //        gamesArrayDetails = [Game]()
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "You currently have no Joined Games. Tap the search icon in the top right corner to search for an open game or click the '+' button below to host your own game"
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
     }
+    
+//    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
+//        return UIImage(named: "basketball-1")
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "joined") {

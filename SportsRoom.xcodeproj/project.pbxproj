@@ -39,6 +39,7 @@
 		C01E03981FF5CDA90029E5EC /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01E03971FF5CDA90029E5EC /* SelectDateViewController.swift */; };
 		C01E03BC1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01E03BB1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift */; };
 		C07524851FF15103003DE253 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07524841FF15103003DE253 /* SignUpViewController.swift */; };
+		C07F549D200274D80033399F /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C07F549B200274D70033399F /* UIScrollView+EmptyDataSet.m */; };
 		C0B604541FF4664E0052E39E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0B604531FF4664E0052E39E /* Main.storyboard */; };
 		C0F929AC1FE883F4007B1847 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */; };
 		FE3B00281FF9701500C56E24 /* SettingsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3B00271FF9701500C56E24 /* SettingsContainerViewController.swift */; };
@@ -83,6 +84,9 @@
 		C01E03BB1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersListCollectionViewCell.swift; sourceTree = "<group>"; };
 		C05EC3131FEC286E00122C5C /* SportsRoom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SportsRoom.entitlements; sourceTree = "<group>"; };
 		C07524841FF15103003DE253 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C07F549A200274D50033399F /* SportsRoom-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SportsRoom-Bridging-Header.h"; sourceTree = "<group>"; };
+		C07F549B200274D70033399F /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
+		C07F549C200274D80033399F /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		C0B604531FF4664E0052E39E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsRoom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +174,9 @@
 				2D1F4B511FE1F36400371D9B /* Assets.xcassets */,
 				2D1F4B531FE1F36400371D9B /* LaunchScreen.storyboard */,
 				2D1F4B561FE1F36400371D9B /* Info.plist */,
+				C07F549C200274D80033399F /* UIScrollView+EmptyDataSet.h */,
+				C07F549B200274D70033399F /* UIScrollView+EmptyDataSet.m */,
+				C07F549A200274D50033399F /* SportsRoom-Bridging-Header.h */,
 			);
 			path = SportsRoom;
 			sourceTree = "<group>";
@@ -343,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C07F549D200274D80033399F /* UIScrollView+EmptyDataSet.m in Sources */,
 				FE3B00281FF9701500C56E24 /* SettingsContainerViewController.swift in Sources */,
 				2D71A9B81FE40B87008C60F7 /* ProfileViewController.swift in Sources */,
 				FE3B002A1FF971B100C56E24 /* UserSettingsTableViewController.swift in Sources */,
@@ -511,6 +519,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jxdgll.sportsroom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SportsRoom/SportsRoom-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -531,6 +540,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jxdgll.sportsroom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SportsRoom/SportsRoom-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

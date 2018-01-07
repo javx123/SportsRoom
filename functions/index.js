@@ -39,7 +39,7 @@ var gameRef;
 
       var payload = {
   notification: {
-    title: "New Message",
+    title: `New Message in ${result.title}`,
     body: `${result.senderName}: ${result.messageBody}`
   }
 }

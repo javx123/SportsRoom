@@ -12,7 +12,7 @@ import FirebaseDatabase
 import Firebase
 import MBProgressHUD
 
-class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -40,6 +40,10 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
+        
         let settingsImage = UIImage(named: "settingswhite-1")
         let iconSize = CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30))
         let settingsButton = UIButton(frame: iconSize)
@@ -58,6 +62,18 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             callLocationManager()
         }
         pullMatchingGames()
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "Sorry! There are no results for that search"
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "Please try another sport"
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
     }
     
     @objc func showSettings () {

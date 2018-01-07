@@ -10,7 +10,7 @@ import UIKit
 import XLPagerTabStrip
 import Firebase
 
-class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider {
+class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     @IBOutlet weak var tableView: UITableView!
 //    var delegate: gamesOwnerVC?
@@ -30,6 +30,9 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
 //        getHostedGames()
         self.tableView.backgroundColor = UIColor.clear
         self.tableView.separatorStyle = .none
@@ -38,16 +41,16 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.reloadData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        delegate?.reassignData()
-//        getHostedGames()
-//        tableView.reloadData()
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "Welcome to SportsRoom"
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: str, attributes: attrs)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-//        gamesArrayDetails = [Game]()
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "You currently have no Hosted Games. Tap the '+' button below to host your own game or click the search icon in the top right corner to search for an open game"
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
     }
     
     func getHostedGames () {
