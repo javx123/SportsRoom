@@ -31,7 +31,10 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 //        getHostedGames()
+        self.tableView.backgroundColor = UIColor.clear
         self.tableView.separatorStyle = .none
+        let inset = UIEdgeInsetsMake(3, 0, 0, 0);
+        self.tableView.contentInset = inset
         tableView.reloadData()
     }
     

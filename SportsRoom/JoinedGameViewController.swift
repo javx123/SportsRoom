@@ -31,7 +31,10 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
 //        addGameButton.setTitle("+", for: .normal)
+        self.tableView.backgroundColor = UIColor.clear
         self.tableView.separatorStyle = .none
+        let inset = UIEdgeInsetsMake(3, 0, 0, 0);
+        self.tableView.contentInset = inset
         tableView.reloadData()
         
         // Do any additional setup after loading the view.
