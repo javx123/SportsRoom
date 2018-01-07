@@ -166,7 +166,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         gameTitleLabel.text = currentGame.title
         dateLabel.text = currentGame.date
         locationLabel.text = currentGame.address
-        skillLabel.text = currentGame.skillLevel
+        skillLabel.text = "Skill: \(currentGame.skillLevel)"
         costLabel.text = currentGame.cost
         notesLabel.text = currentGame.notes
         locationLabel.isUserInteractionEnabled = true
@@ -204,7 +204,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         let numberOfPlayers = self.playerNamesArray.count
         let numberOfSpotsInt = (self.currentGame.numberOfPlayers+1) - numberOfPlayers
         let numberOfSpotsString = String(numberOfSpotsInt)
-        self.playersLabel.text = "\(numberOfSpotsString) Open Spot(s)"
+        self.playersLabel.text = "\(numberOfSpotsString) Spot(s)"
     }
     
     // Mark: - Collection View Properties
