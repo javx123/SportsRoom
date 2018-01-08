@@ -1282,7 +1282,7 @@
                                                                             <rect key="frame" x="244" y="0.0" width="121" height="45"/>
                                                                             <subviews>
                                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skillblue" translatesAutoresizingMaskIntoConstraints="NO" id="Vqa-fL-e1S">
-                                                                                    <rect key="frame" x="50.5" y="2" width="22" height="22"/>
+                                                                                    <rect key="frame" x="49.5" y="2" width="22" height="22"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" secondItem="Vqa-fL-e1S" secondAttribute="height" id="EJ3-sL-S6c"/>
                                                                                         <constraint firstAttribute="height" constant="22" id="pcL-bi-6AA"/>
@@ -2207,14 +2207,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIh-FE-py7">
                                 <rect key="frame" x="0.0" y="266" width="375" height="349"/>
                                 <subviews>
-                                    <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.65000000000000002" contentMode="scaleToFill" text="This is a text field." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lzg-7f-UiE">
+                                    <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.65000000000000002" contentMode="scaleToFill" text="This is a text field." textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="lzg-7f-UiE">
                                         <rect key="frame" x="35" y="119" width="305" height="132"/>
                                         <color key="backgroundColor" red="0.13346317410469055" green="0.18231484293937683" blue="0.25190103054046631" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.98624199628829956" green="0.7796865701675415" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                     </textView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a label." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYc-B4-r5P">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a label." textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYc-B4-r5P">
                                         <rect key="frame" x="35" y="127" width="305" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.1334631741" green="0.1823148429" blue="0.25190103050000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -3299,7 +3299,7 @@
         <segue reference="HeY-CS-lKV"/>
         <segue reference="Cua-Xk-AZH"/>
         <segue reference="mJo-hM-k1s"/>
-        <segue reference="u7U-XN-rWT"/>
+        <segue reference="Ggk-91-cho"/>
         <segue reference="nDZ-df-YF2"/>
         <segue reference="W1f-EQ-S7k"/>
     </inferredMetricsTieBreakers>
