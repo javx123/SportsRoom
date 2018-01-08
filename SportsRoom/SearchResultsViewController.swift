@@ -118,7 +118,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             cell.timeLabel.text = entry.date
             cell.costLabel.text = entry.cost
 
-            cell.skillLabel.text = "Skill: \(entry.skillLevel)"
+            cell.skillLabel.text = "\(entry.skillLevel)"
             let numberofPlayersString = String(entry.spotsRemaining)
 
             cell.spotsLabel.text = "\(numberofPlayersString) Spot(s)"

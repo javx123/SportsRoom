@@ -631,7 +631,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K4B-Av-5Ol">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K4B-Av-5Ol">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="274"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Wv8-yc-eFM">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="274"/>
@@ -639,9 +639,6 @@
                                     <subviews>
                                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="o7Z-Hf-pIk">
                                             <rect key="frame" x="17.5" y="28" width="340" height="138"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="138" id="nBj-vC-LXK"/>
-                                            </constraints>
                                             <date key="date" timeIntervalSinceReferenceDate="536201281.11403501">
                                                 <!--2017-12-29 00:48:01 +0000-->
                                             </date>
@@ -666,15 +663,17 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="o7Z-Hf-pIk" firstAttribute="leading" secondItem="Wv8-yc-eFM" secondAttribute="leading" constant="17.5" id="Q5C-sl-5k7"/>
-                                        <constraint firstAttribute="bottom" secondItem="k7v-vY-yN1" secondAttribute="bottom" constant="58" id="U8Z-g8-xfU"/>
                                         <constraint firstItem="k7v-vY-yN1" firstAttribute="top" secondItem="o7Z-Hf-pIk" secondAttribute="bottom" constant="10" id="YIj-Ol-EKu"/>
                                         <constraint firstAttribute="trailing" secondItem="o7Z-Hf-pIk" secondAttribute="trailing" constant="17.5" id="dmb-6m-hza"/>
                                         <constraint firstItem="o7Z-Hf-pIk" firstAttribute="top" secondItem="Wv8-yc-eFM" secondAttribute="top" constant="28" id="lvK-TT-IlI"/>
                                         <constraint firstAttribute="trailing" secondItem="k7v-vY-yN1" secondAttribute="trailing" constant="163" id="oQ4-C3-Fme"/>
                                         <constraint firstItem="k7v-vY-yN1" firstAttribute="leading" secondItem="Wv8-yc-eFM" secondAttribute="leading" constant="162" id="pwX-1S-iOy"/>
-                                        <constraint firstAttribute="trailing" secondItem="k7v-vY-yN1" secondAttribute="trailing" constant="163" id="qXx-HC-IQ1"/>
+                                        <constraint firstAttribute="bottom" secondItem="k7v-vY-yN1" secondAttribute="bottom" constant="68" id="wKN-5S-fZS"/>
                                     </constraints>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="o7Z-Hf-pIk" firstAttribute="height" secondItem="K4B-Av-5Ol" secondAttribute="height" multiplier="138:274" id="ZBT-CD-UeU"/>
+                                </constraints>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                         </subviews>
