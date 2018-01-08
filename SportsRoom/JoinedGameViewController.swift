@@ -39,8 +39,11 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
         let inset = UIEdgeInsetsMake(3, 0, 0, 0);
         self.tableView.contentInset = inset
         tableView.reloadData()
-        
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
@@ -55,9 +58,6 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
         return NSAttributedString(string: str, attributes: attrs)
     }
     
-//    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
-//        return UIImage(named: "basketball-1")
-//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "joined") {
@@ -78,11 +78,6 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
                 chatVC.currentGame = game
             }
         }
-    }
-    
-    
-    @IBAction func addGame(_ sender: Any) {
-        performSegue(withIdentifier: "createGame", sender: self)
     }
     
     //    Mark: - DataSource Methods
