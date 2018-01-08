@@ -54,7 +54,8 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         let searchBarButton = UIBarButtonItem(customView: searchButton)
         profileButton.addTarget(self, action: #selector(showProfile), for: .touchUpInside)
         searchButton.addTarget(self, action: #selector(showSearchBar), for: .touchUpInside)
-
+        
+        
         self.navigationItem.leftBarButtonItem = profileBarButton
         self.navigationItem.rightBarButtonItem = searchBarButton
         observeFireBase()

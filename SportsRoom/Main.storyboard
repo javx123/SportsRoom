@@ -883,7 +883,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" rowHeight="155" id="Qk6-Ep-YrX" customClass="SearchTableViewCell" customModule="SportsRoom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" rowHeight="155" id="Qk6-Ep-YrX" customClass="SearchTableViewCell" customModule="SportsRoom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="155"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qk6-Ep-YrX" id="YYH-6i-Uo8">
@@ -1202,7 +1202,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hostCell" rowHeight="222" id="MaQ-WC-dTm" customClass="JoinedandHostedTableViewCell" customModule="SportsRoom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hostCell" rowHeight="222" id="MaQ-WC-dTm" customClass="JoinedandHostedTableViewCell" customModule="SportsRoom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="222"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MaQ-WC-dTm" id="0q1-CJ-aeh">
@@ -1958,7 +1958,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="joinCell" rowHeight="222" id="wel-NF-xP3" customClass="JoinedandHostedTableViewCell" customModule="SportsRoom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="joinCell" rowHeight="222" id="wel-NF-xP3" customClass="JoinedandHostedTableViewCell" customModule="SportsRoom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="222"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wel-NF-xP3" id="0Qe-D8-PG9">
@@ -2269,17 +2269,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w9S-j5-UM6">
                                 <rect key="frame" x="0.0" y="64" width="375" height="202"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="profileBG" translatesAutoresizingMaskIntoConstraints="NO" id="fSt-gR-hJL">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileBG" translatesAutoresizingMaskIntoConstraints="NO" id="fSt-gR-hJL">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="202"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="202" id="7z0-zO-mMU"/>
-                                            <constraint firstAttribute="width" constant="375" id="nmF-3s-cSL"/>
-                                        </constraints>
                                     </imageView>
-                                    <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ETE-e5-oKw">
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ETE-e5-oKw">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="202"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="GXg-lN-vlN">
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="GXg-lN-vlN">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="202"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
@@ -2390,20 +2385,28 @@
                                 <constraints>
                                     <constraint firstItem="SDk-48-4o2" firstAttribute="leading" secondItem="w9S-j5-UM6" secondAttribute="leading" constant="36" id="0Nx-ay-h3Z"/>
                                     <constraint firstItem="vXY-qJ-gup" firstAttribute="centerX" secondItem="w9S-j5-UM6" secondAttribute="centerX" id="22P-ki-bpE"/>
+                                    <constraint firstItem="ETE-e5-oKw" firstAttribute="leading" secondItem="w9S-j5-UM6" secondAttribute="leading" id="3WU-aP-9Nm"/>
                                     <constraint firstItem="vXY-qJ-gup" firstAttribute="top" secondItem="SDk-48-4o2" secondAttribute="bottom" constant="6" id="75g-oF-MXY"/>
+                                    <constraint firstAttribute="trailing" secondItem="ETE-e5-oKw" secondAttribute="trailing" id="ESD-43-ebm"/>
                                     <constraint firstAttribute="bottom" secondItem="y5n-4e-6qJ" secondAttribute="bottom" constant="17" id="Hbp-HJ-QI6"/>
                                     <constraint firstItem="7VZ-0r-W0P" firstAttribute="top" secondItem="vXY-qJ-gup" secondAttribute="bottom" constant="8" id="L4E-y8-LWj"/>
                                     <constraint firstItem="lGe-QB-oLS" firstAttribute="leading" secondItem="w9S-j5-UM6" secondAttribute="leading" constant="36" id="OeQ-eh-RPx"/>
                                     <constraint firstItem="SDk-48-4o2" firstAttribute="top" secondItem="w9S-j5-UM6" secondAttribute="top" constant="15" id="R9A-Sr-0un"/>
                                     <constraint firstAttribute="trailing" secondItem="7VZ-0r-W0P" secondAttribute="trailing" constant="36" id="USk-Ll-SvN"/>
+                                    <constraint firstAttribute="bottom" secondItem="ETE-e5-oKw" secondAttribute="bottom" id="V6t-JC-dM0"/>
                                     <constraint firstItem="XrJ-qa-4M3" firstAttribute="top" secondItem="w9S-j5-UM6" secondAttribute="top" constant="126" id="VQ2-1z-0QN"/>
                                     <constraint firstItem="7VZ-0r-W0P" firstAttribute="leading" secondItem="w9S-j5-UM6" secondAttribute="leading" constant="36" id="cPd-DR-nIq"/>
+                                    <constraint firstAttribute="bottom" secondItem="fSt-gR-hJL" secondAttribute="bottom" id="gW9-OP-5ed"/>
                                     <constraint firstItem="y5n-4e-6qJ" firstAttribute="bottom" secondItem="lGe-QB-oLS" secondAttribute="bottom" id="gkc-Hs-iBG"/>
                                     <constraint firstItem="XrJ-qa-4M3" firstAttribute="centerX" secondItem="w9S-j5-UM6" secondAttribute="centerX" id="kYx-0e-aQe"/>
+                                    <constraint firstItem="fSt-gR-hJL" firstAttribute="leading" secondItem="w9S-j5-UM6" secondAttribute="leading" id="o0S-WP-Pve"/>
                                     <constraint firstAttribute="trailing" secondItem="y5n-4e-6qJ" secondAttribute="trailing" constant="36" id="rex-bg-bzd"/>
+                                    <constraint firstItem="ETE-e5-oKw" firstAttribute="top" secondItem="w9S-j5-UM6" secondAttribute="top" id="sYN-Xp-h8V"/>
                                     <constraint firstAttribute="trailing" secondItem="SDk-48-4o2" secondAttribute="trailing" constant="36" id="sb4-cc-MJf"/>
                                     <constraint firstItem="y5n-4e-6qJ" firstAttribute="top" secondItem="lGe-QB-oLS" secondAttribute="top" id="vNK-jT-YLo"/>
+                                    <constraint firstItem="fSt-gR-hJL" firstAttribute="top" secondItem="w9S-j5-UM6" secondAttribute="top" id="w76-YG-vGT"/>
                                     <constraint firstAttribute="bottom" secondItem="lGe-QB-oLS" secondAttribute="bottom" constant="17" id="ymo-69-9Qn"/>
+                                    <constraint firstAttribute="trailing" secondItem="fSt-gR-hJL" secondAttribute="trailing" id="zP2-u2-P4g"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2549,7 +2552,7 @@
                         <color key="backgroundColor" red="0.1334631741" green="0.1823148429" blue="0.25190103050000001" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <color key="separatorColor" red="0.98624199628829956" green="0.7796865701675415" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="aCi-qB-7FB">
+                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="aCi-qB-7FB">
                             <rect key="frame" x="0.0" y="230" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.1334631741" green="0.1823148429" blue="0.25190103050000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -3297,10 +3300,10 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="HeY-CS-lKV"/>
-        <segue reference="Cua-Xk-AZH"/>
+        <segue reference="pBv-12-t8v"/>
         <segue reference="mJo-hM-k1s"/>
         <segue reference="Ggk-91-cho"/>
-        <segue reference="nDZ-df-YF2"/>
+        <segue reference="vrG-ED-cfp"/>
         <segue reference="W1f-EQ-S7k"/>
     </inferredMetricsTieBreakers>
 </document>
