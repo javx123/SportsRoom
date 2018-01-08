@@ -27,7 +27,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         notificationCenter.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        tableView.register(UINib(nibName:"MessageReceivedTableViewCell", bundle: nil), forCellReuseIdentifier: "chatCell")
+//        tableView.register(UINib(nibName:"MessageReceivedTableViewCell", bundle: nil), forCellReuseIdentifier: "chatCell")
+        self.title = currentGame.title
+        self.tableView.separatorStyle = .none
+
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -46,6 +49,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        sendBtnPressed(sendBtn)
+        return true
+    }
+    
     @IBAction func backBtnPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -55,7 +64,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         messageTxtField.isEnabled = false
         let ref = Database.database().reference().child("games").child(currentGame.gameID).child("chatroom").childByAutoId()
 
-        ref.updateChildValues(["email": Auth.auth().currentUser!.email!, "messageBody": messageTxtField.text!, "senderName": Auth.auth().currentUser!.displayName!, "timestamp": ServerValue.timestamp(), "senderID": Auth.auth().currentUser!.uid]) { (error, ref) in
+        ref.updateChildValues(["email": Auth.auth().currentUser!.email!, "messageBody": messageTxtField.text!, "senderName": Auth.auth().currentUser!.displayName!, "timestamp": ServerValue.timestamp(), "senderID": Auth.auth().currentUser!.uid, "title": currentGame.title]) { (error, ref) in
             if error != nil {
                 print(error!.localizedDescription)
             } else {
@@ -88,7 +97,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        self.tableView.separatorStyle = .none
         
         if messageArray[indexPath.row].senderID != Auth.auth().currentUser!.uid {
             //load received
@@ -97,6 +105,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.senderLbl.text = currentMessage.senderName
             cell.messageLbl.text = currentMessage.messageBody
             cell.timestampLbl.text = currentMessage.timestamp
+
             return cell
         } else {
             //load sent
@@ -108,7 +117,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.timestampLbl.text = currentMessage.timestamp
             return cell
         }
-        
+
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
 //        if let cell = cell as? MessageReceivedTableViewCell {
 //            let currentMessage = messageArray[indexPath.row]

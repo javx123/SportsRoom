@@ -16,6 +16,7 @@ class Message: NSObject {
     var timestamp = ""
     var messageBody = ""
     var email = ""
+    var title = ""
     
     init(snapshot: DataSnapshot) {
         let messageDict = snapshot.value as! [String:Any]
@@ -32,6 +33,7 @@ class Message: NSObject {
         self.timestamp = time
         self.messageBody = messageDict ["messageBody"] as? String ?? ""
         self.email = messageDict ["email"] as? String ?? ""
+        self.title = messageDict ["title"] as? String ?? ""
     }
 
     
