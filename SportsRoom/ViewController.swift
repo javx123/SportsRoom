@@ -68,7 +68,6 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if customAddress == nil || customLocation == nil {
-            
             if let searchBar = searchBarVC {
                 searchBar.searchLocationLabel.text = "Current Location"
 //                searchBar.dropDown.deselectRow(1)
@@ -143,7 +142,7 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         let userID = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("users").child(userID!)
         ref.observe(.value) { (snapshot) in
-             self.currentUser = User(snapshot: snapshot)
+            self.currentUser = User(snapshot: snapshot)
             self.joinedGamesVC?.gamesArrayDetails = [Game]()
             self.ownedGamesVC?.gamesArrayDetails = [Game]()
             self.getJoinedGames()
@@ -168,7 +167,6 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
                 let ref = Database.database().reference().child("games").child(id)
                 ref.observeSingleEvent(of: .value) { (snapshot) in
                     let game = Game(snapshot: snapshot)
-                    
                     let gameDate = self.dateFormatter.date(from: game.date)
                     if gameDate! < Date() {
                         let gameKey = game.gameID

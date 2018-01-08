@@ -228,9 +228,9 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
                 costTextField.text = "Free"
             }
             if notesTextField.text == "" {
-                notesTextField.text = "The organizer did not inlcude a note"
+                notesTextField.text = "The organizer did not include a note"
             }
-            postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: dropDownSelectionLabel.text!.lowercased(), date:dateString!, address: pickLocationLabel.text!, longitude:longitude, latitude:latitude, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!)
+            postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: dropDownSelectionLabel.text!.lowercased(), date:dateString!, address: pickLocationLabel.text!, longitude:longitude, latitude:latitude, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!, spotsRemaining: numberOfPlayersSlider.value)
             
             _ = navigationController?.popViewController(animated: true)
         }
@@ -249,7 +249,7 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         self.performSegue(withIdentifier: "setLocation", sender: self)
     }
     
-    func postGame(withUserID userID: String, title: String, sport: String, date: String, address: String, longitude: Double, latitude: Double, cost: String, skillLevel: String, numberOfPlayers: Float, note: String) {
+    func postGame(withUserID userID: String, title: String, sport: String, date: String, address: String, longitude: Double, latitude: Double, cost: String, skillLevel: String, numberOfPlayers: Float, note: String, spotsRemaining: Float) {
         // create a game object
         let ref = Database.database().reference().child("games").childByAutoId()
         let gameIDkey = "gameID"
@@ -264,7 +264,8 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         let skillKey = "skillLevel"
         let playerNumberKey = "numberOfPlayers"
         let noteKey = "notes"
-        ref.updateChildValues([hostIDKey:userID,gameIDkey:ref.key,titleKey:title,sportKey:sport,dateKey:date,longitudeKey:longitude, latitudeKey:latitude,locationKey:address,costKey:cost,skillKey:skillLevel,playerNumberKey:numberOfPlayers,noteKey:note])
+        let spotsKey = "spotsRemaining"
+        ref.updateChildValues([hostIDKey:userID,gameIDkey:ref.key,titleKey:title,sportKey:sport,dateKey:date,longitudeKey:longitude, latitudeKey:latitude,locationKey:address,costKey:cost,skillKey:skillLevel,playerNumberKey:numberOfPlayers,noteKey:note, spotsKey:spotsRemaining])
         
         // assign the game id to the current user's 'hosted games' list
         let userID = Auth.auth().currentUser?.uid

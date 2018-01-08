@@ -26,16 +26,16 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbM-uA-FG9">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbM-uA-FG9">
                         <rect key="frame" x="5" y="5" width="37.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZUh-6X-XFe">
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZUh-6X-XFe">
                         <rect key="frame" x="16" y="31" width="224" height="40.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K19-lY-Jaa">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K19-lY-Jaa">
                                 <rect key="frame" x="13" y="5" width="206" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -47,6 +47,7 @@
                             <constraint firstAttribute="trailing" secondItem="K19-lY-Jaa" secondAttribute="trailing" constant="5" id="JPR-qT-H6G"/>
                             <constraint firstItem="K19-lY-Jaa" firstAttribute="leading" secondItem="ZUh-6X-XFe" secondAttribute="leading" constant="13" id="Niw-3R-XHq"/>
                             <constraint firstItem="K19-lY-Jaa" firstAttribute="top" secondItem="ZUh-6X-XFe" secondAttribute="top" constant="5" id="o7r-Zw-5jF"/>
+                            <constraint firstAttribute="bottom" secondItem="K19-lY-Jaa" secondAttribute="bottom" constant="5" id="wH9-Vq-o2s"/>
                         </constraints>
                     </view>
                 </subviews>
