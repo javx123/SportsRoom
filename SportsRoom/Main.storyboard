@@ -647,7 +647,7 @@
                                             </connections>
                                         </datePicker>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7v-vY-yN1">
-                                            <rect key="frame" x="162" y="176" width="50" height="30"/>
+                                            <rect key="frame" x="164.5" y="176" width="45" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="lwW-ap-SEd"/>
                                             </constraints>
@@ -662,12 +662,11 @@
                                         </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="k7v-vY-yN1" firstAttribute="centerX" secondItem="Wv8-yc-eFM" secondAttribute="centerX" id="MMm-3Z-ELJ"/>
                                         <constraint firstItem="o7Z-Hf-pIk" firstAttribute="leading" secondItem="Wv8-yc-eFM" secondAttribute="leading" constant="17.5" id="Q5C-sl-5k7"/>
                                         <constraint firstItem="k7v-vY-yN1" firstAttribute="top" secondItem="o7Z-Hf-pIk" secondAttribute="bottom" constant="10" id="YIj-Ol-EKu"/>
                                         <constraint firstAttribute="trailing" secondItem="o7Z-Hf-pIk" secondAttribute="trailing" constant="17.5" id="dmb-6m-hza"/>
                                         <constraint firstItem="o7Z-Hf-pIk" firstAttribute="top" secondItem="Wv8-yc-eFM" secondAttribute="top" constant="28" id="lvK-TT-IlI"/>
-                                        <constraint firstAttribute="trailing" secondItem="k7v-vY-yN1" secondAttribute="trailing" constant="163" id="oQ4-C3-Fme"/>
-                                        <constraint firstItem="k7v-vY-yN1" firstAttribute="leading" secondItem="Wv8-yc-eFM" secondAttribute="leading" constant="162" id="pwX-1S-iOy"/>
                                         <constraint firstAttribute="bottom" secondItem="k7v-vY-yN1" secondAttribute="bottom" constant="68" id="wKN-5S-fZS"/>
                                     </constraints>
                                 </view>
