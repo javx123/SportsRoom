@@ -210,14 +210,18 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func filterResults() {
-        
+
         guard let `pulledGames` = pulledGames else {
-            MBProgressHUD.hide(for: self.view, animated: true)
+//            MBProgressHUD.hide(for: self.view, animated: true)
             print("Pulled games doesn't exist")
             return }
         guard let `searchLocation` = searchLocation else {
             print("Search location doesn't exist")
             return }
+        
+        if pulledGames == nil {
+            MBProgressHUD.hide(for: self.view, animated: true)
+        }
 
         
         for game in pulledGames {
@@ -318,6 +322,9 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 searchRadius = senderVC.userSettingsVC?.searchRadius
                 searchResults.removeAll()
                 loadingNotification = MBProgressHUD.showAdded(to: self.view, animated: true)
+                if pulledGames == nil {
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                }
                 updateUserInfo()
             }
         }
