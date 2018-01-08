@@ -553,7 +553,14 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Title" id="CIg-xw-xz2"/>
+                                    <navigationItem title="Create a Game" id="CIg-xw-xz2">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="aJ0-Cc-Png">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <segue destination="VVV-Da-51A" kind="unwind" unwindAction="unwindFromCreateGameWithSender:" id="kjy-9h-gWP"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -577,6 +584,7 @@
                         <outlet property="costTextField" destination="oOv-Tb-aBR" id="P7u-dq-PUE"/>
                         <outlet property="dropDownSelectionLabel" destination="q1d-fz-9Q6" id="Jfa-Ce-VoT"/>
                         <outlet property="gameTitleTextField" destination="B43-jd-quM" id="kLv-1i-bSy"/>
+                        <outlet property="navBar" destination="8Cx-0m-ZKQ" id="e9B-tF-VE2"/>
                         <outlet property="notesTextField" destination="Uqz-BN-GLK" id="dyB-KD-P3O"/>
                         <outlet property="numberOfPlayersLabel" destination="7GA-5G-Z1P" id="sTX-o8-ZFe"/>
                         <outlet property="numberOfPlayersSlider" destination="EHq-Lh-mgX" id="zt8-a1-M7c"/>
@@ -591,6 +599,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0FY-mv-JGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="VVV-Da-51A" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="mUQ-ID-aDK">
                     <connections>
                         <action selector="sportSelectionTapped:" destination="oNd-PB-sCQ" id="KOF-tZ-jnW"/>

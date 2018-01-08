@@ -265,6 +265,10 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     @IBAction func unwindFromSearch (sender: UIStoryboardSegue){
         
     }
+    
+    @IBAction func unwindFromCreateGame (sender: UIStoryboardSegue){
+        
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "searchGame" {
