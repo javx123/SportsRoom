@@ -64,9 +64,9 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setButtonState(buttonState: btnText!)
         getPlayerNames()
         setLabels()
+        setButtonState(buttonState: btnText!)
         collectionView.delegate = self
         collectionView.dataSource = self
         notesLabel.sizeToFit()
@@ -92,14 +92,10 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let numberOfPlayers = self.playerNamesArray.count
-        let numberOfSpotsInt = (currentGame.numberOfPlayers+1) - numberOfPlayers
-        let numberOfSpotsString = String(numberOfSpotsInt)
-        self.playersLabel.text = "\(numberOfSpotsString) Open Spots"
     }
     
     func updateMapView(_ location: CLLocation) {
-        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let span = MKCoordinateSpanMake(0.005, 0.005)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
         mapView.setRegion(region, animated: true)
     }
@@ -110,7 +106,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
         mapView.addAnnotation(annotation)
-        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let span = MKCoordinateSpanMake(0.005, 0.005)
         let region = MKCoordinateRegionMake(placemark.coordinate, span)
         mapView.setRegion(region, animated: true)
     }
@@ -168,9 +164,11 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         gameTitleLabel.text = currentGame.title
         dateLabel.text = currentGame.date
         locationLabel.text = currentGame.address
-        skillLabel.text = currentGame.skillLevel
+        skillLabel.text = "Skill: \(currentGame.skillLevel)"
         costLabel.text = currentGame.cost
         notesLabel.text = currentGame.notes
+        let playersString = String(currentGame.spotsRemaining)
+        playersLabel.text = "\(playersString) Spot(s)"
         locationLabel.isUserInteractionEnabled = true
     }
     
@@ -198,7 +196,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
                 self.playerNamesArray.append(user.name)
                 self.playersArray.append(user)
                 self.collectionView.reloadData()
-            }
+        }
         }
     }
     
@@ -235,9 +233,6 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         self.performSegue(withIdentifier: "showProfile", sender: self)
     }
     
-    
-
-    
     @IBAction func gameActionPressed(_ sender: UIButton) {
         switch btnText! {
         case .hosted:
@@ -258,6 +253,12 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         let refGame = Database.database().reference().child("games").child(gameKey).child("joinedPlayers")
         refGame.updateChildValues([userID!:"true"])
         
+        let spotsKey  = "spotsRemaining"
+        let SpotsRemaining = currentGame.spotsRemaining
+        let newSpotsRemaining = SpotsRemaining - 1
+        let refSpots = Database.database().reference().child("games").child(gameKey)
+        refSpots.updateChildValues([spotsKey:newSpotsRemaining])
+        
         let MessagingTopic = "Message"
         Messaging.messaging().subscribe(toTopic: "/topics/\(gameKey)")
         Messaging.messaging().subscribe(toTopic: "/topics/\(gameKey)\(MessagingTopic)")
@@ -270,6 +271,12 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         refUser.child(gameKey).removeValue()
         let refGame = Database.database().reference().child("games").child(gameKey).child("joinedPlayers")
         refGame.child(userID!).removeValue()
+        
+        let spotsKey  = "spotsRemaining"
+        let SpotsRemaining = currentGame.spotsRemaining
+        let newSpotsRemaining = SpotsRemaining + 1
+        let refSpots = Database.database().reference().child("games").child(gameKey)
+        refSpots.updateChildValues([spotsKey:newSpotsRemaining])
         
         let MessagingTopic = "Message"
         Messaging.messaging().unsubscribe(fromTopic: "/topics/\(gameKey)")

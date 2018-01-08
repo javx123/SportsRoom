@@ -38,8 +38,8 @@
 		73738A0197A6DF179687D916 /* Pods_SportsRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */; };
 		C01E03981FF5CDA90029E5EC /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01E03971FF5CDA90029E5EC /* SelectDateViewController.swift */; };
 		C01E03BC1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01E03BB1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift */; };
-		C059228E1FFEAF8500F9CF65 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C059228D1FFEAF8500F9CF65 /* MBProgressHUD.m */; };
 		C07524851FF15103003DE253 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07524841FF15103003DE253 /* SignUpViewController.swift */; };
+		C07F549D200274D80033399F /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C07F549B200274D70033399F /* UIScrollView+EmptyDataSet.m */; };
 		C0B604541FF4664E0052E39E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0B604531FF4664E0052E39E /* Main.storyboard */; };
 		C0F929AC1FE883F4007B1847 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */; };
 		FE3B00281FF9701500C56E24 /* SettingsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3B00271FF9701500C56E24 /* SettingsContainerViewController.swift */; };
@@ -82,11 +82,11 @@
 		78F2554F652C596510C8CEB8 /* Pods-SportsRoom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsRoom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SportsRoom/Pods-SportsRoom.debug.xcconfig"; sourceTree = "<group>"; };
 		C01E03971FF5CDA90029E5EC /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
 		C01E03BB1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersListCollectionViewCell.swift; sourceTree = "<group>"; };
-		C059228B1FFEAF8200F9CF65 /* SportsRoom-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SportsRoom-Bridging-Header.h"; sourceTree = "<group>"; };
-		C059228C1FFEAF8400F9CF65 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		C059228D1FFEAF8500F9CF65 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		C05EC3131FEC286E00122C5C /* SportsRoom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SportsRoom.entitlements; sourceTree = "<group>"; };
 		C07524841FF15103003DE253 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C07F549A200274D50033399F /* SportsRoom-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SportsRoom-Bridging-Header.h"; sourceTree = "<group>"; };
+		C07F549B200274D70033399F /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
+		C07F549C200274D80033399F /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		C0B604531FF4664E0052E39E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		F1614BC74EC9696A4AA0EC8E /* Pods_SportsRoom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsRoom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,12 +171,12 @@
 				2D71A9B91FE40BF4008C60F7 /* SearchResultsViewController.swift */,
 				2D47D2451FE9D9A50067250B /* LocationManager.swift */,
 				2D47D2471FEA1FEA0067250B /* SearchTableViewCell.swift */,
-				C059228C1FFEAF8400F9CF65 /* MBProgressHUD.h */,
-				C059228D1FFEAF8500F9CF65 /* MBProgressHUD.m */,
 				2D1F4B511FE1F36400371D9B /* Assets.xcassets */,
 				2D1F4B531FE1F36400371D9B /* LaunchScreen.storyboard */,
 				2D1F4B561FE1F36400371D9B /* Info.plist */,
-				C059228B1FFEAF8200F9CF65 /* SportsRoom-Bridging-Header.h */,
+				C07F549C200274D80033399F /* UIScrollView+EmptyDataSet.h */,
+				C07F549B200274D70033399F /* UIScrollView+EmptyDataSet.m */,
+				C07F549A200274D50033399F /* SportsRoom-Bridging-Header.h */,
 			);
 			path = SportsRoom;
 			sourceTree = "<group>";
@@ -350,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C07F549D200274D80033399F /* UIScrollView+EmptyDataSet.m in Sources */,
 				FE3B00281FF9701500C56E24 /* SettingsContainerViewController.swift in Sources */,
 				2D71A9B81FE40B87008C60F7 /* ProfileViewController.swift in Sources */,
 				FE3B002A1FF971B100C56E24 /* UserSettingsTableViewController.swift in Sources */,
@@ -359,7 +360,6 @@
 				2D71A9B21FE40B19008C60F7 /* JoinedGameViewController.swift in Sources */,
 				0523AC011FFF129500EB7223 /* MessageSentTableViewCell.swift in Sources */,
 				C01E03BC1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift in Sources */,
-				C059228E1FFEAF8500F9CF65 /* MBProgressHUD.m in Sources */,
 				05FF4A101FEC670C00E9A65C /* StaticFunctions.swift in Sources */,
 				052D55721FF0A1DA00602131 /* ChatTableViewCell.swift in Sources */,
 				FE75D4ED1FFA0D21001BCD7E /* SearchContainerViewController.swift in Sources */,

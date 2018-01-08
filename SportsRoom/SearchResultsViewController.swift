@@ -12,7 +12,7 @@ import FirebaseDatabase
 import Firebase
 import MBProgressHUD
 
-class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -40,6 +40,10 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
+        
         let settingsImage = UIImage(named: "settingswhite-1")
         let iconSize = CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30))
         let settingsButton = UIButton(frame: iconSize)
@@ -58,6 +62,18 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             callLocationManager()
         }
         pullMatchingGames()
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "Sorry! There are no results for that search"
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "Please try another sport"
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
     }
     
     @objc func showSettings () {
@@ -94,7 +110,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as? SearchTableViewCell else{fatalError("The dequeued cell is not an instance of SearchTableViewCell.")}
         let entry: Game? = searchResults[indexPath.row]
-        
+        cell.selectionStyle = .none
         if let entry = entry {
             cell.titleLabel.text = entry.title
             cell.locationLabel.text = "Location: \(entry.address)"
@@ -102,9 +118,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             cell.timeLabel.text = entry.date
             cell.costLabel.text = entry.cost
             cell.skillLabel.text = "Skill: \(entry.skillLevel)"
-            let numberofPlayers = entry.allPlayersArray.count
-            let numberofSpots = entry.numberOfPlayers+1 - numberofPlayers
-            let numberofPlayersString = String(numberofSpots)
+            let numberofPlayersString = String(entry.spotsRemaining)
             cell.spotsLabel.text = "\(numberofPlayersString) Spot(s)"
             
             let dateFormatter = DateFormatter()

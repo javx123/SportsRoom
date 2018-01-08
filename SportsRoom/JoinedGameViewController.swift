@@ -14,7 +14,7 @@ import Firebase
 //    func reassignData()
 //}
 
-class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider  {
+class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate  {
     
     @IBOutlet weak var tableView: UITableView!
     //    var delegate: gamesOwnerVC?
@@ -30,24 +30,34 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
 //        addGameButton.setTitle("+", for: .normal)
+        self.tableView.backgroundColor = UIColor.clear
         self.tableView.separatorStyle = .none
+        let inset = UIEdgeInsetsMake(3, 0, 0, 0);
+        self.tableView.contentInset = inset
         tableView.reloadData()
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //        delegate?.reassignData()
-        //        getJoinedGames()
-        //        tableView.reloadData()
+
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        //        gamesArrayDetails = [Game]()
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "Welcome to SportsRoom"
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: str, attributes: attrs)
     }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "You currently have no Joined Games. Tap the search icon in the top right corner to search for an open game or click the '+' button below to host your own game"
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "joined") {
@@ -68,11 +78,6 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
                 chatVC.currentGame = game
             }
         }
-    }
-    
-    
-    @IBAction func addGame(_ sender: Any) {
-        performSegue(withIdentifier: "createGame", sender: self)
     }
     
     //    Mark: - DataSource Methods

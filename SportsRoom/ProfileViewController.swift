@@ -11,6 +11,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseStorage
 import SDWebImage
+import MBProgressHUD
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UINavigationBarDelegate {
     
@@ -97,6 +98,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             editUserInfo()
             updateUserInfo()
             StaticFunctions.displayAlert(title: "Request completed", message: "User profile updated!", uiviewcontroller: self)
+            ageTxtField.resignFirstResponder()
+            bioTextView.resignFirstResponder()
         }
     }
     

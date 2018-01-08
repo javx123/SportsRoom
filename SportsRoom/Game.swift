@@ -18,6 +18,7 @@ class Game : NSObject {
     var date = ""
     var hostID = ""
     var notes = ""
+    var spotsRemaining = 0
     var numberOfPlayers = 0
     var skillLevel = ""
     var sport = ""
@@ -42,6 +43,7 @@ class Game : NSObject {
         self.hostID = gameDict["hostID"] as? String ?? ""
         self.notes = gameDict["notes"] as? String ?? ""
         self.numberOfPlayers = gameDict["numberOfPlayers"] as? Int ?? 0
+        self.spotsRemaining = gameDict["spotsRemaining"] as? Int ?? 0
         self.skillLevel = gameDict["skillLevel"] as? String ?? ""
         self.sport = gameDict["sport"] as? String ?? ""
         self.title = gameDict["title"] as? String ?? ""
@@ -64,6 +66,7 @@ class Game : NSObject {
         self.hostID = gameInfo["hostID"] as! String
         self.notes = gameInfo["notes"] as! String
         self.numberOfPlayers = gameInfo["numberOfPlayers"] as! Int
+        self.spotsRemaining = gameInfo["spotsRemaining"] as! Int
         self.skillLevel = gameInfo["skillLevel"] as! String
         self.sport = gameInfo["sport"] as! String
         self.title = gameInfo["title"] as! String

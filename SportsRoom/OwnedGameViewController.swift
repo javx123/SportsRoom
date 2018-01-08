@@ -10,12 +10,10 @@ import UIKit
 import XLPagerTabStrip
 import Firebase
 
-class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider {
+class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-//    var delegate: gamesOwnerVC?
     
-
     var gamesArrayDetails: [Game] = []
     {
         didSet{
@@ -24,34 +22,43 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
     }
-
-
+    
     var buttonTag = 0
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        getHostedGames()
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
+        //        getHostedGames()
+        self.tableView.backgroundColor = UIColor.clear
         self.tableView.separatorStyle = .none
+        let inset = UIEdgeInsetsMake(3, 0, 0, 0);
+        self.tableView.contentInset = inset
         tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        delegate?.reassignData()
-//        getHostedGames()
-//        tableView.reloadData()
+
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-//        gamesArrayDetails = [Game]()
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "Welcome to SportsRoom"
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: str, attributes: attrs)
     }
     
-    func getHostedGames () {
-        let userID = Auth.auth().currentUser?.uid
-        let ref = Database.database().reference().child("users").child(userID!).child("hostedGames")
-        
-//        ref.observeSingleEvent(of: .value) {(snapshot) in
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "You currently have no Hosted Games. Tap the '+' button below to host your own game or click the search icon in the top right corner to search for an open game"
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+//    func updateGames () {
+//        let userID = Auth.auth().currentUser?.uid
+//        let ref = Database.database().reference().child("users").child(userID!).child("hostedGames")
+//        ref.observe(.value) { (snapshot) in
 //            let value = snapshot.value as? [String:String] ?? [:]
 //            let gamesArrayID = Array(value.keys)
 //            for id in gamesArrayID {
@@ -63,19 +70,7 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
 //                }
 //            }
 //        }
-        ref.observe(.value) { (snapshot) in
-            let value = snapshot.value as? [String:String] ?? [:]
-            let gamesArrayID = Array(value.keys)
-            for id in gamesArrayID {
-                let ref = Database.database().reference().child("games").child(id)
-                ref.observeSingleEvent(of: .value) { (snapshot) in
-                    let game = Game(snapshot: snapshot)
-                    self.gamesArrayDetails.append(game)
-                    self.tableView.reloadData()
-                }
-            }
-        }
-    }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "hosted") {
@@ -98,10 +93,6 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    @IBAction func addGame(_ sender: Any) {
-        performSegue(withIdentifier: "createGameFromHosted", sender: self)
-    }
-    
     //    Mark: - DataSource Properties
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -109,7 +100,7 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "hostCell", for: indexPath)
         if let cell = cell as? JoinedandHostedTableViewCell {
             let currentGame = gamesArrayDetails[indexPath.row]
