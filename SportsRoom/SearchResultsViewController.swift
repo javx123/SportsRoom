@@ -117,8 +117,10 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
 //            cell.locationLabel.font = cell.locationLabel.font.italic
             cell.timeLabel.text = entry.date
             cell.costLabel.text = entry.cost
+
             cell.skillLabel.text = "Skill: \(entry.skillLevel)"
             let numberofPlayersString = String(entry.spotsRemaining)
+
             cell.spotsLabel.text = "\(numberofPlayersString) Spot(s)"
             
             let dateFormatter = DateFormatter()
@@ -184,7 +186,9 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         ref.queryOrdered(byChild: "sport").queryEqual(toValue: searchedSport.lowercased()).observe(.value) { (snapshot) in
             print(snapshot.value!)
             let pulledGames = snapshot.value as? Dictionary <String, Any>
-            guard let games = pulledGames else { return }
+            guard let games = pulledGames else {
+                MBProgressHUD.hide(for: self.view, animated: true)
+                return }
             var matchingGames: [Game] = []
             for game in games {
                 print(game.value)
@@ -206,8 +210,14 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func filterResults() {
-        guard let `pulledGames` = pulledGames else { return }
-        guard let `searchLocation` = searchLocation else { return }
+        
+        guard let `pulledGames` = pulledGames else {
+            MBProgressHUD.hide(for: self.view, animated: true)
+            print("Pulled games doesn't exist")
+            return }
+        guard let `searchLocation` = searchLocation else {
+            print("Search location doesn't exist")
+            return }
 
         
         for game in pulledGames {
@@ -232,6 +242,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             }
         }
         }
+
+        print("nothing test")
 //        Can put sortGames() here, which would definetly make it more efficient then calling sortGames() many times, but in the current setup, although it's more inefficient, we ensure that the loading Icon only disappears after the sort is finished
         sortGames()
         MBProgressHUD.hide(for: self.view, animated: true)
@@ -301,6 +313,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 case .none:
                     print("There's a bug if this is hit....")
                 }
+                
+                
                 searchRadius = senderVC.userSettingsVC?.searchRadius
                 searchResults.removeAll()
                 loadingNotification = MBProgressHUD.showAdded(to: self.view, animated: true)
