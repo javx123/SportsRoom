@@ -53,7 +53,7 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-        let str = "You currently have no Joined Games. Tap the search icon in the top right corner to search for an open game or click the '+' button below to host your own game"
+        let str = "You currently have no Joined Games.\r\nTap the search icon in the top right corner to search for an open game"
         let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
         return NSAttributedString(string: str, attributes: attrs)
     }
