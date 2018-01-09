@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0523ABFD1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523ABFB1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.swift */; };
-		0523ABFE1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0523ABFC1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.xib */; };
 		0523AC011FFF129500EB7223 /* MessageSentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523ABFF1FFF129500EB7223 /* MessageSentTableViewCell.swift */; };
-		0523AC021FFF129500EB7223 /* MessageSentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0523AC001FFF129500EB7223 /* MessageSentTableViewCell.xib */; };
 		052D55701FF09EA800602131 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D556F1FF09EA800602131 /* ChatViewController.swift */; };
 		052D55721FF0A1DA00602131 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */; };
 		052D55741FF0A81000602131 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052D55731FF0A81000602131 /* Message.swift */; };
@@ -49,9 +47,7 @@
 
 /* Begin PBXFileReference section */
 		0523ABFB1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageReceivedTableViewCell.swift; sourceTree = "<group>"; };
-		0523ABFC1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageReceivedTableViewCell.xib; sourceTree = "<group>"; };
 		0523ABFF1FFF129500EB7223 /* MessageSentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSentTableViewCell.swift; sourceTree = "<group>"; };
-		0523AC001FFF129500EB7223 /* MessageSentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageSentTableViewCell.xib; sourceTree = "<group>"; };
 		052D556F1FF09EA800602131 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		052D55731FF0A81000602131 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -158,9 +154,7 @@
 				052D556F1FF09EA800602131 /* ChatViewController.swift */,
 				052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */,
 				0523ABFB1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.swift */,
-				0523ABFC1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.xib */,
 				0523ABFF1FFF129500EB7223 /* MessageSentTableViewCell.swift */,
-				0523AC001FFF129500EB7223 /* MessageSentTableViewCell.xib */,
 				2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */,
 				2D71A9BB1FE40C1E008C60F7 /* DetailsViewController.swift */,
 				C01E03BB1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift */,
@@ -177,7 +171,6 @@
 				C07F549C200274D80033399F /* UIScrollView+EmptyDataSet.h */,
 				C07F549B200274D70033399F /* UIScrollView+EmptyDataSet.m */,
 				C07F549A200274D50033399F /* SportsRoom-Bridging-Header.h */,
-
 			);
 			path = SportsRoom;
 			sourceTree = "<group>";
@@ -259,10 +252,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0523ABFE1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.xib in Resources */,
 				2D1F4B551FE1F36400371D9B /* LaunchScreen.storyboard in Resources */,
 				05FF4A0C1FEC3F7F00E9A65C /* GoogleService-Info.plist in Resources */,
-				0523AC021FFF129500EB7223 /* MessageSentTableViewCell.xib in Resources */,
 				2D1F4B521FE1F36400371D9B /* Assets.xcassets in Resources */,
 				C0B604541FF4664E0052E39E /* Main.storyboard in Resources */,
 			);
@@ -521,10 +512,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jjddll.sportsroom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SportsRoom/SportsRoom-Bridging-Header.h";
-
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -546,10 +535,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jjddll.sportsroom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SportsRoom/SportsRoom-Bridging-Header.h";
-
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
