@@ -306,6 +306,7 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        close()
     }
 }
 
