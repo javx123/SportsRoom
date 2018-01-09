@@ -33,14 +33,12 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
 
     @IBOutlet weak var searchBarContainer: UIView!
     @IBOutlet weak var buttonBarViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var addGameButton: UIButton!
 
     
     @IBOutlet weak var containerViewTopConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addGameButton.layer.cornerRadius = addGameButton.frame.size.height/2
     
         
         let profileImage = UIImage(named: "profile-1")
@@ -75,6 +73,10 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
                 searchBar.dropDown.selectRow(0)
             }
         }
+    }
+    
+    @IBAction func addButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "createGame", sender: self)
     }
     
     //Mark: - FireBase Methods
