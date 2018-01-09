@@ -60,7 +60,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
     var address: String?
     
     var selectedPin : MKPlacemark?
-    var loadingNotification: MBProgressHUD?
+//    var loadingNotification: MBProgressHUD?
     
     
     override func viewDidLoad() {
@@ -117,9 +117,9 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
     func updateGame() {
         let currentGameID = currentGame.gameID
         
-        loadingNotification?.mode = MBProgressHUDMode.indeterminate
-        loadingNotification?.label.text = "Loading Details"
-        loadingNotification = MBProgressHUD.showAdded(to: self.view, animated: true)
+//        loadingNotification?.mode = MBProgressHUDMode.indeterminate
+//        loadingNotification?.label.text = "Loading Details"
+//        loadingNotification = MBProgressHUD.showAdded(to: self.view, animated: true)
         
         let ref = Database.database().reference().child("games").child(currentGameID)
         ref.observeSingleEvent(of: .value) { (snapshot) in
@@ -233,7 +233,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         }
             
         }
-        MBProgressHUD.hide(for: self.view, animated: true)
+//        MBProgressHUD.hide(for: self.view, animated: true)
     }
     
     // Mark: - Collection View Properties

@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EHf-E1-mPI">
-                                <rect key="frame" x="0.0" y="64" width="375" height="736"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="692"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z90-wE-Xor">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="780"/>
@@ -547,7 +547,7 @@
                                 </constraints>
                             </scrollView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Cx-0m-ZKQ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <color key="barTintColor" red="0.13346317410469055" green="0.18231484293937683" blue="0.25190103054046631" alpha="1" colorSpace="calibratedRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -872,9 +872,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-
                                     <outletCollection property="gestureRecognizers" destination="ZqZ-5a-4DK" appends="YES" id="kST-bI-pua"/>
-
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfP-1u-cBg">
@@ -1921,7 +1919,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BLh-a8-br7">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2472,10 +2470,8 @@
                                     <constraint firstItem="SDk-48-4o2" firstAttribute="leading" secondItem="w9S-j5-UM6" secondAttribute="leading" constant="36" id="0Nx-ay-h3Z"/>
                                     <constraint firstAttribute="trailing" secondItem="fSt-gR-hJL" secondAttribute="trailing" id="0vb-FX-tH2"/>
                                     <constraint firstItem="vXY-qJ-gup" firstAttribute="centerX" secondItem="w9S-j5-UM6" secondAttribute="centerX" id="22P-ki-bpE"/>
-
                                     <constraint firstItem="ETE-e5-oKw" firstAttribute="leading" secondItem="w9S-j5-UM6" secondAttribute="leading" id="4Og-5e-C5Y"/>
                                     <constraint firstAttribute="bottom" secondItem="ETE-e5-oKw" secondAttribute="bottom" id="5M7-oy-d2S"/>
-
                                     <constraint firstItem="vXY-qJ-gup" firstAttribute="top" secondItem="SDk-48-4o2" secondAttribute="bottom" constant="6" id="75g-oF-MXY"/>
                                     <constraint firstAttribute="trailing" secondItem="ETE-e5-oKw" secondAttribute="trailing" id="ESD-43-ebm"/>
                                     <constraint firstAttribute="bottom" secondItem="y5n-4e-6qJ" secondAttribute="bottom" constant="17" id="Hbp-HJ-QI6"/>
@@ -2489,12 +2485,10 @@
                                     <constraint firstItem="XrJ-qa-4M3" firstAttribute="top" secondItem="w9S-j5-UM6" secondAttribute="top" constant="126" id="VQ2-1z-0QN"/>
                                     <constraint firstItem="fSt-gR-hJL" firstAttribute="leading" secondItem="w9S-j5-UM6" secondAttribute="leading" id="bgs-Pi-oLC"/>
                                     <constraint firstItem="7VZ-0r-W0P" firstAttribute="leading" secondItem="w9S-j5-UM6" secondAttribute="leading" constant="36" id="cPd-DR-nIq"/>
-
                                     <constraint firstItem="ETE-e5-oKw" firstAttribute="top" secondItem="w9S-j5-UM6" secondAttribute="top" id="cug-93-91c"/>
                                     <constraint firstItem="y5n-4e-6qJ" firstAttribute="bottom" secondItem="lGe-QB-oLS" secondAttribute="bottom" id="gkc-Hs-iBG"/>
                                     <constraint firstItem="XrJ-qa-4M3" firstAttribute="centerX" secondItem="w9S-j5-UM6" secondAttribute="centerX" id="kYx-0e-aQe"/>
                                     <constraint firstAttribute="trailing" secondItem="ETE-e5-oKw" secondAttribute="trailing" id="pls-7H-Fe5"/>
-
                                     <constraint firstAttribute="trailing" secondItem="y5n-4e-6qJ" secondAttribute="trailing" constant="36" id="rex-bg-bzd"/>
                                     <constraint firstItem="ETE-e5-oKw" firstAttribute="top" secondItem="w9S-j5-UM6" secondAttribute="top" id="sYN-Xp-h8V"/>
                                     <constraint firstAttribute="trailing" secondItem="SDk-48-4o2" secondAttribute="trailing" constant="36" id="sb4-cc-MJf"/>
@@ -3394,4 +3388,12 @@
         <image name="sport" width="24" height="24"/>
         <image name="whiteDropDown" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="8GS-dW-uDp"/>
+        <segue reference="pBv-12-t8v"/>
+        <segue reference="YfC-3w-XDr"/>
+        <segue reference="u7U-XN-rWT"/>
+        <segue reference="vrG-ED-cfp"/>
+        <segue reference="ZIw-xV-HT4"/>
+    </inferredMetricsTieBreakers>
 </document>
