@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EHf-E1-mPI">
-                                <rect key="frame" x="0.0" y="64" width="375" height="736"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="780"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z90-wE-Xor">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="780"/>
@@ -798,22 +798,50 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="his-FS-iIJ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D2C-jW-cdP" customClass="LGButton" customModule="LGButton">
                                 <rect key="frame" x="155" y="582" width="65" height="65"/>
-                                <color key="backgroundColor" red="0.057231023907661438" green="0.1937105655670166" blue="0.39706233143806458" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="deR-Wy-hZs"/>
-                                    <constraint firstAttribute="width" constant="65" id="grh-pv-cEm"/>
+                                    <constraint firstAttribute="width" constant="65" id="Jpw-jT-izD"/>
+                                    <constraint firstAttribute="height" constant="65" id="Tjy-Wq-n1K"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="55"/>
-                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="7"/>
-                                <state key="normal" title="+">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="oNd-PB-sCQ" kind="show" identifier="createGame" id="vrC-uJ-kM7"/>
-                                </connections>
-                            </button>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.1334631741" green="0.1823148429" blue="0.25190103050000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="gradientHorizontal" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="fullyRoundedCorners" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="+"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="titleFontSize">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="spacingBottom">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="gradientStartColor">
+                                        <color key="value" red="0.15868747234344482" green="0.21822044253349304" blue="0.30320093035697937" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="gradientEndColor">
+                                        <color key="value" red="0.13346317410469055" green="0.18231484293937683" blue="0.25190103054046631" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showTouchFeedback" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfP-1u-cBg">
                                 <rect key="frame" x="0.0" y="64" width="375" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -837,17 +865,17 @@
                             <constraint firstItem="hfC-Qn-fYq" firstAttribute="leading" secondItem="Uzs-xk-MOL" secondAttribute="leading" id="8te-cq-Flf"/>
                             <constraint firstItem="S50-FH-Kd6" firstAttribute="trailing" secondItem="89r-fe-d6S" secondAttribute="trailing" id="DEr-Xt-4hH"/>
                             <constraint firstItem="Uzs-xk-MOL" firstAttribute="bottom" secondItem="S50-FH-Kd6" secondAttribute="bottom" id="F4I-9T-bry"/>
-                            <constraint firstAttribute="bottom" secondItem="his-FS-iIJ" secondAttribute="bottom" constant="20" id="Jmn-JL-9jz"/>
                             <constraint firstItem="S50-FH-Kd6" firstAttribute="leading" secondItem="89r-fe-d6S" secondAttribute="leading" id="KTl-Hg-SYi"/>
                             <constraint firstItem="WfP-1u-cBg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Rsc-Xl-OH0"/>
-                            <constraint firstItem="his-FS-iIJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="S0Z-mZ-kks"/>
                             <constraint firstItem="89r-fe-d6S" firstAttribute="top" secondItem="WfP-1u-cBg" secondAttribute="bottom" id="VDr-Ol-9Ct"/>
+                            <constraint firstItem="Uzs-xk-MOL" firstAttribute="bottom" secondItem="D2C-jW-cdP" secondAttribute="bottom" constant="20" id="Z1b-pH-1C5"/>
                             <constraint firstItem="S50-FH-Kd6" firstAttribute="top" secondItem="Uzs-xk-MOL" secondAttribute="top" constant="54.5" id="ZT3-Se-j23"/>
                             <constraint firstItem="Uzs-xk-MOL" firstAttribute="trailing" secondItem="89r-fe-d6S" secondAttribute="trailing" id="aUa-lk-uah"/>
                             <constraint firstItem="hfC-Qn-fYq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="64" id="gW8-ut-R56"/>
                             <constraint firstItem="hfC-Qn-fYq" firstAttribute="trailing" secondItem="Uzs-xk-MOL" secondAttribute="trailing" id="jKo-EC-qW4"/>
                             <constraint firstAttribute="trailing" secondItem="WfP-1u-cBg" secondAttribute="trailing" id="kZB-Ud-2Vh"/>
                             <constraint firstItem="89r-fe-d6S" firstAttribute="leading" secondItem="Uzs-xk-MOL" secondAttribute="leading" id="nSi-Tk-6pV"/>
+                            <constraint firstItem="D2C-jW-cdP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wgM-3h-W81"/>
                             <constraint firstItem="89r-fe-d6S" firstAttribute="top" secondItem="Uzs-xk-MOL" secondAttribute="top" constant="0.5" id="xiU-Nk-W5F"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Uzs-xk-MOL"/>
@@ -856,7 +884,6 @@
                         <nil key="title"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="addGameButton" destination="his-FS-iIJ" id="Fnc-Je-AFt"/>
                         <outlet property="buttonBarView" destination="89r-fe-d6S" id="LrH-tv-gYp"/>
                         <outlet property="buttonBarViewTopConstraint" destination="xiU-Nk-W5F" id="Dyi-rJ-AcK"/>
                         <outlet property="containerView" destination="S50-FH-Kd6" id="dA8-Gh-XFK"/>
@@ -883,7 +910,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" rowHeight="155" id="Qk6-Ep-YrX" customClass="SearchTableViewCell" customModule="SportsRoom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" rowHeight="155" id="Qk6-Ep-YrX" customClass="SearchTableViewCell" customModule="SportsRoom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="155"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qk6-Ep-YrX" id="YYH-6i-Uo8">
@@ -1202,7 +1229,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hostCell" rowHeight="222" id="MaQ-WC-dTm" customClass="JoinedandHostedTableViewCell" customModule="SportsRoom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hostCell" rowHeight="222" id="MaQ-WC-dTm" customClass="JoinedandHostedTableViewCell" customModule="SportsRoom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="222"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MaQ-WC-dTm" id="0q1-CJ-aeh">
@@ -1958,7 +1985,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="joinCell" rowHeight="222" id="wel-NF-xP3" customClass="JoinedandHostedTableViewCell" customModule="SportsRoom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="joinCell" rowHeight="222" id="wel-NF-xP3" customClass="JoinedandHostedTableViewCell" customModule="SportsRoom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="222"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wel-NF-xP3" id="0Qe-D8-PG9">
@@ -2188,7 +2215,6 @@
                         <viewLayoutGuide key="safeArea" id="Owj-3O-L2l"/>
                     </view>
                     <connections>
-                        <outlet property="addGameButton" destination="his-FS-iIJ" id="7ug-qY-S7A"/>
                         <outlet property="tableView" destination="oGy-ed-Kaq" id="UdH-ZJ-3fA"/>
                     </connections>
                 </viewController>
@@ -2552,7 +2578,7 @@
                         <color key="backgroundColor" red="0.1334631741" green="0.1823148429" blue="0.25190103050000001" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <color key="separatorColor" red="0.98624199628829956" green="0.7796865701675415" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="aCi-qB-7FB">
+                        <view key="tableFooterView" contentMode="scaleToFill" id="aCi-qB-7FB">
                             <rect key="frame" x="0.0" y="230" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.1334631741" green="0.1823148429" blue="0.25190103050000001" alpha="1" colorSpace="calibratedRGB"/>
