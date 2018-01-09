@@ -94,7 +94,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         getPlayerNames()
         setLabels()
         setButtonState(buttonState: btnText!)
-        notesLabel.sizeToFit()
+//        notesLabel.sizeToFit()
         
         costView.layer.cornerRadius = costView.frame.size.height/2
         costView.layer.borderColor = UIColor.white.cgColor
@@ -198,7 +198,7 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         gameTitleLabel.text = currentGame.title
         dateLabel.text = currentGame.date
         locationLabel.text = currentGame.address
-        skillLabel.text = "Skill: \(currentGame.skillLevel)"
+        skillLabel.text = currentGame.skillLevel
         costLabel.text = currentGame.cost
         notesLabel.text = currentGame.notes
         let playersString = String(currentGame.spotsRemaining)

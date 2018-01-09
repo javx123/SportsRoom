@@ -44,7 +44,8 @@ func dropPinZoomIn(placemark:MKPlacemark) {
     
     let annotation = MKPointAnnotation()
     annotation.coordinate = placemark.coordinate
-    annotation.title = address
+    annotation.title = "Location:"
+    annotation.subtitle = address
     mapView.addAnnotation(annotation)
     let span = MKCoordinateSpanMake(0.05, 0.05)
     let region = MKCoordinateRegionMake(placemark.coordinate, span)
@@ -60,7 +61,7 @@ func dropPinZoomIn(placemark:MKPlacemark) {
         pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
         pinView?.pinTintColor = UIColor.red
         pinView?.canShowCallout = true
-        let smallSquare = CGSize(width: 40, height: 40)
+        let smallSquare = CGSize(width: 35, height: 35)
         let point = CGPoint(x: 0, y: 0)
         let button = UIButton(frame: CGRect(origin: point, size: smallSquare))
         button.setBackgroundImage(UIImage(named: "bluecar"), for: .normal)
