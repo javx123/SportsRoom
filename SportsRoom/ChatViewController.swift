@@ -100,21 +100,28 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if messageArray[indexPath.row].senderID != Auth.auth().currentUser!.uid {
             //load received
-            let cell = Bundle.main.loadNibNamed("MessageReceivedTableViewCell", owner: self, options: nil)?.first as! MessageReceivedTableViewCell
-            let currentMessage = messageArray[indexPath.row]
-            cell.senderLbl.text = currentMessage.senderName
-            cell.messageLbl.text = currentMessage.messageBody
-            cell.timestampLbl.text = currentMessage.timestamp
+//            let cell = Bundle.main.loadNibNamed("MessageReceivedTableViewCell", owner: self, options: nil)?.first as! MessageReceivedTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MessageReceived", for: indexPath)
+            if let cell = cell as? MessageReceivedTableViewCell {
+                let currentMessage = messageArray[indexPath.row]
+                cell.senderLbl.text = currentMessage.senderName
+                cell.messageLbl.text = currentMessage.messageBody
+                cell.timestampLbl.text = currentMessage.timestamp
+                
+            }
 
             return cell
         } else {
             //load sent
             
-            let cell = Bundle.main.loadNibNamed("MessageSentTableViewCell", owner: self, options: nil)?.first as! MessageSentTableViewCell
+//            let cell = Bundle.main.loadNibNamed("MessageSentTableViewCell", owner: self, options: nil)?.first as! MessageSentTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MessageSent", for: indexPath)
+            if let cell = cell as? MessageSentTableViewCell {
             let currentMessage = messageArray[indexPath.row]
             cell.senderLbl.text = currentMessage.senderName
             cell.messageLbl.text = currentMessage.messageBody
             cell.timestampLbl.text = currentMessage.timestamp
+            }
             return cell
         }
 
