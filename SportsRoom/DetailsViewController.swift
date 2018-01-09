@@ -12,6 +12,7 @@ import FirebaseMessaging
 import CoreLocation
 import MapKit
 import SDWebImage
+import MBProgressHUD
 
 class DetailsViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate, MKMapViewDelegate {
     
@@ -59,16 +60,40 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
     var address: String?
     
     var selectedPin : MKPlacemark?
-
+    var loadingNotification: MBProgressHUD?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupGameDetails()
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        mapView.delegate = self
+        mapView.isScrollEnabled = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    func setupGameDetails() {
+        switch btnText! {
+        case .joined:
+            updateGame()
+        case .hosted:
+            updateGame()
+        case .search:
+            setupView()
+        }
+    }
+    
+    func setupView() {
+        
         getPlayerNames()
         setLabels()
         setButtonState(buttonState: btnText!)
-        collectionView.delegate = self
-        collectionView.dataSource = self
         notesLabel.sizeToFit()
         
         costView.layer.cornerRadius = costView.frame.size.height/2
@@ -86,12 +111,21 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
         updateMapView(currentLocation)
         dropPinZoomIn(placemark: selectedPin!)
         
-        mapView.delegate = self
-        mapView.isScrollEnabled = false
+//        MBProgressHUD.hide(for: self.view, animated: true)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    func updateGame() {
+        let currentGameID = currentGame.gameID
+        
+        loadingNotification?.mode = MBProgressHUDMode.indeterminate
+        loadingNotification?.label.text = "Loading Details"
+        loadingNotification = MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        let ref = Database.database().reference().child("games").child(currentGameID)
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            self.currentGame = Game(snapshot: snapshot)
+            self.setupView()
+        }
     }
     
     func updateMapView(_ location: CLLocation) {
@@ -197,7 +231,9 @@ class DetailsViewController: UIViewController,UICollectionViewDataSource, UIColl
                 self.playersArray.append(user)
                 self.collectionView.reloadData()
         }
+            
         }
+        MBProgressHUD.hide(for: self.view, animated: true)
     }
     
     // Mark: - Collection View Properties
