@@ -234,6 +234,9 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         } else {
             if costTextField.text == "" {
                 costTextField.text = "Free"
+            } else {
+                if let text = costTextField.text {
+                   costTextField.text = "$\(text)" }
             }
             if notesTextField.text == "" {
                 notesTextField.text = "The organizer did not include a note"

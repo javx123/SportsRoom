@@ -20,6 +20,7 @@ pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chamel
 pod 'ModernSearchBar'
 pod 'MBProgressHUD', '~> 1.0.0'
 pod 'DZNEmptyDataSet'
+pod 'LGButton'
 
 
 end
