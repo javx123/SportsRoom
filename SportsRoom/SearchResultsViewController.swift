@@ -184,6 +184,10 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     func pullFireBaseData(completion: @escaping ( _ games : [Game]) -> Void) {
         ref.queryOrdered(byChild: "sport").queryEqual(toValue: searchedSport.lowercased()).observe(.value) { (snapshot) in
+//            quick fix for strange bug where sometimes the data pulled down is duplicated
+            self.pulledGames?.removeAll()
+            self.searchResults.removeAll()
+            
             print(snapshot.value!)
             let pulledGames = snapshot.value as? Dictionary <String, Any>
             guard let games = pulledGames else {

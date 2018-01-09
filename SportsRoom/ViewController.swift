@@ -163,6 +163,9 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         let ref = Database.database().reference().child("users").child(userID!).child("joinedGames")
         
         ref.observeSingleEvent(of: .value) {(snapshot) in
+//            quick fix for strange bug where sometimes the data pulled down is duplicated
+            self.joinedGamesVC?.gamesArrayDetails.removeAll()
+            
             let value = snapshot.value as? [String:String] ?? [:]
             let gamesArrayID = Array(value.keys)
             for id in gamesArrayID {
@@ -190,6 +193,8 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         let ref = Database.database().reference().child("users").child(userID!).child("hostedGames")
         
         ref.observeSingleEvent(of: .value) {(snapshot) in
+//            quick fix for strange bug where sometimes the data pulled down is duplicated
+            self.ownedGamesVC?.gamesArrayDetails.removeAll()
             let value = snapshot.value as? [String:String] ?? [:]
             let gamesArrayID = Array(value.keys)
             for id in gamesArrayID {
@@ -306,7 +311,6 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-
     }
 }
 
