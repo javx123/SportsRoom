@@ -13,7 +13,7 @@ import FirebaseMessaging
 import DropDown
 
 
-class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewControllerTransitioningDelegate {
+class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewControllerTransitioningDelegate, UINavigationBarDelegate {
     
     @IBOutlet weak var gameTitleTextField: UITextField!
     @IBOutlet weak var pickDateView: UIView!
@@ -29,6 +29,8 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
     @IBOutlet weak var dropDownSelectionLabel: UILabel!
     @IBOutlet weak var otherSportTextField: UITextField!
     
+    @IBOutlet weak var navBar: UINavigationBar!
+    
     var address = String()
     var longitude = Double()
     var latitude = Double()
@@ -38,6 +40,8 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navBar.delegate = self
         
         gameTitleTextField.layer.borderColor = UIColor.white.cgColor
         gameTitleTextField.layer.borderWidth = 1
@@ -100,6 +104,10 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         notesTextField.delegate = self
         otherSportTextField.delegate = self
         
+    }
+    
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -226,13 +234,17 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         } else {
             if costTextField.text == "" {
                 costTextField.text = "Free"
+            } else {
+                if let text = costTextField.text {
+                   costTextField.text = "$\(text)" }
             }
             if notesTextField.text == "" {
                 notesTextField.text = "The organizer did not include a note"
             }
             postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: dropDownSelectionLabel.text!.lowercased(), date:dateString!, address: pickLocationLabel.text!, longitude:longitude, latitude:latitude, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!, spotsRemaining: numberOfPlayersSlider.value)
             
-            _ = navigationController?.popViewController(animated: true)
+//            _ = navigationController?.popViewController(animated: true)
+            dismiss(animated: true, completion: nil)
         }
     }
     
