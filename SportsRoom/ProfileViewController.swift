@@ -29,6 +29,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBOutlet weak var settingsBtn: UIButton!
     
+    @IBOutlet weak var logoutButton: UIButton!
     var currentUser: User?
     var imageString = String()
     var imageURL: URL!
@@ -69,9 +70,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         if currentUser?.email != Auth.auth().currentUser?.email {
             editBtn.isHidden = true
             settingsBtn.isHidden = true
+            logoutButton.isHidden = true
+            
         } else {
             editBtn.isHidden = false
             settingsBtn.isHidden = false
+            logoutButton.isHidden = false
         }
     }
     
