@@ -546,14 +546,34 @@
                                     <constraint firstItem="Z90-wE-Xor" firstAttribute="leading" secondItem="EHf-E1-mPI" secondAttribute="leading" id="dBe-eE-hIU"/>
                                 </constraints>
                             </scrollView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Cx-0m-ZKQ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="barTintColor" red="0.13346317410469055" green="0.18231484293937683" blue="0.25190103054046631" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Create a Game" id="CIg-xw-xz2">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="aJ0-Cc-Png">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <segue destination="VVV-Da-51A" kind="unwind" unwindAction="unwindFromCreateGameWithSender:" id="kjy-9h-gWP"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="8Cx-0m-ZKQ" firstAttribute="trailing" secondItem="0cS-La-xgc" secondAttribute="trailing" id="0DN-ct-LtD"/>
                             <constraint firstItem="EHf-E1-mPI" firstAttribute="trailing" secondItem="0cS-La-xgc" secondAttribute="trailing" id="6L6-qA-ZIu"/>
                             <constraint firstItem="EHf-E1-mPI" firstAttribute="leading" secondItem="0cS-La-xgc" secondAttribute="leading" id="UIa-QW-zMk"/>
+                            <constraint firstItem="EHf-E1-mPI" firstAttribute="top" secondItem="8Cx-0m-ZKQ" secondAttribute="bottom" id="VlF-XJ-aBi"/>
+                            <constraint firstItem="8Cx-0m-ZKQ" firstAttribute="top" secondItem="0cS-La-xgc" secondAttribute="top" id="lD7-CN-Abw"/>
                             <constraint firstItem="Z90-wE-Xor" firstAttribute="width" secondItem="8ND-bp-Iwu" secondAttribute="width" id="lf6-P1-66z"/>
-                            <constraint firstItem="EHf-E1-mPI" firstAttribute="top" secondItem="0cS-La-xgc" secondAttribute="top" id="wMi-qA-6K2"/>
+                            <constraint firstItem="8Cx-0m-ZKQ" firstAttribute="leading" secondItem="0cS-La-xgc" secondAttribute="leading" id="oVW-jW-73f"/>
                             <constraint firstItem="EHf-E1-mPI" firstAttribute="bottom" secondItem="0cS-La-xgc" secondAttribute="bottom" id="zFW-oq-kxC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0cS-La-xgc"/>
@@ -564,6 +584,7 @@
                         <outlet property="costTextField" destination="oOv-Tb-aBR" id="P7u-dq-PUE"/>
                         <outlet property="dropDownSelectionLabel" destination="q1d-fz-9Q6" id="Jfa-Ce-VoT"/>
                         <outlet property="gameTitleTextField" destination="B43-jd-quM" id="kLv-1i-bSy"/>
+                        <outlet property="navBar" destination="8Cx-0m-ZKQ" id="e9B-tF-VE2"/>
                         <outlet property="notesTextField" destination="Uqz-BN-GLK" id="dyB-KD-P3O"/>
                         <outlet property="numberOfPlayersLabel" destination="7GA-5G-Z1P" id="sTX-o8-ZFe"/>
                         <outlet property="numberOfPlayersSlider" destination="EHq-Lh-mgX" id="zt8-a1-M7c"/>
@@ -578,6 +599,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0FY-mv-JGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="VVV-Da-51A" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="mUQ-ID-aDK">
                     <connections>
                         <action selector="sportSelectionTapped:" destination="oNd-PB-sCQ" id="KOF-tZ-jnW"/>
@@ -609,7 +631,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K4B-Av-5Ol">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K4B-Av-5Ol">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="274"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Wv8-yc-eFM">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="274"/>
@@ -617,9 +639,6 @@
                                     <subviews>
                                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="o7Z-Hf-pIk">
                                             <rect key="frame" x="17.5" y="28" width="340" height="138"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="138" id="nBj-vC-LXK"/>
-                                            </constraints>
                                             <date key="date" timeIntervalSinceReferenceDate="536201281.11403501">
                                                 <!--2017-12-29 00:48:01 +0000-->
                                             </date>
@@ -628,7 +647,7 @@
                                             </connections>
                                         </datePicker>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7v-vY-yN1">
-                                            <rect key="frame" x="162" y="176" width="50" height="30"/>
+                                            <rect key="frame" x="164.5" y="176" width="45" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="lwW-ap-SEd"/>
                                             </constraints>
@@ -643,16 +662,17 @@
                                         </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="k7v-vY-yN1" firstAttribute="centerX" secondItem="Wv8-yc-eFM" secondAttribute="centerX" id="MMm-3Z-ELJ"/>
                                         <constraint firstItem="o7Z-Hf-pIk" firstAttribute="leading" secondItem="Wv8-yc-eFM" secondAttribute="leading" constant="17.5" id="Q5C-sl-5k7"/>
-                                        <constraint firstAttribute="bottom" secondItem="k7v-vY-yN1" secondAttribute="bottom" constant="58" id="U8Z-g8-xfU"/>
                                         <constraint firstItem="k7v-vY-yN1" firstAttribute="top" secondItem="o7Z-Hf-pIk" secondAttribute="bottom" constant="10" id="YIj-Ol-EKu"/>
                                         <constraint firstAttribute="trailing" secondItem="o7Z-Hf-pIk" secondAttribute="trailing" constant="17.5" id="dmb-6m-hza"/>
                                         <constraint firstItem="o7Z-Hf-pIk" firstAttribute="top" secondItem="Wv8-yc-eFM" secondAttribute="top" constant="28" id="lvK-TT-IlI"/>
-                                        <constraint firstAttribute="trailing" secondItem="k7v-vY-yN1" secondAttribute="trailing" constant="163" id="oQ4-C3-Fme"/>
-                                        <constraint firstItem="k7v-vY-yN1" firstAttribute="leading" secondItem="Wv8-yc-eFM" secondAttribute="leading" constant="162" id="pwX-1S-iOy"/>
-                                        <constraint firstAttribute="trailing" secondItem="k7v-vY-yN1" secondAttribute="trailing" constant="163" id="qXx-HC-IQ1"/>
+                                        <constraint firstAttribute="bottom" secondItem="k7v-vY-yN1" secondAttribute="bottom" constant="68" id="wKN-5S-fZS"/>
                                     </constraints>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="o7Z-Hf-pIk" firstAttribute="height" secondItem="K4B-Av-5Ol" secondAttribute="height" multiplier="138:274" id="ZBT-CD-UeU"/>
+                                </constraints>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                         </subviews>
@@ -852,7 +872,9 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+
                                     <outletCollection property="gestureRecognizers" destination="ZqZ-5a-4DK" appends="YES" id="kST-bI-pua"/>
+
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfP-1u-cBg">
@@ -2448,22 +2470,31 @@
                                 <color key="backgroundColor" red="0.13346317410469055" green="0.18231484293937683" blue="0.25190103054046631" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="SDk-48-4o2" firstAttribute="leading" secondItem="w9S-j5-UM6" secondAttribute="leading" constant="36" id="0Nx-ay-h3Z"/>
+                                    <constraint firstAttribute="trailing" secondItem="fSt-gR-hJL" secondAttribute="trailing" id="0vb-FX-tH2"/>
                                     <constraint firstItem="vXY-qJ-gup" firstAttribute="centerX" secondItem="w9S-j5-UM6" secondAttribute="centerX" id="22P-ki-bpE"/>
-                                    <constraint firstItem="ETE-e5-oKw" firstAttribute="leading" secondItem="w9S-j5-UM6" secondAttribute="leading" id="3WU-aP-9Nm"/>
+
+                                    <constraint firstItem="ETE-e5-oKw" firstAttribute="leading" secondItem="w9S-j5-UM6" secondAttribute="leading" id="4Og-5e-C5Y"/>
+                                    <constraint firstAttribute="bottom" secondItem="ETE-e5-oKw" secondAttribute="bottom" id="5M7-oy-d2S"/>
+
                                     <constraint firstItem="vXY-qJ-gup" firstAttribute="top" secondItem="SDk-48-4o2" secondAttribute="bottom" constant="6" id="75g-oF-MXY"/>
                                     <constraint firstAttribute="trailing" secondItem="ETE-e5-oKw" secondAttribute="trailing" id="ESD-43-ebm"/>
                                     <constraint firstAttribute="bottom" secondItem="y5n-4e-6qJ" secondAttribute="bottom" constant="17" id="Hbp-HJ-QI6"/>
                                     <constraint firstItem="7VZ-0r-W0P" firstAttribute="top" secondItem="vXY-qJ-gup" secondAttribute="bottom" constant="8" id="L4E-y8-LWj"/>
                                     <constraint firstItem="lGe-QB-oLS" firstAttribute="leading" secondItem="w9S-j5-UM6" secondAttribute="leading" constant="36" id="OeQ-eh-RPx"/>
+                                    <constraint firstItem="fSt-gR-hJL" firstAttribute="top" secondItem="w9S-j5-UM6" secondAttribute="top" id="Pd4-o8-JMv"/>
                                     <constraint firstItem="SDk-48-4o2" firstAttribute="top" secondItem="w9S-j5-UM6" secondAttribute="top" constant="15" id="R9A-Sr-0un"/>
+                                    <constraint firstAttribute="bottom" secondItem="fSt-gR-hJL" secondAttribute="bottom" id="SUG-uZ-hJA"/>
                                     <constraint firstAttribute="trailing" secondItem="7VZ-0r-W0P" secondAttribute="trailing" constant="36" id="USk-Ll-SvN"/>
                                     <constraint firstAttribute="bottom" secondItem="ETE-e5-oKw" secondAttribute="bottom" id="V6t-JC-dM0"/>
                                     <constraint firstItem="XrJ-qa-4M3" firstAttribute="top" secondItem="w9S-j5-UM6" secondAttribute="top" constant="126" id="VQ2-1z-0QN"/>
+                                    <constraint firstItem="fSt-gR-hJL" firstAttribute="leading" secondItem="w9S-j5-UM6" secondAttribute="leading" id="bgs-Pi-oLC"/>
                                     <constraint firstItem="7VZ-0r-W0P" firstAttribute="leading" secondItem="w9S-j5-UM6" secondAttribute="leading" constant="36" id="cPd-DR-nIq"/>
-                                    <constraint firstAttribute="bottom" secondItem="fSt-gR-hJL" secondAttribute="bottom" id="gW9-OP-5ed"/>
+
+                                    <constraint firstItem="ETE-e5-oKw" firstAttribute="top" secondItem="w9S-j5-UM6" secondAttribute="top" id="cug-93-91c"/>
                                     <constraint firstItem="y5n-4e-6qJ" firstAttribute="bottom" secondItem="lGe-QB-oLS" secondAttribute="bottom" id="gkc-Hs-iBG"/>
                                     <constraint firstItem="XrJ-qa-4M3" firstAttribute="centerX" secondItem="w9S-j5-UM6" secondAttribute="centerX" id="kYx-0e-aQe"/>
-                                    <constraint firstItem="fSt-gR-hJL" firstAttribute="leading" secondItem="w9S-j5-UM6" secondAttribute="leading" id="o0S-WP-Pve"/>
+                                    <constraint firstAttribute="trailing" secondItem="ETE-e5-oKw" secondAttribute="trailing" id="pls-7H-Fe5"/>
+
                                     <constraint firstAttribute="trailing" secondItem="y5n-4e-6qJ" secondAttribute="trailing" constant="36" id="rex-bg-bzd"/>
                                     <constraint firstItem="ETE-e5-oKw" firstAttribute="top" secondItem="w9S-j5-UM6" secondAttribute="top" id="sYN-Xp-h8V"/>
                                     <constraint firstAttribute="trailing" secondItem="SDk-48-4o2" secondAttribute="trailing" constant="36" id="sb4-cc-MJf"/>
@@ -3363,12 +3394,4 @@
         <image name="sport" width="24" height="24"/>
         <image name="whiteDropDown" width="25" height="25"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="HeY-CS-lKV"/>
-        <segue reference="pBv-12-t8v"/>
-        <segue reference="YfC-3w-XDr"/>
-        <segue reference="Ggk-91-cho"/>
-        <segue reference="vrG-ED-cfp"/>
-        <segue reference="W1f-EQ-S7k"/>
-    </inferredMetricsTieBreakers>
 </document>
