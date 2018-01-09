@@ -75,6 +75,10 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         }
     }
     
+    @IBAction func addButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "createGame", sender: self)
+    }
+    
     //Mark: - FireBase Methods
     
     func observeFireBase() {
