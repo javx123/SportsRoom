@@ -47,7 +47,7 @@ class SetLocationViewController: UIViewController, CLLocationManagerDelegate {
         searchBar.sizeToFit()
         searchBar.placeholder = "Search for places"
         navigationItem.titleView = resultSearchController?.searchBar
-        searchBar.tintColor = UIColor.flatNavyBlueDark
+        searchBar.tintColor = UIColor.white
         
         resultSearchController?.hidesNavigationBarDuringPresentation = false
         resultSearchController?.dimsBackgroundDuringPresentation = true
