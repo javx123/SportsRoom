@@ -50,7 +50,7 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-        let str = "You currently have no Hosted Games.\r\nTap the '+' button below to add your own game"
+        let str = "You currently have no hosted games.\r\nTap the '+' button below to add your own game"
         let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
         return NSAttributedString(string: str, attributes: attrs)
     }
