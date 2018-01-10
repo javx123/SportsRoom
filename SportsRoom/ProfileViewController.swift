@@ -48,11 +48,38 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         configUI()
         updateUserInfo()
         userCheck()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkForImage()
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if bioTextView.isFirstResponder {
+//            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+                if self.view.frame.origin.y == 0{
+                    self.view.frame.origin.y -= 140
+//                }
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += 140
+//            }
+        }
+    }
+    
+    
+    @IBAction func screenTapped(_ sender: Any) {
+        ageTxtField.resignFirstResponder()
+        bioTextView.resignFirstResponder()
     }
     
     func configUI () {
@@ -101,9 +128,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             fieldsState(hidden: true)
             editUserInfo()
             updateUserInfo()
-            StaticFunctions.displayAlert(title: "Request completed", message: "User profile updated!", uiviewcontroller: self)
             ageTxtField.resignFirstResponder()
             bioTextView.resignFirstResponder()
+            StaticFunctions.displayAlert(title: "Request completed", message: "User profile updated!", uiviewcontroller: self)
         }
     }
     

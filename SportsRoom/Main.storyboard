@@ -2614,6 +2614,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="pIh-FE-py7" firstAttribute="leading" secondItem="gvP-SE-iva" secondAttribute="leading" id="Bun-Ww-5ue"/>
                             <constraint firstItem="gvP-SE-iva" firstAttribute="bottom" secondItem="pIh-FE-py7" secondAttribute="bottom" id="Csi-ZI-Y1j"/>
@@ -2632,6 +2633,9 @@
                             <constraint firstItem="NNM-4r-vNq" firstAttribute="trailing" secondItem="gvP-SE-iva" secondAttribute="trailing" id="yjD-CN-crc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gvP-SE-iva"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="hL3-29-818" appends="YES" id="5fN-DU-kVa"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="ageLbl" destination="i4s-Wz-WvI" id="sqW-ab-Tke"/>
@@ -2652,6 +2656,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rwd-5k-aq9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="fY4-NA-KbU" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="hL3-29-818">
+                    <connections>
+                        <action selector="screenTapped:" destination="KbM-Lc-0Fu" id="H5B-XZ-UqN"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1032.8" y="-2370.7646176911544"/>
         </scene>
