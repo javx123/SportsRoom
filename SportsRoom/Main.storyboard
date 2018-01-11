@@ -1233,11 +1233,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0e-j8-sXg">
+                                                    <rect key="frame" x="341" y="12" width="24" height="11"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Sj-cv-BGi">
-                                                    <rect key="frame" x="10" y="28" width="244" height="28"/>
+                                                    <rect key="frame" x="10" y="28" width="225" height="28"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I6j-k3-A7N">
-                                                            <rect key="frame" x="15" y="5" width="224" height="18"/>
+                                                            <rect key="frame" x="15" y="5" width="205" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1257,15 +1263,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0e-j8-sXg">
-                                                    <rect key="frame" x="341" y="12" width="24" height="11"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="1Sj-cv-BGi" firstAttribute="width" secondItem="R7s-lQ-I6l" secondAttribute="width" multiplier="0.65" id="8rv-Gc-aJC"/>
+                                                <constraint firstItem="1Sj-cv-BGi" firstAttribute="width" secondItem="R7s-lQ-I6l" secondAttribute="width" multiplier="0.6" id="8rv-Gc-aJC"/>
                                                 <constraint firstAttribute="bottom" secondItem="1Sj-cv-BGi" secondAttribute="bottom" constant="5" id="9fP-Iq-CQ0"/>
                                                 <constraint firstItem="1Sj-cv-BGi" firstAttribute="top" secondItem="dkN-9h-xsG" secondAttribute="bottom" constant="5" id="Kxe-5t-svn"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="m0e-j8-sXg" secondAttribute="bottom" constant="10" id="byO-j1-MdL"/>
@@ -1289,11 +1289,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mId-Xl-uYL">
+                                                    <rect key="frame" x="15" y="12" width="24" height="11"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V4w-Ky-oFf">
-                                                    <rect key="frame" x="101.5" y="28" width="263.5" height="28"/>
+                                                    <rect key="frame" x="120" y="28" width="245" height="28"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugw-HO-hRZ">
-                                                            <rect key="frame" x="15" y="5" width="243.5" height="18"/>
+                                                            <rect key="frame" x="15" y="5" width="225" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1313,22 +1319,16 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mId-Xl-uYL">
-                                                    <rect key="frame" x="20" y="12" width="24" height="11"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="mId-Xl-uYL" secondAttribute="bottom" constant="10" id="Bkk-gy-cqJ"/>
                                                 <constraint firstAttribute="bottom" secondItem="V4w-Ky-oFf" secondAttribute="bottom" constant="5" id="C5v-20-sfg"/>
-                                                <constraint firstItem="mId-Xl-uYL" firstAttribute="leading" secondItem="chq-88-LwW" secondAttribute="leadingMargin" constant="5" id="Kce-0A-XxW"/>
+                                                <constraint firstItem="mId-Xl-uYL" firstAttribute="leading" secondItem="chq-88-LwW" secondAttribute="leadingMargin" id="Kce-0A-XxW"/>
                                                 <constraint firstAttribute="trailing" secondItem="1wr-kt-aLb" secondAttribute="trailing" constant="5" id="Kh8-8f-Azn"/>
                                                 <constraint firstAttribute="trailing" secondItem="V4w-Ky-oFf" secondAttribute="trailing" constant="10" id="L3R-na-9wZ"/>
                                                 <constraint firstItem="V4w-Ky-oFf" firstAttribute="top" secondItem="1wr-kt-aLb" secondAttribute="bottom" constant="5" id="MlP-4a-QLb"/>
                                                 <constraint firstItem="1wr-kt-aLb" firstAttribute="top" secondItem="chq-88-LwW" secondAttribute="top" constant="5" id="TAg-K9-FiV"/>
-                                                <constraint firstItem="Ugw-HO-hRZ" firstAttribute="width" secondItem="chq-88-LwW" secondAttribute="width" multiplier="0.65" id="cJc-Zy-Spb"/>
+                                                <constraint firstItem="Ugw-HO-hRZ" firstAttribute="width" secondItem="chq-88-LwW" secondAttribute="width" multiplier="0.6" id="cJc-Zy-Spb"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
