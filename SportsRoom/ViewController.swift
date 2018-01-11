@@ -231,7 +231,6 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         else{
             close()
         }
-
     }
     
     func close() {
@@ -308,9 +307,12 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         
     }
     
-    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        
+        if searchBarContainer.isHidden == false {
+            close()
+        }
     }
 }
 
