@@ -19,7 +19,7 @@ class AppDelegate: UIResponder,UNUserNotificationCenterDelegate,UIApplicationDel
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        Thread.sleep(forTimeInterval: 1.5)
+        Thread.sleep(forTimeInterval: 2.0)
         registerGCMPush(application)
         FirebaseApp.configure()
         Messaging.messaging().delegate = self

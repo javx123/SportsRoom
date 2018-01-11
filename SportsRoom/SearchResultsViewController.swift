@@ -214,6 +214,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func filterResults() {
+//        Attempt quick fix to stop duplicates
+        self.searchResults.removeAll()
 
         guard let `pulledGames` = pulledGames else {
 //            MBProgressHUD.hide(for: self.view, animated: true)
@@ -340,6 +342,10 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         if let loadingIcon = loadingNotification {
             MBProgressHUD.hide(for: loadingIcon, animated: true)
         }
+    }
+    
+    deinit {
+        print("This is deinitialized")
     }
     
 }
