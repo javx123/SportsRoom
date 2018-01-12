@@ -176,15 +176,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
-    //    func updateUserInfo () {
-    //        let userID = Auth.auth().currentUser!.uid
-    //        let ref = Database.database().reference().child("users").child(userID)
-    //            self.emailLbl.text = currentUser?.email
-    //            self.nameLbl.text = currentUser?.name
-    //            self.biosLbl.text = currentUser?.bio
-    //            self.ageLbl.text = currentUser?.age
-    //    }
-    
     @IBAction func backBtnPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -261,6 +252,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                 case .none:
                     print("There's a bug if this is hit....")
                 }
+                updateUserInfo()
             }
         }
     }
