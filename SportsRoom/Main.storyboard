@@ -2456,6 +2456,7 @@
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQG-f2-WmG">
                                 <rect key="frame" x="0.0" y="615" width="375" height="52"/>
                                 <color key="backgroundColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="tintColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Log out">
                                     <color key="titleColor" red="0.13346317410469055" green="0.18231484293937683" blue="0.25190103054046631" alpha="1" colorSpace="calibratedRGB"/>
@@ -3517,7 +3518,7 @@
         <segue reference="Cua-Xk-AZH"/>
         <segue reference="YfC-3w-XDr"/>
         <segue reference="Ggk-91-cho"/>
-        <segue reference="vrG-ED-cfp"/>
+        <segue reference="nDZ-df-YF2"/>
         <segue reference="ZIw-xV-HT4"/>
     </inferredMetricsTieBreakers>
 </document>
