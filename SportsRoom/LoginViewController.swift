@@ -14,10 +14,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var passwordTxtField: UITextField!
+    @IBOutlet weak var rememberSwitch: UISwitch!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        rememberSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         
         emailTxtField.delegate = self
         passwordTxtField.delegate = self
@@ -25,6 +26,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let defaults = UserDefaults.standard
         emailTxtField.text = defaults.string(forKey: "emailTextFieldContent")
         passwordTxtField.text = defaults.string(forKey: "passTextFieldContent")
+        rememberSwitch.isOn = defaults.bool(forKey: "rememberSwitchStatus")
         
         emailTxtField.backgroundColor = UIColor.clear
         emailTxtField.layer.borderColor = UIColor.white.cgColor
@@ -43,13 +45,31 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let passPaddingView = UIView(frame: CGRect(x:0,y:0,width:40,height:passwordTxtField.frame.height))
         passwordTxtField.leftViewMode = UITextFieldViewMode.always
         passwordTxtField.leftView = passPaddingView
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if Auth.auth().currentUser != nil && rememberSwitch.isOn == true {
+            self.performSegue(withIdentifier: "toMain", sender: self)
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         emailTxtField.resignFirstResponder()
         passwordTxtField.resignFirstResponder()
         return true
+    }
+    
+    
+    @IBAction func rememberSwitchPressed(_ sender: UISwitch) {
+        if (sender.isOn == false) {
+            print ("button OFF")
+            UserDefaults.standard.set(sender.isOn, forKey: "rememberSwitchStatus")
+        }
+        else {
+            print ("button ON")
+            UserDefaults.standard.set(sender.isOn, forKey: "rememberSwitchStatus")
+        }
     }
     
     @IBAction func screenTapped(_ sender: Any) {
