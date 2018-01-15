@@ -60,22 +60,17 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if bioTextView.isFirstResponder {
-//            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
                 if self.view.frame.origin.y == 0{
                     self.view.frame.origin.y -= 140
-//                }
             }
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0{
                 self.view.frame.origin.y += 140
-//            }
         }
     }
-    
     
     @IBAction func screenTapped(_ sender: Any) {
         ageTxtField.resignFirstResponder()

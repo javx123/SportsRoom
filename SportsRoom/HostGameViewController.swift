@@ -28,7 +28,6 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
     @IBOutlet weak var selectSportView: UIView!
     @IBOutlet weak var dropDownSelectionLabel: UILabel!
     @IBOutlet weak var otherSportTextField: UITextField!
-    
     @IBOutlet weak var navBar: UINavigationBar!
     
     var address = String()
@@ -139,6 +138,11 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
                 self.otherSportTextField.layer.borderColor = UIColor.white.cgColor
                 self.otherSportTextField.textColor = UIColor.white
             }
+            else {
+            self.otherSportTextField.layer.borderColor = UIColor.flatGrayDark.cgColor
+            self.otherSportTextField.setValue(UIColor.flatGrayDark, forKeyPath: "_placeholderLabel.textColor")
+            self.otherSportTextField.isEnabled = false
+            }
         }
     }
     
@@ -146,8 +150,7 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         if otherSportTextField.isFirstResponder {
         self.dropDownSelectionLabel.text = otherSportTextField.text
         otherSportTextField.layer.borderColor = UIColor.flatGrayDark.cgColor
-            self.otherSportTextField.setValue(UIColor.flatGrayDark, forKeyPath: "_placeholderLabel.textColor")
-
+        self.otherSportTextField.setValue(UIColor.flatGrayDark, forKeyPath: "_placeholderLabel.textColor")
         otherSportTextField.text = ""
         otherSportTextField.placeholder = "Select 'Other' to enter a new sport"
         otherSportTextField.isEnabled = false
