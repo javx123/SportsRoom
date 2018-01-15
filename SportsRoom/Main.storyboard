@@ -3113,14 +3113,14 @@
                                                 <color key="textColor" red="0.98431372549999996" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A66-m7-m1Q">
-                                                <rect key="frame" x="103" y="270" width="112" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep me logged in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A66-m7-m1Q">
+                                                <rect key="frame" x="85" y="279" width="142" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rAJ-5O-GG7">
-                                                <rect key="frame" x="228" y="265" width="51" height="31"/>
+                                                <rect key="frame" x="240" y="274" width="51" height="31"/>
                                                 <color key="onTintColor" red="0.98624199628829956" green="0.7796865701675415" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="rememberSwitchPressed:" destination="UZv-9Q-qNe" eventType="valueChanged" id="0X4-84-OZd"/>
@@ -3132,11 +3132,11 @@
                                             <constraint firstItem="uzg-XJ-Wzn" firstAttribute="leading" secondItem="r0B-nI-2RC" secondAttribute="leading" id="694-Ww-MhA"/>
                                             <constraint firstItem="y0p-LH-AHN" firstAttribute="top" secondItem="o3l-b1-az9" secondAttribute="bottom" constant="14" id="82K-lc-C3Y"/>
                                             <constraint firstItem="v37-90-m9J" firstAttribute="leading" secondItem="CXh-cE-WyJ" secondAttribute="leading" constant="61" id="Ahy-TO-iFH"/>
-                                            <constraint firstItem="A66-m7-m1Q" firstAttribute="leading" secondItem="CXh-cE-WyJ" secondAttribute="leading" constant="103" id="Cxj-do-EfM"/>
+                                            <constraint firstItem="A66-m7-m1Q" firstAttribute="leading" secondItem="CXh-cE-WyJ" secondAttribute="leading" constant="85" id="Cxj-do-EfM"/>
                                             <constraint firstItem="r0B-nI-2RC" firstAttribute="centerX" secondItem="CXh-cE-WyJ" secondAttribute="centerX" id="GJp-hd-Gjp"/>
                                             <constraint firstItem="r0B-nI-2RC" firstAttribute="centerX" secondItem="2vp-zX-rg8" secondAttribute="centerX" constant="1" id="IQJ-H4-VdU"/>
                                             <constraint firstItem="r0B-nI-2RC" firstAttribute="top" secondItem="uzg-XJ-Wzn" secondAttribute="bottom" constant="8" symbolic="YES" id="Lvr-BP-eOk"/>
-                                            <constraint firstItem="A66-m7-m1Q" firstAttribute="top" secondItem="2vp-zX-rg8" secondAttribute="bottom" constant="22" id="MzP-VT-yPc"/>
+                                            <constraint firstItem="A66-m7-m1Q" firstAttribute="top" secondItem="2vp-zX-rg8" secondAttribute="bottom" constant="31" id="MzP-VT-yPc"/>
                                             <constraint firstItem="v37-90-m9J" firstAttribute="trailing" secondItem="y0p-LH-AHN" secondAttribute="trailing" id="NbK-GS-T8d"/>
                                             <constraint firstItem="v37-90-m9J" firstAttribute="leading" secondItem="y0p-LH-AHN" secondAttribute="leading" id="X7n-6w-hl5"/>
                                             <constraint firstItem="uzg-XJ-Wzn" firstAttribute="top" secondItem="CXh-cE-WyJ" secondAttribute="top" constant="112" id="XDP-Ep-sUj"/>
