@@ -18,6 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         rememberSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         
         emailTxtField.delegate = self
@@ -28,6 +29,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTxtField.text = defaults.string(forKey: "passTextFieldContent")
         rememberSwitch.isOn = defaults.bool(forKey: "rememberSwitchStatus")
         
+        setupTextFields()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if Auth.auth().currentUser != nil && rememberSwitch.isOn == true {
+            self.performSegue(withIdentifier: "toMain", sender: self)
+        }
+    }
+    
+    func setupTextFields () {
         emailTxtField.backgroundColor = UIColor.clear
         emailTxtField.layer.borderColor = UIColor.white.cgColor
         emailTxtField.layer.borderWidth = 1
@@ -47,20 +60,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTxtField.leftView = passPaddingView
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if Auth.auth().currentUser != nil && rememberSwitch.isOn == true {
-            self.performSegue(withIdentifier: "toMain", sender: self)
-        }
-    }
-    
+    //MARK: - UITextField Delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         emailTxtField.resignFirstResponder()
         passwordTxtField.resignFirstResponder()
         return true
     }
     
-    
+    //MARK: - Set User Defaults
     @IBAction func rememberSwitchPressed(_ sender: UISwitch) {
         if (sender.isOn == false) {
             print ("button OFF")
@@ -72,12 +79,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //MARK: - Resign First Responder
     @IBAction func screenTapped(_ sender: Any) {
         emailTxtField.resignFirstResponder()
         passwordTxtField.resignFirstResponder()
     }
     
-    
+    //MARK: - Login Methods
     @IBAction func loginPressed(_ sender: UIButton) {
         if emailTxtField.text == "" || passwordTxtField.text == "" {
             StaticFunctions.displayAlert(title: "Missing information.", message: "Please provide both email and password.", uiviewcontroller: self)
@@ -95,9 +103,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-
+    
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
         
     }
-
+    
 }

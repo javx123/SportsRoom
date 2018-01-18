@@ -10,14 +10,10 @@ import UIKit
 import XLPagerTabStrip
 import Firebase
 
-//protocol gamesOwnerVC {
-//    func reassignData()
-//}
-
 class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate  {
     
     @IBOutlet weak var tableView: UITableView!
-    //    var delegate: gamesOwnerVC?
+
     
     var gamesArrayDetails: [Game] = []
     {
@@ -33,7 +29,6 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         tableView.tableFooterView = UIView()
-//        addGameButton.setTitle("+", for: .normal)
         self.tableView.backgroundColor = UIColor.clear
         self.tableView.separatorStyle = .none
         let inset = UIEdgeInsetsMake(3, 0, 0, 0);
@@ -46,6 +41,7 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
 
     }
     
+    //MARK: - Empty Dataset
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         let str = "Welcome to SportsRoom"
         let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
@@ -58,7 +54,7 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
         return NSAttributedString(string: str, attributes: attrs)
     }
     
-    
+    //MARK: - Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "joined") {
             if let indexPath = tableView.indexPathForSelectedRow {

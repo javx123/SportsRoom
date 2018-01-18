@@ -29,9 +29,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         notificationCenter.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         self.title = currentGame.title
         self.tableView.separatorStyle = .none
-
     }
     
+    //MARK: - Show and Hide Keyboard
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0{
@@ -48,16 +48,19 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    //MARK: - UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         sendBtnPressed(sendBtn)
         return true
     }
     
+    //MARK: - Navigation
     @IBAction func backBtnPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    //MARK: - Send/Retrieve Messages
     @IBAction func sendBtnPressed(_ sender: UIButton) {
         messageTxtField.endEditing(true)
         messageTxtField.isEnabled = false
@@ -83,13 +86,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    
+    //MARK: - Resign First Responder
     @IBAction func screenTapped(_ sender: Any) {
         self.messageTxtField.resignFirstResponder()
     }
  
     //MARK: - TableView DataSource Methods
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messageArray.count
     }
@@ -98,8 +100,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         if messageArray[indexPath.row].senderID != Auth.auth().currentUser!.uid {
-            //load received
-//            let cell = Bundle.main.loadNibNamed("MessageReceivedTableViewCell", owner: self, options: nil)?.first as! MessageReceivedTableViewCell
             let cell = tableView.dequeueReusableCell(withIdentifier: "MessageReceived", for: indexPath)
             if let cell = cell as? MessageReceivedTableViewCell {
                 let currentMessage = messageArray[indexPath.row]
@@ -111,9 +111,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 
             return cell
         } else {
-            //load sent
-            
-//            let cell = Bundle.main.loadNibNamed("MessageSentTableViewCell", owner: self, options: nil)?.first as! MessageSentTableViewCell
             let cell = tableView.dequeueReusableCell(withIdentifier: "MessageSent", for: indexPath)
             if let cell = cell as? MessageSentTableViewCell {
             let currentMessage = messageArray[indexPath.row]
@@ -123,23 +120,5 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             return cell
         }
-
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
-//        if let cell = cell as? MessageReceivedTableViewCell {
-//            let currentMessage = messageArray[indexPath.row]
-//            cell.senderLbl.text = currentMessage.senderName
-//            cell.messageLbl.text = currentMessage.messageBody
-//            cell.timestampLbl.text = currentMessage.timestamp
-//            self.tableView.separatorStyle = .none
-//
-//            if currentMessage.senderID != Auth.auth().currentUser!.uid {
-//                cell.senderLbl.textColor = UIColor.black
-//
-////                imageView.image = UIImage(named: "chatReceived")
-//            } else {
-//
-//            }
-//        }
-//        return cell
     }
   }

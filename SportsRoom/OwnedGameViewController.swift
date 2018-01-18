@@ -30,7 +30,6 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         tableView.tableFooterView = UIView()
-        //        getHostedGames()
         self.tableView.backgroundColor = UIColor.clear
         self.tableView.separatorStyle = .none
         let inset = UIEdgeInsetsMake(3, 0, 0, 0);
@@ -43,6 +42,7 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
 
     }
     
+    //MARK: - Empty Dataset
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         let str = "Welcome to SportsRoom"
         let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
@@ -55,23 +55,7 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
         return NSAttributedString(string: str, attributes: attrs)
     }
     
-//    func updateGames () {
-//        let userID = Auth.auth().currentUser?.uid
-//        let ref = Database.database().reference().child("users").child(userID!).child("hostedGames")
-//        ref.observe(.value) { (snapshot) in
-//            let value = snapshot.value as? [String:String] ?? [:]
-//            let gamesArrayID = Array(value.keys)
-//            for id in gamesArrayID {
-//                let ref = Database.database().reference().child("games").child(id)
-//                ref.observeSingleEvent(of: .value) { (snapshot) in
-//                    let game = Game(snapshot: snapshot)
-//                    self.gamesArrayDetails.append(game)
-//                    self.tableView.reloadData()
-//                }
-//            }
-//        }
-//    }
-    
+    //MARK: - Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "hosted") {
             if let indexPath = tableView.indexPathForSelectedRow {
@@ -94,7 +78,6 @@ class OwnedGameViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     //    Mark: - DataSource Properties
-    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return gamesArrayDetails.count
     }
