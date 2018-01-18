@@ -27,7 +27,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         notificationCenter.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        tableView.register(UINib(nibName:"MessageReceivedTableViewCell", bundle: nil), forCellReuseIdentifier: "chatCell")
         self.title = currentGame.title
         self.tableView.separatorStyle = .none
 

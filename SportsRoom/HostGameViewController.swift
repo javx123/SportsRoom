@@ -223,12 +223,8 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
     }
     
     @IBAction func gamePosted(_ sender: Any) {
-        // userID is equal to the current user's ID
         let userID = Auth.auth().currentUser?.uid
-        
         let dateString = pickDateLabel.text
-        
-        // convert the segmented control value to a string
         let skillLevelString = skillLevelControl.titleForSegment(at: skillLevelControl.selectedSegmentIndex)
         
         if gameTitleTextField.text! == "" || dropDownSelectionLabel.text == "Select Sport" || pickLocationLabel.text == "Location" || pickDateLabel.text == "Date/Time" {
@@ -246,7 +242,6 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
             }
             postGame(withUserID: userID!, title: gameTitleTextField.text!, sport: dropDownSelectionLabel.text!.lowercased(), date:dateString!, address: pickLocationLabel.text!, longitude:longitude, latitude:latitude, cost: costTextField.text!, skillLevel: skillLevelString!, numberOfPlayers: numberOfPlayersSlider.value, note: notesTextField.text!, spotsRemaining: numberOfPlayersSlider.value)
             
-//            _ = navigationController?.popViewController(animated: true)
             dismiss(animated: true, completion: nil)
         }
     }
@@ -265,7 +260,7 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
     }
     
     func postGame(withUserID userID: String, title: String, sport: String, date: String, address: String, longitude: Double, latitude: Double, cost: String, skillLevel: String, numberOfPlayers: Float, note: String, spotsRemaining: Float) {
-        // create a game object
+        
         let ref = Database.database().reference().child("games").childByAutoId()
         let gameIDkey = "gameID"
         let hostIDKey = "hostID"
@@ -282,7 +277,6 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         let spotsKey = "spotsRemaining"
         ref.updateChildValues([hostIDKey:userID,gameIDkey:ref.key,titleKey:title,sportKey:sport,dateKey:date,longitudeKey:longitude, latitudeKey:latitude,locationKey:address,costKey:cost,skillKey:skillLevel,playerNumberKey:numberOfPlayers,noteKey:note, spotsKey:spotsRemaining])
         
-        // assign the game id to the current user's 'hosted games' list
         let userID = Auth.auth().currentUser?.uid
         let gameKey = ref.key
         let refUser = Database.database().reference().child("users").child(userID!).child("hostedGames")
@@ -298,10 +292,8 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let pvc = storyboard.instantiateViewController(withIdentifier: "SelectDateViewController") as UIViewController
-        
         pvc.modalPresentationStyle = UIModalPresentationStyle.custom
         pvc.transitioningDelegate = self
-        
         self.present(pvc, animated: true, completion: nil)
     }
     
@@ -309,16 +301,11 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         return HalfSizePresentationController(presentedViewController:presented, presenting: presenting)
     }
     
-    
 }
 class HalfSizePresentationController: UIPresentationController {
     override var frameOfPresentedViewInContainerView: CGRect {
         return CGRect(x: 0, y: (containerView!.bounds.height/3)*2, width: containerView!.bounds.width, height: containerView!.bounds.height/3)
     }
-    
-    
-    
-    
 }
 
 

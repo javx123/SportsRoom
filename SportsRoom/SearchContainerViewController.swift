@@ -30,54 +30,9 @@ class SearchContainerViewController: UIViewController, ModernSearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegateModernSearchBar = self
-        // Do any additional setup after loading the view.
-
         configureSearchBar()
         setupDropDown()
         setupModernSearch()
-        
-    }
-    
-    
-    func configureSearchBar() {
-    
-    let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
-    textFieldInsideSearchBar?.textColor = .white
-    searchBar.tintColor = .flatYellow
-    searchBar.placeholder = "Search (e.g. Soccer)"
-    searchBar.enablesReturnKeyAutomatically = true
-    
-    let glassIconView = textFieldInsideSearchBar?.leftView as? UIImageView
-    glassIconView?.image = glassIconView?.image?.withRenderingMode(.alwaysTemplate)
-    glassIconView?.tintColor = .flatYellow
-    
-    
-    //        let clearButton = textFieldInsideSearchBar?.value(forKey: "clearButton") as! UIButton
-    //        clearButton.setImage(clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
-    //
-    //        clearButton.tintColor = UIColor.flatYellow
-    }
-    
-    func setupDropDown() {
-        dropDown.anchorView = searchLocationView
-        dropDown.dataSource = ["Current Location", "Custom Location..."]
-        dropDown.direction = .bottom
-        dropDown.bottomOffset = CGPoint(x: 0, y: (dropDown.anchorView?.plainView.bounds.height)!)
-        
-        dropDown.backgroundColor = UIColor.flatNavyBlueDark
-        dropDown.textColor = UIColor.white
-        dropDown.selectionBackgroundColor = UIColor.flatYellow
-    }
-    
-    func setupModernSearch() {
-        let sportSuggestionList = ["Baseball", "Basketball", "Hockey", "Soccer", "Football", "Tennis", "Softball", "Table Tennis", "Squash", "Ultimate", "Rugby"]
-        searchBar.setDatas(datas: sportSuggestionList)
-        
-        searchBar.searchLabel_textColor = .white
-        
-        searchBar.suggestionsView_backgroundColor = .flatNavyBlue
-        searchBar.suggestionsView_contentViewColor = .flatNavyBlue
-        searchBar.suggestionsView_selectionStyle = UITableViewCellSelectionStyle.gray
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -103,6 +58,46 @@ class SearchContainerViewController: UIViewController, ModernSearchBarDelegate {
             cancelButton.isEnabled = true
         }
     }
+    
+    //MARK: - Setup the View
+    
+    func configureSearchBar() {
+    
+    let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+    textFieldInsideSearchBar?.textColor = .white
+    searchBar.tintColor = .flatYellow
+    searchBar.placeholder = "Search (e.g. Soccer)"
+    searchBar.enablesReturnKeyAutomatically = true
+    
+    let glassIconView = textFieldInsideSearchBar?.leftView as? UIImageView
+    glassIconView?.image = glassIconView?.image?.withRenderingMode(.alwaysTemplate)
+    glassIconView?.tintColor = .flatYellow
+
+    }
+    
+    func setupDropDown() {
+        dropDown.anchorView = searchLocationView
+        dropDown.dataSource = ["Current Location", "Custom Location..."]
+        dropDown.direction = .bottom
+        dropDown.bottomOffset = CGPoint(x: 0, y: (dropDown.anchorView?.plainView.bounds.height)!)
+        
+        dropDown.backgroundColor = UIColor.flatNavyBlueDark
+        dropDown.textColor = UIColor.white
+        dropDown.selectionBackgroundColor = UIColor.flatYellow
+    }
+    
+    func setupModernSearch() {
+        let sportSuggestionList = ["Baseball", "Basketball", "Hockey", "Soccer", "Football", "Tennis", "Softball", "Table Tennis", "Squash", "Ultimate", "Rugby"]
+        searchBar.setDatas(datas: sportSuggestionList)
+        
+        searchBar.searchLabel_textColor = .white
+        
+        searchBar.suggestionsView_backgroundColor = .flatNavyBlue
+        searchBar.suggestionsView_contentViewColor = .flatNavyBlue
+        searchBar.suggestionsView_selectionStyle = UITableViewCellSelectionStyle.gray
+    }
+    
+        //MARK: - Search Functions
 
     @IBAction func search(_ sender: Any) {
         searchDelegate?.close()
@@ -119,7 +114,6 @@ class SearchContainerViewController: UIViewController, ModernSearchBarDelegate {
     }
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-//        kinda hacky way but nothing I can figure out at the moment
         searchBar.setShowsCancelButton(true, animated: true)
         return true
     }
@@ -162,11 +156,6 @@ class SearchContainerViewController: UIViewController, ModernSearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
-//        let clearButton = textFieldInsideSearchBar?.value(forKey: "clearButton") as! UIButton
-//        clearButton.setImage(clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
-//
-//        clearButton.tintColor = UIColor.flatYellow
     }
     
 }

@@ -171,15 +171,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
-    //    func updateUserInfo () {
-    //        let userID = Auth.auth().currentUser!.uid
-    //        let ref = Database.database().reference().child("users").child(userID)
-    //            self.emailLbl.text = currentUser?.email
-    //            self.nameLbl.text = currentUser?.name
-    //            self.biosLbl.text = currentUser?.bio
-    //            self.ageLbl.text = currentUser?.age
-    //    }
-    
     @IBAction func backBtnPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -221,8 +212,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         loadActivity.detailsLabel.text = "Please Wait"
         loadActivity.backgroundColor = UIColor.flatNavyBlueDark
         loadActivity.contentColor = UIColor.white
-//        SVProgressHUD.show(withStatus:"loading")
-//        profileImageBackground.addSubview(SVProgressHUD)
     }
     
     func setimage () {

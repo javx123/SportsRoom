@@ -11,53 +11,31 @@ import ChameleonFramework
 
 class UserSettingsTableViewController: UITableViewController {
     
-    var currentUser: User?
-    
     @IBOutlet weak var searchRadiusSlider: UISlider!
     @IBOutlet weak var searchRadiusLabel: UILabel!
-    
     @IBOutlet weak var dateFilterCell: UITableViewCell!
     @IBOutlet weak var distanceFilterCell: UITableViewCell!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     
-    
+    var currentUser: User?
     var filterType: Filter?
     var searchRadius: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        searchRadiusSlider.value = (currentUser?.settings!["radius"] as! Float) / 1000
-        searchRadius = Int(searchRadiusSlider.value) * 1000
-        searchRadiusLabel.text = "\(Int(searchRadiusSlider.value)) Km"
-
-
-        if (currentUser?.settings!["filter"] as? String) == "date" {
-            filterType = Filter.date
-
-            dateFilterSelected(self)
-        }
-        else if (currentUser?.settings!["filter"] as? String) == "distance" {
-            filterType = Filter.distance
-            
-            distanceFilterSelected(self)
-        }
-        
+        setupRadiusSlider()
+        setupFilters()
         tableView.allowsSelection = false
-        
     }
 
-
-    // MARK: - Table view data source
+    // MARK: - tableViewDataSource Methods
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         switch section {
         case 0:
             return 1
@@ -72,6 +50,25 @@ class UserSettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
             headerView.textLabel?.textColor = .black
+        }
+    }
+    
+    //MARK: - Settings
+    
+    func setupRadiusSlider () {
+        searchRadiusSlider.value = (currentUser?.settings!["radius"] as! Float) / 1000
+        searchRadius = Int(searchRadiusSlider.value) * 1000
+        searchRadiusLabel.text = "\(Int(searchRadiusSlider.value)) Km"
+    }
+    
+    func setupFilters () {
+        if (currentUser?.settings!["filter"] as? String) == "date" {
+            filterType = Filter.date
+            dateFilterSelected(self)
+        }
+        else if (currentUser?.settings!["filter"] as? String) == "distance" {
+            filterType = Filter.distance
+            distanceFilterSelected(self)
         }
     }
 

@@ -25,6 +25,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         ageTxtField.delegate = self
         nameTxtField.delegate = self
         
+        setupTextFields()
+    }
+    
+    //MARK: - Setup TextFields
+    func setupTextFields () {
         nameTxtField.backgroundColor = UIColor.clear
         nameTxtField.layer.borderColor = UIColor.white.cgColor
         nameTxtField.layer.borderWidth = 1
@@ -62,16 +67,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         passwordTxtField.leftView = passPaddingView
     }
     
+    //MARK: - Resign First Responders
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         emailTxtField.resignFirstResponder()
         passwordTxtField.resignFirstResponder()
         ageTxtField.resignFirstResponder()
         nameTxtField.resignFirstResponder()
         return true
-    }
-    
-    @IBAction func backButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func screenTapped(_ sender: Any) {
@@ -81,6 +83,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         nameTxtField.resignFirstResponder()
     }
     
+    //MARK: - Register New User
     @IBAction func signUpPressed(_ sender: UIButton) {
         if emailTxtField.text == "" || passwordTxtField.text == "" || nameTxtField.text == "" || ageTxtField.text == "" {
             StaticFunctions.displayAlert(title: "Missing information.", message: "Some information is missing. Please check that all fields have been filled out", uiviewcontroller: self)
@@ -115,8 +118,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
-    
-    
-    
+    //MARK: - Back to Login Screen
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
