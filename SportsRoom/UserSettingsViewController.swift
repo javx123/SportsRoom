@@ -19,7 +19,6 @@ class UserSettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         searchRadiusSlider.value = (currentUser?.settings!["radius"] as! Float) / 1000
         searchRadius = Int(searchRadiusSlider.value) * 1000
         searchRadiusLabel.text = "\(Int(searchRadiusSlider.value)) Km"

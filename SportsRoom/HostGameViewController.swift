@@ -34,14 +34,28 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
     var longitude = Double()
     var latitude = Double()
     var dateString = String()
-    
     let dropDown = DropDown()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navBar.delegate = self
+        setupView()
+        setupDropdown()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        self.otherSportTextField.delegate = self
+        otherSportTextField.isEnabled = false
+        gameTitleTextField.delegate = self
+        costTextField.delegate = self
+        notesTextField.delegate = self
+        otherSportTextField.delegate = self
+    }
+    
+    //MARK: - Setup the View
+    func setupView () {
         gameTitleTextField.layer.borderColor = UIColor.white.cgColor
         gameTitleTextField.layer.borderWidth = 1
         gameTitleTextField.layer.cornerRadius = 7
@@ -83,48 +97,22 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         notesTextField.leftViewMode = UITextFieldViewMode.always
         notesTextField.leftView = notesPaddingView
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
         numberOfPlayersLabel.text = "1"
-        dropDown.anchorView = selectSportView
-        dropDown.dataSource = ["Baseball", "Basketball", "Hockey", "Soccer", "Football", "Tennis", "Softball", "Table Tennis", "Squash", "Ultimate", "Rugby", "Other"]
-        dropDown.direction = .bottom
-        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
-        self.otherSportTextField.delegate = self
         
         let font = UIFont.systemFont(ofSize: 10)
         skillLevelControl.setTitleTextAttributes([NSAttributedStringKey.font: font],
                                                  for: .normal)
-        
-        otherSportTextField.isEnabled = false
-        gameTitleTextField.delegate = self
-        costTextField.delegate = self
-        notesTextField.delegate = self
-        otherSportTextField.delegate = self
-        
+    }
+    
+    func setupDropdown () {
+        dropDown.anchorView = selectSportView
+        dropDown.dataSource = ["Baseball", "Basketball", "Hockey", "Soccer", "Football", "Tennis", "Softball", "Table Tennis", "Squash", "Ultimate", "Rugby", "Other"]
+        dropDown.direction = .bottom
+        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
     }
     
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if !gameTitleTextField.isFirstResponder && !otherSportTextField.isFirstResponder{
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += keyboardSize.height
-            }
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -168,6 +156,34 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         return true
     }
     
+    @IBAction func sliderChanged(_ sender: Any) {
+        (sender as AnyObject).setValue(Float(lroundf(numberOfPlayersSlider.value)), animated: true)
+        let sliderValue: Float = numberOfPlayersSlider.value
+        let sliderNSNumber = sliderValue as NSNumber
+        let playerString:String = sliderNSNumber.stringValue
+        numberOfPlayersLabel.text = playerString
+    }
+    
+    //MARK: - Adjust screen for keyboard height
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if !gameTitleTextField.isFirstResponder && !otherSportTextField.isFirstResponder{
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+                if self.view.frame.origin.y == 0{
+                    self.view.frame.origin.y -= keyboardSize.height
+                }
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+    
+    //MARK: - Segues
     @IBAction func unwindFromMap (sender: UIStoryboardSegue) {
         if sender.source is SetLocationViewController {
             if let senderVC = sender.source as? SetLocationViewController {
@@ -209,6 +225,11 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         }
     }
     
+    @IBAction func locationTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "setLocation", sender: self)
+    }
+    
+    //MARK: - Resign first responder
     @IBAction func sportSelectionTapped(_ sender: Any) {
         dropDown.show()
         gameTitleTextField.resignFirstResponder()
@@ -222,6 +243,7 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         otherSportTextField.resignFirstResponder()
     }
     
+    //MARK: - Post the game
     @IBAction func gamePosted(_ sender: Any) {
         let userID = Auth.auth().currentUser?.uid
         let dateString = pickDateLabel.text
@@ -244,19 +266,6 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
             
             dismiss(animated: true, completion: nil)
         }
-    }
-    
-    
-    @IBAction func sliderChanged(_ sender: Any) {
-        (sender as AnyObject).setValue(Float(lroundf(numberOfPlayersSlider.value)), animated: true)
-        let sliderValue: Float = numberOfPlayersSlider.value
-        let sliderNSNumber = sliderValue as NSNumber
-        let playerString:String = sliderNSNumber.stringValue
-        numberOfPlayersLabel.text = playerString
-    }
-    
-    @IBAction func locationTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "setLocation", sender: self)
     }
     
     func postGame(withUserID userID: String, title: String, sport: String, date: String, address: String, longitude: Double, latitude: Double, cost: String, skillLevel: String, numberOfPlayers: Float, note: String, spotsRemaining: Float) {
@@ -288,6 +297,7 @@ class HostGameViewController: UIViewController, UITextFieldDelegate, UIViewContr
         
     }
     
+    //MARK: - Select a Date
     @IBAction func dateTapped(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

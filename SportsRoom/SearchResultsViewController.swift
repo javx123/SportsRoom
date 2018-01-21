@@ -24,14 +24,14 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     var pulledGames: [Game]?
     var locationManager: LocationManager
     var searchResults: [Game] = []
-    {
+        
+        {
         didSet{
             self.tableView.reloadData()
         }
     }
     
     var loadingNotification: MBProgressHUD?
-    
     
     required init?(coder aDecoder: NSCoder) {
         self.locationManager = LocationManager(manager: CLLocationManager())
@@ -77,7 +77,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @objc func showSettings () {
-    performSegue(withIdentifier: "showSettings", sender: self)
+        performSegue(withIdentifier: "showSettings", sender: self)
     }
     
     func pullMatchingGames() {
@@ -114,13 +114,12 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         if let entry = entry {
             cell.titleLabel.text = entry.title
             cell.locationLabel.text = "Location: \(entry.address)"
-//            cell.locationLabel.font = cell.locationLabel.font.italic
             cell.timeLabel.text = entry.date
             cell.costLabel.text = entry.cost
-
+            
             cell.skillLabel.text = "\(entry.skillLevel)"
             let numberofPlayersString = String(entry.spotsRemaining)
-
+            
             cell.spotsLabel.text = "\(numberofPlayersString) Spot(s)"
             
             let dateFormatter = DateFormatter()
@@ -143,10 +142,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 dateFormatterNew.dateFormat = "h:mm a"
                 let Date12 = dateFormatterNew.string(from: date!)
                 cell.hourLabel.text = Date12
-                
-                
-                
-//                let amPM = gregorianCalendar.component(., from: <#T##Date#>)
             }
             
             cell.backgroundColor = UIColor.clear
@@ -157,7 +152,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 cell.roundedView.backgroundColor = UIColor.flatWhiteDark
             }
             else if(indexPath.row % 4 == 1) {
-            cell.roundedView.backgroundColor = UIColor.flatYellow
+                cell.roundedView.backgroundColor = UIColor.flatYellow
                 cell.costLabel.textColor = UIColor.flatNavyBlueDark
                 cell.skillLabel.textColor = UIColor.flatNavyBlueDark
                 cell.spotsLabel.textColor = UIColor.flatNavyBlueDark
@@ -184,7 +179,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     func pullFireBaseData(completion: @escaping ( _ games : [Game]) -> Void) {
         ref.queryOrdered(byChild: "sport").queryEqual(toValue: searchedSport.lowercased()).observe(.value) { (snapshot) in
-//            quick fix for strange bug where sometimes the data pulled down is duplicated
             self.pulledGames?.removeAll()
             self.searchResults.removeAll()
             
@@ -200,13 +194,13 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 print(gameValue)
                 print("\n\n\n\n\n\n")
                 let game = Game(gameInfo: gameValue)
-    
+                
                 print(game)
                 matchingGames.append(game)
             }
             completion(matchingGames)
         }
-
+        
         loadingNotification = MBProgressHUD.showAdded(to: self.view, animated: true)
         loadingNotification?.mode = MBProgressHUDMode.indeterminate
         loadingNotification?.label.text = "Searching"
@@ -214,47 +208,40 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func filterResults() {
-//        Attempt quick fix to stop duplicates
         self.searchResults.removeAll()
-
         guard let `pulledGames` = pulledGames else {
-//            MBProgressHUD.hide(for: self.view, animated: true)
             print("Pulled games doesn't exist")
             return }
         guard let `searchLocation` = searchLocation else {
             print("Search location doesn't exist")
             return }
-        
         if pulledGames == nil {
             MBProgressHUD.hide(for: self.view, animated: true)
         }
-
+        
         
         for game in pulledGames {
             let gameCoordinates = CLLocation(latitude: game.latitude, longitude: game.longitude)
             let distance = searchLocation.distance(from: gameCoordinates)
             print(distance)
-
+            
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
             dateFormatter.timeStyle = .short
             dateFormatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
             let gameDate = dateFormatter.date(from: game.date)
             if Date() < gameDate! {
-            if ( Int(distance) < searchRadius!){
-                if !(currentUser!.joinedGameArray!.contains(game.gameID)) && !(currentUser!.hostedGameArray!.contains(game.gameID)) {
-                    if (game.joinedPlayersArray!.count < game.numberOfPlayers) {
-                        game.distance = Int(distance)
-                        self.searchResults.append(game)
-//                        sortGames()
+                if ( Int(distance) < searchRadius!){
+                    if !(currentUser!.joinedGameArray!.contains(game.gameID)) && !(currentUser!.hostedGameArray!.contains(game.gameID)) {
+                        if (game.joinedPlayersArray!.count < game.numberOfPlayers) {
+                            game.distance = Int(distance)
+                            self.searchResults.append(game)
+                            //                        sortGames()
+                        }
                     }
                 }
             }
         }
-        }
-
-        print("nothing test")
-//        Can put sortGames() here, which would definetly make it more efficient then calling sortGames() many times, but in the current setup, although it's more inefficient, we ensure that the loading Icon only disappears after the sort is finished
         sortGames()
         MBProgressHUD.hide(for: self.view, animated: true)
     }
@@ -274,7 +261,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         default:
             print("no filter???")
         }
-
+        
     }
     
     func updateUserInfo () {
@@ -282,11 +269,11 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         let ref = Database.database().reference().child("users").child(userID!)
         ref.observeSingleEvent(of: .value) { (snapshot) in
             self.currentUser = User(snapshot: snapshot)
-//            self.sortGames()
             self.filterResults()
         }
     }
     
+    //MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "search") {
             if let indexPath = tableView.indexPathForSelectedRow {
@@ -334,7 +321,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 updateUserInfo()
             }
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -347,30 +333,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     deinit {
         print("This is deinitialized")
     }
-    
 }
-
-extension UIFont {
-    var bold: UIFont {
-        return with(traits: .traitBold)
-    } // bold
-    
-    var italic: UIFont {
-        return with(traits: .traitItalic)
-    } // italic
-    
-    var boldItalic: UIFont {
-        return with(traits: [.traitBold, .traitItalic])
-    } // boldItalic
-    
-    
-    func with(traits: UIFontDescriptorSymbolicTraits) -> UIFont {
-        guard let descriptor = self.fontDescriptor.withSymbolicTraits(traits) else {
-            return self
-        } // guard
-        
-        return UIFont(descriptor: descriptor, size: 0)
-    } // with(traits:)
-} // extension
 
 

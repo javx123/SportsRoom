@@ -11,15 +11,15 @@ import CoreLocation
 import MapKit
 
 class LocationViewController: UIViewController, UINavigationBarDelegate, MKMapViewDelegate {
-
+    
     @IBOutlet weak var mapView: MKMapView!
-
+    
     var latitude: Double?
     var longitude: Double?
     var address: String?
-
+    
     var selectedPin : MKPlacemark?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let currentLocation = CLLocation(latitude: latitude!, longitude: longitude!)
@@ -29,29 +29,29 @@ class LocationViewController: UIViewController, UINavigationBarDelegate, MKMapVi
         
         mapView.delegate = self
     }
-
+    
     func updateMapView(_ location: CLLocation) {
         let span = MKCoordinateSpanMake(0.05, 0.05)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
         mapView.setRegion(region, animated: true)
     }
-
-func dropPinZoomIn(placemark:MKPlacemark) {
-
-    selectedPin = placemark
-
-    mapView.removeAnnotations(mapView.annotations)
     
-    let annotation = MKPointAnnotation()
-    annotation.coordinate = placemark.coordinate
-    annotation.title = "Location:"
-    annotation.subtitle = address
-    mapView.addAnnotation(annotation)
-    let span = MKCoordinateSpanMake(0.05, 0.05)
-    let region = MKCoordinateRegionMake(placemark.coordinate, span)
-    mapView.setRegion(region, animated: true)
-}
-
+    func dropPinZoomIn(placemark:MKPlacemark) {
+        
+        selectedPin = placemark
+        
+        mapView.removeAnnotations(mapView.annotations)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        annotation.title = "Location:"
+        annotation.subtitle = address
+        mapView.addAnnotation(annotation)
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegionMake(placemark.coordinate, span)
+        mapView.setRegion(region, animated: true)
+    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
         if annotation is MKUserLocation {
             return nil
@@ -69,7 +69,7 @@ func dropPinZoomIn(placemark:MKPlacemark) {
         pinView?.leftCalloutAccessoryView = button
         return pinView
     }
-
+    
     @objc func getDirections(){
         if let selectPin = selectedPin {
             let mapItem = MKMapItem(placemark: selectPin)
@@ -78,6 +78,6 @@ func dropPinZoomIn(placemark:MKPlacemark) {
             mapItem.openInMaps(launchOptions: launchOptions)
         }
     }
-
+    
 }
 

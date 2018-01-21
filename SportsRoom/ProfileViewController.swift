@@ -26,10 +26,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var bioTextView: UITextView!
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var profileImageBackground: UIView!
-    
     @IBOutlet weak var settingsBtn: UIButton!
-    
     @IBOutlet weak var logoutButton: UIButton!
+    
     var currentUser: User?
     var imageString = String()
     var imageURL: URL!
@@ -40,7 +39,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     let keyName = "name"
     let keyAge = "age"
     let keyBios = "bios"
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,25 +56,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         checkForImage()
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if bioTextView.isFirstResponder {
-                if self.view.frame.origin.y == 0{
-                    self.view.frame.origin.y -= 140
-            }
-        }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += 140
-        }
-    }
-    
-    @IBAction func screenTapped(_ sender: Any) {
-        ageTxtField.resignFirstResponder()
-        bioTextView.resignFirstResponder()
-    }
-    
+    //MARK: - Setup the View
     func configUI () {
         profileImageBackground.layer.cornerRadius = profileImageBackground.frame.height/2
         imageView.layer.cornerRadius = imageView.frame.size.width / 2
@@ -109,12 +89,33 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
+    //MARK: - Adjust screen for keyboard height
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if bioTextView.isFirstResponder {
+                if self.view.frame.origin.y == 0{
+                    self.view.frame.origin.y -= 140
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += 140
+        }
+    }
+    
+    //MARK: - Resign first responder
+    @IBAction func screenTapped(_ sender: Any) {
+        ageTxtField.resignFirstResponder()
+        bioTextView.resignFirstResponder()
+    }
+    
+    //MARK: - Edit profile
     @IBAction func editPressed(_ sender: UIButton) {
         if (editBtn.imageView?.image == UIImage (named: "editwhite")) {
             editBtn.setImage(UIImage (named: "savewhite"), for: UIControlState.normal)
             labelsState(hidden: true)
             fieldsState(hidden: false)
-            //            nameTxtField.text = nameLbl.text
             ageTxtField.text = ageLbl.text
             bioTextView.text = biosLbl.text
         } else {
@@ -130,13 +131,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func labelsState (hidden:Bool) {
-        //        nameLbl.isHidden = hidden
         ageLbl.isHidden = hidden
         biosLbl.isHidden = hidden
     }
     
     func fieldsState (hidden:Bool) {
-        //        nameTxtField.isHidden = hidden
         ageTxtField.isHidden = hidden
         bioTextView.isHidden = hidden
         imageButton.isHidden = hidden
@@ -171,10 +170,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
+    //MARK: - Navigation
     @IBAction func backBtnPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    //MARK: - Update profile image
     @IBAction func selectPicture(_ sender: Any) {
         let picker = UIImagePickerController()
         picker.sourceType = .photoLibrary
@@ -198,7 +199,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         let metadata = StorageMetadata()
         metadata.contentType = "image/png"
         photoRef.putData(imageData!, metadata: metadata).observe(.success) { (snapshot) in
-            // When the image has successfully uploaded, we get it's download URL
             self.imageString = (snapshot.metadata?.downloadURL()?.absoluteString)!
             print (self.imageString)
             let ref = Database.database().reference().child("users").child(userID!)
@@ -220,6 +220,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
+    //MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "userSettings" {
             let userSettingsVC = segue.destination as? SettingsContainerViewController
@@ -249,6 +250,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
+    //MARK: - Logout
     @IBAction func logOutPressed(_ sender: Any) {
         do {
             try Auth.auth().signOut()
