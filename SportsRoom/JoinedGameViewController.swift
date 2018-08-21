@@ -90,41 +90,7 @@ class JoinedGameViewController: UIViewController, UITableViewDelegate, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "joinCell", for: indexPath)
         if let cell = cell as? JoinedandHostedTableViewCell {
             let currentGame = gamesArrayDetails[indexPath.row]
-            cell.titleLabel.text = currentGame.title
-            cell.dateLabel.text = currentGame.date
-            cell.costLabel.text = currentGame.cost
-            cell.skillLabel.text = "Skill Level: \(currentGame.skillLevel)"
-            
-            switch currentGame.sport {
-            case "basketball":
-                cell.sportImage.image = UIImage(named: "basketball-1")
-            case "baseball":
-                cell.sportImage.image = UIImage(named: "baseball-1")
-            case "hockey":
-                cell.sportImage.image = UIImage(named: "hockey-1")
-            case "tennis":
-                cell.sportImage.image = UIImage(named: "tennis-1")
-            case "squash":
-                cell.sportImage.image = UIImage(named: "squash-1")
-            case "table tennis":
-                cell.sportImage.image = UIImage(named: "tabletennis-1")
-            case "softball":
-                cell.sportImage.image = UIImage(named: "softball-1")
-            case "football":
-                cell.sportImage.image = UIImage(named: "football2")
-            case "soccer":
-                cell.sportImage.image = UIImage(named: "soccer-1")
-            case "ultimate":
-                cell.sportImage.image = UIImage(named: "ultimate-1")
-            case "rugby":
-                cell.sportImage.image = UIImage(named: "rugby")
-            default:
-                cell.sportImage.image = UIImage(named: "default1")
-            }
-            cell.locationLabel.text = currentGame.address
-            cell.chatButton.tag = indexPath.row
-            
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.configCell(with: currentGame, indexPath: indexPath)
         }
         return cell
     }
