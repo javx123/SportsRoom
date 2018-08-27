@@ -26,20 +26,16 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     var joinedGamesVC: JoinedGameViewController?
     var ownedGamesVC: OwnedGameViewController?
     var searchBarVC: SearchContainerViewController?
-
-//    var searchBarButton = UIBarButtonItem()
-//    var profileButton = UIBarButtonItem()
     
-
     @IBOutlet weak var searchBarContainer: UIView!
     @IBOutlet weak var buttonBarViewTopConstraint: NSLayoutConstraint!
-
+    
     
     @IBOutlet weak var containerViewTopConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         
         let profileImage = UIImage(named: "profile-1")
         let searchImage = UIImage(named: "searchlogo")
@@ -68,9 +64,8 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         if customAddress == nil || customLocation == nil {
             if let searchBar = searchBarVC {
                 searchBar.searchLocationLabel.text = "Current Location"
-//                searchBar.dropDown.deselectRow(1)
                 searchBar.dropDown.deselectRow(at: 1)
-                searchBar.dropDown.selectRow(0)
+                searchBar.dropDown.selectRow(at: 0)
             }
         }
     }
@@ -102,12 +97,12 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let child_1 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "joinedGame") as? JoinedGameViewController
         joinedGamesVC = child_1
-
+        
         let child_2 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "hostedGame") as? OwnedGameViewController
         ownedGamesVC = child_2
         
         return [child_1!, child_2!]
-//        return [child_1!]
+        //        return [child_1!]
     }
     
     func configureView() {
@@ -121,7 +116,7 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         settings.style.buttonBarItemsShouldFillAvailiableWidth = true
         settings.style.buttonBarLeftContentInset = 0
         settings.style.buttonBarRightContentInset = 0
-        changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
+        changeCurrentIndexProgressive = { (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
             oldCell?.label.textColor = .white
             newCell?.label.textColor = .flatYellow
@@ -131,7 +126,7 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     func enableLocationServices() {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
-
+        
         switch CLLocationManager.authorizationStatus() {
         case CLAuthorizationStatus.notDetermined:
             locationManager.requestWhenInUseAuthorization()
@@ -163,7 +158,7 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         let ref = Database.database().reference().child("users").child(userID!).child("joinedGames")
         
         ref.observeSingleEvent(of: .value) {(snapshot) in
-//            quick fix for strange bug where sometimes the data pulled down is duplicated
+            //            quick fix for strange bug where sometimes the data pulled down is duplicated
             self.joinedGamesVC?.gamesArrayDetails.removeAll()
             
             let value = snapshot.value as? [String:String] ?? [:]
@@ -193,7 +188,7 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         let ref = Database.database().reference().child("users").child(userID!).child("hostedGames")
         
         ref.observeSingleEvent(of: .value) {(snapshot) in
-//            quick fix for strange bug where sometimes the data pulled down is duplicated
+            //            quick fix for strange bug where sometimes the data pulled down is duplicated
             self.ownedGamesVC?.gamesArrayDetails.removeAll()
             let value = snapshot.value as? [String:String] ?? [:]
             let gamesArrayID = Array(value.keys)
@@ -207,7 +202,7 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
                         let gameKey = game.gameID
                         let refGame = Database.database().reference().child("games").child(gameKey)
                         refGame.child("sport").removeValue()
-
+                        
                         refGame.updateChildValues(["completedGameType" : "\(game.sport)"])
                         let refUserHosted = Database.database().reference().child("users").child(userID!).child("hostedGames")
                         refUserHosted.child(gameKey).removeValue()
@@ -223,10 +218,28 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     @objc func showSearchBar () {
         if searchBarContainer.isHidden == true {
             searchBarContainer.isHidden = false
+            
             buttonBarViewTopConstraint.constant = searchBarContainer.frame.height + 0.5
             containerViewTopConstraint.constant += searchBarContainer.frame.height + 0.5
-            //        searchBar?.becomeFirstResponder()
             searchBarVC?.searchBar.becomeFirstResponder()
+            
+            ///Code for trying to animate the searchBar pull down
+            /*            self.buttonBarViewTopConstraint.constant = self.searchBarContainer.frame.height + 0.5
+             self.containerViewTopConstraint.constant += self.searchBarContainer.frame.height + 0.5
+             self.buttonBarView.setNeedsLayout()
+             self.containerView.setNeedsLayout()
+             
+             self.searchBarVC?.searchBar.becomeFirstResponder()
+             
+             UIView.animate(withDuration: 0.5, animations: {
+             self.buttonBarView.layoutIfNeeded()
+             self.containerView.layoutIfNeeded()
+             }, completion: { (complete) in
+             if (!complete){
+             print("There's an error with the searchBarContainer")
+             }
+             })
+             */
         }
         else{
             close()
@@ -275,7 +288,7 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     @IBAction func unwindFromCreateGame (sender: UIStoryboardSegue){
         
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "searchGame" {
             let navController = segue.destination as! UINavigationController
