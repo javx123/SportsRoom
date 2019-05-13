@@ -19,7 +19,7 @@
 		05FF4A101FEC670C00E9A65C /* StaticFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF4A0F1FEC670C00E9A65C /* StaticFunctions.swift */; };
 		2D0612211FF5FC5600713545 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0612201FF5FC5600713545 /* UserSettingsViewController.swift */; };
 		2D1F4B4B1FE1F36400371D9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */; };
-		2D1F4B4D1FE1F36400371D9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4C1FE1F36400371D9B /* ViewController.swift */; };
+		2D1F4B4D1FE1F36400371D9B /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1F4B4C1FE1F36400371D9B /* HomePageViewController.swift */; };
 		2D1F4B521FE1F36400371D9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B511FE1F36400371D9B /* Assets.xcassets */; };
 		2D1F4B551FE1F36400371D9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F4B531FE1F36400371D9B /* LaunchScreen.storyboard */; };
 		2D40E3FC1FEB2D1300C24D72 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D40E3FB1FEB2D1300C24D72 /* User.swift */; };
@@ -59,7 +59,7 @@
 		2D0612201FF5FC5600713545 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		2D1F4B471FE1F36400371D9B /* SportsRoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsRoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2D1F4B4C1FE1F36400371D9B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2D1F4B4C1FE1F36400371D9B /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		2D1F4B511FE1F36400371D9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D1F4B541FE1F36400371D9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D1F4B561FE1F36400371D9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -132,45 +132,22 @@
 		2D1F4B491FE1F36400371D9B /* SportsRoom */ = {
 			isa = PBXGroup;
 			children = (
-				C05EC3131FEC286E00122C5C /* SportsRoom.entitlements */,
-				05FF4A0B1FEC3F7F00E9A65C /* GoogleService-Info.plist */,
 				2D1F4B4A1FE1F36400371D9B /* AppDelegate.swift */,
-				2D1F4B4C1FE1F36400371D9B /* ViewController.swift */,
-				05E624901FEAD703001AF76F /* Game.swift */,
-				2D40E3FB1FEB2D1300C24D72 /* User.swift */,
-				052D55731FF0A81000602131 /* Message.swift */,
-				C0B604531FF4664E0052E39E /* Main.storyboard */,
-				FE75D4EC1FFA0D21001BCD7E /* SearchContainerViewController.swift */,
-				FE3B00271FF9701500C56E24 /* SettingsContainerViewController.swift */,
-				FE3B00291FF971B100C56E24 /* UserSettingsTableViewController.swift */,
-				C01E03971FF5CDA90029E5EC /* SelectDateViewController.swift */,
-				C07524841FF15103003DE253 /* SignUpViewController.swift */,
-				C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */,
-				05E0A0D41FE83D16006BE816 /* LoginViewController.swift */,
-				05FF4A0F1FEC670C00E9A65C /* StaticFunctions.swift */,
-				2D71A9B11FE40B19008C60F7 /* JoinedGameViewController.swift */,
-				2D71A9B31FE40B22008C60F7 /* OwnedGameViewController.swift */,
-				052D55751FF34D7F00602131 /* JoinedandHostedTableViewCell.swift */,
-				052D556F1FF09EA800602131 /* ChatViewController.swift */,
-				052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */,
-				0523ABFB1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.swift */,
-				0523ABFF1FFF129500EB7223 /* MessageSentTableViewCell.swift */,
-				2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */,
-				2D71A9BB1FE40C1E008C60F7 /* DetailsViewController.swift */,
-				C01E03BB1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift */,
-				2D71A9B51FE40B6A008C60F7 /* HostGameViewController.swift */,
-				2D71A9BF1FE40D1A008C60F7 /* SetLocationViewController.swift */,
-				2D71A9B71FE40B87008C60F7 /* ProfileViewController.swift */,
-				2D0612201FF5FC5600713545 /* UserSettingsViewController.swift */,
-				2D71A9B91FE40BF4008C60F7 /* SearchResultsViewController.swift */,
-				2D47D2451FE9D9A50067250B /* LocationManager.swift */,
-				2D47D2471FEA1FEA0067250B /* SearchTableViewCell.swift */,
+				FE5FA9CC2289260F00096BB4 /* LaunchScreen */,
+				FE5FA9CA2289256200096BB4 /* Homepage */,
+				FE5FA9C5228923E400096BB4 /* Profile */,
+				FE5FA9CB2289259E00096BB4 /* GameDetails */,
+				FE5FA9C62289240900096BB4 /* Messaging */,
+				FE5FA9C4228923B000096BB4 /* Search */,
+				FE5FA9C72289244600096BB4 /* Utility */,
+				FE5FA9C82289249A00096BB4 /* Storyboards */,
 				2D1F4B511FE1F36400371D9B /* Assets.xcassets */,
-				2D1F4B531FE1F36400371D9B /* LaunchScreen.storyboard */,
 				2D1F4B561FE1F36400371D9B /* Info.plist */,
 				C07F549C200274D80033399F /* UIScrollView+EmptyDataSet.h */,
 				C07F549B200274D70033399F /* UIScrollView+EmptyDataSet.m */,
 				C07F549A200274D50033399F /* SportsRoom-Bridging-Header.h */,
+				C05EC3131FEC286E00122C5C /* SportsRoom.entitlements */,
+				05FF4A0B1FEC3F7F00E9A65C /* GoogleService-Info.plist */,
 			);
 			path = SportsRoom;
 			sourceTree = "<group>";
@@ -182,6 +159,93 @@
 				5D6F5EC96DFB1C7034020205 /* Pods-SportsRoom.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		FE5FA9C4228923B000096BB4 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				2D47D2471FEA1FEA0067250B /* SearchTableViewCell.swift */,
+				2D47D2451FE9D9A50067250B /* LocationManager.swift */,
+				FE75D4EC1FFA0D21001BCD7E /* SearchContainerViewController.swift */,
+				2D71A9B91FE40BF4008C60F7 /* SearchResultsViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		FE5FA9C5228923E400096BB4 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2D40E3FB1FEB2D1300C24D72 /* User.swift */,
+				2D71A9B71FE40B87008C60F7 /* ProfileViewController.swift */,
+				2D71A9BF1FE40D1A008C60F7 /* SetLocationViewController.swift */,
+				2D0612201FF5FC5600713545 /* UserSettingsViewController.swift */,
+				FE3B00271FF9701500C56E24 /* SettingsContainerViewController.swift */,
+				FE3B00291FF971B100C56E24 /* UserSettingsTableViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		FE5FA9C62289240900096BB4 /* Messaging */ = {
+			isa = PBXGroup;
+			children = (
+				0523ABFF1FFF129500EB7223 /* MessageSentTableViewCell.swift */,
+				052D55731FF0A81000602131 /* Message.swift */,
+				0523ABFB1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.swift */,
+				052D556F1FF09EA800602131 /* ChatViewController.swift */,
+				052D55711FF0A1DA00602131 /* ChatTableViewCell.swift */,
+			);
+			path = Messaging;
+			sourceTree = "<group>";
+		};
+		FE5FA9C72289244600096BB4 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				05FF4A0F1FEC670C00E9A65C /* StaticFunctions.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		FE5FA9C82289249A00096BB4 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C0B604531FF4664E0052E39E /* Main.storyboard */,
+				2D1F4B531FE1F36400371D9B /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		FE5FA9CA2289256200096BB4 /* Homepage */ = {
+			isa = PBXGroup;
+			children = (
+				2D1F4B4C1FE1F36400371D9B /* HomePageViewController.swift */,
+				2D71A9B11FE40B19008C60F7 /* JoinedGameViewController.swift */,
+				2D71A9B31FE40B22008C60F7 /* OwnedGameViewController.swift */,
+				052D55751FF34D7F00602131 /* JoinedandHostedTableViewCell.swift */,
+				2D71A9B51FE40B6A008C60F7 /* HostGameViewController.swift */,
+			);
+			path = Homepage;
+			sourceTree = "<group>";
+		};
+		FE5FA9CB2289259E00096BB4 /* GameDetails */ = {
+			isa = PBXGroup;
+			children = (
+				05E624901FEAD703001AF76F /* Game.swift */,
+				C01E03BB1FF6D68B0029E5EC /* PlayersListCollectionViewCell.swift */,
+				2D71A9BB1FE40C1E008C60F7 /* DetailsViewController.swift */,
+				2D71A9BD1FE40C7F008C60F7 /* LocationViewController.swift */,
+				C01E03971FF5CDA90029E5EC /* SelectDateViewController.swift */,
+			);
+			path = GameDetails;
+			sourceTree = "<group>";
+		};
+		FE5FA9CC2289260F00096BB4 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				C07524841FF15103003DE253 /* SignUpViewController.swift */,
+				C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */,
+				05E0A0D41FE83D16006BE816 /* LoginViewController.swift */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,7 +429,7 @@
 				2D71A9C01FE40D1A008C60F7 /* SetLocationViewController.swift in Sources */,
 				2D71A9B41FE40B22008C60F7 /* OwnedGameViewController.swift in Sources */,
 				052D55701FF09EA800602131 /* ChatViewController.swift in Sources */,
-				2D1F4B4D1FE1F36400371D9B /* ViewController.swift in Sources */,
+				2D1F4B4D1FE1F36400371D9B /* HomePageViewController.swift in Sources */,
 				2D1F4B4B1FE1F36400371D9B /* AppDelegate.swift in Sources */,
 				2D71A9BE1FE40C7F008C60F7 /* LocationViewController.swift in Sources */,
 				0523ABFD1FFEF3DA00EB7223 /* MessageReceivedTableViewCell.swift in Sources */,
