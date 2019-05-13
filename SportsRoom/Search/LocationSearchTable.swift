@@ -71,7 +71,7 @@ extension LocationSearchTable {
             selectedItem.administrativeArea ?? ""
         )
         return addressLine
-    }
+        }
     }
 
 extension LocationSearchTable {
