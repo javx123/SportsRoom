@@ -23,15 +23,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     var searchLocation: CLLocation?
     var pulledGames: [Game]?
     var locationManager: LocationManager
-    var searchResults: [Game] = []
-    {
-        didSet{
-            self.tableView.reloadData()
-        }
-    }
-    
+    var searchResults: [Game] = [] { didSet{ self.tableView.reloadData() } }
     var loadingNotification: MBProgressHUD?
-    
     
     required init?(coder aDecoder: NSCoder) {
         self.locationManager = LocationManager(manager: CLLocationManager())
@@ -58,9 +51,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         let inset = UIEdgeInsetsMake(10, 0, 0, 0);
         self.tableView.contentInset = inset
         
-        if searchLocation == nil {
-            callLocationManager()
-        }
+        if searchLocation == nil { callLocationManager() }
         pullMatchingGames()
     }
     
@@ -77,7 +68,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @objc func showSettings () {
-    performSegue(withIdentifier: "showSettings", sender: self)
+        performSegue(withIdentifier: "showSettings", sender: self)
     }
     
     func pullMatchingGames() {
@@ -101,8 +92,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
+//    Mark: - Datasource methods
     
-    //    Mark: - Datasource methods
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return searchResults.count
     }
@@ -157,18 +148,14 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
 //        Attempt quick fix to stop duplicates
         self.searchResults.removeAll()
 
-        guard let `pulledGames` = pulledGames else {
-//            MBProgressHUD.hide(for: self.view, animated: true)
+        guard let pulledGames = pulledGames else {
             print("Pulled games doesn't exist")
             return }
-        guard let `searchLocation` = searchLocation else {
+        guard let searchLocation = searchLocation else {
             print("Search location doesn't exist")
             return }
         
-        if pulledGames == nil {
             MBProgressHUD.hide(for: self.view, animated: true)
-        }
-
         
         for game in pulledGames {
             let gameCoordinates = CLLocation(latitude: game.latitude, longitude: game.longitude)
@@ -253,15 +240,17 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 let ref = Database.database().reference().child("users").child(userID)
                 
                 let userSearchRadius = senderVC.userSettingsVC?.searchRadius
+                
                 switch senderVC.userSettingsVC?.filterType {
                 case .date?:
-                    let defaultSettings: [String : Any] = ["radius": userSearchRadius, "filter": "date"]
+                    let defaultSettings: [String : Any] = ["radius": userSearchRadius ?? 0, "filter": "date"]
                     ref.updateChildValues(["settings" : defaultSettings])
                 case .distance?:
-                    let defaultSettings: [String : Any] = ["radius" : userSearchRadius, "filter": "distance"]
+                    let defaultSettings: [String : Any] = ["radius" : userSearchRadius ?? 0, "filter": "distance"]
                     ref.updateChildValues(["settings" : defaultSettings])
                 case .none:
-                    print("There's a bug if this is hit....")
+                    // Should never hit this case, if this happens then it means that there was an issue pulling data
+                    print("Invalid filtertype")
                 }
                 
                 
@@ -284,33 +273,20 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    deinit {
-        print("This is deinitialized")
-    }
+    deinit { print("This is deinitialized") }
     
 }
 
 extension UIFont {
-    var bold: UIFont {
-        return with(traits: .traitBold)
-    } // bold
-    
-    var italic: UIFont {
-        return with(traits: .traitItalic)
-    } // italic
-    
-    var boldItalic: UIFont {
-        return with(traits: [.traitBold, .traitItalic])
-    } // boldItalic
-    
+    var bold: UIFont { return with(traits: .traitBold) }
+    var italic: UIFont { return with(traits: .traitItalic) }
+    var boldItalic: UIFont { return with(traits: [.traitBold, .traitItalic]) }
     
     func with(traits: UIFontDescriptorSymbolicTraits) -> UIFont {
-        guard let descriptor = self.fontDescriptor.withSymbolicTraits(traits) else {
-            return self
-        } // guard
+        guard let descriptor = self.fontDescriptor.withSymbolicTraits(traits) else { return self }
         
         return UIFont(descriptor: descriptor, size: 0)
-    } // with(traits:)
-} // extension
-
+    }
+    
+}
 

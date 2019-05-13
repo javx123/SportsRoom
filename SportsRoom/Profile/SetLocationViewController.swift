@@ -39,7 +39,7 @@ class SetLocationViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
         
-        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: LocationSearchTable.storyboardID) as! LocationSearchTable
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
         resultSearchController?.searchResultsUpdater = locationSearchTable
         

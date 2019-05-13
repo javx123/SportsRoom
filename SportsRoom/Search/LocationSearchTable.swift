@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 
 class LocationSearchTable : UITableViewController {
+    static let storyboardID = "LocationSearchTable"
     
     var matchingItems:[MKMapItem] = []
     var mapView: MKMapView? = nil
@@ -24,16 +25,14 @@ extension LocationSearchTable : UISearchResultsUpdating {
         request.naturalLanguageQuery = searchBarText
         request.region = mapView.region
         let search = MKLocalSearch(request: request)
-        search.start { response, _ in
-            guard let response = response else {
-                return
-            }
-            self.matchingItems = response.mapItems
-            self.tableView.reloadData()
+        search.start { [weak self] response, _ in
+            guard let response = response else { return }
+            self?.matchingItems = response.mapItems
+            self?.tableView.reloadData()
         }
     }
     
-    }
+}
 
 extension LocationSearchTable {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,8 +70,9 @@ extension LocationSearchTable {
             selectedItem.administrativeArea ?? ""
         )
         return addressLine
-        }
     }
+    
+}
 
 extension LocationSearchTable {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
