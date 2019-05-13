@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomePageViewController.swift
 //  SportsRoom
 //
 //  Created by Javier Xing on 2017-12-13.
@@ -14,7 +14,7 @@ import MapKit
 import ChameleonFramework
 
 
-class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDelegate, SearchContainerProtocol{
+class HomePageViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDelegate, SearchContainerProtocol{
     
     let locationManager: CLLocationManager = CLLocationManager()
     let dateFormatter = DateFormatter()
@@ -68,7 +68,6 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         if customAddress == nil || customLocation == nil {
             if let searchBar = searchBarVC {
                 searchBar.searchLocationLabel.text = "Current Location"
-//                searchBar.dropDown.deselectRow(1)
                 searchBar.dropDown.deselectRow(at: 1)
                 searchBar.dropDown.selectRow(0)
             }
@@ -107,7 +106,6 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         ownedGamesVC = child_2
         
         return [child_1!, child_2!]
-//        return [child_1!]
     }
     
     func configureView() {
@@ -121,7 +119,7 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
         settings.style.buttonBarItemsShouldFillAvailiableWidth = true
         settings.style.buttonBarLeftContentInset = 0
         settings.style.buttonBarRightContentInset = 0
-        changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
+        changeCurrentIndexProgressive = { (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
             oldCell?.label.textColor = .white
             newCell?.label.textColor = .flatYellow
@@ -269,11 +267,9 @@ class ViewController: ButtonBarPagerTabStripViewController, CLLocationManagerDel
     }
     
     @IBAction func unwindFromSearch (sender: UIStoryboardSegue){
-        
     }
     
     @IBAction func unwindFromCreateGame (sender: UIStoryboardSegue){
-        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

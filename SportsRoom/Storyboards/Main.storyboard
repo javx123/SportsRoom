@@ -796,7 +796,7 @@
         <!--ViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ViewController" title="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="SportsRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" title="ViewController" id="BYZ-38-t0r" customClass="HomePageViewController" customModule="SportsRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3515,10 +3515,10 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8GS-dW-uDp"/>
-        <segue reference="Cua-Xk-AZH"/>
+        <segue reference="pBv-12-t8v"/>
         <segue reference="YfC-3w-XDr"/>
         <segue reference="Ggk-91-cho"/>
-        <segue reference="nDZ-df-YF2"/>
+        <segue reference="vrG-ED-cfp"/>
         <segue reference="ZIw-xV-HT4"/>
     </inferredMetricsTieBreakers>
 </document>
