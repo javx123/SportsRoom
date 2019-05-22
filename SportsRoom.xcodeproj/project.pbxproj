@@ -168,6 +168,7 @@
 				2D47D2451FE9D9A50067250B /* LocationManager.swift */,
 				FE75D4EC1FFA0D21001BCD7E /* SearchContainerViewController.swift */,
 				2D71A9B91FE40BF4008C60F7 /* SearchResultsViewController.swift */,
+				C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -242,7 +243,6 @@
 			isa = PBXGroup;
 			children = (
 				C07524841FF15103003DE253 /* SignUpViewController.swift */,
-				C0F929AB1FE883F4007B1847 /* LocationSearchTable.swift */,
 				05E0A0D41FE83D16006BE816 /* LoginViewController.swift */,
 			);
 			path = LaunchScreen;
