@@ -119,7 +119,6 @@ class SearchContainerViewController: UIViewController, ModernSearchBarDelegate {
     }
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-//        kinda hacky way but nothing I can figure out at the moment
         searchBar.setShowsCancelButton(true, animated: true)
         return true
     }

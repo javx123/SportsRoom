@@ -26,9 +26,6 @@ class HomePageViewController: ButtonBarPagerTabStripViewController, CLLocationMa
     var joinedGamesVC: JoinedGameViewController?
     var ownedGamesVC: OwnedGameViewController?
     var searchBarVC: SearchContainerViewController?
-
-//    var searchBarButton = UIBarButtonItem()
-//    var profileButton = UIBarButtonItem()
     
 
     @IBOutlet weak var searchBarContainer: UIView!
@@ -40,21 +37,7 @@ class HomePageViewController: ButtonBarPagerTabStripViewController, CLLocationMa
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        
-        let profileImage = UIImage(named: "profile-1")
-        let searchImage = UIImage(named: "searchlogo")
-        let iconSize = CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30))
-        let profileButton = UIButton(frame: iconSize)
-        let searchButton = UIButton(frame: iconSize)
-        profileButton.setBackgroundImage(profileImage, for: .normal)
-        searchButton.setBackgroundImage(searchImage, for: .normal)
-        let profileBarButton = UIBarButtonItem(customView: profileButton)
-        let searchBarButton = UIBarButtonItem(customView: searchButton)
-        profileButton.addTarget(self, action: #selector(showProfile), for: .touchUpInside)
-        searchButton.addTarget(self, action: #selector(showSearchBar), for: .touchUpInside)
-        
-        self.navigationItem.leftBarButtonItem = profileBarButton
-        self.navigationItem.rightBarButtonItem = searchBarButton
+        setupButtons()
         observeFireBase()
         createCurrentUser()
         configureView()
@@ -80,7 +63,7 @@ class HomePageViewController: ButtonBarPagerTabStripViewController, CLLocationMa
     
     //Mark: - FireBase Methods
     
-    func observeFireBase() {
+    private func observeFireBase() {
         let childRef = Database.database().reference(withPath: "users/Jason")
         childRef.observe(DataEventType.value) { (snapshot) in
             let value = snapshot.value
@@ -108,7 +91,25 @@ class HomePageViewController: ButtonBarPagerTabStripViewController, CLLocationMa
         return [child_1!, child_2!]
     }
     
-    func configureView() {
+    
+    private func setupButtons() {
+        let profileImage = UIImage(named: "profile-1")
+        let searchImage = UIImage(named: "searchlogo")
+        let iconSize = CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30))
+        let profileButton = UIButton(frame: iconSize)
+        let searchButton = UIButton(frame: iconSize)
+        profileButton.setBackgroundImage(profileImage, for: .normal)
+        searchButton.setBackgroundImage(searchImage, for: .normal)
+        let profileBarButton = UIBarButtonItem(customView: profileButton)
+        let searchBarButton = UIBarButtonItem(customView: searchButton)
+        profileButton.addTarget(self, action: #selector(showProfile), for: .touchUpInside)
+        searchButton.addTarget(self, action: #selector(showSearchBar), for: .touchUpInside)
+        
+        self.navigationItem.leftBarButtonItem = profileBarButton
+        self.navigationItem.rightBarButtonItem = searchBarButton
+    }
+    
+    private func configureView() {
         buttonBarView.backgroundColor = .flatNavyBlue
         settings.style.buttonBarItemBackgroundColor = .flatNavyBlue
         buttonBarView.selectedBar.backgroundColor = .flatYellow
@@ -126,7 +127,7 @@ class HomePageViewController: ButtonBarPagerTabStripViewController, CLLocationMa
         }
     }
     
-    func enableLocationServices() {
+    private func enableLocationServices() {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
 
@@ -138,7 +139,7 @@ class HomePageViewController: ButtonBarPagerTabStripViewController, CLLocationMa
         }
     }
     
-    func createCurrentUser () {
+    private func createCurrentUser () {
         let userID = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("users").child(userID!)
         ref.observe(.value) { (snapshot) in
@@ -150,13 +151,13 @@ class HomePageViewController: ButtonBarPagerTabStripViewController, CLLocationMa
         }
     }
     
-    func setupDateFormatter() {
+    private func setupDateFormatter() {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
         dateFormatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
     }
     
-    func getJoinedGames () {
+    private func getJoinedGames () {
         let userID = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("users").child(userID!).child("joinedGames")
         
@@ -186,7 +187,7 @@ class HomePageViewController: ButtonBarPagerTabStripViewController, CLLocationMa
         }
     }
     
-    func getHostedGames () {
+    private func getHostedGames () {
         let userID = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("users").child(userID!).child("hostedGames")
         
@@ -231,6 +232,8 @@ class HomePageViewController: ButtonBarPagerTabStripViewController, CLLocationMa
         }
     }
     
+    //Mark: - Search Container Protocol Methods
+    
     func close() {
         searchBarContainer.isHidden = true
         buttonBarViewTopConstraint.constant = 0.5
@@ -266,11 +269,11 @@ class HomePageViewController: ButtonBarPagerTabStripViewController, CLLocationMa
         }
     }
     
-    @IBAction func unwindFromSearch (sender: UIStoryboardSegue){
-    }
+    //Mark: - Segue
     
-    @IBAction func unwindFromCreateGame (sender: UIStoryboardSegue){
-    }
+    @IBAction func unwindFromSearch (sender: UIStoryboardSegue){ }
+    
+    @IBAction func unwindFromCreateGame (sender: UIStoryboardSegue){ }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "searchGame" {
@@ -300,11 +303,6 @@ class HomePageViewController: ButtonBarPagerTabStripViewController, CLLocationMa
             let profileVC = segue.destination as! ProfileViewController
             profileVC.currentUser = currentUser
         }
-        
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
         
     }
 }
